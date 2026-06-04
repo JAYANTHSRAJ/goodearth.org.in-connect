@@ -1947,6 +1947,107 @@ html[data-theme="dark"] .view-more-black-btn:hover {
   }
 }
 
+/* Typography & Layout Polish for Blog Post Body Content */
+.blog-body-content {
+  line-height: 1.85 !important;
+  font-size: 1.125rem !important;
+  color: var(--color-text-primary) !important;
+}
+
+.blog-body-content p {
+  margin-top: 0;
+  margin-bottom: 1.75rem;
+  letter-spacing: 0.01em;
+}
+
+.blog-body-content h3 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-top: 3.5rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+}
+
+.blog-body-content h3::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background-color: var(--color-accent);
+}
+
+.blog-body-content h4 {
+  font-family: var(--font-heading);
+  color: var(--color-text-primary);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Feature card blocks for lists in articles */
+.article-feature-card {
+  display: flex;
+  gap: 1.25rem;
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  align-items: flex-start;
+}
+
+.article-feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+}
+
+.feature-number-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.feature-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.feature-content-wrapper h4 {
+  margin: 0 !important;
+  font-size: 1.15rem !important;
+  color: var(--color-primary-dark) !important;
+  font-weight: 600 !important;
+}
+
+.feature-content-wrapper p {
+  margin: 0 !important;
+  font-size: 1rem !important;
+  color: var(--color-text-secondary) !important;
+  line-height: 1.65 !important;
+}
+
+
 
 
 
