@@ -640,6 +640,17 @@ a {
   .footer-container-original { grid-template-columns: 1fr; }
 }
 
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-logo-img {
+  margin: 0 auto 1.5rem !important;
+}
+
 .footer-title-original {
   color: var(--color-accent);
   font-size: 0.85rem;
@@ -659,6 +670,10 @@ a {
 
 .footer-nav-list {
   list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer-nav-list li {
@@ -669,6 +684,7 @@ a {
   color: rgba(255, 255, 255, 0.7);
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .footer-nav-list a:hover {
@@ -699,6 +715,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  justify-content: center;
 }
 
 .footer-categories-grid a {

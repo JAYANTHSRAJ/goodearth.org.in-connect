@@ -61,7 +61,7 @@ const headerHTML = `<div class="header-container">
 `;
 const footerHTML = `<div class="footer-container-original">
   <div class="footer-section">
-    <img src="assets/images/logo.svg" alt="GoodEarth Logo" class="footer-logo-img" style="height: 36px; width: auto; display: block; margin-bottom: 1.5rem; filter: brightness(0) invert(1);">
+    <img src="assets/images/logo.svg" alt="GoodEarth Logo" class="footer-logo-img" style="height: 36px; width: auto; display: block; margin: 0 auto 1.5rem; filter: brightness(0) invert(1);">
     <p style="color: #999999; line-height: 1.6; margin-bottom: 1.5rem;">
       Cultivating conscious communities since 1996. Regenerative living rooted in nature, craft, and community.
     </p>
