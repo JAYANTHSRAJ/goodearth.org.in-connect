@@ -265,23 +265,38 @@
   <script src="../../assets/js/comments.js"></script>
 
   <script>
-    function openLightbox(element) {
-      const img = element.querySelector('img');
+    function openLightboxForSrc(src, alt) {
       const lightbox = document.getElementById('galleryLightbox');
       const lightboxImg = document.getElementById('lightboxImage');
       
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt || 'Gallery Image';
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || 'Gallery Image';
       
       lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Stop page scrolling while viewing image
+      document.body.style.overflow = 'hidden';
     }
     
     function closeLightbox() {
       const lightbox = document.getElementById('galleryLightbox');
       lightbox.classList.remove('active');
-      document.body.style.overflow = ''; // Restore page scrolling
+      document.body.style.overflow = '';
     }
+    
+    // Attach click listeners to all article content images
+    document.addEventListener('DOMContentLoaded', () => {
+      const articlePanel = document.querySelector('.blog-article-panel');
+      if (articlePanel) {
+        // Target all images in the main content wrapper
+        const images = articlePanel.querySelectorAll('img');
+        images.forEach(img => {
+          img.style.cursor = 'zoom-in';
+          img.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openLightboxForSrc(img.src, img.alt);
+          });
+        });
+      }
+    });
     
     // Close lightbox on Escape key
     document.addEventListener('keydown', function(event) {
