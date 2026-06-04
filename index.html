@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoodEarth Connect - Sustainable Lifestyles & Eco-Village Stories</title>
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <!-- Manrope & Karla Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;1,300&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Injected Shared Header -->
+  <header id="header-container" class="site-header"></header>
+
+  <!-- Large Original Dynamic Hero Banner -->
+  <section class="hero-banner-section" id="hero-dynamic-banner">
+    <div class="hero-banner-content">
+      <span class="hero-category-tag" id="hero-tag">Spotlight</span>
+      <h1 class="hero-banner-title" id="hero-title">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</h1>
+      <p class="hero-banner-date" id="hero-date">April 15, 2026</p>
+    </div>
+  </section>
+
+  <!-- Main 6-post Category list -->
+  <main>
+    
+    <!-- Materials -->
+    <section class="category-container">
+      <h2 class="category-title-centered">Materials</h2>
+      <div class="articles-grid-original" id="grid-materials">
+        <p style="text-align:center; grid-column: 1/-1; color:var(--color-text-secondary);">Loading articles...</p>
+      </div>
+      <div class="load-more-container">
+        <button class="load-more-btn" onclick="location.href='category/materials/index.html'">View all →</button>
+      </div>
+    </section>
+
+    <!-- Water -->
+    <section class="category-container">
+      <h2 class="category-title-centered">Water</h2>
+      <div class="articles-grid-original" id="grid-water">
+        <p style="text-align:center; grid-column: 1/-1; color:var(--color-text-secondary);">Loading articles...</p>
+      </div>
+      <div class="load-more-container">
+        <button class="load-more-btn" onclick="location.href='category/water/index.html'">View all →</button>
+      </div>
+    </section>
+
+    <!-- Community -->
+    <section class="category-container">
+      <h2 class="category-title-centered">Community</h2>
+      <div class="articles-grid-original" id="grid-community">
+        <p style="text-align:center; grid-column: 1/-1; color:var(--color-text-secondary);">Loading articles...</p>
+      </div>
+      <div class="load-more-container">
+        <button class="load-more-btn" onclick="location.href='category/community/index.html'">View all →</button>
+      </div>
+    </section>
+
+    <!-- Sustainability -->
+    <section class="category-container">
+      <h2 class="category-title-centered">Sustainability</h2>
+      <div class="articles-grid-original" id="grid-sustainability">
+        <p style="text-align:center; grid-column: 1/-1; color:var(--color-text-secondary);">Loading articles...</p>
+      </div>
+      <div class="load-more-container">
+        <button class="load-more-btn" onclick="location.href='category/sustainability/index.html'">View all →</button>
+      </div>
+    </section>
+
+    <!-- Awards -->
+    <section class="category-container">
+      <h2 class="category-title-centered">Awards</h2>
+      <div class="articles-grid-original" id="grid-awards">
+        <p style="text-align:center; grid-column: 1/-1; color:var(--color-text-secondary);">Loading articles...</p>
+      </div>
+      <div class="load-more-container">
+        <button class="load-more-btn" onclick="location.href='category/awards/index.html'">View all →</button>
+      </div>
+    </section>
+
+    <!-- Opinions -->
+    <section class="category-container" id="opinions-section" style="margin-bottom: 5rem;">
+      <h2 class="category-title-centered">Opinions</h2>
+      <div class="articles-grid-original" id="grid-opinions">
+        <p style="text-align:center; grid-column: 1/-1; color:var(--color-text-secondary);">Loading articles...</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Dynamic YouTube Embed spotlights with exact original look -->
+  <section id="spotlights-section" class="spotlights-section-original">
+    <div class="spotlights-inner">
+      <h2 class="spotlights-section-title">Media Spotlights</h2>
+
+      <!-- Creators Playlist -->
+      <div class="spotlight-block-original" id="creators-spotlight-section">
+        <h3 class="spotlight-block-title">👷 Creators Spotlight ("Hands Behind GoodEarth")</h3>
+        <div class="videos-grid-original" id="creators-playlist-container">
+          <!-- Loaded dynamically from videos-data.js -->
+        </div>
+        <div style="text-align:center; margin-top:2rem;">
+          <button class="view-more-black-btn" onclick="window.open('https://www.youtube.com/playlist?list=PLMAxIqPpS_RsufSclPPRjvZibMT_uhzHv', '_blank')">View More</button>
+        </div>
+      </div>
+
+      <!-- Residents Playlist -->
+      <div class="spotlight-block-original" id="residents-spotlight-section" style="margin-bottom: 0;">
+        <h3 class="spotlight-block-title">🏡 Residents Spotlight ("Savvy in Five")</h3>
+        <div class="videos-grid-original" id="residents-playlist-container">
+          <!-- Loaded dynamically from videos-data.js -->
+        </div>
+        <div style="text-align:center; margin-top:2rem;">
+          <button class="view-more-black-btn" onclick="window.open('https://www.youtube.com/playlist?list=PLMAxIqPpS_Rtt065VYtKqoyKuHs0sx6Bl', '_blank')">View More</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Injected Shared Footer -->
+  <footer id="footer-container" class="site-footer-original"></footer>
+
+  <!-- Load dynamic script files -->
+  <script src="assets/js/posts-data.js"></script>
+  <script src="assets/js/videos-data.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/home.js"></script>
+</body>
+</html>
