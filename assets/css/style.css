@@ -696,17 +696,26 @@ a {
 }
 
 .footer-categories-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .footer-categories-grid a {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .footer-categories-grid a:hover {
-  color: #ffffff;
+  background: var(--color-accent) !important;
+  color: #000000 !important;
+  border-color: var(--color-accent) !important;
 }
 
 .footer-bottom-original {
