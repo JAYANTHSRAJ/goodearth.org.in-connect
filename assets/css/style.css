@@ -2060,6 +2060,49 @@ html[data-theme="dark"] .view-more-black-btn:hover {
   line-height: 1.65 !important;
 }
 
+/* Further Reading Card Link Hover Animations */
+.further-reading-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  margin: 2.5rem 0;
+}
+
+.further-reading-card > div {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.further-reading-card:hover > div {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12) !important;
+}
+
+.further-reading-card img {
+  border-radius: var(--radius-sm);
+  max-height: 380px;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.further-reading-card:hover img {
+  transform: scale(1.02);
+}
+
+.further-reading-card:hover p {
+  color: var(--color-accent) !important;
+}
+
+
 
 
 
