@@ -104,7 +104,7 @@ const footerHTML = `<div class="footer-container-original">
   <div class="footer-section">
     <h4 class="footer-title-original">Connect</h4>
     <ul class="footer-nav-list">
-      <li><a href="https://goodearth.org.in" target="_blank" rel="noopener noreferrer">goodearth.org.in</a></li>
+      <li><a href="https://goodearth.org.in" target="_blank" rel="noopener noreferrer">About us</a></li>
       <li><a href="https://goodearth.org.in/contact/" target="_blank" rel="noopener noreferrer">Contact Us</a></li>
     </ul>
   </div>
