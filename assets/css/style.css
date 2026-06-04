@@ -1817,6 +1817,19 @@ html[data-theme="dark"] .view-more-black-btn:hover {
   margin: 2.5rem 0;
 }
 
+/* Automatically scale grid columns symmetrically based on the number of images */
+.image-grid-gallery:has(> :nth-child(1):last-child) {
+  grid-template-columns: 1fr;
+}
+
+.image-grid-gallery:has(> :nth-child(2):last-child) {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.image-grid-gallery:has(> :nth-child(3):last-child) {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .gallery-item {
   position: relative;
   overflow: hidden;
