@@ -11,7 +11,7 @@ const headerHTML = `<div class="header-container">
   <a href="/index.html" class="logo-link">
     <img src="assets/images/logo.svg" alt="GoodEarth Logo" class="logo-img" style="height: 50px; width: auto; display: block;">
   </a>
-  <nav>
+  <nav class="nav-menu-wrapper">
     <ul class="nav-menu">
       <li><a href="/index.html" class="nav-link active">Home</a></li>
       <li class="nav-dropdown">
@@ -36,7 +36,7 @@ const headerHTML = `<div class="header-container">
       <li><a href="/index.html#connect-section" class="nav-link">Contact</a></li>
     </ul>
   </nav>
-  <div style="display: flex; align-items: center;">
+  <div class="header-actions">
     <button class="theme-toggle-btn" aria-label="Toggle theme">
       <!-- Sun SVG -->
       <svg class="theme-toggle-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -56,6 +56,11 @@ const headerHTML = `<div class="header-container">
       </svg>
     </button>
     <button class="subscribe-btn"><span>Subscribe</span></button>
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </div>
 `;
@@ -377,6 +382,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const newTheme = currentTheme === "dark" ? "light" : "dark";
         document.documentElement.setAttribute("data-theme", newTheme);
         localStorage.setItem("theme", newTheme);
+      });
+    }
+
+    // Bind mobile menu toggle
+    const menuToggle = headerContainer.querySelector(".mobile-menu-toggle");
+    const navMenuWrapper = headerContainer.querySelector(".nav-menu-wrapper");
+    if (menuToggle && navMenuWrapper) {
+      menuToggle.addEventListener("click", () => {
+        menuToggle.classList.toggle("open");
+        navMenuWrapper.classList.toggle("open");
       });
     }
   }
