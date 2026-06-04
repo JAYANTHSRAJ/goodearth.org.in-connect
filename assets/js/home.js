@@ -65,7 +65,7 @@ function renderOriginalHeroBanner(posts) {
   if (heroPost.category === "water-come-over") {
     tagText = "Come Over";
   } else if (heroPost.category === "residents-spotlight-tresh-takes") {
-    tagText = "Tresh Takes";
+    tagText = "Fresh Takes";
   }
   tagEl.innerText = tagText;
 }
@@ -147,7 +147,7 @@ function renderOriginalCategoryGrids(posts) {
       if (post.category === "water-come-over") {
         catTitle = "Come Over";
       } else if (post.category === "residents-spotlight-tresh-takes") {
-        catTitle = "Tresh Takes";
+        catTitle = "Fresh Takes";
       }
       
       const isOpinions = post.category === 'opinions';

@@ -95,7 +95,7 @@ const footerHTML = `<div class="footer-container-original">
       <a href="/category/sports/index.html">Sports</a>
       <a href="/category/sustainability/index.html">Sustainability</a>
       <a href="/category/traditional-techniques/index.html">Traditional techniques</a>
-      <a href="/category/residents-spotlight/tresh-takes/index.html">Tresh Takes</a>
+      <a href="/category/residents-spotlight/tresh-takes/index.html">Fresh Takes</a>
       <a href="/category/uncategorized/index.html">Uncategorized</a>
       <a href="/category/water/index.html">Water</a>
     </div>
