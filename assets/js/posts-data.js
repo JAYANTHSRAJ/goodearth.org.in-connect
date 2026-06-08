@@ -877,7 +877,7 @@ window.allPosts = [
     "slug": "the-benefits-of-rooftop-rainwater-harvesting",
     "category": "water",
     "date": "2022-05-19",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/05/IMG_00022.jpg",
+    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/06/6-1-1-1200x801-1.jpg",
     "description": "Exploring the sustainability and design aspects of the benefits of rooftop rainwater harvesting and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/water/the-benefits-of-rooftop-rainwater-harvesting/"
   },
