@@ -813,6 +813,7 @@
         <button class="explorer-tab" data-category="materials">Materials</button>
         <button class="explorer-tab" data-category="water">Water</button>
         <button class="explorer-tab" data-category="community">Community</button>
+        <button class="explorer-tab" data-category="residents-spotlight">Residents Spotlight</button>
         <button class="explorer-tab" data-category="sustainability">Sustainability</button>
         <button class="explorer-tab" data-category="awards">Awards</button>
         <button class="explorer-tab" data-category="opinions">Opinions</button>
@@ -825,7 +826,7 @@
     </div>
     
     <div class="explore-more-btn-wrapper" id="explore-more-btn-container">
-      <a href="category/materials/index.html" class="explore-category-btn" id="explore-more-link">View all articles &rarr;</a>
+      <a href="category/all/index.html" class="explore-category-btn" id="explore-more-link">View all articles &rarr;</a>
     </div>
   </section>
 
@@ -1099,8 +1100,8 @@
       // Update View More link destination dynamically
       if (category === "all") {
         moreLinkContainer.style.display = "block";
-        document.getElementById("explore-more-link").href = "category/materials/index.html"; // Fallback to all categories link
-        document.getElementById("explore-more-link").innerText = "View all articles &rarr;";
+        document.getElementById("explore-more-link").href = "category/all/index.html"; // Link to the consolidated all category page
+        document.getElementById("explore-more-link").innerHTML = "View all articles &rarr;";
       } else {
         moreLinkContainer.style.display = "block";
         document.getElementById("explore-more-link").href = `category/${category}/index.html`;
