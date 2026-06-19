@@ -521,7 +521,7 @@ document.addEventListener("DOMContentLoaded", () => {
               }
             }
           }
-          const postLink = `${relPrefix}${categoryPath}/${comment.postSlug}/index.html`;
+          const postLink = `${relPrefix}${categoryPath}/${comment.postSlug}/`;
           
           return `
             <li class="tab-post-item" style="padding: 0; border-bottom: 1px dashed var(--color-border); list-style: none; margin: 0;">

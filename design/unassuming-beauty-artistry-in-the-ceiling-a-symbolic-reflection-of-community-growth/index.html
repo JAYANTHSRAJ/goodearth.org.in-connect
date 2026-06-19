@@ -3,17 +3,612 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function() {
+      if (window.location.protocol === 'file:') {
+        // Shadow iframe contentDocument and contentWindow to bypass CORS errors under file://
+        const descDoc = Object.getOwnPropertyDescriptor(HTMLIFrameElement.prototype, 'contentDocument') ||
+                        Object.getOwnPropertyDescriptor(HTMLFrameElement.prototype, 'contentDocument');
+        const descWin = Object.getOwnPropertyDescriptor(HTMLIFrameElement.prototype, 'contentWindow') ||
+                        Object.getOwnPropertyDescriptor(HTMLFrameElement.prototype, 'contentWindow');
+
+        if (descDoc && descDoc.configurable) {
+          Object.defineProperty(HTMLIFrameElement.prototype, 'contentDocument', {
+            get: function() {
+              try {
+                const doc = descDoc.get.call(this);
+                if (doc) return doc;
+              } catch (e) {
+                // Ignore SecurityError and fall through to mock
+              }
+              if (!this._mockDoc) {
+                const self = this;
+                this._mockDoc = {
+                  body: self,
+                  head: document.head,
+                  title: "",
+                  createElement: function(tag) { return document.createElement(tag); },
+                  getElementsByTagName: function(tag) {
+                    if (tag === 'head') return [document.head];
+                    if (tag === 'body') return [self];
+                    return [];
+                  },
+                  styleSheets: []
+                };
+              }
+              return this._mockDoc;
+            },
+            configurable: true
+          });
+        }
+
+        if (descWin && descWin.configurable) {
+          Object.defineProperty(HTMLIFrameElement.prototype, 'contentWindow', {
+            get: function() {
+              try {
+                const win = descWin.get.call(this);
+                if (win) return win;
+              } catch (e) {
+                // Ignore SecurityError and fall through to mock
+              }
+              if (!this._mockWin) {
+                const self = this;
+                this._mockWin = {
+                  stop: function() {},
+                  document: self.contentDocument,
+                  location: { href: "about:blank" },
+                  addEventListener: function() {},
+                  removeEventListener: function() {},
+                  setTimeout: window.setTimeout.bind(window),
+                  clearTimeout: window.clearTimeout.bind(window)
+                };
+              }
+              return this._mockWin;
+            },
+            configurable: true
+          });
+        }
+      }
+    })();
+  </script>
   <title>Unassuming Beauty & Artistry in the Ceiling: A Symbolic Reflection of Community Growth - GoodEarth Connect</title>
   
   <!-- Relative path to global style sheet -->
   <link rel="stylesheet" href="../../assets/css/style.css">
   
-  
+  <!-- 3D FlipBook Stylesheets on Parent Page -->
+  <link rel="stylesheet" href="assets/3d-flip-book/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/3d-flip-book/css/client.css">
   <!-- Manrope & Karla Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;1,300&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+  <!-- jQuery (needed for 3D FlipBook) -->
+  <script src="assets/3d-flip-book/js/jquery.min.js"></script>
+  
+  <!-- 3D FlipBook Scripts -->
+  <script src="assets/3d-flip-book/js/pdf.worker-data.js"></script>
+  <script>
+    window.PDFJS_LOCALE = {
+      pdfJsWorker: "assets/3d-flip-book/js/pdf.worker.js",
+      pdfJsCMapUrl: "assets/3d-flip-book/cmaps/"
+    };
+
+    // Intercept Worker creation to run local Worker from Blob URL safely on file:// protocol
+    (function() {
+      const OriginalWorker = window.Worker;
+      window.Worker = function(url) {
+        if (window.location.protocol === 'file:' && url && (url.indexOf('pdf.worker.js') !== -1 || url.indexOf('pdf.worker.min.js') !== -1)) {
+          console.log("Worker creation intercepted for URL:", url);
+          if (window.pdfWorkerBase64) {
+            console.log("Loading worker from window.pdfWorkerBase64...");
+            try {
+              const binaryString = atob(window.pdfWorkerBase64);
+              const len = binaryString.length;
+              const bytes = new Uint8Array(len);
+              for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+              }
+              const blob = new Blob([bytes.buffer], { type: 'application/javascript' });
+              const blobUrl = URL.createObjectURL(blob);
+              const worker = new OriginalWorker(blobUrl);
+              worker.onerror = function(e) {
+                console.error("Worker error encountered:", e.message, "at", e.filename, ":", e.lineno);
+              };
+              return worker;
+            } catch (e) {
+              console.error("Failed to decode pdfWorkerBase64:", e.message);
+            }
+          } else {
+            console.warn("window.pdfWorkerBase64 is not defined!");
+          }
+        }
+        return new OriginalWorker(url);
+      };
+    })();
+  </script>
+  <script src="assets/3d-flip-book/js/three.min.js"></script>
+  <script src="assets/3d-flip-book/js/pdf.min.js"></script>
+  <script>
+    if (window.pdfjsLib) {
+      const originalPdfjsLib = window.pdfjsLib;
+      window.pdfjsLib = Object.create(originalPdfjsLib);
+      window.PDFJS = window.pdfjsLib;
+
+      // Set the workerSrc to the absolute native worker path on the server
+      let folderPath = window.location.pathname;
+      if (folderPath.endsWith('index.html')) {
+        folderPath = folderPath.substring(0, folderPath.length - 10);
+      }
+      if (!folderPath.endsWith('/')) {
+        folderPath += '/';
+      }
+      const absoluteWorkerPath = window.location.origin + folderPath + "assets/3d-flip-book/js/pdf.worker.js";
+
+      Object.defineProperty(window.pdfjsLib.GlobalWorkerOptions, 'workerSrc', {
+        get: function() {
+          return absoluteWorkerPath;
+        },
+        set: function(val) {
+          console.log("System tried to set workerSrc to: " + val + ", keeping: " + absoluteWorkerPath);
+        },
+        configurable: true,
+        enumerable: true
+      });
+      console.log("Successfully set pdfjsLib workerSrc to absolute path: " + absoluteWorkerPath);
+
+      // Shadow getDocument to load local base64 PDF directly (works everywhere) and spy on rendering
+      try {
+        const originalGetDocument = originalPdfjsLib.getDocument;
+        Object.defineProperty(window.pdfjsLib, 'getDocument', {
+          value: function(src) {
+            console.log("pdfjsLib.getDocument called with src:", src);
+            let targetSrc = src;
+            
+            if (window.location.protocol === 'file:') {
+              function base64ToArrayBuffer(base64) {
+                var binaryString = atob(base64);
+                var len = binaryString.length;
+                var bytes = new Uint8Array(len);
+                for (var i = 0; i < len; i++) {
+                  bytes[i] = binaryString.charCodeAt(i);
+                }
+                return bytes.buffer;
+              }
+
+              if (typeof src === 'string' && src.indexOf('Medley-Portico-Ceiling-Imprint.-New.pdf') !== -1) {
+                console.log("Intercepted getDocument URL string, loading from medleyPdfBase64.");
+                targetSrc = { data: base64ToArrayBuffer(window.medleyPdfBase64) };
+              } else if (src && typeof src === 'object' && src.url && src.url.indexOf('Medley-Portico-Ceiling-Imprint.-New.pdf') !== -1) {
+                console.log("Intercepted getDocument source object, loading from medleyPdfBase64.");
+                targetSrc = Object.assign({}, src, { data: base64ToArrayBuffer(window.medleyPdfBase64) });
+                delete targetSrc.url;
+              }
+            }
+            return originalGetDocument.call(originalPdfjsLib, targetSrc);
+          },
+          writable: true,
+          enumerable: true,
+          configurable: true
+        });
+        console.log("Successfully overrode pdfjsLib.getDocument via shadowing.");
+      } catch (e) {
+        console.error("Failed to override pdfjsLib.getDocument: " + e.message);
+      }
+    }
+  </script>
+  <script src="assets/3d-flip-book/js/3d-flip-book.min.js"></script>
+
+
+  <!-- 3D FlipBook PDF Data (Base64) -->
+  <script src="../../assets/js/pdf-data.js?v=2"></script>
+
+  <!-- Request Interceptor for Offline Mode (file:// protocol) -->
+  <script>
+    (function() {
+      // Define templates globally so both interceptor and initializer can use them
+      const templateHtml = `<style type="text/css">
+  html, body {
+    height: 100% !important;
+    margin: 0 !important;
+  }
+</style>
+<div class="main">
+
+
+  <div class="view">
+    <div class="render">
+
+    </div>
+  </div>
+
+  <div class="toc widFloatWnd float-wnd hidden fade">
+    <div class="head">
+      <$tr>Table of contents</$tr>
+      <a class="cmd close cmdCloseToc" title="<$tr>Close</$tr>">
+        <i class="fa fa-times"></i>
+      </a>
+    </div>
+    <div class="body">
+      <ul class="h-menu widTocMenu">
+        <li><a class="cmd cmdBookmarks"><$tr>Bookmarks</$tr></a></li>
+        <li><a class="cmd cmdThumbnails"><$tr>Thumbnails</$tr></a></li>
+        <li><a class="cmd cmdSearch"><$tr>Search</$tr></a></li>
+      </ul>
+      <div class="widBookmarks tocview">
+
+      </div>
+      <div class="widThumbnails tocview">
+
+      </div>
+      <div class="widSearch tocview">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="share widShare float-wnd hidden fade">
+    <div class="head">
+      <$tr>Share</$tr>
+      <a class="cmd close cmdCloseShare" title="<$tr>Close</$tr>">
+        <i class="fa fa-times"></i>
+      </a>
+    </div>
+    <div class="body">
+      <div class="shareview">
+        <div class="txtShareLink link"></div>
+        <div class="btns">
+          <a class="cmd cmdFacebook btn"><i class="fa fa-facebook-f" title="<$tr>Facebook</$tr>"></i></a>
+          <a class="cmd cmdTwitter btn"><i class="fa fa-twitter" title="<$tr>Twitter</$tr>"></i></a>
+          <a class="cmd cmdEmail btn"><i class="fa fa-at" title="<$tr>Email</$tr>"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="widLoadingProgress loading-progress hidden fade">
+    <div class="progress">
+      <div class="loader-box">
+        <div class="loader">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <div class="txtLoadingProgress caption">
+    </div>
+  </div>
+
+  <div class="widLoading page-loading hidden fade">
+    <div class="loader-box">
+      <div class="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="widUserMessage txtUserMessage user-message hidden fade">
+  </div>
+
+  <div class="widPendingPlay pending-play hidden hbtn fade">
+    <a class="cmd cmdPendingPlay"><i class="fa fa-play" title="<$tr>Play</$tr>"></i></a>
+  </div>
+
+  <div class="widControls ctrls hidden fade">
+    <div class="prev hbtn">
+      <a class="cmd cmdBigBackward"><i class="fa fa-angle-left" title="<$tr>Previous page</$tr>"></i></a>
+    </div>
+
+    <div class="next hbtn">
+      <a class="cmd cmdBigForward"><i class="fa fa-angle-right" title="<$tr>Next page</$tr>"></i></a>
+    </div>
+
+    <div class="tbox">
+      <div class="toolbar widToolbar">
+        <ul class="buttons">
+          <li><a class="cmd cmdZoomIn"><i class="fa fa-search-plus" title="<$tr>Zoom in</$tr>"></i></a></li>
+          <li><a class="cmd cmdZoomOut"><i class="fa fa-search-minus" title="<$tr>Zoom out</$tr>"></i></a></li>
+          <li><a class="cmd cmdDefaultZoom"><i class="fa fa-compress" title="<$tr>Fit view</$tr>"></i></a></li>
+          <li><a class="cmd cmdAutoPlay" title="<$tr>Auto play</$tr>"><i class="fa fa-play active-hidden"></i><i class="fa fa-pause active-visible"></i></a></li>
+          <li><a class="cmd cmdToc"><i class="fa fa-bookmark" title="<$tr>Table of contents</$tr>"></i></a></li>
+          <li><a class="cmd cmdBackward"><i class="fa fa-backward" title="<$tr>Previous page</$tr>"></i></a></li>
+          <li>
+            <div class="pages">
+              <input type="text" class="number inpPage" maxlength="4" placeholder="1">
+              <input type="text" class="amount inpPages" readOnly maxlength="4" placeholder="1">
+            </div>
+          </li>
+          <li><a class="cmd cmdForward"><i class="fa fa-forward" title="<$tr>Next page</$tr>"></i></a></li>
+          <li><a class="cmd cmdShare"><i class="fa fa-share-alt" title="<$tr>Share</$tr>"></i></a></li>
+          <li><a class="cmd cmdSearchBtn"><i class="fa fa-search" title="<$tr>Search</$tr>"></i></a></li>
+          <li><a class="cmd cmdFullScreen"><i class="fa fa-arrows-alt" title="<$tr>Full screen</$tr>"></i></a></li>
+          <li class="dropup widSettings">
+            <a class="cmd menu-toggle"><i class="fa fa-ellipsis-h" title="<$tr>More</$tr>"></i></a>
+            <ul class="v-menu hidden fade">
+              <li><a class="cmd cmdSmartPan"><i class="fa fa-eye"></i> <$tr>Smart pan</$tr></a></li>
+              <li><a class="cmd cmdSinglePage"><i class="fa fa-file-o"></i> <$tr>Single page</$tr></a></li>
+              <li><a class="cmd cmdSounds"><i class="fa fa-volume-up"></i> <$tr>Sounds</$tr></a></li>
+              <li><a class="cmd cmdStats"><i class="fa fa-line-chart"></i> <$tr>Stats</$tr></a></li>
+              <li><a class="cmd cmdPrint"><i class="fa fa-print"></i> <$tr>Print</$tr></a></li>
+              <li><a class="cmd cmdSave"><i class="fa fa-download"></i> <$tr>Download</$tr></a></li>
+              <li class="divider"></li>
+              <li><a class="cmd cmdGotoFirstPage"><i class="fa fa-fast-backward"></i> <$tr>Goto first page</$tr></a></li>
+              <li><a class="cmd cmdGotoLastPage"><i class="fa fa-fast-forward"></i> <$tr>Goto last page</$tr></a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>`;
+
+      const templateJs = `function init(container) {
+  var instance;
+  if(window.jQuery) {
+    var $ = window.jQuery, jDoc = $(container[0].ownerDocument), view = container.find('.view'), canvas = view.find('canvas');
+
+    function toggleMenu(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var el = $(e.target);
+      while(!el.hasClass('menu-toggle')) {
+        el = $(el[0].parentNode);
+      }
+      var menu = $(el[0].parentNode).find('.v-menu');
+      if(menu.hasClass('hidden')) {
+        menu.removeClass('hidden');
+        el.addClass('active');
+      }
+      else {
+        menu.addClass('hidden');
+        el.removeClass('active');
+      }
+    }
+    function hideDropMenu() {
+      container.find('.v-menu').addClass('hidden');
+      container.find('.menu-toggle').removeClass('active');
+    }
+
+    function pickFloatWnd(e) {
+      if(instance.pos) {
+        dropFloatWnd();
+      }
+      else {
+        instance.floatWnd = $(e.target);
+        while(!instance.floatWnd.hasClass('float-wnd')) {
+          instance.floatWnd = $(instance.floatWnd[0].parentNode);
+        }
+        instance.pos = {
+          x: e.pageX,
+          y: e.pageY
+        };
+      }
+    }
+    function moveFloatWnd(e) {
+      if(instance.pos) {
+        e.preventDefault();
+        var dv = {
+          x: e.pageX-instance.pos.x,
+          y: e.pageY-instance.pos.y
+        }, old = {
+          x: parseInt(instance.floatWnd.css('left')),
+          y: parseInt(instance.floatWnd.css('top'))
+        };
+        instance.floatWnd.css('left', old.x+dv.x+'px').css('top', old.y+dv.y+'px');
+        instance.pos = {
+          x: e.pageX,
+          y: e.pageY
+        };
+      }
+    }
+    function dropFloatWnd() {
+      delete instance.pos;
+      delete instance.floatWnd;
+    }
+
+    instance = {
+      dispose: function() {
+        container.find('.menu-toggle').off('click', toggleMenu);
+        jDoc.off('click', hideDropMenu);
+
+        jDoc.off('mousemove', moveFloatWnd);
+        jDoc.off('mouseup', dropFloatWnd);
+        container.find('.float-wnd .head').off('mousedown', pickFloatWnd);
+      },
+      appLoaded: function(scene) {
+        console.log("appLoaded called!");
+        if (scene.ctrl) {
+          scene.ctrl.isSinglePageAvailable = function() { return true; };
+          setTimeout(function() {
+            window.dispatchEvent(new Event('resize'));
+            var iframes = document.getElementsByTagName('iframe');
+            for (var i = 0; i < iframes.length; i++) {
+              try {
+                iframes[i].contentWindow.dispatchEvent(new Event('resize'));
+              } catch(e) {
+                // Ignore cross-origin error
+              }
+            }
+          }, 300);
+        }
+      },
+      linkLoaded: function(link) {
+      }
+    };
+
+    container.find('.menu-toggle').on('click', toggleMenu);
+    jDoc.on('click', hideDropMenu);
+
+    jDoc.on('mousemove', moveFloatWnd);
+    jDoc.on('mouseup', dropFloatWnd);
+    container.find('.float-wnd .head').on('mousedown', pickFloatWnd);
+  }
+  else {
+    instance = {
+      dispose: function() {
+      }
+    };
+    console.error('jQuery is not found');
+  }
+  return instance;
+} init`;
+
+      window.FB3D_TEMPLATES = {
+        html: templateHtml,
+        js: templateJs
+      };
+
+      if (true) {
+        // Base64 helper
+        function base64ToArrayBuffer(base64) {
+          var binaryString = atob(base64);
+          var len = binaryString.length;
+          var bytes = new Uint8Array(len);
+          for (var i = 0; i < len; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+          }
+          return bytes.buffer;
+        }
+
+        // Intercept XMLHttpRequest
+        const originalOpen = XMLHttpRequest.prototype.open;
+        const originalSend = XMLHttpRequest.prototype.send;
+        const originalSetRequestHeader = XMLHttpRequest.prototype.setRequestHeader;
+        const originalGetResponseHeader = XMLHttpRequest.prototype.getResponseHeader;
+        const originalGetAllResponseHeaders = XMLHttpRequest.prototype.getAllResponseHeaders;
+
+        XMLHttpRequest.prototype.open = function(method, url) {
+          const urlStr = url ? url.toString() : '';
+          console.log("XHR open requested for URL: " + urlStr);
+          this._url = urlStr;
+          this._isIntercepted = urlStr.indexOf('short-white-book-view.html') !== -1 || 
+                               urlStr.indexOf('default-book-view.js') !== -1 ||
+                               urlStr.indexOf('Medley-Portico-Ceiling-Imprint.-New.pdf') !== -1;
+          return originalOpen.apply(this, arguments);
+        };
+
+        XMLHttpRequest.prototype.send = function(body) {
+          if (this._isIntercepted) {
+            const self = this;
+            setTimeout(() => {
+              Object.defineProperty(self, 'readyState', { value: 4, writable: true, configurable: true });
+              Object.defineProperty(self, 'status', { value: 200, writable: true, configurable: true });
+              Object.defineProperty(self, 'statusText', { value: 'OK', writable: true, configurable: true });
+
+              if (self._url.indexOf('short-white-book-view.html') !== -1) {
+                Object.defineProperty(self, 'responseText', { value: window.FB3D_TEMPLATES.html, writable: true, configurable: true });
+                Object.defineProperty(self, 'response', { value: window.FB3D_TEMPLATES.html, writable: true, configurable: true });
+              } else if (self._url.indexOf('default-book-view.js') !== -1) {
+                Object.defineProperty(self, 'responseText', { value: window.FB3D_TEMPLATES.js, writable: true, configurable: true });
+                Object.defineProperty(self, 'response', { value: window.FB3D_TEMPLATES.js, writable: true, configurable: true });
+              } else if (self._url.indexOf('Medley-Portico-Ceiling-Imprint.-New.pdf') !== -1) {
+                const buffer = base64ToArrayBuffer(window.medleyPdfBase64);
+                Object.defineProperty(self, 'response', { value: buffer, writable: true, configurable: true });
+                Object.defineProperty(self, 'responseText', { value: '', writable: true, configurable: true });
+              }
+
+              if (self.onreadystatechange) {
+                self.onreadystatechange();
+              }
+              self.dispatchEvent(new Event('readystatechange'));
+              self.dispatchEvent(new Event('load'));
+              if (self.onload) {
+                self.onload();
+              }
+            }, 1);
+            return;
+          }
+          return originalSend.apply(this, arguments);
+        };
+
+        XMLHttpRequest.prototype.setRequestHeader = function(header, value) {
+          if (this._isIntercepted) return;
+          return originalSetRequestHeader.apply(this, arguments);
+        };
+
+        XMLHttpRequest.prototype.getResponseHeader = function(header) {
+          if (this._isIntercepted) {
+            if (header.toLowerCase() === 'content-type') {
+              if (this._url.indexOf('short-white-book-view.html') !== -1) {
+                return 'text/html';
+              } else if (this._url.indexOf('default-book-view.js') !== -1) {
+                return 'application/javascript';
+              }
+              return 'application/pdf';
+            }
+            return null;
+          }
+          return originalGetResponseHeader.apply(this, arguments);
+        };
+
+        XMLHttpRequest.prototype.getAllResponseHeaders = function() {
+          if (this._isIntercepted) {
+            if (this._url.indexOf('short-white-book-view.html') !== -1) {
+              return 'Content-Type: text/html\r\n';
+            } else if (this._url.indexOf('default-book-view.js') !== -1) {
+              return 'Content-Type: application/javascript\r\n';
+            }
+            return 'Content-Type: application/pdf\r\n';
+          }
+          return originalGetAllResponseHeaders.apply(this, arguments);
+        };
+
+        // Intercept Fetch
+        if (window.fetch) {
+          const originalFetch = window.fetch;
+          window.fetch = function(input, init) {
+            let url = '';
+            if (typeof input === 'string') {
+              url = input;
+            } else if (input instanceof Request) {
+              url = input.url;
+            } else if (input) {
+              url = input.toString();
+            }
+            console.log("Fetch requested for URL: " + url);
+            
+            if (url.indexOf('short-white-book-view.html') !== -1) {
+              return Promise.resolve(new Response(window.FB3D_TEMPLATES.html, {
+                status: 200,
+                statusText: 'OK',
+                headers: { 'Content-Type': 'text/html' }
+              }));
+            }
+            
+            if (url.indexOf('default-book-view.js') !== -1) {
+              return Promise.resolve(new Response(window.FB3D_TEMPLATES.js, {
+                status: 200,
+                statusText: 'OK',
+                headers: { 'Content-Type': 'application/javascript' }
+              }));
+            }
+
+            if (url.indexOf('Medley-Portico-Ceiling-Imprint.-New.pdf') !== -1) {
+              const buffer = base64ToArrayBuffer(window.medleyPdfBase64);
+              return Promise.resolve(new Response(buffer, {
+                status: 200,
+                statusText: 'OK',
+                headers: { 'Content-Type': 'application/pdf' }
+              }));
+            }
+            
+            return originalFetch.apply(this, arguments);
+          };
+        }
+      }
+    })();
+  </script>
+
 </head>
+
 <body>
 
   <!-- Injected Shared Header -->
@@ -28,58 +623,786 @@
         
         <!-- Main Article Panel -->
         <div class="blog-article-panel">
-          <!-- Meta Data Header -->
-        <div class="blog-meta-header" style="margin-bottom: 2rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1.5rem;">
-          <span style="display:inline-block; background-color:var(--color-bg-secondary); color:var(--color-primary); padding:4px 12px; border-radius:20px; font-size:0.75rem; font-family:var(--font-heading); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom: 0.5rem;">
-            Design
-          </span>
-          <h1 style="font-size: 2.5rem; line-height: 1.15; color: var(--color-primary-dark); margin-top: 0.5rem; margin-bottom: 0.5rem; font-family: var(--font-heading); font-weight: 700;">
-            Unassuming Beauty & Artistry in the Ceiling: A Symbolic Reflection of Community Growth
-          </h1>
-          <p style="font-size:0.85rem; color:var(--color-text-secondary); font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">
-            By GoodEarth | Published On: September 9, 2024
-          </p>
-        </div>
+          <style>
+            /* Premium layout animations */
+            .fade-in-up-scroll {
+              opacity: 0;
+              transform: translateY(24px);
+              transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+              will-change: transform, opacity;
+            }
+            .fade-in-up-scroll.visible {
+              opacity: 1;
+              transform: translateY(0);
+            }
 
-        <!-- Article Hero Image -->
-        <div style="border-radius: var(--radius-md); overflow: hidden; margin-bottom: 2rem; border: 1px solid var(--color-border); aspect-ratio: 16/9;">
-          <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/09/Medley-Portico-Ceiling-Imprint.webp" alt="Unassuming Beauty & Artistry in the Ceiling: A Symbolic Reflection of Community Growth" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
-        </div>
+            .ceiling-wrapper {
+              font-family: var(--font-body);
+              position: relative;
+            }
 
-        <!-- Original source alert -->
-        <div style="background-color: var(--color-bg-secondary); border-left: 4px solid var(--color-accent); padding: 1rem; border-radius: var(--radius-sm); margin-bottom: 2rem; font-size: 0.9rem; color: var(--color-text-secondary); font-family: var(--font-body);">
-          This article is a clone from the original GoodEarth Connect catalog. View the original post at: 
-          <a href="https://goodearth.org.in/connect/design/unassuming-beauty-artistry-in-the-ceiling-a-symbolic-reflection-of-community-growth/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary-dark); font-weight: 600; text-decoration: underline;">
-            Unassuming Beauty & Artistry in the Ceiling: A Symbolic Reflection of Community Growth &nearr;
-          </a>
-        </div>
+            /* Reading Progress Container */
+            .ceiling-progress-container {
+              width: 100%;
+              height: 4px;
+              background-color: var(--color-bg-secondary);
+              position: sticky;
+              top: 0;
+              z-index: 99;
+              border-radius: 2px;
+              overflow: hidden;
+              margin-bottom: 2.5rem;
+            }
+            .ceiling-progress-bar {
+              height: 100%;
+              width: 0%;
+              background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+              transition: width 0.1s ease-out;
+            }
 
-        <!-- Body Text Content -->
-        <div class="blog-body-content" style="font-size: 1.15rem; line-height: 1.7; color: var(--color-text-primary); font-family: var(--font-body);">
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">Exploring the sustainability and design aspects of unassuming beauty artistry in the ceiling a symbolic reflection of community growth and its integration within community architectures.</p>
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">
-            This page represents a pre-rendered static structure matching the original blog configuration of the GoodEarth website. You can edit this file directly to add text paragraphs, galleries, quotes, or tables.
-          </p>
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">
-            Place your custom blog assets (such as local images, diagrams, or PDF downloads) inside the local <code>assets/</code> folder in this directory, and reference them relatively (e.g. <code>&lt;img src="assets/my-image.jpg"&gt;</code>).
-          </p>
-        </div>
+            /* Article Hero Image styling */
+            .ceiling-hero-wrapper {
+              position: relative;
+              border-radius: var(--radius-md);
+              overflow: hidden;
+              margin-bottom: 2.5rem;
+              border: 1px solid var(--color-border);
+              box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+              aspect-ratio: 16/9;
+              transition: all 0.5s ease;
+              cursor: pointer;
+            }
+            .ceiling-hero-wrapper:hover {
+              transform: translateY(-4px);
+              box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+              border-color: var(--color-accent);
+            }
+            .ceiling-hero-image {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              transition: transform 1.2s ease;
+            }
+            .ceiling-hero-wrapper:hover .ceiling-hero-image {
+              transform: scale(1.03);
+            }
 
-        <!-- Meta Data Footer -->
-        <div class="blog-meta-footer" style="margin-top: 3rem; font-size: 0.85rem; color: var(--color-text-muted); border-top: 1px solid var(--color-border); padding-top: 1.5rem; font-family: var(--font-body);">
-          By GoodEarth | September 9, 2024 | Design | 0 Comments
-        </div>
+            /* Stats Grid */
+            .ceiling-stats-grid {
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 1.25rem;
+              margin-bottom: 3rem;
+            }
+            @media (max-width: 768px) {
+              .ceiling-stats-grid { grid-template-columns: repeat(2, 1fr); }
+            }
+            @media (max-width: 480px) {
+              .ceiling-stats-grid { grid-template-columns: 1fr; }
+            }
+            .ceiling-stat-card {
+              background-color: var(--color-bg-secondary);
+              border: 1px solid var(--color-border);
+              border-radius: var(--radius-md);
+              padding: 1.25rem;
+              text-align: center;
+              transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              gap: 0.25rem;
+              position: relative;
+              overflow: hidden;
+            }
+            .ceiling-stat-card::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 4px;
+              background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+              opacity: 0;
+              transition: opacity 0.3s ease;
+            }
+            .ceiling-stat-card:hover::before {
+              opacity: 1;
+            }
+            .ceiling-stat-card:hover {
+              transform: translateY(-5px);
+              border-color: var(--color-accent);
+              background-color: var(--color-bg-card);
+              box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+            }
+            html[data-theme="dark"] .ceiling-stat-card:hover {
+              background-color: var(--color-bg-card);
+            }
+            .run-stat-icon {
+              font-size: 1.6rem;
+              margin-bottom: 0.4rem;
+              display: inline-block;
+              transition: transform 0.3s ease;
+            }
+            .ceiling-stat-card:hover .run-stat-icon {
+              transform: scale(1.2) rotate(-8deg);
+            }
+            .ceiling-stat-val {
+              font-size: 1.15rem;
+              font-weight: 800;
+              color: var(--color-primary-dark);
+              font-family: var(--font-heading);
+              line-height: 1.2;
+              background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+            .ceiling-stat-lbl {
+              font-size: 0.7rem;
+              color: var(--color-text-secondary);
+              font-weight: 700;
+              text-transform: uppercase;
+              letter-spacing: 0.8px;
+              margin-top: 0.25rem;
+            }
 
-        <!-- Share Story Container -->
-        <div class="share-story-container">
-          <div class="share-title">Share This Story, Choose Your Platform!</div>
-          <div class="share-buttons-grid">
-            <button class="share-btn" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">Facebook</button>
-            <button class="share-btn" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(window.location.href), '_blank')">WhatsApp</button>
-            <button class="share-btn" onclick="window.open('https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(window.location.href), '_blank')">Pinterest</button>
-            <button class="share-btn" onclick="window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href)">Email</button>
+            /* Section Headers */
+            .ceiling-section-title {
+              font-family: var(--font-heading);
+              font-size: 1.65rem;
+              font-weight: 700;
+              color: var(--color-primary-dark);
+              margin-top: 3.5rem;
+              margin-bottom: 1.5rem;
+              border-bottom: 2px solid var(--color-border);
+              padding-bottom: 0.5rem;
+              display: inline-block;
+            }
+
+            /* Dropcap Lead Paragraph */
+            .ceiling-lead-p {
+              font-size: 1.25rem;
+              line-height: 1.85;
+              color: var(--color-text-primary);
+              margin-bottom: 2rem;
+            }
+            .ceiling-lead-p::first-letter {
+              font-family: var(--font-heading);
+              font-size: 3.8rem;
+              float: left;
+              line-height: 0.85;
+              font-weight: 800;
+              margin-right: 0.75rem;
+              margin-top: 0.2rem;
+              color: var(--color-primary);
+              text-shadow: 1px 1px 0px var(--color-accent);
+            }
+
+            /* Image Cards */
+            .ceiling-image-card {
+              position: relative;
+              border-radius: var(--radius-md);
+              overflow: hidden;
+              margin-bottom: 2.5rem;
+              border: 1px solid var(--color-border);
+              box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+              cursor: pointer;
+              transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            }
+            .ceiling-image-card:hover {
+              transform: translateY(-4px);
+              box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+              border-color: var(--color-accent);
+            }
+            .ceiling-image-card img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              transition: transform 1.2s ease;
+              display: block;
+            }
+            .ceiling-image-card:hover img {
+              transform: scale(1.03);
+            }
+            .ceiling-image-caption {
+              padding: 0.8rem 1.2rem;
+              font-size: 0.85rem;
+              color: var(--color-text-secondary);
+              background-color: var(--color-bg-secondary);
+              border-top: 1px solid var(--color-border);
+              font-family: var(--font-body);
+              transition: background-color 0.3s ease;
+            }
+            .ceiling-image-card:hover .ceiling-image-caption {
+              background-color: var(--color-bg-card);
+            }
+            html[data-theme="dark"] .ceiling-image-caption {
+              background-color: var(--color-bg-secondary);
+            }
+
+            /* Gallery Grid */
+            .ceiling-gallery-grid {
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              gap: 1.5rem;
+              margin-bottom: 2.5rem;
+            }
+            @media (max-width: 640px) {
+              .ceiling-gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+              }
+            }
+
+            /* Intro text header for gallery */
+            .ceiling-gallery-intro {
+              font-family: var(--font-heading);
+              font-weight: 700;
+              font-size: 1.1rem;
+              color: var(--color-primary);
+              text-align: center;
+              border-top: 1px dashed var(--color-border);
+              border-bottom: 1px dashed var(--color-border);
+              padding: 1.25rem 1rem;
+              margin: 3.5rem 0 2.5rem 0;
+              letter-spacing: 0.5px;
+              text-transform: uppercase;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 8px;
+            }
+
+            /* Alert Box */
+            .run-alert-box {
+              background-color: var(--color-bg-secondary);
+              border-left: 4px solid var(--color-accent);
+              padding: 1.25rem 1.5rem;
+              border-radius: var(--radius-sm);
+              margin-bottom: 3.5rem;
+              font-size: 0.9rem;
+              color: var(--color-text-secondary);
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 1rem;
+            }
+            @media (max-width: 640px) {
+              .run-alert-box {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+              }
+            }
+            .run-alert-link {
+              color: var(--color-primary-dark);
+              font-weight: 700;
+              text-decoration: none;
+              display: inline-flex;
+              align-items: center;
+              gap: 4px;
+              border-bottom: 1.5px solid var(--color-accent);
+              padding-bottom: 2px;
+              transition: all 0.25s ease;
+              white-space: nowrap;
+            }
+            .run-alert-link:hover {
+              color: var(--color-accent);
+              border-bottom-color: transparent;
+            }
+
+            /* Lightbox Modal Styles */
+            .run-lightbox-modal {
+              display: none;
+              position: fixed;
+              z-index: 9999;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(18, 18, 18, 0.95);
+              backdrop-filter: blur(8px);
+              -webkit-backdrop-filter: blur(8px);
+              opacity: 0;
+              transition: opacity 0.3s ease;
+            }
+            .run-lightbox-modal.active {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              opacity: 1;
+            }
+            .run-lightbox-content {
+              margin: auto;
+              display: block;
+              max-width: 85%;
+              max-height: 75vh;
+              border-radius: var(--radius-md);
+              box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+              transform: scale(0.95);
+              transition: transform 0.3s ease;
+              object-fit: contain;
+            }
+            .run-lightbox-modal.active .run-lightbox-content {
+              transform: scale(1);
+            }
+            .run-lightbox-close {
+              position: absolute;
+              top: 20px;
+              right: 35px;
+              color: #ffffff;
+              font-size: 40px;
+              font-weight: 300;
+              transition: 0.3s;
+              cursor: pointer;
+              z-index: 10000;
+            }
+            .run-lightbox-close:hover {
+              color: var(--color-accent);
+            }
+            .run-lightbox-caption {
+              margin: 15px auto;
+              width: 80%;
+              text-align: center;
+              color: #cccccc;
+              font-family: var(--font-heading);
+              font-weight: 500;
+              font-size: 1rem;
+              letter-spacing: 0.5px;
+            }
+
+            /* Share story updates */
+            .share-story-container {
+              background-color: var(--color-bg-secondary);
+              border-radius: var(--radius-md);
+              padding: 1.5rem;
+              border: 1px solid var(--color-border);
+              margin-top: 3rem;
+            }
+            .share-title {
+              font-family: var(--font-heading);
+              font-weight: 700;
+              font-size: 1.05rem;
+              color: var(--color-primary-dark);
+              margin-bottom: 1rem;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+            }
+            .share-buttons-grid {
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 0.75rem;
+            }
+            @media (max-width: 560px) {
+              .share-buttons-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+            .share-btn {
+              background-color: var(--color-bg-card);
+              border: 1px solid var(--color-border);
+              border-radius: var(--radius-sm);
+              padding: 0.75rem;
+              font-family: var(--font-heading);
+              font-size: 0.8rem;
+              font-weight: 700;
+              color: var(--color-text-primary);
+              cursor: pointer;
+              transition: all 0.3s ease;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 8px;
+            }
+            .share-btn:hover {
+              background-color: var(--color-primary);
+              color: #ffffff;
+              border-color: var(--color-primary);
+              transform: translateY(-2px);
+              box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            }
+
+            /* Premium PDF Viewer Card */
+            .ceiling-pdf-card {
+              background-color: var(--color-bg-secondary);
+              border: 1px solid var(--color-border);
+              border-radius: var(--radius-md);
+              padding: 1.5rem;
+              margin: 2.5rem 0;
+              box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+              transition: all 0.4s ease;
+            }
+            .ceiling-pdf-card:hover {
+              box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+              border-color: var(--color-accent);
+            }
+            .ceiling-pdf-header {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              margin-bottom: 1.25rem;
+              padding-bottom: 1rem;
+              border-bottom: 1px solid var(--color-border);
+            }
+            .ceiling-pdf-title-block {
+              display: flex;
+              align-items: center;
+              gap: 12px;
+            }
+            .ceiling-pdf-icon {
+              font-size: 2rem;
+              line-height: 1;
+              color: var(--color-primary);
+            }
+            .ceiling-pdf-meta {
+              display: flex;
+              flex-direction: column;
+            }
+            .ceiling-pdf-title {
+              font-family: var(--font-heading);
+              font-size: 1.15rem;
+              font-weight: 700;
+              color: var(--color-primary-dark);
+            }
+            .ceiling-pdf-pages {
+              font-size: 0.75rem;
+              font-weight: 700;
+              text-transform: uppercase;
+              letter-spacing: 0.8px;
+              color: var(--color-text-secondary);
+              margin-top: 2px;
+            }
+            .ceiling-pdf-view-btn {
+              background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+              color: #ffffff !important;
+              font-family: var(--font-heading);
+              font-weight: 700;
+              font-size: 0.8rem;
+              text-transform: uppercase;
+              letter-spacing: 0.8px;
+              padding: 0.5rem 1rem;
+              border-radius: 4px;
+              text-decoration: none !important;
+              display: inline-flex;
+              align-items: center;
+              gap: 6px;
+              box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+              transition: all 0.3s ease;
+            }
+            .ceiling-pdf-view-btn:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+            }
+            .ceiling-pdf-frame-wrapper {
+              position: relative;
+              width: 100%;
+              height: 550px;
+              border-radius: var(--radius-sm);
+              overflow: hidden;
+              border: 1px solid var(--color-border);
+              background-color: var(--color-bg-card);
+            }
+            .ceiling-pdf-frame-wrapper iframe {
+              width: 100%;
+              height: 100%;
+              border: 0;
+            }
+            .ceiling-pdf-footer {
+              display: flex;
+              justify-content: flex-end;
+              gap: 12px;
+              margin-top: 1.25rem;
+              padding-top: 1rem;
+              border-top: 1px solid var(--color-border);
+            }
+            .ceiling-pdf-action-btn {
+              background-color: var(--color-bg-card);
+              border: 1px solid var(--color-border);
+              border-radius: 4px;
+              padding: 0.5rem 1rem;
+              font-family: var(--font-heading);
+              font-size: 0.75rem;
+              font-weight: 700;
+              color: var(--color-text-primary);
+              text-decoration: none !important;
+              display: inline-flex;
+              align-items: center;
+              gap: 6px;
+              transition: all 0.3s ease;
+              cursor: pointer;
+            }
+            .ceiling-pdf-action-btn:hover {
+              background-color: var(--color-primary);
+              color: #ffffff !important;
+              border-color: var(--color-primary);
+              transform: translateY(-1px);
+            }
+          </style>
+
+          <!-- Reading Progress Bar -->
+          <div class="ceiling-progress-container">
+            <div class="ceiling-progress-bar" id="run-scroll-bar"></div>
           </div>
-        </div>
+
+          <div class="ceiling-wrapper">
+            <!-- Meta Data Header -->
+            <div class="blog-meta-header" style="margin-bottom: 2rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1.5rem;">
+              <span style="display:inline-block; background-color:var(--color-bg-secondary); color:var(--color-primary); padding:4px 12px; border-radius:20px; font-size:0.75rem; font-family:var(--font-heading); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom: 0.5rem;">
+                Design
+              </span>
+              <h1 style="font-size: 2.5rem; line-height: 1.15; color: var(--color-primary-dark); margin-top: 0.5rem; margin-bottom: 0.5rem; font-family: var(--font-heading); font-weight: 700;">
+                Unassuming Beauty & Artistry in the Ceiling: A Symbolic Reflection of Community Growth
+              </h1>
+              <p style="font-size:0.85rem; color:var(--color-text-secondary); font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">
+                By GoodEarth | Published On: September 9, 2024
+              </p>
+            </div>
+
+            <!-- Article Hero Image -->
+            <div class="ceiling-hero-wrapper" onclick="openLightbox(this.querySelector('img'))">
+              <img class="ceiling-hero-image" src="../../assets/images/Medley-Portico-Ceiling-Imprint.webp" alt="Unassuming Beauty & Artistry in the Ceiling: A Symbolic Reflection of Community Growth" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+            </div>
+
+            <!-- Highlights / Stats Grid -->
+            <div class="ceiling-stats-grid">
+              <div class="ceiling-stat-card">
+                <div class="ceiling-stat-val">Sep 9, 2024</div>
+                <div class="ceiling-stat-lbl">Published Date</div>
+              </div>
+              <div class="ceiling-stat-card">
+                <div class="ceiling-stat-val">GoodEarth Malhar</div>
+                <div class="ceiling-stat-lbl">Neighborhood</div>
+              </div>
+              <div class="ceiling-stat-card">
+                <div class="ceiling-stat-val">Medley Pavilion</div>
+                <div class="ceiling-stat-lbl">Featured Element</div>
+              </div>
+              <div class="ceiling-stat-card">
+                <div class="ceiling-stat-val">Craftsmanship</div>
+                <div class="ceiling-stat-lbl">Design Theme</div>
+              </div>
+            </div>
+
+            <!-- Original source alert -->
+            <div class="run-alert-box">
+              <span>This article is cloned from the original GoodEarth Connect catalog.</span>
+              <a href="https://goodearth.org.in/connect/design/unassuming-beauty-artistry-in-the-ceiling-a-symbolic-reflection-of-community-growth/" target="_blank" rel="noopener noreferrer" class="run-alert-link">
+                View Original Post &rarr;
+              </a>
+            </div>
+
+            <!-- Body Text Content -->
+            <div class="blog-body-content" style="font-size: 1.15rem; line-height: 1.8; color: var(--color-text-primary); font-family: var(--font-body);">
+              
+              <h2 class="ceiling-section-title">A melding of designs</h2>
+              
+              <p class="ceiling-lead-p">The entrance of Medley, acting as a threshold of the community, is an amalgamation of various design elements creating a captivating and inviting space. As you step into this area, you are greeted by a vibrant garden with oxide-finished seating and a tranquil pond, setting the stage for the unique pavilion that stands as a portico to the entire community. The pavilion features stacked stone pillars and playful elements embedded with seating, transforming it into an active, usable space where children can play and residents gather. Amidst these eye-catching features, an unassuming element holds a deeper meaning and showcases the meticulous craftsmanship that went into its creation – the reinforced concrete ceiling. Though it may seem modest at first glance, it is a testament to the intricate workmanship and thoughtful design embedded in every corner of Medley.</p>
+              
+              <!-- 3D FlipBook Container -->
+              <div class="ceiling-pdf-card fade-in-up-scroll" style="padding: 1.5rem;">
+                <div class="ceiling-pdf-header" style="margin-bottom: 1.5rem;">
+                  <div class="ceiling-pdf-title-block">
+                    <span class="ceiling-pdf-icon">📖</span>
+                    <div class="ceiling-pdf-meta">
+                      <span class="ceiling-pdf-title">Medley Portico - Ceiling Imprint</span>
+                      <span class="ceiling-pdf-pages">Interactive 3D Book Catalog • 4 Pages</span>
+                    </div>
+                  </div>
+                  <a href="assets/Medley-Portico-Ceiling-Imprint.-New.pdf" download="Medley-Portico-Ceiling-Imprint" class="ceiling-pdf-view-btn">
+                    <span>⬇</span> Download PDF
+                  </a>
+                </div>
+                <!-- Interactive 3D FlipBook Container -->
+                <div id="ceiling-3d-book" class="ceiling-pdf-frame-wrapper"></div>
+              </div>
+
+              <p style="margin-bottom: 2.5rem;">Discover how waste can be transformed into art! Read this article on eco-friendly and creative ways to repurpose materials for sustainable expression.</p>
+
+              <!-- Image 1: Stacked Stone Pillar -->
+              <div class="ceiling-image-card" onclick="openLightbox(this.querySelector('img'))">
+                <img src="../../assets/images/Stacked-Stone-pillar.webp" alt="Stacked stone pillar at Medley Entrance pavilion">
+                <div class="ceiling-image-caption">Stacked stone pillar and interactive seating element at Medley entrance</div>
+              </div>
+
+              <!-- Gallery Section Header -->
+              <div class="ceiling-gallery-intro">
+                <span>🎨</span> Eco-friendly creative expression of waste
+              </div>
+
+              <!-- Gallery Showcase Grid -->
+              <div class="ceiling-gallery-grid">
+                <div class="ceiling-image-card" onclick="openLightbox(this.querySelector('img'))" style="margin-bottom: 0;">
+                  <img src="../../assets/images/Bedroom-at-GoodEarth-Malhar_1.webp" alt="Rustic elegance bedroom interior at GoodEarth Malhar">
+                  <div class="ceiling-image-caption">Rustic elegance bedroom interior</div>
+                </div>
+                <div class="ceiling-image-card" onclick="openLightbox(this.querySelector('img'))" style="margin-bottom: 0;">
+                  <img src="../../assets/images/Goodearth-Resonance-34-1_1.webp" alt="Rammed earth walls and sustainable foundations at Resonance">
+                  <div class="ceiling-image-caption">Rammed earth & sustainable design</div>
+                </div>
+                <div class="ceiling-image-card" onclick="openLightbox(this.querySelector('img'))" style="margin-bottom: 0;">
+                  <img src="../../assets/images/IMG_00070_2.webp" alt="Chappadi Stone landscaping elements and pathways">
+                  <div class="ceiling-image-caption">Chappadi Stone landscaping</div>
+                </div>
+                <div class="ceiling-image-card" onclick="openLightbox(this.querySelector('img'))" style="margin-bottom: 0;">
+                  <img src="../../assets/images/GoodEarth-boulders10.webp" alt="Artful integration of massive stone boulders in landscape architecture">
+                  <div class="ceiling-image-caption">Artful integration of boulders</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Meta Data Footer -->
+            <div class="blog-meta-footer" style="margin-top: 3rem; font-size: 0.85rem; color: var(--color-text-muted); border-top: 1px solid var(--color-border); padding-top: 1.5rem; font-family: var(--font-body);">
+              By GoodEarth | September 9, 2024 | Design | 0 Comments
+            </div>
+
+            <!-- Share Story Container -->
+            <div class="share-story-container">
+              <div class="share-title">Share This Story, Choose Your Platform!</div>
+              <div class="share-buttons-grid">
+                <button class="share-btn" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">
+                  Facebook
+                </button>
+                <button class="share-btn" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(window.location.href), '_blank')">
+                  WhatsApp
+                </button>
+                <button class="share-btn" onclick="window.open('https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(window.location.href), '_blank')">
+                  Pinterest
+                </button>
+                <button class="share-btn" onclick="window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href)">
+                  Email
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Lightbox Modal -->
+          <div id="run-lightbox" class="run-lightbox-modal" onclick="closeLightbox()">
+            <span class="run-lightbox-close" onclick="closeLightbox()">&times;</span>
+            <img class="run-lightbox-content" id="run-lightbox-img" alt="Enlarged photo" onclick="event.stopPropagation()">
+            <div id="run-lightbox-caption" class="run-lightbox-caption" onclick="event.stopPropagation()"></div>
+          </div>
+
+          <!-- Custom JS Interactivity -->
+          <script>
+            // Reading Progress Bar
+            window.addEventListener('scroll', () => {
+              const progressBar = document.getElementById('run-scroll-bar');
+              if (!progressBar) return;
+              
+              const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+              if (docHeight > 0) {
+                const scrolled = (window.scrollY / docHeight) * 100;
+                progressBar.style.width = scrolled + '%';
+              }
+            });
+
+            // Lightbox functionality
+            function openLightbox(imgElement) {
+              if (!imgElement) return;
+              const lightbox = document.getElementById('run-lightbox');
+              const lightboxImg = document.getElementById('run-lightbox-img');
+              const captionText = document.getElementById('run-lightbox-caption');
+              
+              if (lightbox && lightboxImg && captionText) {
+                lightboxImg.src = imgElement.src;
+                lightboxImg.alt = imgElement.alt;
+                captionText.innerHTML = imgElement.alt || "Ceiling Artistry at GoodEarth Malhar";
+                
+                lightbox.style.display = "flex";
+                lightbox.offsetHeight;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+              }
+            }
+
+            // Close Lightbox
+            function closeLightbox() {
+              const lightbox = document.getElementById('run-lightbox');
+              if (lightbox) {
+                lightbox.classList.remove('active');
+                setTimeout(() => {
+                  lightbox.style.display = "none";
+                  document.body.style.overflow = '';
+                }, 300);
+              }
+            }
+
+            // Scroll Animation Observer
+            document.addEventListener('DOMContentLoaded', () => {
+              const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+              };
+
+              const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                  }
+                });
+              }, observerOptions);
+
+              const animElements = document.querySelectorAll(
+                '.ceiling-stat-card, .ceiling-image-card, .ceiling-hero-wrapper, .blog-meta-header, .ceiling-section-title, .ceiling-gallery-intro, .run-alert-box, .ceiling-pdf-card'
+              );
+              animElements.forEach(el => {
+                el.classList.add('fade-in-up-scroll');
+                observer.observe(el);
+              });
+            });
+
+            // Initialize 3D FlipBook
+            jQuery(document).ready(function($) {
+              if ($('#ceiling-3d-book').length) {
+                var fbOptions = {
+                  pdf: 'assets/Medley-Portico-Ceiling-Imprint.-New.pdf',
+                  bookStyle: 'volume',
+                  singlePage: true,
+                  controlsProps: {
+                    scale: {
+                      default: 1.6,
+                      min: 0.9,
+                      max: 4
+                    },
+                    actions: {
+                      cmdSinglePage: {
+                        active: true
+                      }
+                    }
+                  },
+                  properties: {
+                    autoPlay: false
+                  }
+                };
+
+                fbOptions.template = {
+                  html: 'assets/3d-flip-book/templates/short-white-book-view.html',
+                  links: [
+                    { rel: 'stylesheet', href: 'assets/3d-flip-book/css/font-awesome.min.css' },
+                    { rel: 'stylesheet', href: 'assets/3d-flip-book/css/client.css' },
+                    { rel: 'stylesheet', href: 'assets/3d-flip-book/css/short-white-book-view.css' }
+                  ],
+                  styles: [], // Clear styles to prevent AJAX requests
+                  script: 'assets/3d-flip-book/js/default-book-view.js'
+                };
+                fbOptions.jsData = {
+                  urls: {
+                    "assets/3d-flip-book/templates/short-white-book-view.html": window.FB3D_TEMPLATES ? window.FB3D_TEMPLATES.html : '',
+                    "assets/3d-flip-book/js/default-book-view.js": window.FB3D_TEMPLATES ? window.FB3D_TEMPLATES.js : ''
+                  }
+                };
+
+                $('#ceiling-3d-book').FlipBook(fbOptions);
+              }
+            });
+          </script>
         </div>
         
         <!-- Related Posts Panel -->
@@ -88,116 +1411,81 @@
           <div class="related-posts-section" style="margin-top: 0;">
             <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--color-primary-dark); margin-bottom: 2rem;">Related Posts</h3>
             <div class="articles-grid-original" style="grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
-                      <article class="original-card">
-                    <a href="../../design/an-ode-to-rustic-elegance/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/07/Bedroom-at-GoodEarth-Malhar.jpg" alt="An ode to rustic elegance" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
-            <span class="card-badge">Design</span>
-          </a>
-          <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../design/an-ode-to-rustic-elegance/index.html">An ode to rustic elegance</a>
-          </h4>
-          <div class="original-card-meta" style="font-size: 0.68rem;">
-            By GoodEarth Team | July 19, 2024
-          </div>
-                    <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../design/an-ode-to-rustic-elegance/index.html" class="card-link" style="font-size: 0.72rem;">
-              Read Article
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
-        </article>
-        <article class="original-card">
-                    <a href="../../design/foundations-and-superstructures-for-sustainable-living/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/04/Goodearth-Resonance-34-1.webp" alt="Foundations and superstructures for sustainable living" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
-            <span class="card-badge">Design</span>
-          </a>
-          <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../design/foundations-and-superstructures-for-sustainable-living/index.html">Foundations and superstructures for sustainable living</a>
-          </h4>
-          <div class="original-card-meta" style="font-size: 0.68rem;">
-            By GoodEarth Team | April 26, 2024
-          </div>
-                    <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../design/foundations-and-superstructures-for-sustainable-living/index.html" class="card-link" style="font-size: 0.72rem;">
-              Read Article
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
-        </article>
-        <article class="original-card">
-                    <a href="../../design/discovering-landscaping-elements-chappadi-stone/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/03/IMG_00070.webp" alt="Discovering Landscaping Elements - Chappadi Stone" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
-            <span class="card-badge">Design</span>
-          </a>
-          <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../design/discovering-landscaping-elements-chappadi-stone/index.html">Discovering Landscaping Elements - Chappadi Stone</a>
-          </h4>
-          <div class="original-card-meta" style="font-size: 0.68rem;">
-            By GoodEarth Team | March 30, 2024
-          </div>
-                    <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../design/discovering-landscaping-elements-chappadi-stone/index.html" class="card-link" style="font-size: 0.72rem;">
-              Read Article
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
-        </article>
-        <article class="original-card">
-                    <a href="../../design/versatile-integration-of-coloured-glass-bottles/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/12/Blog-28-Dec.jpg" alt="Versatile integration of coloured glass bottles" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
-            <span class="card-badge">Design</span>
-          </a>
-          <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../design/versatile-integration-of-coloured-glass-bottles/index.html">Versatile integration of coloured glass bottles</a>
-          </h4>
-          <div class="original-card-meta" style="font-size: 0.68rem;">
-            By GoodEarth Team | December 28, 2023
-          </div>
-                    <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../design/versatile-integration-of-coloured-glass-bottles/index.html" class="card-link" style="font-size: 0.72rem;">
-              Read Article
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
-        </article>
+              <article class="original-card">
+                <a href="../../design/an-ode-to-rustic-elegance/" class="original-card-image-link">
+                  <img src="../../assets/images/Bedroom-at-GoodEarth-Malhar_1.webp" alt="An ode to rustic elegance" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                  <span class="card-badge">Design</span>
+                </a>
+                <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
+                  <a href="../../design/an-ode-to-rustic-elegance/">An ode to rustic elegance</a>
+                </h4>
+                <div class="original-card-meta" style="font-size: 0.68rem;">
+                  By GoodEarth Team | July 19, 2024
+                </div>
+                <div class="card-link-wrapper" style="margin-top: 0;">
+                  <a href="../../design/an-ode-to-rustic-elegance/" class="card-link" style="font-size: 0.72rem;">
+                    Read Article
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </a>
+                </div>
+              </article>
+              <article class="original-card">
+                <a href="../../design/foundations-and-superstructures-for-sustainable-living/" class="original-card-image-link">
+                  <img src="../../assets/images/Goodearth-Resonance-34-1_1.webp" alt="Foundations and superstructures for sustainable living" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                  <span class="card-badge">Design</span>
+                </a>
+                <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
+                  <a href="../../design/foundations-and-superstructures-for-sustainable-living/">Foundations and superstructures for sustainable living</a>
+                </h4>
+                <div class="original-card-meta" style="font-size: 0.68rem;">
+                  By GoodEarth Team | April 26, 2024
+                </div>
+                <div class="card-link-wrapper" style="margin-top: 0;">
+                  <a href="../../design/foundations-and-superstructures-for-sustainable-living/" class="card-link" style="font-size: 0.72rem;">
+                    Read Article
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </a>
+                </div>
+              </article>
+              <article class="original-card">
+                <a href="../../design/discovering-landscaping-elements-chappadi-stone/" class="original-card-image-link">
+                  <img src="../../assets/images/IMG_00070_2.webp" alt="Discovering Landscaping Elements - Chappadi Stone" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                  <span class="card-badge">Design</span>
+                </a>
+                <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
+                  <a href="../../design/discovering-landscaping-elements-chappadi-stone/">Discovering Landscaping Elements - Chappadi Stone</a>
+                </h4>
+                <div class="original-card-meta" style="font-size: 0.68rem;">
+                  By GoodEarth Team | March 30, 2024
+                </div>
+                <div class="card-link-wrapper" style="margin-top: 0;">
+                  <a href="../../design/discovering-landscaping-elements-chappadi-stone/" class="card-link" style="font-size: 0.72rem;">
+                    Read Article
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </a>
+                </div>
+              </article>
+              <article class="original-card">
+                <a href="../../design/versatile-integration-of-coloured-glass-bottles/" class="original-card-image-link">
+                  <img src="../../assets/images/Blog-28-Dec_1.webp" alt="Versatile integration of coloured glass bottles" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                  <span class="card-badge">Design</span>
+                </a>
+                <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
+                  <a href="../../design/versatile-integration-of-coloured-glass-bottles/">Versatile integration of coloured glass bottles</a>
+                </h4>
+                <div class="original-card-meta" style="font-size: 0.68rem;">
+                  By GoodEarth Team | December 28, 2023
+                </div>
+                <div class="card-link-wrapper" style="margin-top: 0;">
+                  <a href="../../design/versatile-integration-of-coloured-glass-bottles/" class="card-link" style="font-size: 0.72rem;">
+                    Read Article
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </a>
+                </div>
+              </article>
             </div>
           </div>
         </div>
-        
-        <!-- Leave a Comment Panel -->
-        <div class="blog-comment-panel">
-          
-          <!-- Leave a Comment Form -->
-          <div class="comment-form-container">
-            <h3 class="comment-form-title">Leave A Comment</h3>
-            <form class="comment-form">
-              <div class="comment-input-group">
-                <label for="comment-text">Comment</label>
-                <textarea id="comment-text" required placeholder="Comment..."></textarea>
-              </div>
-              <div class="comment-form-row">
-                <div class="comment-input-group">
-                  <label for="comment-name">Name (required)</label>
-                  <input type="text" id="comment-name" required />
-                </div>
-                <div class="comment-input-group">
-                  <label for="comment-email">Email (required)</label>
-                  <input type="email" id="comment-email" required />
-                </div>
-                <div class="comment-input-group">
-                  <label for="comment-website">Website</label>
-                  <input type="url" id="comment-website" />
-                </div>
-              </div>
-              <div class="comment-checkbox-group">
-                <input type="checkbox" id="save-info" />
-                <label for="save-info">Save my name, email, and website in this browser for the next time I comment.</label>
-              </div>
-              <button type="submit" class="comment-submit-btn">Post Comment</button>
-            </form>
-          </div>
-        </div>
-
       </div>
 
       <!-- Right Sidebar Column -->
@@ -213,7 +1501,7 @@
 
         <!-- About GoodEarth Widget -->
         <div class="widget-about">
-          <img src="../../assets/images/goodeath-image.jpg" alt="goodeath-image" />
+          <img src="../../assets/images/goodeath-image_1.webp" alt="goodeath-image" />
           <h3>About GoodEarth</h3>
           <p>At Good Earth, we are engaged in bringing together like-minded people with a common vision of building a sustainable future.</p>
           
@@ -236,37 +1524,37 @@
           <div class="tab-content active" id="tab-popular">
             <ul class="tab-post-list">
                         <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/09/Blog-spt14-1-rs.jpg" alt="Role of Compressed Stabilized Earth Blocks in sustainable construction" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Blog-spt14-1-rs_3.webp" alt="Role of Compressed Stabilized Earth Blocks in sustainable construction" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../materials/role-of-compressed-stabilized-earth-blocks-in-sustainable-construction/index.html">Role of Compressed Stabilized Earth Blocks in sustainable construction</a></h4>
+              <h4 class="tab-post-title"><a href="../../materials/role-of-compressed-stabilized-earth-blocks-in-sustainable-construction/">Role of Compressed Stabilized Earth Blocks in sustainable construction</a></h4>
               <div class="tab-post-date">September 14, 2023</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/02/Saarang-Brochure_V4_Corrections_Print-page-71.jpg" alt="GoodEarth Saarang - Live, work & celebrate life at a holistic eco village" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Saarang-Brochure_V4_Corrections_Print-page-71_2.webp" alt="GoodEarth Saarang - Live, work & celebrate life at a holistic eco village" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../sustainability/goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village/index.html">GoodEarth Saarang - Live, work & celebrate life at a holistic eco village</a></h4>
+              <h4 class="tab-post-title"><a href="../../sustainability/goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village/">GoodEarth Saarang - Live, work & celebrate life at a holistic eco village</a></h4>
               <div class="tab-post-date">February 22, 2024</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/03/IMG_00070.webp" alt="Discovering Landscaping Elements - Chappadi Stone" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/IMG_00070_2.webp" alt="Discovering Landscaping Elements - Chappadi Stone" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../design/discovering-landscaping-elements-chappadi-stone/index.html">Discovering Landscaping Elements - Chappadi Stone</a></h4>
+              <h4 class="tab-post-title"><a href="../../design/discovering-landscaping-elements-chappadi-stone/">Discovering Landscaping Elements - Chappadi Stone</a></h4>
               <div class="tab-post-date">March 30, 2024</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Come-Over-Featured-Image_2.webp" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/index.html">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
               <div class="tab-post-date">April 15, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/01/1.jpg" alt="Rediscovering rammed earth construction in modern architecture" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/1_5.webp" alt="Rediscovering rammed earth construction in modern architecture" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../sustainability/rediscovering-rammed-earth-construction-in-modern-architecture/index.html">Rediscovering rammed earth construction in modern architecture</a></h4>
+              <h4 class="tab-post-title"><a href="../../sustainability/rediscovering-rammed-earth-construction-in-modern-architecture/">Rediscovering rammed earth construction in modern architecture</a></h4>
               <div class="tab-post-date">January 12, 2024</div>
             </div>
           </li>
@@ -276,37 +1564,37 @@
           <div class="tab-content" id="tab-recent">
             <ul class="tab-post-list">
                         <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Come-Over-Featured-Image_2.webp" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/index.html">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
               <div class="tab-post-date">April 15, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/03/GoodEarth-Resident-Girin-Web-Banner.jpeg" alt="Savvy in Five with Girin | Get closer to the birds around you" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/GoodEarth-Resident-Girin-Web-Banner_2.webp" alt="Savvy in Five with Girin | Get closer to the birds around you" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/savvy-in-five-with-girin-get-closer-to-the-birds-around-you/index.html">Savvy in Five with Girin | Get closer to the birds around you</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/savvy-in-five-with-girin-get-closer-to-the-birds-around-you/">Savvy in Five with Girin | Get closer to the birds around you</a></h4>
               <div class="tab-post-date">March 11, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/01/GE-Ajith.jpg" alt="Come On Over | Ajith, Bindu, and Indulekha's Dream Home." class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/GE-Ajith_2.webp" alt="Come On Over | Ajith, Bindu, and Indulekha's Dream Home." class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-on-over-ajith-bindu-and-indulekhas-dream-home/index.html">Come On Over | Ajith, Bindu, and Indulekha's Dream Home.</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-on-over-ajith-bindu-and-indulekhas-dream-home/">Come On Over | Ajith, Bindu, and Indulekha's Dream Home.</a></h4>
               <div class="tab-post-date">January 17, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2025/12/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori.jpg" alt="Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori_2.webp" alt="Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../beyond-the-fence/beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori/index.html">Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori</a></h4>
+              <h4 class="tab-post-title"><a href="../../beyond-the-fence/beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori/">Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori</a></h4>
               <div class="tab-post-date">December 31, 2025</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2025/12/Hero.webp" alt="GoodEarth Modern Times wins CREDAI Awards 2025" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Hero_2.webp" alt="GoodEarth Modern Times wins CREDAI Awards 2025" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../awards/goodearth-modern-times-wins-credai-awards-2025/index.html">GoodEarth Modern Times wins CREDAI Awards 2025</a></h4>
+              <h4 class="tab-post-title"><a href="../../awards/goodearth-modern-times-wins-credai-awards-2025/">GoodEarth Modern Times wins CREDAI Awards 2025</a></h4>
               <div class="tab-post-date">December 22, 2025</div>
             </div>
           </li>

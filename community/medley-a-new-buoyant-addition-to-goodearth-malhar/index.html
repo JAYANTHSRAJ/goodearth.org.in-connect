@@ -28,58 +28,347 @@
         
         <!-- Main Article Panel -->
         <div class="blog-article-panel">
-          <!-- Meta Data Header -->
-        <div class="blog-meta-header" style="margin-bottom: 2rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1.5rem;">
-          <span style="display:inline-block; background-color:var(--color-bg-secondary); color:var(--color-primary); padding:4px 12px; border-radius:20px; font-size:0.75rem; font-family:var(--font-heading); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom: 0.5rem;">
-            Community
-          </span>
-          <h1 style="font-size: 2.5rem; line-height: 1.15; color: var(--color-primary-dark); margin-top: 0.5rem; margin-bottom: 0.5rem; font-family: var(--font-heading); font-weight: 700;">
-            Medley, a new buoyant addition to GoodEarth Malhar
-          </h1>
-          <p style="font-size:0.85rem; color:var(--color-text-secondary); font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">
-            By GoodEarth | Published On: March 10, 2023
-          </p>
-        </div>
+          
+          <style>
+            /* Local Styles for Medley Buoyant Redesign */
+            @keyframes fadeInUp {
+              from { opacity: 0; transform: translateY(20px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+            .buoyant-article-wrapper {
+              animation: fadeInUp 0.8s ease-out;
+              font-family: var(--font-body);
+            }
+            .buoyant-hero-wrapper {
+              position: relative;
+              border-radius: var(--radius-lg);
+              overflow: hidden;
+              margin-bottom: 2.5rem;
+              border: 1px solid var(--color-border);
+              box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+              transition: all 0.5s ease;
+              aspect-ratio: 16/9;
+            }
+            .buoyant-hero-wrapper:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            }
+            .buoyant-stats-grid {
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 1.5rem;
+              margin-bottom: 3rem;
+            }
+            @media (max-width: 768px) {
+              .buoyant-stats-grid { grid-template-columns: repeat(2, 1fr); }
+            }
+            @media (max-width: 480px) {
+              .buoyant-stats-grid { grid-template-columns: 1fr; }
+            }
+            .buoyant-stat-card {
+              background-color: var(--color-bg-secondary);
+              border: 1px solid var(--color-border);
+              border-radius: var(--radius-md);
+              padding: 1.5rem;
+              text-align: center;
+              transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+              box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            }
+            .buoyant-stat-card:hover {
+              transform: translateY(-5px);
+              border-color: var(--color-primary);
+              background-color: #ffffff;
+              box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            }
+            html[data-theme="dark"] .buoyant-stat-card:hover {
+              background-color: var(--color-bg-card);
+              border-color: var(--color-accent);
+            }
+            .buoyant-stat-number {
+              font-size: 2rem;
+              font-weight: 800;
+              color: var(--color-primary-dark);
+              font-family: var(--font-heading);
+              margin-bottom: 0.25rem;
+              background: linear-gradient(135deg, var(--color-primary-dark) 30%, var(--color-primary) 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+            .buoyant-stat-label {
+              font-size: 0.75rem;
+              color: var(--color-text-secondary);
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              font-weight: 700;
+            }
+            .buoyant-lead-p {
+              font-size: 1.25rem;
+              line-height: 1.8;
+              color: var(--color-text-primary);
+              margin-bottom: 2rem;
+            }
+            .buoyant-lead-p::first-letter {
+              font-family: var(--font-heading);
+              font-size: 3.5rem;
+              float: left;
+              line-height: 0.9;
+              font-weight: 800;
+              margin-right: 0.6rem;
+              margin-top: 0.15rem;
+              color: var(--color-primary-dark);
+              text-shadow: 1px 1px 0px var(--color-accent);
+            }
+            .homes-grid-container {
+              margin: 3.5rem 0;
+            }
+            .homes-grid-title {
+              font-family: var(--font-heading);
+              font-size: 1.5rem;
+              color: var(--color-primary-dark);
+              margin-bottom: 1.5rem;
+              font-weight: 700;
+              border-left: 4px solid var(--color-accent);
+              padding-left: 0.75rem;
+            }
+            html[data-theme="dark"] .homes-grid-title {
+              color: #ffffff;
+            }
+            .homes-grid {
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 1.25rem;
+            }
+            @media (max-width: 992px) {
+              .homes-grid { grid-template-columns: repeat(2, 1fr); }
+            }
+            @media (max-width: 480px) {
+              .homes-grid { grid-template-columns: 1fr; }
+            }
+            .home-card {
+              background-color: var(--color-bg-card, #ffffff);
+              border: 1px solid var(--color-border);
+              border-radius: var(--radius-md);
+              padding: 1.5rem 1.25rem;
+              text-align: center;
+              transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            }
+            html[data-theme="dark"] .home-card {
+              background-color: var(--color-bg-secondary);
+            }
+            .home-card:hover {
+              transform: translateY(-5px);
+              border-color: var(--color-accent);
+              box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            }
+            .home-icon {
+              font-size: 2rem;
+              background: var(--color-bg-secondary);
+              width: 55px;
+              height: 55px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              margin: 0 auto 1rem;
+              color: var(--color-primary);
+              border: 1px solid var(--color-border);
+              transition: all 0.3s ease;
+            }
+            .home-card:hover .home-icon {
+              background: var(--color-accent);
+              color: var(--color-primary-dark);
+            }
+            .home-name {
+              font-family: var(--font-heading);
+              font-size: 1.05rem;
+              font-weight: 700;
+              color: var(--color-primary-dark);
+              margin-bottom: 0.5rem;
+            }
+            html[data-theme="dark"] .home-name {
+              color: #ffffff;
+            }
+            .home-desc {
+              font-size: 0.8rem;
+              color: var(--color-text-secondary);
+              line-height: 1.5;
+            }
+            .buoyant-quote-box {
+              background-color: var(--color-bg-secondary);
+              border-left: 5px solid var(--color-primary);
+              padding: 2.25rem;
+              border-radius: 0 var(--radius-md) var(--radius-md) 0;
+              margin: 3rem 0;
+              position: relative;
+              overflow: hidden;
+            }
+            .buoyant-quote-box::before {
+              content: '“';
+              position: absolute;
+              top: -20px;
+              left: 10px;
+              font-size: 8rem;
+              color: var(--color-border);
+              opacity: 0.3;
+              font-family: serif;
+              pointer-events: none;
+            }
+            .buoyant-quote-text {
+              font-size: 1.4rem;
+              line-height: 1.65;
+              color: var(--color-primary-dark);
+              font-style: italic;
+              font-weight: 500;
+              margin-bottom: 0.5rem;
+              position: relative;
+              z-index: 1;
+            }
+            .buoyant-quote-author {
+              font-size: 0.85rem;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              color: var(--color-text-secondary);
+              font-weight: 700;
+            }
+            .buoyant-source-bar {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              background: var(--color-bg-secondary);
+              border: 1px dashed var(--color-border);
+              padding: 1rem 1.5rem;
+              border-radius: var(--radius-md);
+              margin-bottom: 2.5rem;
+              font-size: 0.9rem;
+              color: var(--color-text-secondary);
+            }
+            @media (max-width: 600px) {
+              .buoyant-source-bar { flex-direction: column; gap: 1rem; text-align: center; }
+            }
+            .buoyant-source-btn {
+              background-color: var(--color-primary);
+              color: #ffffff !important;
+              padding: 8px 16px;
+              border-radius: 4px;
+              font-size: 0.8rem;
+              font-weight: 700;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+              text-decoration: none !important;
+              transition: all 0.2s ease;
+              box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            }
+            .buoyant-source-btn:hover {
+              background-color: var(--color-primary-dark);
+              transform: translateY(-1px);
+            }
+          </style>
 
-        <!-- Article Hero Image -->
-        <div style="border-radius: var(--radius-md); overflow: hidden; margin-bottom: 2rem; border: 1px solid var(--color-border); aspect-ratio: 16/9;">
-          <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/03/Goodearth-Medley_19.webp" alt="Medley, a new buoyant addition to GoodEarth Malhar" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
-        </div>
+          <div class="buoyant-article-wrapper">
+            <!-- Meta Data Header -->
+            <div class="blog-meta-header" style="margin-bottom: 2rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1.5rem;">
+              <span style="display:inline-block; background-color:var(--color-bg-secondary); color:var(--color-primary); padding:4px 12px; border-radius:20px; font-size:0.75rem; font-family:var(--font-heading); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom: 0.5rem;">
+                Community
+              </span>
+              <h1 style="font-size: 2.5rem; line-height: 1.15; color: var(--color-primary-dark); margin-top: 0.5rem; margin-bottom: 0.5rem; font-family: var(--font-heading); font-weight: 700;">
+                Medley, a new buoyant addition to GoodEarth Malhar
+              </h1>
+              <p style="font-size:0.85rem; color:var(--color-text-secondary); font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">
+                By GoodEarth | Published On: March 10, 2023
+              </p>
+            </div>
 
-        <!-- Original source alert -->
-        <div style="background-color: var(--color-bg-secondary); border-left: 4px solid var(--color-accent); padding: 1rem; border-radius: var(--radius-sm); margin-bottom: 2rem; font-size: 0.9rem; color: var(--color-text-secondary); font-family: var(--font-body);">
-          This article is a clone from the original GoodEarth Connect catalog. View the original post at: 
-          <a href="https://goodearth.org.in/connect/community/medley-a-new-buoyant-addition-to-goodearth-malhar/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary-dark); font-weight: 600; text-decoration: underline;">
-            Medley, a new buoyant addition to GoodEarth Malhar &nearr;
-          </a>
-        </div>
+            <!-- Article Hero Video -->
+            <div class="buoyant-hero-wrapper">
+              <iframe src="https://www.youtube.com/embed/YVv4c2lgkvw?wmode=transparent&autoplay=0&rel=0" style="width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+            </div>
 
-        <!-- Body Text Content -->
-        <div class="blog-body-content" style="font-size: 1.15rem; line-height: 1.7; color: var(--color-text-primary); font-family: var(--font-body);">
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">Exploring the sustainability and design aspects of medley a new buoyant addition to goodearth malhar and its integration within community architectures.</p>
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">
-            This page represents a pre-rendered static structure matching the original blog configuration of the GoodEarth website. You can edit this file directly to add text paragraphs, galleries, quotes, or tables.
-          </p>
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">
-            Place your custom blog assets (such as local images, diagrams, or PDF downloads) inside the local <code>assets/</code> folder in this directory, and reference them relatively (e.g. <code>&lt;img src="assets/my-image.jpg"&gt;</code>).
-          </p>
-        </div>
+            <!-- Highlights / Stats Grid -->
+            <div class="buoyant-stats-grid">
+              <div class="buoyant-stat-card">
+                <div class="buoyant-stat-number">2018</div>
+                <div class="buoyant-stat-label">Commenced Year</div>
+              </div>
+              <div class="buoyant-stat-card">
+                <div class="buoyant-stat-number">4 Acres</div>
+                <div class="buoyant-stat-label">Land Area</div>
+              </div>
+              <div class="buoyant-stat-card">
+                <div class="buoyant-stat-number">119</div>
+                <div class="buoyant-stat-label">Total Homes</div>
+              </div>
+              <div class="buoyant-stat-card">
+                <div class="buoyant-stat-number">6th</div>
+                <div class="buoyant-stat-label">Malhar Mela Community</div>
+              </div>
+            </div>
 
-        <!-- Meta Data Footer -->
-        <div class="blog-meta-footer" style="margin-top: 3rem; font-size: 0.85rem; color: var(--color-text-muted); border-top: 1px solid var(--color-border); padding-top: 1.5rem; font-family: var(--font-body);">
-          By GoodEarth | March 10, 2023 | Community | 0 Comments
-        </div>
+            <!-- Original source alert redesigned -->
+            <div class="buoyant-source-bar">
+              <span>This article is a redesigned clone of the original GoodEarth Connect catalog.</span>
+              <a href="https://goodearth.org.in/connect/community/medley-a-new-buoyant-addition-to-goodearth-malhar/" target="_blank" rel="noopener noreferrer" class="buoyant-source-btn">
+                View Original Post &nearr;
+              </a>
+            </div>
 
-        <!-- Share Story Container -->
-        <div class="share-story-container">
-          <div class="share-title">Share This Story, Choose Your Platform!</div>
-          <div class="share-buttons-grid">
-            <button class="share-btn" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">Facebook</button>
-            <button class="share-btn" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(window.location.href), '_blank')">WhatsApp</button>
-            <button class="share-btn" onclick="window.open('https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(window.location.href), '_blank')">Pinterest</button>
-            <button class="share-btn" onclick="window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href)">Email</button>
+            <!-- Body Text Content -->
+            <div class="blog-body-content" style="font-size: 1.15rem; line-height: 1.75; color: var(--color-text-primary); font-family: var(--font-body);">
+              <p class="buoyant-lead-p">Medley which was started in 2018 braved great uncertainties unleashed by the pandemic, and yet it is today the sixth energetic community of GoodEarth Malhar.</p>
+              
+              <!-- Housing Types Showcase -->
+              <div class="homes-grid-container">
+                <h3 class="homes-grid-title">A True Melange of Housing Options</h3>
+                <p style="margin-bottom: 1.5rem; font-size: 1.05rem; color: var(--color-text-secondary);">Medley is uniquely designed to integrate four distinct architectural layouts into a single, cohesive neighborhood landscape:</p>
+                
+                <div class="homes-grid">
+                  <div class="home-card">
+                    <div class="home-icon">🏡</div>
+                    <div class="home-name">Townhouses</div>
+                    <div class="home-desc">Intimate vertical living layouts designed for modern families.</div>
+                  </div>
+                  <div class="home-card">
+                    <div class="home-icon">🏢</div>
+                    <div class="home-name">Villaments</div>
+                    <div class="home-desc">Perfect fusion of standalone villa spaciousness and apartment ease.</div>
+                  </div>
+                  <div class="home-card">
+                    <div class="home-icon">🌇</div>
+                    <div class="home-name">Walk-ups</div>
+                    <div class="home-desc">Terraced units offering active direct access to the outdoors.</div>
+                  </div>
+                  <div class="home-card">
+                    <div class="home-icon">🏰</div>
+                    <div class="home-name">Low-rise Flats</div>
+                    <div class="home-desc">Spacious apartment levels blending seamlessly with surrounding flora.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quote Block -->
+              <div class="buoyant-quote-box">
+                <div class="buoyant-quote-text">Built on four acres, comprising four types of houses and 119 units, Malhar Medley is a place where one would love to create memories that last forever.</div>
+                <div class="buoyant-quote-author">GoodEarth Team</div>
+              </div>
+
+            </div>
+
+            <!-- Meta Data Footer -->
+            <div class="blog-meta-footer" style="margin-top: 3rem; font-size: 0.85rem; color: var(--color-text-muted); border-top: 1px solid var(--color-border); padding-top: 1.5rem; font-family: var(--font-body);">
+              By GoodEarth | March 10, 2023 | Community | 0 Comments
+            </div>
+
+            <!-- Share Story Container -->
+            <div class="share-story-container" style="margin-top: 2rem;">
+              <div class="share-title">Share This Story, Choose Your Platform!</div>
+              <div class="share-buttons-grid">
+                <button class="share-btn" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">Facebook</button>
+                <button class="share-btn" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(window.location.href), '_blank')">WhatsApp</button>
+                <button class="share-btn" onclick="window.open('https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(window.location.href), '_blank')">Pinterest</button>
+                <button class="share-btn" onclick="window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href)">Email</button>
+              </div>
+            </div>
+
           </div>
-        </div>
         </div>
         
         <!-- Related Posts Panel -->
@@ -89,112 +378,78 @@
             <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--color-primary-dark); margin-bottom: 2rem;">Related Posts</h3>
             <div class="articles-grid-original" style="grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
                       <article class="original-card">
-                    <a href="../../community/goodearth-look-back-then-now/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/06/thumbnail-1.webp" alt="GoodEarth: Look back then & now" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                    <a href="../../community/goodearth-look-back-then-now/" class="original-card-image-link">
+            <img src="../../assets/images/thumbnail-1_1.webp" alt="GoodEarth: Look back then & now" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
             <span class="card-badge">Community</span>
           </a>
           <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../community/goodearth-look-back-then-now/index.html">GoodEarth: Look back then & now</a>
+            <a href="../../community/goodearth-look-back-then-now/">GoodEarth: Look back then & now</a>
           </h4>
           <div class="original-card-meta" style="font-size: 0.68rem;">
             By GoodEarth Team | June 14, 2024
           </div>
                     <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../community/goodearth-look-back-then-now/index.html" class="card-link" style="font-size: 0.72rem;">
+            <a href="../../community/goodearth-look-back-then-now/" class="card-link" style="font-size: 0.72rem;">
               Read Article
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
         </article>
         <article class="original-card">
-                    <a href="../../community/malhar-mela-2024-a-feast-to-the-senses/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/02/Mela2024.webp" alt="Malhar Mela 2024 A feast to the senses!" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                    <a href="../../community/malhar-mela-2024-a-feast-to-the-senses/" class="original-card-image-link">
+            <img src="../../assets/images/Mela2024_1.webp" alt="Malhar Mela 2024 A feast to the senses!" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
             <span class="card-badge">Community</span>
           </a>
           <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../community/malhar-mela-2024-a-feast-to-the-senses/index.html">Malhar Mela 2024 A feast to the senses!</a>
+            <a href="../../community/malhar-mela-2024-a-feast-to-the-senses/">Malhar Mela 2024 A feast to the senses!</a>
           </h4>
           <div class="original-card-meta" style="font-size: 0.68rem;">
             By GoodEarth Team | February 28, 2024
           </div>
                     <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../community/malhar-mela-2024-a-feast-to-the-senses/index.html" class="card-link" style="font-size: 0.72rem;">
+            <a href="../../community/malhar-mela-2024-a-feast-to-the-senses/" class="card-link" style="font-size: 0.72rem;">
               Read Article
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
         </article>
         <article class="original-card">
-                    <a href="../../community/medley-a-true-melange-of-homes-crafted-spaces/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/10/Goodearth-Medley_-futured-image.webp" alt="Medley: A true melange of homes & crafted spaces" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                    <a href="../../community/medley-a-true-melange-of-homes-crafted-spaces/" class="original-card-image-link">
+            <img src="../../assets/images/Goodearth-Medley_-futured-image_1.webp" alt="Medley: A true melange of homes & crafted spaces" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
             <span class="card-badge">Community</span>
           </a>
           <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../community/medley-a-true-melange-of-homes-crafted-spaces/index.html">Medley: A true melange of homes & crafted spaces</a>
+            <a href="../../community/medley-a-true-melange-of-homes-crafted-spaces/">Medley: A true melange of homes & crafted spaces</a>
           </h4>
           <div class="original-card-meta" style="font-size: 0.68rem;">
             By GoodEarth Team | October 27, 2023
           </div>
                     <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../community/medley-a-true-melange-of-homes-crafted-spaces/index.html" class="card-link" style="font-size: 0.72rem;">
+            <a href="../../community/medley-a-true-melange-of-homes-crafted-spaces/" class="card-link" style="font-size: 0.72rem;">
               Read Article
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
         </article>
         <article class="original-card">
-                    <a href="../../community/relive-peravoor-marathon-2022/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/04/Peravoor-marathon.webp" alt="Relive Peravoor Marathon 2022" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                    <a href="../../community/relive-peravoor-marathon-2022/" class="original-card-image-link">
+            <img src="../../assets/images/Peravoor-marathon_1.webp" alt="Relive Peravoor Marathon 2022" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
             <span class="card-badge">Community</span>
           </a>
           <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../community/relive-peravoor-marathon-2022/index.html">Relive Peravoor Marathon 2022</a>
+            <a href="../../community/relive-peravoor-marathon-2022/">Relive Peravoor Marathon 2022</a>
           </h4>
           <div class="original-card-meta" style="font-size: 0.68rem;">
             By GoodEarth Team | April 18, 2023
           </div>
                     <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../community/relive-peravoor-marathon-2022/index.html" class="card-link" style="font-size: 0.72rem;">
+            <a href="../../community/relive-peravoor-marathon-2022/" class="card-link" style="font-size: 0.72rem;">
               Read Article
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
         </article>
             </div>
-          </div>
-        </div>
-        
-        <!-- Leave a Comment Panel -->
-        <div class="blog-comment-panel">
-          
-          <!-- Leave a Comment Form -->
-          <div class="comment-form-container">
-            <h3 class="comment-form-title">Leave A Comment</h3>
-            <form class="comment-form">
-              <div class="comment-input-group">
-                <label for="comment-text">Comment</label>
-                <textarea id="comment-text" required placeholder="Comment..."></textarea>
-              </div>
-              <div class="comment-form-row">
-                <div class="comment-input-group">
-                  <label for="comment-name">Name (required)</label>
-                  <input type="text" id="comment-name" required />
-                </div>
-                <div class="comment-input-group">
-                  <label for="comment-email">Email (required)</label>
-                  <input type="email" id="comment-email" required />
-                </div>
-                <div class="comment-input-group">
-                  <label for="comment-website">Website</label>
-                  <input type="url" id="comment-website" />
-                </div>
-              </div>
-              <div class="comment-checkbox-group">
-                <input type="checkbox" id="save-info" />
-                <label for="save-info">Save my name, email, and website in this browser for the next time I comment.</label>
-              </div>
-              <button type="submit" class="comment-submit-btn">Post Comment</button>
-            </form>
           </div>
         </div>
 
@@ -213,7 +468,7 @@
 
         <!-- About GoodEarth Widget -->
         <div class="widget-about">
-          <img src="../../assets/images/goodeath-image.jpg" alt="goodeath-image" />
+          <img src="../../assets/images/goodeath-image.webp" alt="goodeath-image" />
           <h3>About GoodEarth</h3>
           <p>At Good Earth, we are engaged in bringing together like-minded people with a common vision of building a sustainable future.</p>
           
@@ -236,37 +491,37 @@
           <div class="tab-content active" id="tab-popular">
             <ul class="tab-post-list">
                         <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/09/Blog-spt14-1-rs.jpg" alt="Role of Compressed Stabilized Earth Blocks in sustainable construction" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Blog-spt14-1-rs_3.webp" alt="Role of Compressed Stabilized Earth Blocks in sustainable construction" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../materials/role-of-compressed-stabilized-earth-blocks-in-sustainable-construction/index.html">Role of Compressed Stabilized Earth Blocks in sustainable construction</a></h4>
+              <h4 class="tab-post-title"><a href="../../materials/role-of-compressed-stabilized-earth-blocks-in-sustainable-construction/">Role of Compressed Stabilized Earth Blocks in sustainable construction</a></h4>
               <div class="tab-post-date">September 14, 2023</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/02/Saarang-Brochure_V4_Corrections_Print-page-71.jpg" alt="GoodEarth Saarang - Live, work & celebrate life at a holistic eco village" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Saarang-Brochure_V4_Corrections_Print-page-71_2.webp" alt="GoodEarth Saarang - Live, work & celebrate life at a holistic eco village" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../sustainability/goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village/index.html">GoodEarth Saarang - Live, work & celebrate life at a holistic eco village</a></h4>
+              <h4 class="tab-post-title"><a href="../../sustainability/goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village/">GoodEarth Saarang - Live, work & celebrate life at a holistic eco village</a></h4>
               <div class="tab-post-date">February 22, 2024</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/03/IMG_00070.webp" alt="Discovering Landscaping Elements - Chappadi Stone" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/IMG_00070_3.webp" alt="Discovering Landscaping Elements - Chappadi Stone" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../design/discovering-landscaping-elements-chappadi-stone/index.html">Discovering Landscaping Elements - Chappadi Stone</a></h4>
+              <h4 class="tab-post-title"><a href="../../design/discovering-landscaping-elements-chappadi-stone/">Discovering Landscaping Elements - Chappadi Stone</a></h4>
               <div class="tab-post-date">March 30, 2024</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Come-Over-Featured-Image_2.webp" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/index.html">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
               <div class="tab-post-date">April 15, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/01/1.jpg" alt="Rediscovering rammed earth construction in modern architecture" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/1_5.webp" alt="Rediscovering rammed earth construction in modern architecture" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../sustainability/rediscovering-rammed-earth-construction-in-modern-architecture/index.html">Rediscovering rammed earth construction in modern architecture</a></h4>
+              <h4 class="tab-post-title"><a href="../../sustainability/rediscovering-rammed-earth-construction-in-modern-architecture/">Rediscovering rammed earth construction in modern architecture</a></h4>
               <div class="tab-post-date">January 12, 2024</div>
             </div>
           </li>
@@ -276,37 +531,37 @@
           <div class="tab-content" id="tab-recent">
             <ul class="tab-post-list">
                         <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Come-Over-Featured-Image_2.webp" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/index.html">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
               <div class="tab-post-date">April 15, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/03/GoodEarth-Resident-Girin-Web-Banner.jpeg" alt="Savvy in Five with Girin | Get closer to the birds around you" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/GoodEarth-Resident-Girin-Web-Banner_2.webp" alt="Savvy in Five with Girin | Get closer to the birds around you" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/savvy-in-five-with-girin-get-closer-to-the-birds-around-you/index.html">Savvy in Five with Girin | Get closer to the birds around you</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/savvy-in-five-with-girin-get-closer-to-the-birds-around-you/">Savvy in Five with Girin | Get closer to the birds around you</a></h4>
               <div class="tab-post-date">March 11, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/01/GE-Ajith.jpg" alt="Come On Over | Ajith, Bindu, and Indulekha's Dream Home." class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/GE-Ajith_2.webp" alt="Come On Over | Ajith, Bindu, and Indulekha's Dream Home." class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-on-over-ajith-bindu-and-indulekhas-dream-home/index.html">Come On Over | Ajith, Bindu, and Indulekha's Dream Home.</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-on-over-ajith-bindu-and-indulekhas-dream-home/">Come On Over | Ajith, Bindu, and Indulekha's Dream Home.</a></h4>
               <div class="tab-post-date">January 17, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2025/12/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori.jpg" alt="Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori_2.webp" alt="Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../beyond-the-fence/beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori/index.html">Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori</a></h4>
+              <h4 class="tab-post-title"><a href="../../beyond-the-fence/beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori/">Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori</a></h4>
               <div class="tab-post-date">December 31, 2025</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2025/12/Hero.webp" alt="GoodEarth Modern Times wins CREDAI Awards 2025" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Hero_2.webp" alt="GoodEarth Modern Times wins CREDAI Awards 2025" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../awards/goodearth-modern-times-wins-credai-awards-2025/index.html">GoodEarth Modern Times wins CREDAI Awards 2025</a></h4>
+              <h4 class="tab-post-title"><a href="../../awards/goodearth-modern-times-wins-credai-awards-2025/">GoodEarth Modern Times wins CREDAI Awards 2025</a></h4>
               <div class="tab-post-date">December 22, 2025</div>
             </div>
           </li>

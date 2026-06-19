@@ -13,6 +13,343 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;1,300&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS for Premium Redesign -->
+  <style>
+    /* Article Header */
+    .article-header {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 1.5rem;
+    }
+    .article-category-badge {
+      display: inline-block;
+      background-color: var(--color-bg-secondary);
+      color: var(--color-primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.75rem;
+    }
+    .article-title-heading {
+      font-size: 2.5rem;
+      line-height: 1.2;
+      color: var(--color-primary-dark);
+      margin-top: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .article-subtitle {
+      font-size: 1.25rem;
+      line-height: 1.4;
+      color: var(--color-text-secondary);
+      margin-top: -0.25rem;
+      margin-bottom: 1.25rem;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-style: italic;
+    }
+    .article-meta-info {
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+      font-family: var(--font-body);
+      font-weight: 500;
+    }
+    .article-meta-info a {
+      color: var(--color-primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .article-meta-info a:hover {
+      color: var(--color-accent);
+      text-decoration: underline;
+    }
+
+    /* Hero Image Container */
+    .article-hero-wrapper {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      aspect-ratio: 16/9;
+      position: relative;
+    }
+    .article-hero-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .article-hero-wrapper:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Source Notice */
+    .original-source-notice {
+      background-color: var(--color-bg-primary);
+      border-left: 3px solid var(--color-accent);
+      padding: 1.25rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 2.5rem;
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      font-family: var(--font-body);
+      line-height: 1.5;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.01);
+    }
+    .original-source-notice a {
+      color: var(--color-primary-dark);
+      font-weight: 600;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    .original-source-notice a:hover {
+      color: var(--color-accent);
+    }
+
+    /* Main Article Content & Typography */
+    .premium-article-content {
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+    }
+    .premium-article-content p {
+      margin-bottom: 1.6rem;
+    }
+    .premium-article-content h2 {
+      font-family: var(--font-heading);
+      font-size: 1.85rem;
+      color: var(--color-primary-dark);
+      margin-top: 2.5rem;
+      margin-bottom: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    /* Images & Galleries */
+    .premium-img-wrapper {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+      border: 1px solid var(--color-border);
+      background-color: var(--color-bg-secondary);
+      margin-bottom: 1.8rem;
+      margin-top: 1.2rem;
+    }
+    .premium-img-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .premium-img-wrapper:hover img {
+      transform: scale(1.02);
+    }
+    .caption-under-img {
+      font-size: 0.82rem;
+      color: var(--color-text-secondary);
+      text-align: center;
+      line-height: 1.4;
+      margin-top: 0.5rem;
+      margin-bottom: 1.8rem;
+      font-family: var(--font-body);
+      font-style: italic;
+    }
+    .premium-article-content .disclaimer {
+      font-size: 0.82rem;
+      line-height: 1.65;
+      color: var(--color-text-muted);
+      border-top: 1px solid var(--color-border);
+      margin-top: 3.5rem;
+      padding-top: 1.5rem;
+      font-family: var(--font-body);
+    }
+
+    /* Article Footer Meta */
+    .article-footer-meta {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      border-top: 1px solid var(--color-border);
+      padding-top: 1.5rem;
+      font-family: var(--font-body);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Redesigned Share Buttons */
+    .share-story-box {
+      margin-top: 2rem;
+      background: var(--color-bg-primary);
+      padding: 1.5rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border);
+    }
+    .share-story-box .share-title {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .share-grid-redesign {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+    @media (max-width: 500px) {
+      .share-grid-redesign {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .share-btn-redesign {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 0.75rem;
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .share-btn-redesign:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+
+    /* Lightbox Pointer hover effect */
+    .premium-img-wrapper img, .article-hero-wrapper img {
+      cursor: zoom-in;
+    }
+
+    /* Lightbox Modal Styles */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .lightbox-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+    .lightbox-content-container {
+      position: relative;
+      max-width: 85%;
+      max-height: 85%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-modal img {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.15);
+      transform: scale(0.95);
+      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .lightbox-modal.active img {
+      transform: scale(1);
+    }
+    .lightbox-caption {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.95rem;
+      font-family: var(--font-body);
+      margin-top: 1rem;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      color: #ffffff;
+      font-size: 40px;
+      font-weight: 300;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 10100;
+      transition: transform 0.2s ease, color 0.2s;
+    }
+    .lightbox-close:hover {
+      color: var(--color-accent);
+      transform: scale(1.1);
+    }
+    .lightbox-prev, .lightbox-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #ffffff;
+      font-size: 36px;
+      font-weight: 300;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10100;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .lightbox-prev:hover, .lightbox-next:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: var(--color-accent);
+      border-color: var(--color-accent);
+    }
+    .lightbox-prev {
+      left: 35px;
+    }
+    .lightbox-next {
+      right: 35px;
+    }
+    @media (max-width: 768px) {
+      .lightbox-prev, .lightbox-next {
+        width: 45px;
+        height: 45px;
+        font-size: 24px;
+      }
+      .lightbox-prev { left: 15px; }
+      .lightbox-next { right: 15px; }
+      .lightbox-close { top: 15px; right: 20px; font-size: 32px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -29,57 +366,106 @@
         <!-- Main Article Panel -->
         <div class="blog-article-panel">
           <!-- Meta Data Header -->
-        <div class="blog-meta-header" style="margin-bottom: 2rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1.5rem;">
-          <span style="display:inline-block; background-color:var(--color-bg-secondary); color:var(--color-primary); padding:4px 12px; border-radius:20px; font-size:0.75rem; font-family:var(--font-heading); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom: 0.5rem;">
-            Housing
-          </span>
-          <h1 style="font-size: 2.5rem; line-height: 1.15; color: var(--color-primary-dark); margin-top: 0.5rem; margin-bottom: 0.5rem; font-family: var(--font-heading); font-weight: 700;">
-            Mysore Road – Bangalore’s best kept secret
-          </h1>
-          <p style="font-size:0.85rem; color:var(--color-text-secondary); font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">
-            By GoodEarth | Published On: May 24, 2021
-          </p>
-        </div>
-
-        <!-- Article Hero Image -->
-        <div style="border-radius: var(--radius-md); overflow: hidden; margin-bottom: 2rem; border: 1px solid var(--color-border); aspect-ratio: 16/9;">
-          <img src="https://goodearth.org.in/connect/wp-content/uploads/2021/05/Kengeri-Bridge.jpg" alt="Mysore Road – Bangalore’s best kept secret" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
-        </div>
-
-        <!-- Original source alert -->
-        <div style="background-color: var(--color-bg-secondary); border-left: 4px solid var(--color-accent); padding: 1rem; border-radius: var(--radius-sm); margin-bottom: 2rem; font-size: 0.9rem; color: var(--color-text-secondary); font-family: var(--font-body);">
-          This article is a clone from the original GoodEarth Connect catalog. View the original post at: 
-          <a href="https://goodearth.org.in/connect/housing/mysore-road/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary-dark); font-weight: 600; text-decoration: underline;">
-            Mysore Road – Bangalore’s best kept secret &nearr;
-          </a>
-        </div>
-
-        <!-- Body Text Content -->
-        <div class="blog-body-content" style="font-size: 1.15rem; line-height: 1.7; color: var(--color-text-primary); font-family: var(--font-body);">
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">Exploring the sustainability and design aspects of mysore road and its integration within community architectures.</p>
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">
-            This page represents a pre-rendered static structure matching the original blog configuration of the GoodEarth website. You can edit this file directly to add text paragraphs, galleries, quotes, or tables.
-          </p>
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">
-            Place your custom blog assets (such as local images, diagrams, or PDF downloads) inside the local <code>assets/</code> folder in this directory, and reference them relatively (e.g. <code>&lt;img src="assets/my-image.jpg"&gt;</code>).
-          </p>
-        </div>
-
-        <!-- Meta Data Footer -->
-        <div class="blog-meta-footer" style="margin-top: 3rem; font-size: 0.85rem; color: var(--color-text-muted); border-top: 1px solid var(--color-border); padding-top: 1.5rem; font-family: var(--font-body);">
-          By GoodEarth | May 24, 2021 | Housing | 0 Comments
-        </div>
-
-        <!-- Share Story Container -->
-        <div class="share-story-container">
-          <div class="share-title">Share This Story, Choose Your Platform!</div>
-          <div class="share-buttons-grid">
-            <button class="share-btn" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">Facebook</button>
-            <button class="share-btn" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(window.location.href), '_blank')">WhatsApp</button>
-            <button class="share-btn" onclick="window.open('https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(window.location.href), '_blank')">Pinterest</button>
-            <button class="share-btn" onclick="window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href)">Email</button>
+          <div class="article-header">
+            <span class="article-category-badge">Housing</span>
+            <h1 class="article-title-heading">Mysore Road</h1>
+            <h4 class="article-subtitle">Bangalore’s best kept secret</h4>
+            <div class="article-meta-info">
+              By <a href="https://goodearth.org.in/connect/author/goodearth/" target="_blank" rel="noopener noreferrer">GoodEarth</a> &nbsp;|&nbsp; May 24, 2021
+            </div>
           </div>
-        </div>
+
+          <!-- Article Hero Image -->
+          <div class="article-hero-wrapper">
+            <img src="../../assets/images/Kengeri-Bridge.webp" alt="Mysore Road – Bangalore’s best kept secret" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+          </div>
+
+          <!-- Body Text Content -->
+          <div class="premium-article-content">
+            <p>At GoodEarth we choose our community locations with care and deliberation. We seek out locations that offer one a harmony with nature while at the same time being in proximity to all the important locations that one would need for lifestyle, work and recreation. In Bangalore we are located in South Bangalore on Mysore Road, which has an interesting history and is today one of the most sought after locations.</p>
+            <p>Mysore Road as the name goes, leads to the city of Mysore one of whose many names is “the city of incense.” Is it any surprise then that the road connecting Bangalore and this city smells like freedom?</p>
+
+            <div class="premium-img-wrapper">
+              <img src="../../assets/images/1A0C2662-5E58-420F-A649-2A9F6ADE9873.webp" alt="South Bangalore Residential Integration" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+            </div>
+
+            <h2>Once upon a quiet, sleepy road</h2>
+            <p>Just a few decades ago, Mysore Road had comprised mostly agricultural farmlands. The most important landmark close by was the site of the Sholay film shoot. The river Vrishabhavathi would serenely wind its way down with water you could drink (once upon a time, yes). It was also home to many industrial areas and nodes.</p>
+            <p>Post the IT boom, Mysore Road did lag behind in terms of the numbers, but it did see slow traction. And once it’s sister hubs of Jayanagar and Kanakapura Road started booming, Mysore Road followed suit. However it did so, albeit with a slower and gentler pace. It slowly grew into one of the most sought-after real estate opportunities in Karnataka. One of the important reasons is the emergence of recent initiatives that have allowed it to forge closer ties with city and suburbs.</p>
+
+            <div class="premium-img-wrapper">
+              <img src="../../assets/images/9548FA8E-7829-4C7B-980E-BABBC130E193-scaled.webp" alt="Old Mysore Road agricultural fields and landscape" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+              <div class="caption-under-img">Old Mysore Road</div>
+            </div>
+
+            <h2>Mysore Road Today – A Techno-Commercial hub today</h2>
+            <p>Mysore Road today has developed into a major hub, yet without the travails and drawbacks that accompany development. For one, it offers all the advantages of location and infrastructure yet as earlier mentioned, it comes with an air of freedom – a feeling you can expect in a precious few real estate areas that are booming.</p>
+            <p>On one side, there’s the strategic proximity to schools, colleges, hospitals, malls, and supermarkets. On the other side, it keeps you far from the proverbial madding crowd! The serene ambiance that permeates along this road seems unprecedented, given how easily accessible those private and public facilities are – especially if you are at any of GoodEarth’s residential communities on Mysore Road.</p>
+
+            <h2>All that you need – A hop, skip and a jump away</h2>
+            <p>In terms of infrastructure, Mysore Road actually offers some of the best options. And even a few that rival the IT hubs located across the city.</p>
+            <p>It houses one of the six major bus station hubs for the city and interstate travel. The NICE Road takes you to any part of Bangalore’s suburbs in a jiffy while the Outer Ring Road gets you into the inner suburbs quickly and easily.</p>
+            <p>The Namma Metro offers a continuously expanding connectivity and the around the corner launch (June 2021) of the Purple with six stations will further accentuate the commuting array, ultimately reaching Bangalore International Airport in the year 2025 as per government messages. This section will also be the first of BMRCL which will have an automatic fare collection system compatible with national common mobility card and QR-enabled payment apps.</p>
+            <p>The Prominent suburban railway stations in Nayandahalli and Kengeri also provide rail access to other parts of Bangalore and Karnataka. The upcoming Challaghatta Metro Station is just 1.5 kms from GoodEarth Malhar. For those who live here, reaching the train station is just a hop, skip and jump away.</p>
+
+            <div class="premium-img-wrapper">
+              <img src="../../assets/images/A7566947-8D10-4DDD-B2A1-84FE454A34CD.webp" alt="NICE Road Bangalore transition corridor" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+              <div class="caption-under-img">Nice-Road-Junction</div>
+            </div>
+
+            <h2>South Bangalore’s Latest IT Hub</h2>
+            <p>The growing interest shown by the private sector is another major reason for Mysore Road becoming the talk of the town in the south Indian real estate market. The Global Tech Village, an enormous IT park located a little off the highway, houses some of the largest technology brands like Accenture, Mindtree, Crompton Greaves, and many more. Mysore Road also provides easy access to IT and industrial hubs such as Peenya and Electronic City through the NICE Road. By offering top-notch career opportunities, ensuring better infrastructure, and enabling more travel connectivity – it is rapidly transforming into a fully sustainable job marketplace.</p>
+
+            <div class="premium-img-wrapper">
+              <img src="../../assets/images/DD2878A6-107A-4C4D-B640-22E71486F759.webp" alt="Global Tech Village IT Park offices" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+              <div class="caption-under-img">Global-Tech-Park</div>
+            </div>
+
+            <h2>Infrastructure – reach anywhere in a jiffy</h2>
+            <p>The Bangalore-Mysore Infrastructure Corridor (BMIC) project has taken massive strides – reducing the travel time between Bangalore and Mysore to 90 minutes. One of the near-future projects would be constructing a 6-lane expressway that included five integrated townships and ring roads to make travel faster and more simplified. Reaching the airport from GoodEarth Malhar is fairly comfortable too. Taking the NICE road will get you there in a jiffy avoiding the hustle and bustle of the city.</p>
+
+            <div class="premium-img-wrapper">
+              <img src="../../assets/images/Malhar-Map-with-Challaghatta-Station.webp" alt="Map highlighting GoodEarth Malhar relative to Challaghatta Metro Station" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+            </div>
+
+            <h2>Surrounded by the best educational institutions</h2>
+            <p>And that’s not all – there are high-quality educational centers and schools like Tattva School, Delhi Public School, Candor International, Orchids International School, National Hill View Public School, Jain International Residential School, Valley School, Kumarans School, Steiner School and the Centre for Learning. Amongst the higher educational institutions we have the esteemed RV College of Engineering, Bangalore Institute Of Management Studies, and Don Bosco Institute Of Technology – just to name a few. At GoodEarth our children are easily able to commute as all educational institutions buses and vans access our communities with ease.</p>
+            <p>Just as importantly, this location provides access to world-class hospitals – from BGS International Hospital, RR Medical College, SDS Ayurveda College and Hospital and many more close by.</p>
+
+            <div class="premium-img-wrapper">
+              <img src="../../assets/images/Valley-School.webp" alt="Valley School forest canopy and campus" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+              <div class="caption-under-img">Valley-School</div>
+            </div>
+
+            <h2>Entertainment and fun – all around the corner</h2>
+            <p>Unlike heavily urbanized areas, you also get the advantage of walking into departmental stores that are never overcrowded and always well-stocked. If it’s wholesome fun and entertainment you want, there’s plenty of that too. You can shop until you drop at the Gopalan Arcade Mall, drop by Innovative Film City or visit Wonderla – one of the largest chains of amusement parks across India which is just 20 minutes away from GoodEarth Malhar. And if it’s a nice morning of Golf that you crave then you can just head out to the Eagleton Golf Resort which also close by. Whether you have a nuclear family or an extended one, there’s something for everyone along this stretch. And if it’s an early morning drive for one of Bangalore’s famous gastro treats – Idli Vada and Dosa, the Mysore Road’s the place to be. It is a foodie’s delight when it comes to South Indian traditional delicacies. And close to the Kengeri and RR Nagar regions you have gourmet Japanese Food, Biryani Joints and some chic Gastro and Brew pubs in various degrees of proximity.</p>
+
+            <div class="premium-img-wrapper">
+              <img src="../../assets/images/WonderLA.webp" alt="WonderLA amusement park gate" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+              <div class="caption-under-img">WonderLA</div>
+            </div>
+
+            <p>It’s no surprise that the future of Mysore Road is about to shine bright. And if you are living at GoodEarth Malhar, then you can be sure that you will get the best of all worlds.</p>
+            <p>At GoodEarth our communities express part of the Mysore Road essence. We envision a future where living spaces are built within thriving, bustling, fully integrated communities of people who share a common vision of sustainability. All our partnerships and developments cultivate a strong sharing of economy, innovation, entrepreneurship and, above all, community cohesion.</p>
+
+            <p class="disclaimer">This blog contains copyrighted material the use of which has not always been specifically authorised by the owner. GoodEarth does not claim to hold copyright of any or all the images used here and. Allowance is made for fair use for purposes such as images & photos within the public domain. Fair use is a use permitted by copyright statute that might otherwise be infringing. These are images within the public domain and available through public access search engines. We are not using these images/artefacts for any commercial purpose and only for purposes of visual depiction. We believe this constitutes a “fair use” of any such copyrighted material. If you wish to use such material from this blog/site, that go beyond purposes of ‘fair usage’, you must obtain permission from the owner.</p>
+          </div>
+
+          <!-- Article Footer Meta -->
+          <div class="article-footer-meta">
+            <span>By GoodEarth | May 24, 2021 | Housing</span>
+          </div>
+
+          <!-- Share Story Container -->
+          <div class="share-story-box">
+            <div class="share-title">Share This Story, Choose Your Platform!</div>
+            <div class="share-grid-redesign">
+              <button class="share-btn-redesign" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">Facebook</button>
+              <button class="share-btn-redesign" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(window.location.href), '_blank')">WhatsApp</button>
+              <button class="share-btn-redesign" onclick="window.open('https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(window.location.href), '_blank')">Pinterest</button>
+              <button class="share-btn-redesign" onclick="window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href)">Email</button>
+            </div>
+          </div>
         </div>
         
         <!-- Related Posts Panel -->
@@ -89,72 +475,72 @@
             <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--color-primary-dark); margin-bottom: 2rem;">Related Posts</h3>
             <div class="articles-grid-original" style="grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
                       <article class="original-card">
-                    <a href="../../housing/reviving-communal-living-goodearths-sustainable-approach-to-group-housing-in-india/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/07/10-07-camp-1.webp" alt="Reviving communal living: GoodEarth's sustainable approach to group housing in India" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                    <a href="../../housing/reviving-communal-living-goodearths-sustainable-approach-to-group-housing-in-india/" class="original-card-image-link">
+            <img src="../../assets/images/10-07-camp-1_1.webp" alt="Reviving communal living: GoodEarth's sustainable approach to group housing in India" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
             <span class="card-badge">Housing</span>
           </a>
           <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../housing/reviving-communal-living-goodearths-sustainable-approach-to-group-housing-in-india/index.html">Reviving communal living: GoodEarth's sustainable approach to group housing in India</a>
+            <a href="../../housing/reviving-communal-living-goodearths-sustainable-approach-to-group-housing-in-india/">Reviving communal living: GoodEarth's sustainable approach to group housing in India</a>
           </h4>
           <div class="original-card-meta" style="font-size: 0.68rem;">
             By GoodEarth Team | July 10, 2023
           </div>
                     <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../housing/reviving-communal-living-goodearths-sustainable-approach-to-group-housing-in-india/index.html" class="card-link" style="font-size: 0.72rem;">
+            <a href="../../housing/reviving-communal-living-goodearths-sustainable-approach-to-group-housing-in-india/" class="card-link" style="font-size: 0.72rem;">
               Read Article
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
         </article>
         <article class="original-card">
-                    <a href="../../housing/how-open-spaces-and-nature-are-good-for-your-inner-wellness/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2022/08/Goodearth-Resonance-68.jpg" alt="How open spaces and nature are good for your inner wellness" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                    <a href="../../housing/how-open-spaces-and-nature-are-good-for-your-inner-wellness/" class="original-card-image-link">
+            <img src="../../assets/images/Goodearth-Resonance-68_1.webp" alt="How open spaces and nature are good for your inner wellness" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
             <span class="card-badge">Housing</span>
           </a>
           <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../housing/how-open-spaces-and-nature-are-good-for-your-inner-wellness/index.html">How open spaces and nature are good for your inner wellness</a>
+            <a href="../../housing/how-open-spaces-and-nature-are-good-for-your-inner-wellness/">How open spaces and nature are good for your inner wellness</a>
           </h4>
           <div class="original-card-meta" style="font-size: 0.68rem;">
             By GoodEarth Team | August 12, 2022
           </div>
                     <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../housing/how-open-spaces-and-nature-are-good-for-your-inner-wellness/index.html" class="card-link" style="font-size: 0.72rem;">
+            <a href="../../housing/how-open-spaces-and-nature-are-good-for-your-inner-wellness/" class="card-link" style="font-size: 0.72rem;">
               Read Article
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
         </article>
         <article class="original-card">
-                    <a href="../../housing/designing-a-residential-project-for-wellness-sustainability-and-harmony/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2022/05/3699.jpg" alt="Designing a residential project for wellness, sustainability and harmony" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                    <a href="../../housing/designing-a-residential-project-for-wellness-sustainability-and-harmony/" class="original-card-image-link">
+            <img src="../../assets/images/3699_1.webp" alt="Designing a residential project for wellness, sustainability and harmony" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
             <span class="card-badge">Housing</span>
           </a>
           <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../housing/designing-a-residential-project-for-wellness-sustainability-and-harmony/index.html">Designing a residential project for wellness, sustainability and harmony</a>
+            <a href="../../housing/designing-a-residential-project-for-wellness-sustainability-and-harmony/">Designing a residential project for wellness, sustainability and harmony</a>
           </h4>
           <div class="original-card-meta" style="font-size: 0.68rem;">
             By GoodEarth Team | May 13, 2022
           </div>
                     <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../housing/designing-a-residential-project-for-wellness-sustainability-and-harmony/index.html" class="card-link" style="font-size: 0.72rem;">
+            <a href="../../housing/designing-a-residential-project-for-wellness-sustainability-and-harmony/" class="card-link" style="font-size: 0.72rem;">
               Read Article
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
         </article>
         <article class="original-card">
-                    <a href="../../housing/the-lap-of-nature-is-where-we-are-truly-nurtured/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2022/04/IMG_00017.jpg" alt="The lap of nature is where we are truly nurtured" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                    <a href="../../housing/the-lap-of-nature-is-where-we-are-truly-nurtured/" class="original-card-image-link">
+            <img src="../../assets/images/IMG_00017.webp" alt="The lap of nature is where we are truly nurtured" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
             <span class="card-badge">Housing</span>
           </a>
           <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../housing/the-lap-of-nature-is-where-we-are-truly-nurtured/index.html">The lap of nature is where we are truly nurtured</a>
+            <a href="../../housing/the-lap-of-nature-is-where-we-are-truly-nurtured/">The lap of nature is where we are truly nurtured</a>
           </h4>
           <div class="original-card-meta" style="font-size: 0.68rem;">
             By GoodEarth Team | April 22, 2022
           </div>
                     <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../housing/the-lap-of-nature-is-where-we-are-truly-nurtured/index.html" class="card-link" style="font-size: 0.72rem;">
+            <a href="../../housing/the-lap-of-nature-is-where-we-are-truly-nurtured/" class="card-link" style="font-size: 0.72rem;">
               Read Article
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
@@ -213,7 +599,7 @@
 
         <!-- About GoodEarth Widget -->
         <div class="widget-about">
-          <img src="../../assets/images/goodeath-image.jpg" alt="goodeath-image" />
+          <img src="../../assets/images/goodeath-image.webp" alt="goodeath-image" />
           <h3>About GoodEarth</h3>
           <p>At Good Earth, we are engaged in bringing together like-minded people with a common vision of building a sustainable future.</p>
           
@@ -236,37 +622,37 @@
           <div class="tab-content active" id="tab-popular">
             <ul class="tab-post-list">
                         <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/09/Blog-spt14-1-rs.jpg" alt="Role of Compressed Stabilized Earth Blocks in sustainable construction" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Blog-spt14-1-rs_3.webp" alt="Role of Compressed Stabilized Earth Blocks in sustainable construction" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../materials/role-of-compressed-stabilized-earth-blocks-in-sustainable-construction/index.html">Role of Compressed Stabilized Earth Blocks in sustainable construction</a></h4>
+              <h4 class="tab-post-title"><a href="../../materials/role-of-compressed-stabilized-earth-blocks-in-sustainable-construction/">Role of Compressed Stabilized Earth Blocks in sustainable construction</a></h4>
               <div class="tab-post-date">September 14, 2023</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/02/Saarang-Brochure_V4_Corrections_Print-page-71.jpg" alt="GoodEarth Saarang - Live, work & celebrate life at a holistic eco village" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Saarang-Brochure_V4_Corrections_Print-page-71_2.webp" alt="GoodEarth Saarang - Live, work & celebrate life at a holistic eco village" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../sustainability/goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village/index.html">GoodEarth Saarang - Live, work & celebrate life at a holistic eco village</a></h4>
+              <h4 class="tab-post-title"><a href="../../sustainability/goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village/">GoodEarth Saarang - Live, work & celebrate life at a holistic eco village</a></h4>
               <div class="tab-post-date">February 22, 2024</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/03/IMG_00070.webp" alt="Discovering Landscaping Elements - Chappadi Stone" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/IMG_00070_3.webp" alt="Discovering Landscaping Elements - Chappadi Stone" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../design/discovering-landscaping-elements-chappadi-stone/index.html">Discovering Landscaping Elements - Chappadi Stone</a></h4>
+              <h4 class="tab-post-title"><a href="../../design/discovering-landscaping-elements-chappadi-stone/">Discovering Landscaping Elements - Chappadi Stone</a></h4>
               <div class="tab-post-date">March 30, 2024</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Come-Over-Featured-Image_2.webp" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/index.html">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
               <div class="tab-post-date">April 15, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/01/1.jpg" alt="Rediscovering rammed earth construction in modern architecture" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/1_5.webp" alt="Rediscovering rammed earth construction in modern architecture" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../sustainability/rediscovering-rammed-earth-construction-in-modern-architecture/index.html">Rediscovering rammed earth construction in modern architecture</a></h4>
+              <h4 class="tab-post-title"><a href="../../sustainability/rediscovering-rammed-earth-construction-in-modern-architecture/">Rediscovering rammed earth construction in modern architecture</a></h4>
               <div class="tab-post-date">January 12, 2024</div>
             </div>
           </li>
@@ -276,37 +662,37 @@
           <div class="tab-content" id="tab-recent">
             <ul class="tab-post-list">
                         <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Come-Over-Featured-Image_2.webp" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/index.html">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
               <div class="tab-post-date">April 15, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/03/GoodEarth-Resident-Girin-Web-Banner.jpeg" alt="Savvy in Five with Girin | Get closer to the birds around you" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/GoodEarth-Resident-Girin-Web-Banner_2.webp" alt="Savvy in Five with Girin | Get closer to the birds around you" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/savvy-in-five-with-girin-get-closer-to-the-birds-around-you/index.html">Savvy in Five with Girin | Get closer to the birds around you</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/savvy-in-five-with-girin-get-closer-to-the-birds-around-you/">Savvy in Five with Girin | Get closer to the birds around you</a></h4>
               <div class="tab-post-date">March 11, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/01/GE-Ajith.jpg" alt="Come On Over | Ajith, Bindu, and Indulekha's Dream Home." class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/GE-Ajith_2.webp" alt="Come On Over | Ajith, Bindu, and Indulekha's Dream Home." class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-on-over-ajith-bindu-and-indulekhas-dream-home/index.html">Come On Over | Ajith, Bindu, and Indulekha's Dream Home.</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-on-over-ajith-bindu-and-indulekhas-dream-home/">Come On Over | Ajith, Bindu, and Indulekha's Dream Home.</a></h4>
               <div class="tab-post-date">January 17, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2025/12/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori.jpg" alt="Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori_2.webp" alt="Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../beyond-the-fence/beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori/index.html">Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori</a></h4>
+              <h4 class="tab-post-title"><a href="../../beyond-the-fence/beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori/">Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori</a></h4>
               <div class="tab-post-date">December 31, 2025</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2025/12/Hero.webp" alt="GoodEarth Modern Times wins CREDAI Awards 2025" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Hero_2.webp" alt="GoodEarth Modern Times wins CREDAI Awards 2025" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../awards/goodearth-modern-times-wins-credai-awards-2025/index.html">GoodEarth Modern Times wins CREDAI Awards 2025</a></h4>
+              <h4 class="tab-post-title"><a href="../../awards/goodearth-modern-times-wins-credai-awards-2025/">GoodEarth Modern Times wins CREDAI Awards 2025</a></h4>
               <div class="tab-post-date">December 22, 2025</div>
             </div>
           </li>
@@ -331,5 +717,109 @@
   <script src="../../assets/js/videos-data.js"></script>
   <script src="../../assets/js/common.js"></script>
   <script src="../../assets/js/comments.js"></script>
+
+  <!-- Custom Lightbox Markup -->
+  <div id="custom-lightbox" class="lightbox-modal">
+    <button class="lightbox-close" id="lightbox-close-btn" aria-label="Close lightbox">&times;</button>
+    <button class="lightbox-prev" id="lightbox-prev-btn" aria-label="Previous image">&#10094;</button>
+    <div class="lightbox-content-container">
+      <img id="lightbox-img" src="" alt="Lightbox zoom view">
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+    <button class="lightbox-next" id="lightbox-next-btn" aria-label="Next image">&#10095;</button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const images = Array.from(document.querySelectorAll('.article-hero-wrapper img, .premium-img-wrapper img'));
+      const lightbox = document.getElementById('custom-lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      const closeBtn = document.getElementById('lightbox-close-btn');
+      const prevBtn = document.getElementById('lightbox-prev-btn');
+      const nextBtn = document.getElementById('lightbox-next-btn');
+      
+      let currentIndex = 0;
+
+      if (images.length === 0) return;
+
+      // Click on images to open lightbox
+      images.forEach((img, index) => {
+        img.addEventListener('click', () => {
+          currentIndex = index;
+          openLightbox();
+        });
+      });
+
+      function openLightbox() {
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Disable page scrolling
+        updateLightboxContent();
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = ''; // Re-enable page scrolling
+      }
+
+      function updateLightboxContent() {
+        const img = images[currentIndex];
+        lightboxImg.src = img.src;
+        
+        // Use alt text as caption, or construct index metadata
+        const altText = img.alt || "Mysore Road Image";
+        lightboxCaption.textContent = `Image ${currentIndex + 1} of ${images.length} | ${altText}`;
+      }
+
+      function showPrev() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateLightboxContent();
+      }
+
+      // Preload next image function for smoother transitions
+      function preloadNextImage() {
+        const nextIndex = (currentIndex + 1) % images.length;
+        const nextImg = new Image();
+        nextImg.src = images[nextIndex].src;
+      }
+
+      function showNext() {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateLightboxContent();
+        preloadNextImage();
+      }
+
+      // Action Handlers
+      closeBtn.addEventListener('click', closeLightbox);
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showPrev();
+      });
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showNext();
+      });
+
+      // Close by clicking background overlay
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target === lightbox.querySelector('.lightbox-content-container')) {
+          closeLightbox();
+        }
+      });
+
+      // Keyboard Controls
+      document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        
+        if (e.key === 'Escape' || e.key === 'Esc') {
+          closeLightbox();
+        } else if (e.key === 'ArrowLeft') {
+          showPrev();
+        } else if (e.key === 'ArrowRight') {
+          showNext();
+        }
+      });
+    });
+  </script>
 </body>
 </html>

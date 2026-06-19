@@ -8,32 +8,32 @@
 })();
 
 const headerHTML = `<div class="header-container">
-  <a href="/index.html" class="logo-link">
-    <img src="assets/images/logo.svg" alt="GoodEarth Logo" class="logo-img" style="height: 50px; width: auto; display: block;">
+  <a href="/" class="logo-link">
+    <img src="../images/logo.svg" alt="GoodEarth Logo" class="logo-img" style="height: 50px; width: auto; display: block;">
   </a>
   <nav class="nav-menu-wrapper">
     <ul class="nav-menu">
-      <li><a href="/index.html" class="nav-link active">Home</a></li>
+      <li><a href="/" class="nav-link active">Home</a></li>
       <li class="nav-dropdown">
-        <a href="/category/materials/index.html" class="nav-link">Blogs</a>
+        <a href="/category/materials/" class="nav-link">Blogs</a>
         <ul class="dropdown-menu">
-          <li><a href="/category/all/index.html">All Blogs</a></li>
-          <li><a href="/category/materials/index.html">Materials</a></li>
-          <li><a href="/category/water/index.html">Water</a></li>
-          <li><a href="/category/community/index.html">Community</a></li>
-          <li><a href="/category/sustainability/index.html">Sustainability</a></li>
-          <li><a href="/category/awards/index.html">Awards</a></li>
+          <li><a href="/category/all/">All Blogs</a></li>
+          <li><a href="/category/materials/">Materials</a></li>
+          <li><a href="/category/water/">Water</a></li>
+          <li><a href="/category/community/">Community</a></li>
+          <li><a href="/category/sustainability/">Sustainability</a></li>
+          <li><a href="/category/awards/">Awards</a></li>
         </ul>
       </li>
-      <li><a href="/index.html#opinions-section" class="nav-link">Opinions</a></li>
+      <li><a href="/category/opinions/" class="nav-link">Opinions</a></li>
       <li class="nav-dropdown">
-        <a href="/index.html#spotlights-section" class="nav-link">Spotlight</a>
+        <a href="/#spotlights-section" class="nav-link">Spotlight</a>
         <ul class="dropdown-menu">
-          <li><a href="/index.html#creators-spotlight-section">Creators</a></li>
-          <li><a href="/index.html#residents-spotlight-section">Residents</a></li>
+          <li><a href="/#creators-spotlight-section">Creators</a></li>
+          <li><a href="/#residents-spotlight-section">Residents</a></li>
         </ul>
       </li>
-      <li><a href="/index.html#connect-section" class="nav-link">Contact</a></li>
+      <li><a href="/#connect-section" class="nav-link">Contact</a></li>
     </ul>
   </nav>
   <div class="header-actions">
@@ -66,7 +66,7 @@ const headerHTML = `<div class="header-container">
 `;
 const footerHTML = `<div class="footer-container-original">
   <div class="footer-section">
-    <img src="assets/images/logo.svg" alt="GoodEarth Logo" class="footer-logo-img" style="height: 36px; width: auto; display: block; margin-bottom: 1.5rem; filter: brightness(0) invert(1);">
+    <img src="../images/logo.svg" alt="GoodEarth Logo" class="footer-logo-img" style="height: 36px; width: auto; display: block; margin-bottom: 1.5rem; filter: brightness(0) invert(1);">
     <p style="color: #999999; line-height: 1.6; margin-bottom: 1.5rem;">
       Cultivating conscious communities since 1996. Regenerative living rooted in nature, craft, and community.
     </p>
@@ -75,34 +75,34 @@ const footerHTML = `<div class="footer-container-original">
   <div class="footer-section">
     <h4 class="footer-title-original">Categories</h4>
     <div class="footer-categories-grid">
-      <a href="/category/awards/index.html">Awards</a>
-      <a href="/category/beyond-the-fence/index.html">Beyond the fence</a>
-      <a href="/category/climate-responsive-design/index.html">Climate-responsive design</a>
-      <a href="/category/water/come-over/index.html">Come Over</a>
-      <a href="/category/community/index.html">Community</a>
-      <a href="/category/creators-spotlight/index.html">Creators Spotlight</a>
-      <a href="/category/design/index.html">Design</a>
-      <a href="/category/digest/index.html">Digest</a>
-      <a href="/category/ecological-restoration/index.html">Ecological Restoration</a>
-      <a href="/category/ecology/index.html">Ecology</a>
-      <a href="/category/ecoscaping/index.html">Ecoscaping</a>
-      <a href="/category/events/index.html">Events</a>
-      <a href="/category/goodearth-initiatives/index.html">GoodEarth Initiatives</a>
-      <a href="/category/goodearth-interiors/index.html">GoodEarth Interiors</a>
-      <a href="/category/goodearth-social-initiatives/index.html">GoodEarth Social Initiatives</a>
-      <a href="/category/housing/index.html">Group Housing</a>
-      <a href="/category/holistic-farming/index.html">Holistic farming</a>
-      <a href="/category/knowledge/index.html">Knowledge</a>
-      <a href="/category/materials/index.html">Materials</a>
-      <a href="/category/opinions/index.html">Opinions</a>
-      <a href="/category/regenerative-agriculture/index.html">Regenerative agriculture</a>
-      <a href="/category/residents-spotlight/index.html">Residents Spotlight</a>
-      <a href="/category/sports/index.html">Sports</a>
-      <a href="/category/sustainability/index.html">Sustainability</a>
-      <a href="/category/traditional-techniques/index.html">Traditional techniques</a>
-      <a href="/category/residents-spotlight/tresh-takes/index.html">Fresh Takes</a>
-      <a href="/category/uncategorized/index.html">Uncategorized</a>
-      <a href="/category/water/index.html">Water</a>
+      <a href="/category/awards/">Awards</a>
+      <a href="/category/beyond-the-fence/">Beyond the fence</a>
+      <a href="/category/climate-responsive-design/">Climate-responsive design</a>
+      <a href="/category/water/come-over/">Come Over</a>
+      <a href="/category/community/">Community</a>
+      <a href="/category/creators-spotlight/">Creators Spotlight</a>
+      <a href="/category/design/">Design</a>
+      <a href="/category/digest/">Digest</a>
+      <a href="/category/ecological-restoration/">Ecological Restoration</a>
+      <a href="/category/ecology/">Ecology</a>
+      <a href="/category/ecoscaping/">Ecoscaping</a>
+      <a href="/category/events/">Events</a>
+      <a href="/category/goodearth-initiatives/">GoodEarth Initiatives</a>
+      <a href="/category/goodearth-interiors/">GoodEarth Interiors</a>
+      <a href="/category/goodearth-social-initiatives/">GoodEarth Social Initiatives</a>
+      <a href="/category/housing/">Group Housing</a>
+      <a href="/category/holistic-farming/">Holistic farming</a>
+      <a href="/category/knowledge/">Knowledge</a>
+      <a href="/category/materials/">Materials</a>
+      <a href="/category/opinions/">Opinions</a>
+      <a href="/category/regenerative-agriculture/">Regenerative agriculture</a>
+      <a href="/category/residents-spotlight/">Residents Spotlight</a>
+      <a href="/category/sports/">Sports</a>
+      <a href="/category/sustainability/">Sustainability</a>
+      <a href="/category/traditional-techniques/">Traditional techniques</a>
+      <a href="/category/residents-spotlight/tresh-takes/">Fresh Takes</a>
+      <a href="/category/uncategorized/">Uncategorized</a>
+      <a href="/category/water/">Water</a>
     </div>
   </div>
 
@@ -161,7 +161,7 @@ const modalHTML = `
 const sidebarHTML = `
         <!-- About GoodEarth Widget -->
         <div class="widget-about">
-          <img src="/assets/images/goodeath-image.jpg" alt="goodeath-image" />
+          <img src="/assets/images/goodeath-image.webp" alt="goodeath-image" />
           <h3>About GoodEarth</h3>
           <p>At Good Earth, we are engaged in bringing together like-minded people with a common vision of building a sustainable future.</p>
           
@@ -201,37 +201,37 @@ const sidebarHTML = `
             <div class="tab-content active" id="tab-popular">
               <ul class="tab-post-list">
                 <li class="tab-post-item">
-                  <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/09/Blog-spt14-1-rs.jpg" alt="Role of Compressed Stabilized Earth Blocks in sustainable construction" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+                  <img src="/assets/images/Blog-spt14-1-rs_3.webp" alt="Role of Compressed Stabilized Earth Blocks in sustainable construction" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
                   <div class="tab-post-info">
-                    <h4 class="tab-post-title"><a href="/materials/role-of-compressed-stabilized-earth-blocks-in-sustainable-construction/index.html">Role of Compressed Stabilized Earth Blocks in sustainable construction</a></h4>
+                    <h4 class="tab-post-title"><a href="/materials/role-of-compressed-stabilized-earth-blocks-in-sustainable-construction/">Role of Compressed Stabilized Earth Blocks in sustainable construction</a></h4>
                     <div class="tab-post-date">September 14, 2023</div>
                   </div>
                 </li>
                 <li class="tab-post-item">
-                  <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/02/Saarang-Brochure_V4_Corrections_Print-page-71.jpg" alt="GoodEarth Saarang - Live, work & celebrate life at a holistic eco village" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+                  <img src="/assets/images/Saarang-Brochure_V4_Corrections_Print-page-71_2.webp" alt="GoodEarth Saarang - Live, work & celebrate life at a holistic eco village" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
                   <div class="tab-post-info">
-                    <h4 class="tab-post-title"><a href="/sustainability/goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village/index.html">GoodEarth Saarang - Live, work & celebrate life at a holistic eco village</a></h4>
+                    <h4 class="tab-post-title"><a href="/sustainability/goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village/">GoodEarth Saarang - Live, work & celebrate life at a holistic eco village</a></h4>
                     <div class="tab-post-date">February 22, 2024</div>
                   </div>
                 </li>
                 <li class="tab-post-item">
-                  <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/03/IMG_00070.webp" alt="Discovering Landscaping Elements - Chappadi Stone" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+                  <img src="/assets/images/IMG_00070_3.webp" alt="Discovering Landscaping Elements - Chappadi Stone" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
                   <div class="tab-post-info">
-                    <h4 class="tab-post-title"><a href="/design/discovering-landscaping-elements-chappadi-stone/index.html">Discovering Landscaping Elements - Chappadi Stone</a></h4>
+                    <h4 class="tab-post-title"><a href="/design/discovering-landscaping-elements-chappadi-stone/">Discovering Landscaping Elements - Chappadi Stone</a></h4>
                     <div class="tab-post-date">March 30, 2024</div>
                   </div>
                 </li>
                 <li class="tab-post-item">
-                  <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+                  <img src="/assets/images/Come-Over-Featured-Image_2.webp" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
                   <div class="tab-post-info">
-                    <h4 class="tab-post-title"><a href="/residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/index.html">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
+                    <h4 class="tab-post-title"><a href="/residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
                     <div class="tab-post-date">April 15, 2026</div>
                   </div>
                 </li>
                 <li class="tab-post-item">
-                  <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/01/1.jpg" alt="Rediscovering rammed earth construction in modern architecture" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+                  <img src="/assets/images/1_5.webp" alt="Rediscovering rammed earth construction in modern architecture" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
                   <div class="tab-post-info">
-                    <h4 class="tab-post-title"><a href="/sustainability/rediscovering-rammed-earth-construction-in-modern-architecture/index.html">Rediscovering rammed earth construction in modern architecture</a></h4>
+                    <h4 class="tab-post-title"><a href="/sustainability/rediscovering-rammed-earth-construction-in-modern-architecture/">Rediscovering rammed earth construction in modern architecture</a></h4>
                     <div class="tab-post-date">January 12, 2024</div>
                   </div>
                 </li>
@@ -241,37 +241,37 @@ const sidebarHTML = `
             <div class="tab-content" id="tab-recent">
               <ul class="tab-post-list">
                 <li class="tab-post-item">
-                  <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+                  <img src="/assets/images/Come-Over-Featured-Image_2.webp" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
                   <div class="tab-post-info">
-                    <h4 class="tab-post-title"><a href="/residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/index.html">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
+                    <h4 class="tab-post-title"><a href="/residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
                     <div class="tab-post-date">April 15, 2026</div>
                   </div>
                 </li>
                 <li class="tab-post-item">
-                  <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/03/GoodEarth-Resident-Girin-Web-Banner.jpeg" alt="Savvy in Five with Girin | Get closer to the birds around you" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+                  <img src="/assets/images/GoodEarth-Resident-Girin-Web-Banner_2.webp" alt="Savvy in Five with Girin | Get closer to the birds around you" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
                   <div class="tab-post-info">
-                    <h4 class="tab-post-title"><a href="/residents-spotlight/savvy-in-five-with-girin-get-closer-to-the-birds-around-you/index.html">Savvy in Five with Girin | Get closer to the birds around you</a></h4>
+                    <h4 class="tab-post-title"><a href="/residents-spotlight/savvy-in-five-with-girin-get-closer-to-the-birds-around-you/">Savvy in Five with Girin | Get closer to the birds around you</a></h4>
                     <div class="tab-post-date">March 11, 2026</div>
                   </div>
                 </li>
                 <li class="tab-post-item">
-                  <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/01/GE-Ajith.jpg" alt="Come On Over | Ajith, Bindu, and Indulekha's Dream Home." class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+                  <img src="/assets/images/GE-Ajith_2.webp" alt="Come On Over | Ajith, Bindu, and Indulekha's Dream Home." class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
                   <div class="tab-post-info">
-                    <h4 class="tab-post-title"><a href="/residents-spotlight/come-on-over-ajith-bindu-and-indulekhas-dream-home/index.html">Come On Over | Ajith, Bindu, and Indulekha's Dream Home.</a></h4>
+                    <h4 class="tab-post-title"><a href="/residents-spotlight/come-on-over-ajith-bindu-and-indulekhas-dream-home/">Come On Over | Ajith, Bindu, and Indulekha's Dream Home.</a></h4>
                     <div class="tab-post-date">January 17, 2026</div>
                   </div>
                 </li>
                 <li class="tab-post-item">
-                  <img src="https://goodearth.org.in/connect/wp-content/uploads/2025/12/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori.jpg" alt="Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+                  <img src="/assets/images/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori_2.webp" alt="Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
                   <div class="tab-post-info">
-                    <h4 class="tab-post-title"><a href="/beyond-the-fence/beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori/index.html">Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori</a></h4>
+                    <h4 class="tab-post-title"><a href="/beyond-the-fence/beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori/">Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori</a></h4>
                     <div class="tab-post-date">December 31, 2025</div>
                   </div>
                 </li>
                 <li class="tab-post-item">
-                  <img src="https://goodearth.org.in/connect/wp-content/uploads/2025/12/Hero.webp" alt="GoodEarth Modern Times wins CREDAI Awards 2025" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+                  <img src="/assets/images/Hero_2.webp" alt="GoodEarth Modern Times wins CREDAI Awards 2025" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
                   <div class="tab-post-info">
-                    <h4 class="tab-post-title"><a href="/awards/goodearth-modern-times-wins-credai-awards-2025/index.html">GoodEarth Modern Times wins CREDAI Awards 2025</a></h4>
+                    <h4 class="tab-post-title"><a href="/awards/goodearth-modern-times-wins-credai-awards-2025/">GoodEarth Modern Times wins CREDAI Awards 2025</a></h4>
                     <div class="tab-post-date">December 22, 2025</div>
                   </div>
                 </li>
@@ -358,7 +358,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Update logo link & image src dynamically
     const logoLink = headerContainer.querySelector(".logo-link");
     if (logoLink) {
-      logoLink.href = relativePrefix + "index.html";
+      logoLink.href = relativePrefix || "./";
     }
     const logoImg = headerContainer.querySelector(".logo-img");
     if (logoImg) {
@@ -457,6 +457,105 @@ document.addEventListener("DOMContentLoaded", () => {
         closeModal();
       }
     });
+  }
+
+  // Inject Previous & Next Blog Navigation
+  (function initPostNavigation() {
+    if (!window.allPosts || !Array.isArray(window.allPosts) || window.allPosts.length === 0) {
+      return;
+    }
+
+    const pathname = window.location.pathname.toLowerCase();
+    const decodedPathname = decodeURIComponent(pathname);
+    const pathSegments = decodedPathname.split('/').filter(Boolean);
+
+    let currentPost = null;
+    for (const post of window.allPosts) {
+      if (pathSegments.some(segment => segment === post.slug.toLowerCase())) {
+        currentPost = post;
+        break;
+      }
+    }
+
+    if (!currentPost) return;
+
+    // Filter posts of the same category, fallback to all if none other exist
+    let siblingPosts = window.allPosts.filter(p => p.category === currentPost.category);
+    if (siblingPosts.length <= 1) {
+      siblingPosts = window.allPosts;
+    }
+
+    const currentIndex = siblingPosts.findIndex(p => p.slug === currentPost.slug);
+    if (currentIndex === -1) return;
+
+    // Determine Prev and Next (circular wrap-around)
+    const nextPost = siblingPosts[(currentIndex - 1 + siblingPosts.length) % siblingPosts.length];
+    const prevPost = siblingPosts[(currentIndex + 1) % siblingPosts.length];
+
+    if (!nextPost && !prevPost) return;
+
+    // Find insertion target: after .share-story-box, or at the bottom of .blog-article-panel
+    const targetElement = document.querySelector('.share-story-box') || document.querySelector('.blog-article-panel');
+    if (!targetElement) return;
+
+    const navWrapper = document.createElement('div');
+    navWrapper.className = 'post-navigation-wrapper';
+
+    // Helper to format URL
+    const getPostUrl = (post) => {
+      const prefix = 'https://goodearth.org.in/connect/';
+      if (post.original_url.startsWith(prefix)) {
+        let relativePath = post.original_url.substring(prefix.length);
+        if (!relativePath.endsWith('/')) {
+          relativePath += '/';
+        }
+        return relativePrefix + relativePath;
+      }
+      return '#';
+    };
+
+    let prevHtml = '';
+    if (prevPost && prevPost.slug !== currentPost.slug) {
+      const prevUrl = getPostUrl(prevPost);
+      prevHtml = `
+        <a href="${prevUrl}" class="post-nav-card prev-card">
+          <div class="post-nav-label">
+            <span>←</span> Previous Post
+          </div>
+          <h4 class="post-nav-title">${prevPost.title}</h4>
+          <div class="post-nav-meta">Category: ${prevPost.category.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}</div>
+        </a>
+      `;
+    }
+
+    let nextHtml = '';
+    if (nextPost && nextPost.slug !== currentPost.slug) {
+      const nextUrl = getPostUrl(nextPost);
+      nextHtml = `
+        <a href="${nextUrl}" class="post-nav-card next-card">
+          <div class="post-nav-label">
+            Next Post <span>→</span>
+          </div>
+          <h4 class="post-nav-title">${nextPost.title}</h4>
+          <div class="post-nav-meta">Category: ${nextPost.category.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}</div>
+        </a>
+      `;
+    }
+
+    navWrapper.innerHTML = prevHtml + nextHtml;
+    
+    // If it's share-story-box, insert AFTER it. If it's blog-article-panel, append INSIDE it.
+    if (targetElement.classList.contains('share-story-box')) {
+      targetElement.after(navWrapper);
+    } else {
+      targetElement.appendChild(navWrapper);
+    }
+  })();
+
+  // Remove Leave a Comment panel from the main column (it's globally managed in the sidebar instead)
+  const mainCommentPanel = document.querySelector(".blog-main-content > .blog-comment-panel, .blog-main-content .blog-comment-panel:not(.blog-sidebar .blog-comment-panel)");
+  if (mainCommentPanel) {
+    mainCommentPanel.remove();
   }
 });
 

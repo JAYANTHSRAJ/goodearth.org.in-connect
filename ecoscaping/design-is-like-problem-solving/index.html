@@ -1,281 +1,801 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>‘Design is like problem solving; every project counts’ - GoodEarth Connect</title>
-  
-  <!-- Relative path to global style sheet -->
-  <link rel="stylesheet" href="../../assets/css/style.css">
-  
-  
-  <!-- Manrope & Karla Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;1,300&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>‘Design is like problem solving; every project counts’ - GoodEarth Connect</title>
+<!-- Relative path to global style sheet -->
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<!-- Manrope & Karla Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;1,300&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+
+<!-- Custom CSS for Premium Redesign -->
+<style>
+    /* Article Header */
+    .article-header {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 1.5rem;
+    }
+    .article-pretitle {
+      display: inline-block;
+      background-color: var(--color-bg-secondary);
+      color: var(--color-primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.75rem;
+    }
+    .article-title-heading {
+      font-size: 2.75rem;
+      line-height: 1.15;
+      color: var(--color-primary-dark);
+      margin-top: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .article-meta-info {
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+      font-family: var(--font-body);
+      font-weight: 500;
+    }
+
+    /* Source Notice */
+    .original-source-notice {
+      background-color: var(--color-bg-primary);
+      border-left: 3px solid var(--color-accent);
+      padding: 1.25rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 3rem;
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      font-family: var(--font-body);
+      line-height: 1.5;
+    }
+    .original-source-notice a {
+      color: var(--color-primary-dark);
+      font-weight: 600;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    .original-source-notice a:hover {
+      color: var(--color-accent);
+    }
+
+    /* Profile Card / Interview Intro Header */
+    .interview-intro-card {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 2rem;
+      background-color: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.015);
+    }
+    
+    @media (max-width: 768px) {
+      .interview-intro-card {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem;
+      }
+    }
+
+    .profile-sidebar {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile-avatar-wrapper {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--color-border);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      margin-bottom: 1rem;
+      background-color: var(--color-bg-secondary);
+    }
+
+    .profile-avatar-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      transition: transform 0.5s ease;
+    }
+
+    .profile-avatar-wrapper:hover img {
+      transform: scale(1.08);
+    }
+
+    .profile-name {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+      margin-bottom: 2px;
+    }
+
+    .profile-title {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .profile-meta-label {
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      color: var(--color-accent);
+      background-color: #fff8eb;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .intro-text-column {
+      font-family: var(--font-body);
+      font-size: 1.12rem;
+      line-height: 1.8;
+      color: var(--color-text-primary);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .intro-text-column .interviewer-name {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 1rem;
+      font-weight: 600;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 0.5rem;
+    }
+
+    .intro-paragraph::first-letter {
+      float: left;
+      font-size: 3.5rem;
+      line-height: 0.9;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin-right: 0.75rem;
+      margin-top: 0.15rem;
+      font-family: var(--font-heading);
+    }
+
+    /* Images grid section */
+    .image-showcase-section {
+      margin-bottom: 3rem;
+    }
+
+    .hero-img-block {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      margin-bottom: 1.5rem;
+      background-color: var(--color-bg-secondary);
+    }
+
+    .hero-img-block img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .hero-img-block:hover img {
+      transform: scale(1.01);
+    }
+
+    .gallery-images-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .gallery-images-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+
+    .gallery-img-wrapper {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+      background-color: var(--color-bg-secondary);
+      aspect-ratio: 3/2;
+    }
+
+    .gallery-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-img-wrapper:hover img {
+      transform: scale(1.03);
+    }
+
+    /* Disclaimer Section */
+    .disclaimer-box {
+      background-color: #faf8f5;
+      border-left: 4px solid var(--color-primary);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      margin-bottom: 3.5rem;
+      box-shadow: inset 0 0 12px rgba(0,0,0,0.005);
+    }
+
+    .disclaimer-title {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.75rem;
+    }
+
+    .disclaimer-text {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+      margin-bottom: 0.75rem;
+    }
+    
+    .disclaimer-text:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Q&A / Dialogue Styling */
+    .dialogue-section {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: var(--color-text-primary);
+    }
+
+    .question-block {
+      margin-top: 3.5rem;
+      margin-bottom: 1.5rem;
+      background-color: #fbfbfa;
+      border-left: 4px solid var(--color-accent);
+      padding: 1.5rem 1.75rem;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+    }
+
+    .question-block h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.5;
+      color: var(--color-primary-dark);
+      margin: 0;
+    }
+
+    .answer-block {
+      margin-bottom: 1.75rem;
+      padding-left: 0.5rem;
+    }
+
+    .answer-block p {
+      margin-bottom: 1.5rem;
+    }
+
+    .answer-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Content Inline Image block */
+    .content-image-wrapper {
+      margin: 2.5rem auto;
+      max-width: 100%;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.02);
+      background-color: var(--color-bg-secondary);
+    }
+
+    .content-image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .content-image-wrapper:hover img {
+      transform: scale(1.015);
+    }
+
+    /* Article Meta Footer */
+    .article-footer-meta {
+      margin-top: 4rem;
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      border-top: 1px solid var(--color-border);
+      padding-top: 1.5rem;
+      font-family: var(--font-body);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    @media (max-width: 500px) {
+      .article-footer-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+      }
+    }
+
+    /* Redesigned Share Box */
+    .share-story-box {
+      margin-top: 2rem;
+      background: var(--color-bg-primary);
+      padding: 1.5rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border);
+    }
+    
+    .share-story-box .share-title {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .share-grid-redesign {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+    
+    @media (max-width: 600px) {
+      .share-grid-redesign {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    .share-btn-redesign {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 10px 16px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      border: 1px solid var(--color-border);
+      background-color: #ffffff;
+      color: var(--color-text-secondary);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .share-btn-redesign:hover {
+      background-color: var(--color-primary-dark);
+      color: #ffffff;
+      border-color: var(--color-primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+  </style>
 </head>
 <body>
+<!-- Injected Shared Header -->
+<header class="site-header" id="header-container"></header>
+<!-- Main Article Body in 2-Column Sidebar Layout -->
+<main class="main-container" style="max-width: 1200px; margin: 0 auto; padding: 4rem 1.5rem;">
+<div class="blog-layout-container">
+<!-- Left Main Content Column -->
+<div class="blog-main-content">
+<!-- Main Article Panel -->
 
-  <!-- Injected Shared Header -->
-  <header id="header-container" class="site-header"></header>
-
-  <!-- Main Article Body in 2-Column Sidebar Layout -->
-  <main class="main-container" style="max-width: 1200px; margin: 0 auto; padding: 4rem 1.5rem;">
-    <div class="blog-layout-container">
-      
-      <!-- Left Main Content Column -->
-      <div class="blog-main-content">
-        
-        <!-- Main Article Panel -->
-        <div class="blog-article-panel">
-          <!-- Meta Data Header -->
-        <div class="blog-meta-header" style="margin-bottom: 2rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1.5rem;">
-          <span style="display:inline-block; background-color:var(--color-bg-secondary); color:var(--color-primary); padding:4px 12px; border-radius:20px; font-size:0.75rem; font-family:var(--font-heading); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom: 0.5rem;">
-            Ecoscaping
-          </span>
-          <h1 style="font-size: 2.5rem; line-height: 1.15; color: var(--color-primary-dark); margin-top: 0.5rem; margin-bottom: 0.5rem; font-family: var(--font-heading); font-weight: 700;">
-            ‘Design is like problem solving; every project counts’
-          </h1>
-          <p style="font-size:0.85rem; color:var(--color-text-secondary); font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">
-            By GoodEarth | Published On: April 28, 2023
-          </p>
-        </div>
-
-        <!-- Article Hero Image -->
-        <div style="border-radius: var(--radius-md); overflow: hidden; margin-bottom: 2rem; border: 1px solid var(--color-border); aspect-ratio: 16/9;">
-          <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/04/Image41.jpg" alt="‘Design is like problem solving; every project counts’" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
-        </div>
-
-        <!-- Original source alert -->
-        <div style="background-color: var(--color-bg-secondary); border-left: 4px solid var(--color-accent); padding: 1rem; border-radius: var(--radius-sm); margin-bottom: 2rem; font-size: 0.9rem; color: var(--color-text-secondary); font-family: var(--font-body);">
-          This article is a clone from the original GoodEarth Connect catalog. View the original post at: 
-          <a href="https://goodearth.org.in/connect/ecoscaping/design-is-like-problem-solving/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary-dark); font-weight: 600; text-decoration: underline;">
-            ‘Design is like problem solving; every project counts’ &nearr;
-          </a>
-        </div>
-
-        <!-- Body Text Content -->
-        <div class="blog-body-content" style="font-size: 1.15rem; line-height: 1.7; color: var(--color-text-primary); font-family: var(--font-body);">
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">Exploring the sustainability and design aspects of design is like problem solving and its integration within community architectures.</p>
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">
-            This page represents a pre-rendered static structure matching the original blog configuration of the GoodEarth website. You can edit this file directly to add text paragraphs, galleries, quotes, or tables.
-          </p>
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">
-            Place your custom blog assets (such as local images, diagrams, or PDF downloads) inside the local <code>assets/</code> folder in this directory, and reference them relatively (e.g. <code>&lt;img src="assets/my-image.jpg"&gt;</code>).
-          </p>
-        </div>
-
-        <!-- Meta Data Footer -->
-        <div class="blog-meta-footer" style="margin-top: 3rem; font-size: 0.85rem; color: var(--color-text-muted); border-top: 1px solid var(--color-border); padding-top: 1.5rem; font-family: var(--font-body);">
-          By GoodEarth | April 28, 2023 | Ecoscaping | 0 Comments
-        </div>
-
-        <!-- Share Story Container -->
-        <div class="share-story-container">
-          <div class="share-title">Share This Story, Choose Your Platform!</div>
-          <div class="share-buttons-grid">
-            <button class="share-btn" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">Facebook</button>
-            <button class="share-btn" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(window.location.href), '_blank')">WhatsApp</button>
-            <button class="share-btn" onclick="window.open('https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(window.location.href), '_blank')">Pinterest</button>
-            <button class="share-btn" onclick="window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href)">Email</button>
-          </div>
-        </div>
-        </div>
-        
-        <!-- Related Posts Panel -->
-        <div class="blog-related-panel">
-          <!-- Related Posts Section -->
-          <div class="related-posts-section" style="margin-top: 0;">
-            <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--color-primary-dark); margin-bottom: 2rem;">Related Posts</h3>
-            <div class="articles-grid-original" style="grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
-                      <article class="original-card">
-                    <a href="../../ecoscaping/weaving-nature-into-the-fabric-of-urban-living/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/07/Diverse-Open-Spaces.webp" alt="Weaving Nature into the Fabric of Urban Living" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
-            <span class="card-badge">Ecoscaping</span>
-          </a>
-          <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../ecoscaping/weaving-nature-into-the-fabric-of-urban-living/index.html">Weaving Nature into the Fabric of Urban Living</a>
-          </h4>
-          <div class="original-card-meta" style="font-size: 0.68rem;">
-            By GoodEarth Team | July 5, 2024
-          </div>
-                    <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../ecoscaping/weaving-nature-into-the-fabric-of-urban-living/index.html" class="card-link" style="font-size: 0.72rem;">
-              Read Article
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
-        </article>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Leave a Comment Panel -->
-        <div class="blog-comment-panel">
-          
-          <!-- Leave a Comment Form -->
-          <div class="comment-form-container">
-            <h3 class="comment-form-title">Leave A Comment</h3>
-            <form class="comment-form">
-              <div class="comment-input-group">
-                <label for="comment-text">Comment</label>
-                <textarea id="comment-text" required placeholder="Comment..."></textarea>
-              </div>
-              <div class="comment-form-row">
-                <div class="comment-input-group">
-                  <label for="comment-name">Name (required)</label>
-                  <input type="text" id="comment-name" required />
-                </div>
-                <div class="comment-input-group">
-                  <label for="comment-email">Email (required)</label>
-                  <input type="email" id="comment-email" required />
-                </div>
-                <div class="comment-input-group">
-                  <label for="comment-website">Website</label>
-                  <input type="url" id="comment-website" />
-                </div>
-              </div>
-              <div class="comment-checkbox-group">
-                <input type="checkbox" id="save-info" />
-                <label for="save-info">Save my name, email, and website in this browser for the next time I comment.</label>
-              </div>
-              <button type="submit" class="comment-submit-btn">Post Comment</button>
-            </form>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Right Sidebar Column -->
-      <aside class="blog-sidebar">
-        
-                <!-- Search Widget -->
-        <div class="widget-search" style="position: relative;">
-          <form onsubmit="event.preventDefault(); alert('Search functionality is not active in this static demo.');">
-            <input type="text" placeholder="Search..." required />
-            <button type="submit" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 1rem;">🔍</button>
-          </form>
-        </div>
-
-        <!-- About GoodEarth Widget -->
-        <div class="widget-about">
-          <img src="../../assets/images/goodeath-image.jpg" alt="goodeath-image" />
-          <h3>About GoodEarth</h3>
-          <p>At Good Earth, we are engaged in bringing together like-minded people with a common vision of building a sustainable future.</p>
-          
-          <!-- Widget Social Links -->
-          <div class="widget-social">
-            <a href="https://facebook.com/goodearthonline" target="_blank" rel="noopener noreferrer">f</a>
-            <a href="https://instagram.com/goodearthonline" target="_blank" rel="noopener noreferrer">i</a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">y</a>
-          </div>
-        </div>
-
-        <!-- Tabs Widget: Popular / Recent / Comments -->
-        <div class="widget-tabs">
-          <div class="tabs-nav">
-            <button class="tab-btn active" onclick="switchSidebarTab(event, 'tab-popular')">Popular</button>
-            <button class="tab-btn" onclick="switchSidebarTab(event, 'tab-recent')">Recent</button>
-            <button class="tab-btn" onclick="switchSidebarTab(event, 'tab-comments')">Comments</button>
-          </div>
-          
-          <div class="tab-content active" id="tab-popular">
-            <ul class="tab-post-list">
-                        <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/09/Blog-spt14-1-rs.jpg" alt="Role of Compressed Stabilized Earth Blocks in sustainable construction" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../materials/role-of-compressed-stabilized-earth-blocks-in-sustainable-construction/index.html">Role of Compressed Stabilized Earth Blocks in sustainable construction</a></h4>
-              <div class="tab-post-date">September 14, 2023</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/02/Saarang-Brochure_V4_Corrections_Print-page-71.jpg" alt="GoodEarth Saarang - Live, work & celebrate life at a holistic eco village" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../sustainability/goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village/index.html">GoodEarth Saarang - Live, work & celebrate life at a holistic eco village</a></h4>
-              <div class="tab-post-date">February 22, 2024</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/03/IMG_00070.webp" alt="Discovering Landscaping Elements - Chappadi Stone" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../design/discovering-landscaping-elements-chappadi-stone/index.html">Discovering Landscaping Elements - Chappadi Stone</a></h4>
-              <div class="tab-post-date">March 30, 2024</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/index.html">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
-              <div class="tab-post-date">April 15, 2026</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/01/1.jpg" alt="Rediscovering rammed earth construction in modern architecture" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../sustainability/rediscovering-rammed-earth-construction-in-modern-architecture/index.html">Rediscovering rammed earth construction in modern architecture</a></h4>
-              <div class="tab-post-date">January 12, 2024</div>
-            </div>
-          </li>
-            </ul>
-          </div>
-          
-          <div class="tab-content" id="tab-recent">
-            <ul class="tab-post-list">
-                        <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/index.html">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
-              <div class="tab-post-date">April 15, 2026</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/03/GoodEarth-Resident-Girin-Web-Banner.jpeg" alt="Savvy in Five with Girin | Get closer to the birds around you" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/savvy-in-five-with-girin-get-closer-to-the-birds-around-you/index.html">Savvy in Five with Girin | Get closer to the birds around you</a></h4>
-              <div class="tab-post-date">March 11, 2026</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/01/GE-Ajith.jpg" alt="Come On Over | Ajith, Bindu, and Indulekha's Dream Home." class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-on-over-ajith-bindu-and-indulekhas-dream-home/index.html">Come On Over | Ajith, Bindu, and Indulekha's Dream Home.</a></h4>
-              <div class="tab-post-date">January 17, 2026</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2025/12/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori.jpg" alt="Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../beyond-the-fence/beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori/index.html">Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori</a></h4>
-              <div class="tab-post-date">December 31, 2025</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2025/12/Hero.webp" alt="GoodEarth Modern Times wins CREDAI Awards 2025" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../awards/goodearth-modern-times-wins-credai-awards-2025/index.html">GoodEarth Modern Times wins CREDAI Awards 2025</a></h4>
-              <div class="tab-post-date">December 22, 2025</div>
-            </div>
-          </li>
-            </ul>
-          </div>
-          
-          <div class="tab-content" id="tab-comments">
-            <p style="padding: 1rem 0; font-size: 0.85rem; color: var(--color-text-muted); text-align: center;">No comments yet.</p>
-          </div>
-        </div>
-
-      </aside>
-
+<div class="blog-article-panel">
+<!-- Redesigned Article Header -->
+<div class="article-header">
+<span class="article-pretitle">Ecoscaping</span>
+<h1 class="article-title-heading">‘Design is like problem solving; every project counts’</h1>
+<div class="article-meta-info">
+      By Kavya Bhat  |  Published On: April 28, 2023
     </div>
-  </main>
+</div>
+<!-- Interview Intro Card with Portrait & Profile -->
+<div class="interview-intro-card">
+<div class="profile-sidebar">
+<div class="profile-avatar-wrapper">
+<img alt="Michael Little" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2023/04/Michael-little.jpg'" src="../../assets/images/Michael-little.webp"/>
+</div>
+<div class="profile-name">Michael Little</div>
+<div class="profile-title">Landscape Architect</div>
+<div class="profile-meta-label">In conversation</div>
+</div>
+<div class="intro-text-column">
+<div class="interviewer-name">Interviewed by <strong>Kavya Bhat</strong></div>
+<p class="intro-paragraph">As I toured Malhar for the first time in April 2018, the parks, gardens, and open spaces seamlessly integrated with the built environment captivated me. I was enamoured as I walked up and down along a brick pathway which in turn bifurcated into square <em>chappadi</em> stones that led me to a pond housing plants and fish in front of a home; an arbour that had an angular ‘C’ shaped seating with art ingrained. These were a few elements amidst the innumerable smaller details that made the walk along Malhar an enriching experience. I was, thus, thrilled to converse with Michael Little, the landscape architect behind the design of the Malhar eco-village and a long-term associate of GoodEarth, to gain insight into his methods and philosophy.</p>
+</div>
+</div>
+<!-- Image Showcase Section -->
+<div class="image-showcase-section">
+<div class="hero-img-block">
+<img alt="Malhar Eco-Village landscapes" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2023/04/Image41.jpg'" src="../../assets/images/Image41.webp"/>
+</div>
+<div class="gallery-images-row">
+<div class="gallery-img-wrapper">
+<img alt="Lush water body element at Malhar" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2023/04/Image2.jpg'" src="../../assets/images/Image2.webp"/>
+</div>
+<div class="gallery-img-wrapper">
+<img alt="Beautiful pathway and seatings at Malhar" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2023/04/Image3.jpg'" src="../../assets/images/Image3.webp"/>
+</div>
+</div>
+</div>
+<!-- Disclaimer Section -->
+<div class="disclaimer-box">
+<h4 class="disclaimer-title">Disclaimer:</h4>
+<p class="disclaimer-text">My former colleague Bharat and I conducted this interview in January 2019 at Michael’s home overlooking a quaint garden, away from the city. We discussed his thought process and what motivates him to reinvent himself often.</p>
+<p class="disclaimer-text">The Toyota Education Centre project mentioned in the article has long been completed and commissioned.</p>
+<p class="disclaimer-text"><em>The interview has been edited for length and clarity.</em></p>
+</div>
+<!-- Dialogue / Q&A Section -->
+<div class="dialogue-section">
+<!-- Q1 -->
+<div class="question-block">
+<h3>Interviewer – Can you tell us a little about yourself, what you studied and how you chose landscape architecture as a profession?</h3>
+</div>
+<div class="answer-block">
+<p><strong><span style="color: #1e542f;">Michael Little</span></strong> – Shortly after graduating from college, I grew interested in gardening, specifically in vegetable gardening and organic farming. I managed a vegetable garden for an international school in England for about three years on an old estate dating back to the late 1700s. At some point, I realised landscape architecture was the next obvious step for me to pursue, from working on the land to designing the land. So I returned to university and completed my masters in landscape architecture, which is a three-year course in the US.</p>
+<p>Afterwards, my friend and I started a design-build business where we designed and built gardens for homeowners. A hands on work where we learnt new skills every day on the ground. As my wife is from Bangalore, we eventually moved to India. It became pretty clear that there were a lot more opportunities in India with its growing economy as compared to the US. Thus, it was in India that I began working on large-scale projects.</p>
+</div>
+<!-- Q2 -->
+<div class="question-block">
+<h3>Interviewer – Designing landscape is different from vegetable gardening, so what made you take up landscape architecture? What aspect of design interested you?</h3>
+</div>
+<div class="answer-block">
+<p><strong><span style="color: #1e542f;">Michael Little</span></strong> – I was interested in the arts from an early age. So, I think of designing landscapes, looking at the land not only as a way to make it beautiful, grow organic food but also as a way to create spaces for people to have different experiences: whether public or private sphere, active recreation or meditative spaces, different kinds of spaces that landscape offers.</p>
+</div>
+<!-- Q3 -->
+<div class="question-block">
+<h3>Interviewer – You now take up projects of varied range. When you take up a project, what aspect of it excites you the most?</h3>
+</div>
+<div class="answer-block">
+<p><strong><span style="color: #1e542f;">Michael Little</span></strong> – Design is like problem solving. So, every project is exciting by the sheer nature of the exercise of designing. Every project counts. A big project on paper sounds more ambitious than the other projects. But sometimes it’s the small project wherein you create a little outdoor space for somebody that’s meaningful for me. It’s hard to say that something is more interesting than the other.</p>
+<p>One of my main projects was the Tholkappia Poonga (Adyar Eco-Park), a 60-acre public park in Chennai, which is an ecological environmental-based education project that is distinct from private gardens for the affluent, middle-class, upper-middle-class Indians. So that’s the range and there’s a lot in between there.</p>
+<p>I am always trying towards new results and at GoodEarth it has been interesting because we have had the flexibility to create new design elements that we haven’t seen in many other projects. That’s fulfilling.</p>
+</div>
+<!-- Q4 -->
+<div class="question-block">
+<h3>Interviewer – How do you manage a variety of wide-ranging projects?</h3>
+</div>
+<div class="answer-block">
+<p><strong><span style="color: #1e542f;">Michael Little</span></strong> – In Bangalore, it’s just me whereas in Cochin I have partners, we are Idea Design Landscape Architecture. I collaborate for large projects such as the intensive educational project we are doing with Toyota, where there is a climate change garden, underground ecology display area, a wetland, medicinal garden, biodiversity hill, and much more. It’s an ambitious project that requires intensive work. My core part of work, however, has been with GoodEarth. I enjoy working with various people in a flexible way, and with GoodEarth, it’s exactly that; we partner and work together on a project. With Adyar Eco-Park, I was working with a group at Auroville. I prefer being free and to be able to join different groups and collaborate. I do not like to be confined to an office environment. I am lucky to have been able to manage this way so far.</p>
+</div>
+<!-- Q5 -->
+<div class="question-block">
+<h3>Interviewer – What is the key aspect you consider while taking a project?</h3>
+</div>
+<div class="answer-block">
+<p><strong><span style="color: #1e542f;">Michael Little</span></strong> – It is the people behind the project that’s important. They should be enthusiastic to prioritise landscape. They might not have a vision, but they should want it to be carefully worked out, and be eager to see the value that comes with designing and building it right.</p>
+</div>
+<!-- Q6 -->
+<div class="question-block">
+<h3>Interviewer – Observation is a fundamental way of understanding the world. What role has observation played in your design? How do you conceive a new idea? What’s your creative process?</h3>
+</div>
+<div class="answer-block">
+<p><strong><span style="color: #1e542f;">Michael Little</span></strong> – Observation is mysterious. You can’t say with precision that this is how you observe or do things. You don’t know what you’re looking for, you try to keep your senses open, and it’s not all about visuals either. When you are at a particular piece of land, the land evokes certain feelings in you. A place makes you feel something and that may say more about you than the place. And this may be happening all the time. Whenever you are at the site, you feel something. That’s also a part of it.</p>
+<p>I think one is always working on something at the back of one’s mind, the unconscious. It helps to travel. I don’t travel much but whenever I do, like my recent visit to Ladakh, I was absorbing like a sponge. Your eye is continually making catalogues of things, sights and that remains with you.</p>
+<p>When a project comes along, it’s a new place and you try to absorb the surroundings and get a sense of the client. Then you return and begin to unravel on paper with a base plan. It is only when your pencil touches the paper that a certain type of thinking happens. At least for me, it doesn’t happen until then. Thinking is dormant until I start sketching, and then as soon as I start sketching, a lot of innate ideas that I have catalogued start spilling out. It’s then I conceptualise and of course it keeps evolving during the process.</p>
+</div>
+<!-- Q7 -->
+<div class="question-block">
+<h3>Interviewer – How does your designing vary when you take up a variety of projects such as residential, institutional, ecological parks…?</h3>
+</div>
+<div class="answer-block">
+<p><strong><span style="color: #1e542f;">Michael Little</span></strong> – It doesn’t vary. Design fundamentals remain the same like an absolute. According to the project and its requirements, a consortium of people bring their expertise which is the variable. So despite the project and its scale, the spatial elements of the design have to be functional, safe, inspiring, and eventually moving and uplifting. We should never compromise on that irrespective of the budget or materials.</p>
+<p>However, one of the primary questions I ask myself before beginning the design is what will the earth look like. Shaping the earth is critical and therefore understanding the drainage at the site becomes a key factor. However, there’s myriad options like mounds, berms, or sunken gardens to play with.</p>
+</div>
+<!-- Q8 -->
+<div class="question-block">
+<h3>Interviewer – How do you achieve this?</h3>
+</div>
+<div class="answer-block">
+<p><strong><span style="color: #1e542f;">Michael Little</span></strong> – I prefer to go out on site, as it fetches better results. GoodEarth is a fine example where both refining and tweaking the design is done on-site. There are many different interfacing events in the landscape that are hard to perceive without spending time on-site.</p>
+<p>I have an ongoing project in the Kodai hills, nestled in a remote area. I go there for a minimum of three days at a time and I take my sketch pad with me. Often I sit on a rock and sketch. It’s an extensive area with a lot of different problems to solve. I go to each different area, make sketches, and then hand over those sketches at the end.</p>
+</div>
+<!-- Q9 -->
+<div class="question-block">
+<h3>Interviewer – You are a hardscape designer, how does softscaping in a space matter?</h3>
+</div>
+<div class="answer-block">
+<p><strong><span style="color: #1e542f;">Michael Little</span></strong> – Softscaping is often looked at generically in the initial stages, in a spatial context, whether you want tall trees or short trees or massing of shrubberies as a fence. Only after everything else is shaped up, a planting plan is created after understanding the ground condition.</p>
+</div>
+<!-- Q10 -->
+<div class="question-block">
+<h3>Interviewer – You have a wide-range and a diverse array of work to your credit. Which is your personal favourite?</h3>
+</div>
+<div class="answer-block">
+<p><strong><span style="color: #1e542f;">Michael Little</span></strong> – When it comes to pure landscape architecture, I think GoodEarth has been the best for me because it has maintained the best. When you are associated for a long term, the feedback is invaluable. Early on, we learned from whatever was not executed well or didn’t work, and improved. This provided different scales and types of spaces over the years. Another project of mine that has perhaps touched society more deeply is the Adyar Eco-Park in Chennai. However, I would know the impact or magic of the design if I was there more often to see the school children experience the space.</p>
+</div>
+<!-- Q11 -->
+<div class="question-block">
+<h3>Interviewer – What were some of the challenges you faced while designing a residential community such as the Malhar eco-village, and how did you overcome them?</h3>
+</div>
+<div class="answer-block">
+<p><strong><span style="color: #1e542f;">Michael Little</span></strong> – As it is a community housing, one of the challenges was that every square foot counts in the landscape. Another challenge has been to keep your design open allowing it to change and evolve over the years, and still be seamlessly integrated into the build without losing its functionality. We take use of the right materials seriously. For example, concrete pavers in landscaping are used extensively in general because it’s practical. But we hesitated because it failed to give the rustic feel that we wanted to achieve. Due to cost constraints, we couldn’t use granite stone and <em>Cuddappah</em> stone everywhere. We struck a balance by discovering mud pathways, which is a blend of mud and concrete, an appropriate solution. This has been a big success in creating a fair balance between getting the proper language or feel of the space and functionality.</p>
+<!-- Inline Image 16 -->
+<div class="content-image-wrapper" style="max-width: 650px;">
+<img alt="Landscaping pathway element at Malhar" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2023/04/Image16.jpg'" src="../../assets/images/Image16.webp"/>
+</div>
+</div>
+<!-- Q12 -->
+<div class="question-block">
+<h3>Interviewer – The entry design at Resonance is interesting. There’s a big mound at the entry, but unless you move along the view is restricted and creates a sense of a barrier.</h3>
+</div>
+<!-- Inline Image 7 (rendered right before the answer to Q12, matching order) -->
+<div class="content-image-wrapper" style="max-width: 650px;">
+<img alt="Resonance community entry landscape" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2023/04/Image7.jpg'" src="../../assets/images/Image7.webp"/>
+</div>
+<div class="answer-block">
+<p><strong><span style="color: #1e542f;">Michael Little</span></strong> – That’s true. And that’s particularly nice in Resonance that you don’t see because it is an old trick of the trade, you do not reveal everything in the landscape. You bring people to an entry point and only when they work their way through it, do they see and experience our design. That’s the way all the old manor houses were in England. When you drive up to it, the manor greets you with stately entry but there’s no landscape. You enter and go through the doors. And then when you go out through the back doors, an amazing vista opens up.</p>
+<p>In Resonance, we were lucky to find these big rain trees in a tight space. So by retaining those and using slabs at the entry, the design took on a form using what was already available at the site without much modification.</p>
+</div>
+<!-- Q13 -->
+<div class="question-block">
+<h3>Interviewer – How do you ensure that your design is not lost in the process of catering to functional requirements?</h3>
+</div>
+<!-- Inline Image 11 -->
+<div class="content-image-wrapper" style="max-width: 650px;">
+<img alt="Ecoscaped outdoor space integration" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2023/04/image-11.jpg'" src="../../assets/images/image-11.webp"/>
+</div>
+<div class="answer-block">
+<p><strong><span style="color: #1e542f;">Michael Little</span></strong> – At times it gets a bit diluted, I mean that’s the nature of housing landscapes. In some areas of Malhar, the expansive scale has allowed us to do some fun things, playful and atypical. Sometimes all you have to do is put a nice big boulder with a flat top on it, a huge thing, and plonk it down with a crane and plant some trees next to it. That may be exactly what that space needs. On paper it doesn’t look much like a design. It’s just an oval shape with a tree. It does not look much like a design on paper. At times you have to restrict yourself from over designing. Some spaces need to be thoroughly designed while the others, you may have to just back off and let the materials and spaces speak for themselves.</p>
+</div>
+<!-- Q14 -->
+<div class="question-block">
+<h3>Interviewer – What is the most frustrating aspect of your job and what’s the most rewarding?</h3>
+</div>
+<div class="answer-block">
+<p><strong><span style="color: #1e542f;">Michael Little</span></strong> – Not knowing how well the project is received after execution over time can be frustrating. Sometimes when execution at a site doesn’t go as planned on a daily basis, it can be mildly frustrating too. But there are times when one looks back and realises the amount of work that is created over the years, that’s a huge achievement.</p>
+<p>Landscape is a conservative art, so out of all the work that you do, you are probably making small jumps which can be rewarding in the long term. There’s a large open space in Resonance, with a grassy mound area in one corner. While executing this on-site, I knew we had to avoid what was on paper and take the risk to materialise what I had envisioned. It was a risk because I didn’t know what I was doing. And we didn’t want to waste resources by bringing a huge amount of soil to do it. So I made a couple of sketches on-site, tweaked it around, and had the machine fill a bit more up on top and the shape started to evolve.</p>
+<p>All that I knew was that I wanted a kind of slope that faced outward toward the green so people could sit on it. It could be a bit of a slope but would also be a formal shape. It would have a form to it, and when you see it in the shadows with evening light, it would yield a sculptural effect. That took my ideas forward, and since then I have been playing with all kinds of different shapes that have these kinds of tilted tops. That day I broke some new ground for my own benefit.</p>
+<!-- Inline Image 9 -->
+<div class="content-image-wrapper" style="max-width: 650px;">
+<img alt="Sculptural earth mounds at Resonance" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2023/04/image9.jpg'" src="../../assets/images/image9.webp"/>
+</div>
+</div>
+<!-- Q15 -->
+<div class="question-block">
+<h3>Interviewer – Added to shaping the earth, what other interesting elements or materials you enjoy working with and integrating into your design?</h3>
+</div>
+<div class="answer-block">
+<p><strong><span style="color: #1e542f;">Michael Little</span></strong> – Light is an important entity that I consider highly. Normally a design works well or not depending on how light is reflected through it. No two materials reflect light equally. It’s up to you as a designer to play with light and shadows by choosing materials and their placement within the design.</p>
+<p>For example take a granite pillar, the way the light reflects from its rough surface, or the shadows it creates due to its scale, these are important factors. Even the black frame of the arbour is about sun and shadow. The top of it is gleaming with light and the bottom is blackened and then in between, there’s sort of grey. Of course, it’s painted black, but it’s not merely black, it’s only shades of black that can be used as a palette for light-coloured flowers to jump out at you.</p>
+<p>Working with natural materials and integrating them into the design is what I enjoy. I think it showcases a deep sense of time and resonates with people, unlike claddings. Bricks reflect the earth and are made out of mud which took millions of years to develop, stone reflects the rocky tops of the mountains, so it evokes emotion with its rustic nature. We tend to go with larger scale materials such as large rocks, boulders, or slabs, that makes a difference because when you see a big step that’s like ten feet long, immediately you feel a sense of awe. It is the same when we see old forts or mantapas in temples right? We see these huge slabs that are way up overhead and wonder how they got those up there.</p>
+<!-- Inline Image 8 -->
+<div class="content-image-wrapper" style="max-width: 650px;">
+<img alt="Natural materials and stonework details" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2023/04/image8.jpg'" src="../../assets/images/image8.webp"/>
+</div>
+</div>
+<!-- Q16 -->
+<div class="question-block">
+<h3>Interviewer – Lastly, what would be your advice to budding designers?</h3>
+</div>
+<div class="answer-block">
+<p><strong><span style="color: #1e542f;">Michael Little</span></strong> – Three things – Get a good education, travel and take risks and opportunities when they present themselves. Good education forms a foundation as your teachers enable you to push yourself.</p>
+<p>Travel, if you cannot travel all over the world, make sure you travel everywhere in India and absorb what it has to offer. Learn about plants, what makes them thrive, and the multitude of species instead of ten or twenty. When you get an opportunity to design a garden even when you are studying perhaps, although it requires hard work from your end, do it. Take that risk. It is only by exposing yourself and making mistakes that you can improve and learn over time.</p>
+</div>
+</div>
+<!-- Redesigned Article Meta Footer -->
+<div class="article-footer-meta">
+<span>By Kavya Bhat  |  Published On: April 28, 2023</span>
+<span>Category: <strong style="color:var(--color-primary);">Ecoscaping</strong></span>
+</div>
+<!-- Redesigned Share Story Box -->
+<div class="share-story-box">
+<div class="share-title">Share This Story, Choose Your Platform!</div>
+<div class="share-grid-redesign">
+<button class="share-btn-redesign" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">
+<span style="font-size: 1.1rem; line-height: 1;">f</span>   Facebook
+      </button>
+<button class="share-btn-redesign" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(window.location.href), '_blank')">
+<span style="font-size: 1.1rem; line-height: 1;">w</span>   WhatsApp
+      </button>
+<button class="share-btn-redesign" onclick="window.open('https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(window.location.href), '_blank')">
+<span style="font-size: 1.1rem; line-height: 1;">p</span>   Pinterest
+      </button>
+<button class="share-btn-redesign" onclick="window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&amp;body=' + encodeURIComponent(window.location.href)">
+<span style="font-size: 1.1rem; line-height: 1;">✉</span>   Email
+      </button>
+</div>
+</div>
+</div>
 
-  <!-- Injected Shared Footer -->
-  <footer id="footer-container" class="site-footer-original"></footer>
+<!-- Related Posts Panel -->
 
-  <!-- Dynamic Database scripts first, then injection -->
-  <script src="../../assets/js/posts-data.js"></script>
-  <script src="../../assets/js/videos-data.js"></script>
-  <script src="../../assets/js/common.js"></script>
-  <script src="../../assets/js/comments.js"></script>
+<div class="blog-related-panel">
+<div class="related-posts-section" style="margin-top: 0;">
+<h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--color-primary-dark); margin-bottom: 2rem;">Related Posts</h3>
+<div class="articles-grid-original" style="grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+<article class="original-card">
+<a class="original-card-image-link" href="../../ecoscaping/weaving-nature-into-the-fabric-of-urban-living/">
+<img alt="Weaving Nature into the Fabric of Urban Living" class="original-card-image" loading="lazy" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2024/07/Diverse-Open-Spaces.webp'" src="../../assets/images/Diverse-Open-Spaces.webp"/>
+<span class="card-badge">Ecoscaping</span>
+</a>
+<h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
+<a href="../../ecoscaping/weaving-nature-into-the-fabric-of-urban-living/">Weaving Nature into the Fabric of Urban Living</a>
+</h4>
+<div class="original-card-meta" style="font-size: 0.68rem;">
+          By GoodEarth Team | July 5, 2024
+        </div>
+<div class="card-link-wrapper" style="margin-top: 0;">
+<a class="card-link" href="../../ecoscaping/weaving-nature-into-the-fabric-of-urban-living/" style="font-size: 0.72rem;">
+            Read Article
+            <svg fill="none" height="10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="10"><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+</a>
+</div>
+</article>
+</div>
+</div>
+</div>
+
+<!-- Leave a Comment Panel -->
+
+</div>
+<!-- Right Sidebar Column -->
+<aside class="blog-sidebar">
+<!-- Search Widget -->
+<div class="widget-search" style="position: relative;">
+<form onsubmit="event.preventDefault(); alert('Search functionality is not active in this static demo.');">
+<input placeholder="Search..." required="" type="text"/>
+<button style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 1rem;" type="submit">🔍</button>
+</form>
+</div>
+<!-- About GoodEarth Widget -->
+<div class="widget-about">
+<img alt="goodeath-image" src="../../assets/images/goodeath-image.webp">
+<h3>About GoodEarth</h3>
+<p>At Good Earth, we are engaged in bringing together like-minded people with a common vision of building a sustainable future.</p>
+<!-- Widget Social Links -->
+<div class="widget-social">
+<a href="https://facebook.com/goodearthonline" rel="noopener noreferrer" target="_blank">f</a>
+<a href="https://instagram.com/goodearthonline" rel="noopener noreferrer" target="_blank">i</a>
+<a href="https://youtube.com" rel="noopener noreferrer" target="_blank">y</a>
+</div>
+</img></div>
+<!-- Tabs Widget: Popular / Recent / Comments -->
+<div class="widget-tabs">
+<div class="tabs-nav">
+<button class="tab-btn active" onclick="switchSidebarTab(event, 'tab-popular')">Popular</button>
+<button class="tab-btn" onclick="switchSidebarTab(event, 'tab-recent')">Recent</button>
+<button class="tab-btn" onclick="switchSidebarTab(event, 'tab-comments')">Comments</button>
+</div>
+<div class="tab-content active" id="tab-popular">
+<ul class="tab-post-list">
+<li class="tab-post-item">
+<img alt="Role of Compressed Stabilized Earth Blocks in sustainable construction" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Blog-spt14-1-rs_3.webp">
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../materials/role-of-compressed-stabilized-earth-blocks-in-sustainable-construction/">Role of Compressed Stabilized Earth Blocks in sustainable construction</a></h4>
+<div class="tab-post-date">September 14, 2023</div>
+</div>
+</img></li>
+<li class="tab-post-item">
+<img alt="GoodEarth Saarang - Live, work &amp; celebrate life at a holistic eco village" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Saarang-Brochure_V4_Corrections_Print-page-71_2.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../sustainability/goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village/">GoodEarth Saarang - Live, work &amp; celebrate life at a holistic eco village</a></h4>
+<div class="tab-post-date">February 22, 2024</div>
+</div>
+</li>
+<li class="tab-post-item">
+<img alt="Discovering Landscaping Elements - Chappadi Stone" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/IMG_00070_3.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../design/discovering-landscaping-elements-chappadi-stone/">Discovering Landscaping Elements - Chappadi Stone</a></h4>
+<div class="tab-post-date">March 30, 2024</div>
+</div>
+</li>
+<li class="tab-post-item">
+<img alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Come-Over-Featured-Image_2.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
+<div class="tab-post-date">April 15, 2026</div>
+</div>
+</li>
+<li class="tab-post-item">
+<img alt="Rediscovering rammed earth construction in modern architecture" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/1_5.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../sustainability/rediscovering-rammed-earth-construction-in-modern-architecture/">Rediscovering rammed earth construction in modern architecture</a></h4>
+<div class="tab-post-date">January 12, 2024</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="tab-content" id="tab-recent">
+<ul class="tab-post-list">
+<li class="tab-post-item">
+<img alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Come-Over-Featured-Image_2.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
+<div class="tab-post-date">April 15, 2026</div>
+</div>
+</li>
+<li class="tab-post-item">
+<img alt="Savvy in Five with Girin | Get closer to the birds around you" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/GoodEarth-Resident-Girin-Web-Banner_2.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../residents-spotlight/savvy-in-five-with-girin-get-closer-to-the-birds-around-you/">Savvy in Five with Girin | Get closer to the birds around you</a></h4>
+<div class="tab-post-date">March 11, 2026</div>
+</div>
+</li>
+<li class="tab-post-item">
+<img alt="Come On Over | Ajith, Bindu, and Indulekha's Dream Home." class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/GE-Ajith_2.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../residents-spotlight/come-on-over-ajith-bindu-and-indulekhas-dream-home/">Come On Over | Ajith, Bindu, and Indulekha's Dream Home.</a></h4>
+<div class="tab-post-date">January 17, 2026</div>
+</div>
+</li>
+<li class="tab-post-item">
+<img alt="Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori_2.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../beyond-the-fence/beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori/">Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori</a></h4>
+<div class="tab-post-date">December 31, 2025</div>
+</div>
+</li>
+<li class="tab-post-item">
+<img alt="GoodEarth Modern Times wins CREDAI Awards 2025" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Hero_2.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../awards/goodearth-modern-times-wins-credai-awards-2025/">GoodEarth Modern Times wins CREDAI Awards 2025</a></h4>
+<div class="tab-post-date">December 22, 2025</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="tab-content" id="tab-comments">
+<p style="padding: 1rem 0; font-size: 0.85rem; color: var(--color-text-muted); text-align: center;">No comments yet.</p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Injected Shared Footer -->
+<footer class="site-footer-original" id="footer-container"></footer>
+<!-- Dynamic Database scripts first, then injection -->
+<script src="../../assets/js/posts-data.js"></script>
+<script src="../../assets/js/videos-data.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/comments.js"></script>
 </body>
 </html>

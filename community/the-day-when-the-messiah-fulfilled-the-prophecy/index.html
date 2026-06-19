@@ -28,58 +28,725 @@
         
         <!-- Main Article Panel -->
         <div class="blog-article-panel">
-          <!-- Meta Data Header -->
-        <div class="blog-meta-header" style="margin-bottom: 2rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1.5rem;">
-          <span style="display:inline-block; background-color:var(--color-bg-secondary); color:var(--color-primary); padding:4px 12px; border-radius:20px; font-size:0.75rem; font-family:var(--font-heading); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom: 0.5rem;">
-            Community
-          </span>
-          <h1 style="font-size: 2.5rem; line-height: 1.15; color: var(--color-primary-dark); margin-top: 0.5rem; margin-bottom: 0.5rem; font-family: var(--font-heading); font-weight: 700;">
-            The day when the MESSIah fulfilled the prophecy
-          </h1>
-          <p style="font-size:0.85rem; color:var(--color-text-secondary); font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">
-            By GoodEarth | Published On: December 19, 2022
-          </p>
-        </div>
+          
+          <style>
+            /* Premium layout animations */
+            .fade-in-up-scroll {
+              opacity: 0;
+              transform: translateY(24px);
+              transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+              will-change: transform, opacity;
+            }
+            .fade-in-up-scroll.visible {
+              opacity: 1;
+              transform: translateY(0);
+            }
 
-        <!-- Article Hero Image -->
-        <div style="border-radius: var(--radius-md); overflow: hidden; margin-bottom: 2rem; border: 1px solid var(--color-border); aspect-ratio: 16/9;">
-          <img src="https://goodearth.org.in/connect/wp-content/uploads/2022/12/IMG_20221218_205201-2.jpg" alt="The day when the MESSIah fulfilled the prophecy" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
-        </div>
+            .messi-wrapper {
+              font-family: var(--font-body);
+              position: relative;
+            }
 
-        <!-- Original source alert -->
-        <div style="background-color: var(--color-bg-secondary); border-left: 4px solid var(--color-accent); padding: 1rem; border-radius: var(--radius-sm); margin-bottom: 2rem; font-size: 0.9rem; color: var(--color-text-secondary); font-family: var(--font-body);">
-          This article is a clone from the original GoodEarth Connect catalog. View the original post at: 
-          <a href="https://goodearth.org.in/connect/community/the-day-when-the-messiah-fulfilled-the-prophecy/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary-dark); font-weight: 600; text-decoration: underline;">
-            The day when the MESSIah fulfilled the prophecy &nearr;
-          </a>
-        </div>
+            /* Reading Progress Container */
+            .run-progress-container {
+              width: 100%;
+              height: 4px;
+              background-color: var(--color-bg-secondary);
+              position: sticky;
+              top: 0;
+              z-index: 99;
+              border-radius: 2px;
+              overflow: hidden;
+              margin-bottom: 2.5rem;
+            }
+            .run-progress-bar {
+              height: 100%;
+              width: 0%;
+              background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+              transition: width 0.1s ease-out;
+            }
 
-        <!-- Body Text Content -->
-        <div class="blog-body-content" style="font-size: 1.15rem; line-height: 1.7; color: var(--color-text-primary); font-family: var(--font-body);">
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">Exploring the sustainability and design aspects of the day when the messiah fulfilled the prophecy and its integration within community architectures.</p>
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">
-            This page represents a pre-rendered static structure matching the original blog configuration of the GoodEarth website. You can edit this file directly to add text paragraphs, galleries, quotes, or tables.
-          </p>
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">
-            Place your custom blog assets (such as local images, diagrams, or PDF downloads) inside the local <code>assets/</code> folder in this directory, and reference them relatively (e.g. <code>&lt;img src="assets/my-image.jpg"&gt;</code>).
-          </p>
-        </div>
+            /* Article Hero Image styling */
+            .messi-hero-container {
+              position: relative;
+              border-radius: var(--radius-md);
+              overflow: hidden;
+              margin-bottom: 2.5rem;
+              border: 1px solid var(--color-border);
+              box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+              aspect-ratio: 16/9;
+              transition: all 0.5s ease;
+              cursor: pointer;
+            }
+            .messi-hero-container:hover {
+              transform: translateY(-4px);
+              box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+              border-color: var(--color-accent);
+            }
+            .messi-hero-image {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              transition: transform 1.2s ease;
+            }
+            .messi-hero-container:hover .messi-hero-image {
+              transform: scale(1.03);
+            }
 
-        <!-- Meta Data Footer -->
-        <div class="blog-meta-footer" style="margin-top: 3rem; font-size: 0.85rem; color: var(--color-text-muted); border-top: 1px solid var(--color-border); padding-top: 1.5rem; font-family: var(--font-body);">
-          By GoodEarth | December 19, 2022 | Community | 0 Comments
-        </div>
+            /* Stats Grid */
+            .messi-stats-grid {
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 1.25rem;
+              margin-bottom: 3rem;
+            }
+            @media (max-width: 768px) {
+              .messi-stats-grid { grid-template-columns: repeat(2, 1fr); }
+            }
+            @media (max-width: 480px) {
+              .messi-stats-grid { grid-template-columns: 1fr; }
+            }
+            .messi-stat-card {
+              background-color: var(--color-bg-secondary);
+              border: 1px solid var(--color-border);
+              border-radius: var(--radius-md);
+              padding: 1.25rem;
+              text-align: center;
+              transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              gap: 0.25rem;
+              position: relative;
+              overflow: hidden;
+            }
+            .messi-stat-card::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 4px;
+              background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+              opacity: 0;
+              transition: opacity 0.3s ease;
+            }
+            .messi-stat-card:hover::before {
+              opacity: 1;
+            }
+            .messi-stat-card:hover {
+              transform: translateY(-5px);
+              border-color: var(--color-accent);
+              background-color: var(--color-bg-card);
+              box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+            }
+            html[data-theme="dark"] .messi-stat-card:hover {
+              background-color: var(--color-bg-card);
+            }
+            .run-stat-icon {
+              font-size: 1.6rem;
+              margin-bottom: 0.4rem;
+              display: inline-block;
+              transition: transform 0.3s ease;
+            }
+            .messi-stat-card:hover .run-stat-icon {
+              transform: scale(1.2) rotate(-8deg);
+            }
+            .messi-stat-val {
+              font-size: 1.35rem;
+              font-weight: 800;
+              color: var(--color-primary-dark);
+              font-family: var(--font-heading);
+              line-height: 1.2;
+              background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+            .messi-stat-lbl {
+              font-size: 0.7rem;
+              color: var(--color-text-secondary);
+              font-weight: 700;
+              text-transform: uppercase;
+              letter-spacing: 0.8px;
+              margin-top: 0.25rem;
+            }
 
-        <!-- Share Story Container -->
-        <div class="share-story-container">
-          <div class="share-title">Share This Story, Choose Your Platform!</div>
-          <div class="share-buttons-grid">
-            <button class="share-btn" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">Facebook</button>
-            <button class="share-btn" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(window.location.href), '_blank')">WhatsApp</button>
-            <button class="share-btn" onclick="window.open('https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(window.location.href), '_blank')">Pinterest</button>
-            <button class="share-btn" onclick="window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href)">Email</button>
+            /* Dropcap Lead Paragraph */
+            .messi-lead-p {
+              font-size: 1.25rem;
+              line-height: 1.85;
+              color: var(--color-text-primary);
+              margin-bottom: 2rem;
+            }
+            .messi-lead-p::first-letter {
+              font-family: var(--font-heading);
+              font-size: 3.8rem;
+              float: left;
+              line-height: 0.85;
+              font-weight: 800;
+              margin-right: 0.75rem;
+              margin-top: 0.2rem;
+              color: var(--color-accent);
+              text-shadow: 1px 1px 0px var(--color-primary);
+            }
+
+            /* Alert Box */
+            .run-alert-box {
+              background-color: var(--color-bg-secondary);
+              border-left: 4px solid var(--color-accent);
+              padding: 1.25rem 1.5rem;
+              border-radius: var(--radius-sm);
+              margin-bottom: 3.5rem;
+              font-size: 0.9rem;
+              color: var(--color-text-secondary);
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 1rem;
+            }
+            @media (max-width: 640px) {
+              .run-alert-box {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+              }
+            }
+            .run-alert-link {
+              color: var(--color-primary-dark);
+              font-weight: 700;
+              text-decoration: none;
+              display: inline-flex;
+              align-items: center;
+              gap: 4px;
+              border-bottom: 1.5px solid var(--color-accent);
+              padding-bottom: 2px;
+              transition: all 0.25s ease;
+              white-space: nowrap;
+            }
+            .run-alert-link:hover {
+              color: var(--color-accent);
+              border-bottom-color: transparent;
+            }
+
+            /* Match Timeline Styling */
+            .match-timeline {
+              position: relative;
+              margin: 4rem 0;
+              padding-left: 2rem;
+            }
+            .match-timeline::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              width: 3px;
+              background: linear-gradient(to bottom, var(--color-accent) 0%, var(--color-primary) 50%, var(--color-border) 100%);
+              border-radius: 2px;
+            }
+            .timeline-event {
+              position: relative;
+              margin-bottom: 4rem;
+            }
+            .timeline-event:last-child {
+              margin-bottom: 0;
+            }
+            .timeline-badge {
+              position: absolute;
+              left: calc(-2rem - 7px);
+              top: 8px;
+              width: 16px;
+              height: 16px;
+              border-radius: 50%;
+              background-color: var(--color-bg-card);
+              border: 3px solid var(--color-accent);
+              z-index: 2;
+              transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            }
+            .timeline-event:hover .timeline-badge {
+              transform: scale(1.4);
+              background-color: var(--color-accent);
+              box-shadow: 0 0 10px rgba(240, 165, 0, 0.4);
+            }
+            .timeline-time {
+              font-size: 0.78rem;
+              font-weight: 800;
+              color: var(--color-accent);
+              text-transform: uppercase;
+              letter-spacing: 1.2px;
+              margin-bottom: 0.5rem;
+            }
+            .timeline-content-card {
+              background: var(--color-bg-card);
+              border: 1px solid var(--color-border);
+              border-radius: var(--radius-md);
+              padding: 1.75rem;
+              transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+              box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+            }
+            html[data-theme="dark"] .timeline-content-card {
+              background: var(--color-bg-secondary);
+            }
+            .timeline-event:hover .timeline-content-card {
+              transform: translateX(6px);
+              border-color: var(--color-accent);
+              box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+            }
+            .timeline-title {
+              font-family: var(--font-heading);
+              font-size: 1.35rem;
+              color: var(--color-primary-dark);
+              font-weight: 700;
+              margin-bottom: 0.85rem;
+            }
+            html[data-theme="dark"] .timeline-title {
+              color: #ffffff;
+            }
+            .timeline-desc {
+              font-size: 1.05rem;
+              color: var(--color-text-primary);
+              line-height: 1.75;
+            }
+            .timeline-media {
+              margin-top: 1.5rem;
+              border-radius: var(--radius-md);
+              overflow: hidden;
+              border: 1px solid var(--color-border);
+              aspect-ratio: 16/10;
+              cursor: pointer;
+              position: relative;
+            }
+            .timeline-media::after {
+              content: '🔍 Click to view full photo';
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              padding: 2rem 1.5rem 1rem;
+              background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%);
+              color: #ffffff;
+              font-family: var(--font-heading);
+              font-size: 0.85rem;
+              font-weight: 600;
+              opacity: 0;
+              transform: translateY(10px);
+              transition: all 0.3s ease;
+            }
+            .timeline-event:hover .timeline-media::after {
+              opacity: 1;
+              transform: translateY(0);
+            }
+            .timeline-media img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+            }
+            .timeline-event:hover .timeline-media img {
+              transform: scale(1.03);
+            }
+
+            /* Prophecy Quote Block styling */
+            .prophecy-quote {
+              background-color: var(--color-bg-secondary);
+              border-left: 4px solid var(--color-accent);
+              padding: 2.5rem;
+              border-radius: 0 var(--radius-md) var(--radius-md) 0;
+              margin: 4rem 0;
+              position: relative;
+              overflow: hidden;
+            }
+            .prophecy-quote::before {
+              content: '“';
+              position: absolute;
+              top: -10px;
+              left: 20px;
+              font-size: 9rem;
+              color: var(--color-border);
+              opacity: 0.25;
+              font-family: Georgia, serif;
+              pointer-events: none;
+              line-height: 1;
+            }
+            .prophecy-quote-text {
+              font-size: 1.4rem;
+              line-height: 1.7;
+              color: var(--color-primary-dark);
+              font-style: italic;
+              font-weight: 500;
+              margin-bottom: 1rem;
+              position: relative;
+              z-index: 1;
+            }
+            html[data-theme="dark"] .prophecy-quote-text {
+              color: #ffffff;
+            }
+            .prophecy-quote-author {
+              font-size: 0.8rem;
+              text-transform: uppercase;
+              letter-spacing: 1.2px;
+              color: var(--color-text-secondary);
+              font-weight: 700;
+            }
+
+            /* Lightbox Modal Styles */
+            .run-lightbox-modal {
+              display: none;
+              position: fixed;
+              z-index: 9999;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(18, 18, 18, 0.95);
+              backdrop-filter: blur(8px);
+              -webkit-backdrop-filter: blur(8px);
+              opacity: 0;
+              transition: opacity 0.3s ease;
+            }
+            .run-lightbox-modal.active {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              opacity: 1;
+            }
+            .run-lightbox-content {
+              margin: auto;
+              display: block;
+              max-width: 85%;
+              max-height: 75vh;
+              border-radius: var(--radius-md);
+              box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+              transform: scale(0.95);
+              transition: transform 0.3s ease;
+              object-fit: contain;
+            }
+            .run-lightbox-modal.active .run-lightbox-content {
+              transform: scale(1);
+            }
+            .run-lightbox-close {
+              position: absolute;
+              top: 20px;
+              right: 35px;
+              color: #ffffff;
+              font-size: 40px;
+              font-weight: 300;
+              transition: 0.3s;
+              cursor: pointer;
+              z-index: 10000;
+            }
+            .run-lightbox-close:hover {
+              color: var(--color-accent);
+            }
+            .run-lightbox-caption {
+              margin: 15px auto;
+              width: 80%;
+              text-align: center;
+              color: #cccccc;
+              font-family: var(--font-heading);
+              font-weight: 500;
+              font-size: 1rem;
+              letter-spacing: 0.5px;
+            }
+
+            /* Share story updates */
+            .share-story-container {
+              background-color: var(--color-bg-secondary);
+              border-radius: var(--radius-md);
+              padding: 1.5rem;
+              border: 1px solid var(--color-border);
+              margin-top: 3rem;
+            }
+            .share-title {
+              font-family: var(--font-heading);
+              font-weight: 700;
+              font-size: 1.05rem;
+              color: var(--color-primary-dark);
+              margin-bottom: 1rem;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+            }
+            .share-buttons-grid {
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 0.75rem;
+            }
+            @media (max-width: 560px) {
+              .share-buttons-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+            .share-btn {
+              background-color: var(--color-bg-card);
+              border: 1px solid var(--color-border);
+              border-radius: var(--radius-sm);
+              padding: 0.75rem;
+              font-family: var(--font-heading);
+              font-size: 0.8rem;
+              font-weight: 700;
+              color: var(--color-text-primary);
+              cursor: pointer;
+              transition: all 0.3s ease;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 8px;
+            }
+            .share-btn:hover {
+              background-color: var(--color-primary);
+              color: #ffffff;
+              border-color: var(--color-primary);
+              transform: translateY(-2px);
+              box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            }
+          </style>
+
+          <!-- Reading Progress Bar -->
+          <div class="run-progress-container">
+            <div class="run-progress-bar" id="run-scroll-bar"></div>
           </div>
-        </div>
+
+          <div class="messi-wrapper">
+            <!-- Meta Data Header -->
+            <div class="blog-meta-header" style="margin-bottom: 2rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1.5rem;">
+              <span style="display:inline-block; background-color:var(--color-bg-secondary); color:var(--color-primary); padding:4px 12px; border-radius:20px; font-size:0.75rem; font-family:var(--font-heading); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom: 0.5rem;">
+                Community
+              </span>
+              <h1 style="font-size: 2.5rem; line-height: 1.15; color: var(--color-primary-dark); margin-top: 0.5rem; margin-bottom: 0.5rem; font-family: var(--font-heading); font-weight: 700;">
+                The day when the MESSIah fulfilled the prophecy
+              </h1>
+              <p style="font-size:0.85rem; color:var(--color-text-secondary); font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">
+                By GoodEarth | Published On: December 19, 2022
+              </p>
+            </div>
+
+            <!-- Article Hero Image -->
+            <div class="messi-hero-container" onclick="openLightbox(this.querySelector('img'))">
+              <img class="messi-hero-image" src="../../assets/images/IMG_20221218_205201-2.webp" alt="The day when the MESSIah fulfilled the prophecy" onerror="this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1200'">
+            </div>
+
+            <!-- Highlights / Stats Grid -->
+            <div class="messi-stats-grid">
+              <div class="messi-stat-card">
+                <span class="run-stat-icon">📅</span>
+                <div class="run-stat-val">Dec 18</div>
+                <div class="run-stat-lbl">Match Date</div>
+              </div>
+              <div class="messi-stat-card">
+                <span class="run-stat-icon">🏆</span>
+                <div class="run-stat-val">Argentina</div>
+                <div class="run-stat-lbl">World Champions</div>
+              </div>
+              <div class="messi-stat-card">
+                <span class="run-stat-icon">🏟️</span>
+                <div class="run-stat-val">Malhar Ground</div>
+                <div class="run-stat-lbl">Screening Site</div>
+              </div>
+              <div class="messi-stat-card">
+                <span class="run-stat-icon">⚽</span>
+                <div class="run-stat-val">Exhibition</div>
+                <div class="run-stat-lbl">Kickoff Event</div>
+              </div>
+            </div>
+
+            <!-- Original source alert -->
+            <div class="run-alert-box">
+              <span>This article is cloned from the original GoodEarth Connect catalog.</span>
+              <a href="https://goodearth.org.in/connect/community/the-day-when-the-messiah-fulfilled-the-prophecy/" target="_blank" rel="noopener noreferrer" class="run-alert-link">
+                View Original Post &rarr;
+              </a>
+            </div>
+
+            <!-- Body Text Content -->
+            <div class="blog-body-content" style="font-size: 1.15rem; line-height: 1.8; color: var(--color-text-primary); font-family: var(--font-body);">
+              <p class="messi-lead-p">The 18th of December 2022 was the day the world looked forward to. From the day the finalists were confirmed, there was a steady build up of excitement among billions around the world, regardless of their nationality and loyalty to clubs, eager to witness the Lionel Messi’s swansong, hoping, praying that this will be his last hoorah, his ascension to the throne of the great Diego Maradona.</p>
+
+              <!-- Timeline of the Magic Match -->
+              <div class="match-timeline">
+                
+                <!-- Event 1 -->
+                <div class="timeline-event">
+                  <div class="timeline-badge"></div>
+                  <div class="timeline-content-card">
+                    <div class="timeline-time">Pre-Match Warmup</div>
+                    <h4 class="timeline-title">Feverish Pitch at the Football Ground</h4>
+                    <p class="timeline-desc">As the dusk began to fall upon the winter’s day in Malhar, people began to gather at the football ground, decked up for the occasion with a large screen to project the match and food stalls serving snacks and hot beverages.</p>
+                    <div class="timeline-media" onclick="openLightbox(this.querySelector('img'))">
+                      <img src="../../assets/images/MG_0543.webp" alt="Feverish pitch and buildup at the football ground" loading="lazy" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="timeline-event">
+                  <div class="timeline-badge"></div>
+                  <div class="timeline-content-card">
+                    <div class="timeline-time">Kickoff Festivities</div>
+                    <h4 class="timeline-title">Exhibition Football Match</h4>
+                    <p class="timeline-desc">The festivities kicked off with an exhibition football match of the two finalists – Argentina and France, played by both adults and kids of the Malhar community. Played with usual fervour, the game provided the much-needed buildup for Messi’s last World Cup.</p>
+                    <div class="timeline-media" onclick="openLightbox(this.querySelector('img'))">
+                      <img src="../../assets/images/MG_0544-2.webp" alt="Exhibition match kick-off" loading="lazy" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="timeline-event">
+                  <div class="timeline-badge"></div>
+                  <div class="timeline-content-card">
+                    <div class="timeline-time">First Half Dominance</div>
+                    <h4 class="timeline-title">Vamos! Argentina Takes the Lead</h4>
+                    <p class="timeline-desc">As the match began, Argentina took an early lead, courtesy of a Messi penalty, sending the gathered crowd into frenzy. Shouts of "Vamos" filled the air. Excitement began to build amongst the attendees whose wish to see Argentina crowned champions seemed to be less than 67 minutes away... Soon after Argentina scored again, this time through Angel di Maria, sending Argentina on course for victory.</p>
+                    <div class="timeline-media" onclick="openLightbox(this.querySelector('img'))">
+                      <img src="../../assets/images/IMG_20221218_214354-2.webp" alt="Large screen match projection in Malhar" loading="lazy" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Event 4 -->
+                <div class="timeline-event">
+                  <div class="timeline-badge"></div>
+                  <div class="timeline-content-card">
+                    <div class="timeline-time">80th & 81st Minutes</div>
+                    <h4 class="timeline-title">Ten Minutes of Despair</h4>
+                    <p class="timeline-desc">Would the French, with the young Kylian Mbappé – heir apparent to the title of the best player in the world – spoil the party and take home the cup? The excitement factor was amplified with just 10 minutes of play left when Mbappé scored twice in quick succession to equalize and push the tie into extra time.</p>
+                    <div class="timeline-media" onclick="openLightbox(this.querySelector('img'))">
+                      <img src="../../assets/images/IMG_20221218_204140-2.webp" alt="Tense moments on the screen" loading="lazy" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Event 5 -->
+                <div class="timeline-event">
+                  <div class="timeline-badge"></div>
+                  <div class="timeline-content-card">
+                    <div class="timeline-time">Extra Time & Shootout</div>
+                    <h4 class="timeline-title">Destiny Fulfills the Prophecy</h4>
+                    <p class="timeline-desc">More drama in extra time as Messi scored again, and Mbappé matched him to take the tie to penalties. Neutral observers watched in suspense as destiny seemed to prevail in the shootout. Argentina were crowned world champions after a long gap of 36 years, transforming the ground into a carnival of flags, waving and chanting.</p>
+                    <div class="timeline-media" onclick="openLightbox(this.querySelector('img'))">
+                      <img src="../../assets/images/IMG_20221218_205201-2.webp" alt="Celebrating Argentina's world cup victory" loading="lazy" />
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Quote Block -->
+              <div class="prophecy-quote">
+                <div class="prophecy-quote-text">Sports has the greatest ability to gather people together. It unites them under a common banner, gives them a common denominator to come together and celebrate. How else does an event happening far away, played by people from countries impossibly far to reach... assemble people with so much passion? It’s called magic!</div>
+                <div class="prophecy-quote-author">GoodEarth Team</div>
+              </div>
+
+            </div>
+
+            <!-- Meta Data Footer -->
+            <div class="blog-meta-footer" style="margin-top: 3rem; font-size: 0.85rem; color: var(--color-text-muted); border-top: 1px solid var(--color-border); padding-top: 1.5rem; font-family: var(--font-body);">
+              By GoodEarth | December 19, 2022 | Community | 0 Comments
+            </div>
+
+            <!-- Share Story Container -->
+            <div class="share-story-container">
+              <div class="share-title">Share This Story, Choose Your Platform!</div>
+              <div class="share-buttons-grid">
+                <button class="share-btn" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">
+                  <span>📘</span> Facebook
+                </button>
+                <button class="share-btn" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(window.location.href), '_blank')">
+                  <span>💬</span> WhatsApp
+                </button>
+                <button class="share-btn" onclick="window.open('https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(window.location.href), '_blank')">
+                  <span>📌</span> Pinterest
+                </button>
+                <button class="share-btn" onclick="window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href)">
+                  <span>✉️</span> Email
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Lightbox Modal -->
+          <div id="run-lightbox" class="run-lightbox-modal" onclick="closeLightbox()">
+            <span class="run-lightbox-close" onclick="closeLightbox()">&times;</span>
+            <img class="run-lightbox-content" id="run-lightbox-img" alt="Enlarged gallery photo">
+            <div id="run-lightbox-caption" class="run-lightbox-caption"></div>
+          </div>
+
+          <!-- Custom JS Interactivity -->
+          <script>
+            // Reading Progress Bar
+            window.addEventListener('scroll', () => {
+              const progressBar = document.getElementById('run-scroll-bar');
+              if (!progressBar) return;
+              
+              const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+              if (docHeight > 0) {
+                const scrolled = (window.scrollY / docHeight) * 100;
+                progressBar.style.width = scrolled + '%';
+              }
+            });
+
+            // Lightbox functionality
+            function openLightbox(imgElement) {
+              if (!imgElement) return;
+              const lightbox = document.getElementById('run-lightbox');
+              const lightboxImg = document.getElementById('run-lightbox-img');
+              const captionText = document.getElementById('run-lightbox-caption');
+              
+              if (lightbox && lightboxImg && captionText) {
+                lightboxImg.src = imgElement.src;
+                lightboxImg.alt = imgElement.alt;
+                captionText.innerHTML = imgElement.alt || "FIFA World Cup screening at Malhar";
+                
+                lightbox.style.display = "flex";
+                // Force a layout reflow
+                lightbox.offsetHeight;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Disable scroll background
+              }
+            }
+
+            function closeLightbox() {
+              const lightbox = document.getElementById('run-lightbox');
+              if (lightbox) {
+                lightbox.classList.remove('active');
+                setTimeout(() => {
+                  lightbox.style.display = "none";
+                  document.body.style.overflow = ''; // Restore scroll
+                }, 300);
+              }
+            }
+
+            // Scroll Animation Observer
+            document.addEventListener('DOMContentLoaded', () => {
+              const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+              };
+
+              const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                  }
+                });
+              }, observerOptions);
+
+              const animElements = document.querySelectorAll(
+                '.messi-stat-card, .timeline-event, .prophecy-quote, .blog-meta-header'
+              );
+              animElements.forEach(el => {
+                el.classList.add('fade-in-up-scroll');
+                observer.observe(el);
+              });
+            });
+          </script>
         </div>
         
         <!-- Related Posts Panel -->
@@ -89,72 +756,72 @@
             <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--color-primary-dark); margin-bottom: 2rem;">Related Posts</h3>
             <div class="articles-grid-original" style="grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
                       <article class="original-card">
-                    <a href="../../community/goodearth-look-back-then-now/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/06/thumbnail-1.webp" alt="GoodEarth: Look back then & now" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                    <a href="../../community/goodearth-look-back-then-now/" class="original-card-image-link">
+            <img src="../../assets/images/thumbnail-1_1.webp" alt="GoodEarth: Look back then & now" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
             <span class="card-badge">Community</span>
           </a>
           <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../community/goodearth-look-back-then-now/index.html">GoodEarth: Look back then & now</a>
+            <a href="../../community/goodearth-look-back-then-now/">GoodEarth: Look back then & now</a>
           </h4>
           <div class="original-card-meta" style="font-size: 0.68rem;">
             By GoodEarth Team | June 14, 2024
           </div>
                     <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../community/goodearth-look-back-then-now/index.html" class="card-link" style="font-size: 0.72rem;">
+            <a href="../../community/goodearth-look-back-then-now/" class="card-link" style="font-size: 0.72rem;">
               Read Article
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
         </article>
         <article class="original-card">
-                    <a href="../../community/malhar-mela-2024-a-feast-to-the-senses/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/02/Mela2024.webp" alt="Malhar Mela 2024 A feast to the senses!" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                    <a href="../../community/malhar-mela-2024-a-feast-to-the-senses/" class="original-card-image-link">
+            <img src="../../assets/images/Mela2024_1.webp" alt="Malhar Mela 2024 A feast to the senses!" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
             <span class="card-badge">Community</span>
           </a>
           <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../community/malhar-mela-2024-a-feast-to-the-senses/index.html">Malhar Mela 2024 A feast to the senses!</a>
+            <a href="../../community/malhar-mela-2024-a-feast-to-the-senses/">Malhar Mela 2024 A feast to the senses!</a>
           </h4>
           <div class="original-card-meta" style="font-size: 0.68rem;">
             By GoodEarth Team | February 28, 2024
           </div>
                     <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../community/malhar-mela-2024-a-feast-to-the-senses/index.html" class="card-link" style="font-size: 0.72rem;">
+            <a href="../../community/malhar-mela-2024-a-feast-to-the-senses/" class="card-link" style="font-size: 0.72rem;">
               Read Article
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
         </article>
         <article class="original-card">
-                    <a href="../../community/medley-a-true-melange-of-homes-crafted-spaces/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/10/Goodearth-Medley_-futured-image.webp" alt="Medley: A true melange of homes & crafted spaces" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                    <a href="../../community/medley-a-true-melange-of-homes-crafted-spaces/" class="original-card-image-link">
+            <img src="../../assets/images/Goodearth-Medley_-futured-image_1.webp" alt="Medley: A true melange of homes & crafted spaces" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
             <span class="card-badge">Community</span>
           </a>
           <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../community/medley-a-true-melange-of-homes-crafted-spaces/index.html">Medley: A true melange of homes & crafted spaces</a>
+            <a href="../../community/medley-a-true-melange-of-homes-crafted-spaces/">Medley: A true melange of homes & crafted spaces</a>
           </h4>
           <div class="original-card-meta" style="font-size: 0.68rem;">
             By GoodEarth Team | October 27, 2023
           </div>
                     <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../community/medley-a-true-melange-of-homes-crafted-spaces/index.html" class="card-link" style="font-size: 0.72rem;">
+            <a href="../../community/medley-a-true-melange-of-homes-crafted-spaces/" class="card-link" style="font-size: 0.72rem;">
               Read Article
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
         </article>
         <article class="original-card">
-                    <a href="../../community/relive-peravoor-marathon-2022/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/04/Peravoor-marathon.webp" alt="Relive Peravoor Marathon 2022" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                    <a href="../../community/relive-peravoor-marathon-2022/" class="original-card-image-link">
+            <img src="../../assets/images/Peravoor-marathon_1.webp" alt="Relive Peravoor Marathon 2022" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
             <span class="card-badge">Community</span>
           </a>
           <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../community/relive-peravoor-marathon-2022/index.html">Relive Peravoor Marathon 2022</a>
+            <a href="../../community/relive-peravoor-marathon-2022/">Relive Peravoor Marathon 2022</a>
           </h4>
           <div class="original-card-meta" style="font-size: 0.68rem;">
             By GoodEarth Team | April 18, 2023
           </div>
                     <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../community/relive-peravoor-marathon-2022/index.html" class="card-link" style="font-size: 0.72rem;">
+            <a href="../../community/relive-peravoor-marathon-2022/" class="card-link" style="font-size: 0.72rem;">
               Read Article
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
@@ -164,39 +831,7 @@
           </div>
         </div>
         
-        <!-- Leave a Comment Panel -->
-        <div class="blog-comment-panel">
-          
-          <!-- Leave a Comment Form -->
-          <div class="comment-form-container">
-            <h3 class="comment-form-title">Leave A Comment</h3>
-            <form class="comment-form">
-              <div class="comment-input-group">
-                <label for="comment-text">Comment</label>
-                <textarea id="comment-text" required placeholder="Comment..."></textarea>
-              </div>
-              <div class="comment-form-row">
-                <div class="comment-input-group">
-                  <label for="comment-name">Name (required)</label>
-                  <input type="text" id="comment-name" required />
-                </div>
-                <div class="comment-input-group">
-                  <label for="comment-email">Email (required)</label>
-                  <input type="email" id="comment-email" required />
-                </div>
-                <div class="comment-input-group">
-                  <label for="comment-website">Website</label>
-                  <input type="url" id="comment-website" />
-                </div>
-              </div>
-              <div class="comment-checkbox-group">
-                <input type="checkbox" id="save-info" />
-                <label for="save-info">Save my name, email, and website in this browser for the next time I comment.</label>
-              </div>
-              <button type="submit" class="comment-submit-btn">Post Comment</button>
-            </form>
-          </div>
-        </div>
+
 
       </div>
 
@@ -213,7 +848,7 @@
 
         <!-- About GoodEarth Widget -->
         <div class="widget-about">
-          <img src="../../assets/images/goodeath-image.jpg" alt="goodeath-image" />
+          <img src="../../assets/images/goodeath-image.webp" alt="goodeath-image" />
           <h3>About GoodEarth</h3>
           <p>At Good Earth, we are engaged in bringing together like-minded people with a common vision of building a sustainable future.</p>
           
@@ -236,37 +871,37 @@
           <div class="tab-content active" id="tab-popular">
             <ul class="tab-post-list">
                         <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/09/Blog-spt14-1-rs.jpg" alt="Role of Compressed Stabilized Earth Blocks in sustainable construction" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Blog-spt14-1-rs_3.webp" alt="Role of Compressed Stabilized Earth Blocks in sustainable construction" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../materials/role-of-compressed-stabilized-earth-blocks-in-sustainable-construction/index.html">Role of Compressed Stabilized Earth Blocks in sustainable construction</a></h4>
+              <h4 class="tab-post-title"><a href="../../materials/role-of-compressed-stabilized-earth-blocks-in-sustainable-construction/">Role of Compressed Stabilized Earth Blocks in sustainable construction</a></h4>
               <div class="tab-post-date">September 14, 2023</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/02/Saarang-Brochure_V4_Corrections_Print-page-71.jpg" alt="GoodEarth Saarang - Live, work & celebrate life at a holistic eco village" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Saarang-Brochure_V4_Corrections_Print-page-71_2.webp" alt="GoodEarth Saarang - Live, work & celebrate life at a holistic eco village" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../sustainability/goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village/index.html">GoodEarth Saarang - Live, work & celebrate life at a holistic eco village</a></h4>
+              <h4 class="tab-post-title"><a href="../../sustainability/goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village/">GoodEarth Saarang - Live, work & celebrate life at a holistic eco village</a></h4>
               <div class="tab-post-date">February 22, 2024</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/03/IMG_00070.webp" alt="Discovering Landscaping Elements - Chappadi Stone" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/IMG_00070_3.webp" alt="Discovering Landscaping Elements - Chappadi Stone" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../design/discovering-landscaping-elements-chappadi-stone/index.html">Discovering Landscaping Elements - Chappadi Stone</a></h4>
+              <h4 class="tab-post-title"><a href="../../design/discovering-landscaping-elements-chappadi-stone/">Discovering Landscaping Elements - Chappadi Stone</a></h4>
               <div class="tab-post-date">March 30, 2024</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Come-Over-Featured-Image_2.webp" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/index.html">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
               <div class="tab-post-date">April 15, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/01/1.jpg" alt="Rediscovering rammed earth construction in modern architecture" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/1_5.webp" alt="Rediscovering rammed earth construction in modern architecture" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../sustainability/rediscovering-rammed-earth-construction-in-modern-architecture/index.html">Rediscovering rammed earth construction in modern architecture</a></h4>
+              <h4 class="tab-post-title"><a href="../../sustainability/rediscovering-rammed-earth-construction-in-modern-architecture/">Rediscovering rammed earth construction in modern architecture</a></h4>
               <div class="tab-post-date">January 12, 2024</div>
             </div>
           </li>
@@ -276,37 +911,37 @@
           <div class="tab-content" id="tab-recent">
             <ul class="tab-post-list">
                         <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Come-Over-Featured-Image_2.webp" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/index.html">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
               <div class="tab-post-date">April 15, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/03/GoodEarth-Resident-Girin-Web-Banner.jpeg" alt="Savvy in Five with Girin | Get closer to the birds around you" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/GoodEarth-Resident-Girin-Web-Banner_2.webp" alt="Savvy in Five with Girin | Get closer to the birds around you" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/savvy-in-five-with-girin-get-closer-to-the-birds-around-you/index.html">Savvy in Five with Girin | Get closer to the birds around you</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/savvy-in-five-with-girin-get-closer-to-the-birds-around-you/">Savvy in Five with Girin | Get closer to the birds around you</a></h4>
               <div class="tab-post-date">March 11, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/01/GE-Ajith.jpg" alt="Come On Over | Ajith, Bindu, and Indulekha's Dream Home." class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/GE-Ajith_2.webp" alt="Come On Over | Ajith, Bindu, and Indulekha's Dream Home." class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-on-over-ajith-bindu-and-indulekhas-dream-home/index.html">Come On Over | Ajith, Bindu, and Indulekha's Dream Home.</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-on-over-ajith-bindu-and-indulekhas-dream-home/">Come On Over | Ajith, Bindu, and Indulekha's Dream Home.</a></h4>
               <div class="tab-post-date">January 17, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2025/12/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori.jpg" alt="Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori_2.webp" alt="Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../beyond-the-fence/beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori/index.html">Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori</a></h4>
+              <h4 class="tab-post-title"><a href="../../beyond-the-fence/beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori/">Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori</a></h4>
               <div class="tab-post-date">December 31, 2025</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2025/12/Hero.webp" alt="GoodEarth Modern Times wins CREDAI Awards 2025" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Hero_2.webp" alt="GoodEarth Modern Times wins CREDAI Awards 2025" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../awards/goodearth-modern-times-wins-credai-awards-2025/index.html">GoodEarth Modern Times wins CREDAI Awards 2025</a></h4>
+              <h4 class="tab-post-title"><a href="../../awards/goodearth-modern-times-wins-credai-awards-2025/">GoodEarth Modern Times wins CREDAI Awards 2025</a></h4>
               <div class="tab-post-date">December 22, 2025</div>
             </div>
           </li>

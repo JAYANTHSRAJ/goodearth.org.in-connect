@@ -49,7 +49,7 @@ function renderOriginalHeroBanner(posts) {
   } else if (heroPost.category === "residents-spotlight-tresh-takes") {
     mappedCat = "residents-spotlight/tresh-takes";
   }
-  const postLink = `${mappedCat}/${heroPost.slug}/index.html`;
+  const postLink = `${mappedCat}/${heroPost.slug}/`;
   
   // Set background image
   banner.style.backgroundImage = `url('${heroPost.image}')`;
@@ -139,7 +139,7 @@ function renderOriginalCategoryGrids(posts) {
       } else if (post.category === "residents-spotlight-tresh-takes") {
         mappedCat = "residents-spotlight/tresh-takes";
       }
-      const postLink = `${mappedCat}/${post.slug}/index.html`;
+      const postLink = `${mappedCat}/${post.slug}/`;
       
       const formattedDate = formatPublishDate(post.date);
       

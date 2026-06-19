@@ -4,7 +4,7 @@ window.allPosts = [
     "slug": "come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled",
     "category": "residents-spotlight",
     "date": "2026-04-15",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg",
+    "image": "assets/images/Come-Over-Featured-Image_2.webp",
     "description": "Exploring the sustainability and design aspects of come over casa de sushi where minimalism meets a life well travelled and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/"
   },
@@ -13,7 +13,7 @@ window.allPosts = [
     "slug": "savvy-in-five-with-girin-get-closer-to-the-birds-around-you",
     "category": "residents-spotlight",
     "date": "2026-03-11",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2026/03/GoodEarth-Resident-Girin-Web-Banner.jpeg",
+    "image": "assets/images/GoodEarth-Resident-Girin-Web-Banner_2.webp",
     "description": "Exploring the sustainability and design aspects of savvy in five with girin get closer to the birds around you and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/savvy-in-five-with-girin-get-closer-to-the-birds-around-you/"
   },
@@ -22,7 +22,7 @@ window.allPosts = [
     "slug": "come-on-over-ajith-bindu-and-indulekhas-dream-home",
     "category": "residents-spotlight",
     "date": "2026-01-17",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2026/01/GE-Ajith.jpg",
+    "image": "assets/images/GE-Ajith_2.webp",
     "description": "Exploring the sustainability and design aspects of come on over ajith bindu and indulekhas dream home and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/come-on-over-ajith-bindu-and-indulekhas-dream-home/"
   },
@@ -31,7 +31,7 @@ window.allPosts = [
     "slug": "beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori",
     "category": "beyond-the-fence",
     "date": "2025-12-31",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2025/12/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori.jpg",
+    "image": "assets/images/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori_2.webp",
     "description": "Exploring the sustainability and design aspects of beyond the fence with sarah thomas umoya a creatives journey into shibori and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/beyond-the-fence/beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori/"
   },
@@ -40,7 +40,7 @@ window.allPosts = [
     "slug": "goodearth-modern-times-wins-credai-awards-2025",
     "category": "awards",
     "date": "2025-12-22",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2025/12/Hero.webp",
+    "image": "assets/images/Hero_2.webp",
     "description": "Exploring the sustainability and design aspects of goodearth modern times wins credai awards 2025 and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/awards/goodearth-modern-times-wins-credai-awards-2025/"
   },
@@ -49,7 +49,7 @@ window.allPosts = [
     "slug": "goodearth-studio-lore-wins-best-interior-design-project-of-the-year-villa-at-realty-excellence-awards-2025",
     "category": "awards",
     "date": "2025-12-11",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2025/12/Studio-Lore-1-1024x683.png",
+    "image": "assets/images/Studio-Lore-1-1024x683_1.webp",
     "description": "Exploring the sustainability and design aspects of goodearth studio lore wins best interior design project of the year villa at realty excellence awards 2025 and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/awards/goodearth-studio-lore-wins-best-interior-design-project-of-the-year-villa-at-realty-excellence-awards-2025/"
   },
@@ -58,7 +58,7 @@ window.allPosts = [
     "slug": "food-forests-for-a-climate-resilient-future",
     "category": "regenerative-agriculture",
     "date": "2025-12-03",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2025/12/Mail-into-image.webp",
+    "image": "assets/images/Mail-into-image_1.webp",
     "description": "Exploring the sustainability and design aspects of food forests for a climate resilient future and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/regenerative-agriculture/food-forests-for-a-climate-resilient-future/"
   },
@@ -67,7 +67,7 @@ window.allPosts = [
     "slug": "savvy-in-five-with-pradosh-get-started-with-sketching",
     "category": "residents-spotlight",
     "date": "2025-10-18",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2025/07/Saavy-in-Five-Pradosh.jpg",
+    "image": "assets/images/Saavy-in-Five-Pradosh_1.webp",
     "description": "Exploring the sustainability and design aspects of savvy in five with pradosh get started with sketching and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/savvy-in-five-with-pradosh-get-started-with-sketching/"
   },
@@ -76,7 +76,7 @@ window.allPosts = [
     "slug": "beyond-the-fence-with-vydehi-kadur",
     "category": "residents-spotlight",
     "date": "2025-07-04",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2025/07/16.9-YouTube-1.jpg",
+    "image": "assets/images/16_9-YouTube-1_1.webp",
     "description": "Exploring the sustainability and design aspects of beyond the fence with vydehi kadur and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/beyond-the-fence-with-vydehi-kadur/"
   },
@@ -85,7 +85,7 @@ window.allPosts = [
     "slug": "fresh-takes-nehas-smoky-baba-ganoush-spicy-muhamarra",
     "category": "residents-spotlight-tresh-takes",
     "date": "2025-06-13",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2025/06/32-YT-Thumb-3-scaled.jpg",
+    "image": "assets/images/32-YT-Thumb-3-scaled_1.webp",
     "description": "Exploring the sustainability and design aspects of fresh takes nehas smoky baba ganoush spicy muhamarra and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/tresh-takes/fresh-takes-nehas-smoky-baba-ganoush-spicy-muhamarra/"
   },
@@ -94,7 +94,7 @@ window.allPosts = [
     "slug": "come-over-meet-gaurishankar-chaudhary-and-family",
     "category": "residents-spotlight",
     "date": "2025-05-22",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2025/05/32-YT-Thumb-1-1-scaled.jpg",
+    "image": "assets/images/32-YT-Thumb-1-1-scaled_1.webp",
     "description": "Exploring the sustainability and design aspects of come over meet gaurishankar chaudhary and family and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/come-over-meet-gaurishankar-chaudhary-and-family/"
   },
@@ -103,7 +103,7 @@ window.allPosts = [
     "slug": "savvy-in-five-with-srinivas-jaggumantri-make-your-own-lamp",
     "category": "residents-spotlight",
     "date": "2025-05-07",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2025/05/32-YT-Thumb-2-scaled.jpg",
+    "image": "assets/images/32-YT-Thumb-2-scaled_1.webp",
     "description": "Exploring the sustainability and design aspects of savvy in five with srinivas jaggumantri make your own lamp and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/savvy-in-five-with-srinivas-jaggumantri-make-your-own-lamp/"
   },
@@ -112,7 +112,7 @@ window.allPosts = [
     "slug": "fresh-takes-subhas-easy-peasy-vegetable-pulao",
     "category": "residents-spotlight-tresh-takes",
     "date": "2025-04-23",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2025/03/Fresh-Takes-Subhashini-M-Resident-of-GoodEarth-Malhar.webp",
+    "image": "assets/images/Fresh-Takes-Subhashini-M-Resident-of-GoodEarth-Malhar_1.webp",
     "description": "Exploring the sustainability and design aspects of fresh takes subhas easy peasy vegetable pulao and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/tresh-takes/fresh-takes-subhas-easy-peasy-vegetable-pulao/"
   },
@@ -121,7 +121,7 @@ window.allPosts = [
     "slug": "beyond-the-fence-with-sakshara-trust",
     "category": "residents-spotlight",
     "date": "2025-04-03",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2025/04/Beyound-the-fence-sakshara-trust.webp",
+    "image": "assets/images/Beyound-the-fence-sakshara-trust_1.webp",
     "description": "Exploring the sustainability and design aspects of beyond the fence with sakshara trust and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/beyond-the-fence-with-sakshara-trust/"
   },
@@ -130,7 +130,7 @@ window.allPosts = [
     "slug": "malharite-madhavi-satguru-opened-her-home-to-us",
     "category": "water-come-over",
     "date": "2025-03-07",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2025/03/Thumbnail-32-scaled.jpg",
+    "image": "assets/images/Thumbnail-32-scaled_1.webp",
     "description": "Exploring the sustainability and design aspects of malharite madhavi satguru opened her home to us and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/water/come-over/malharite-madhavi-satguru-opened-her-home-to-us/"
   },
@@ -139,7 +139,7 @@ window.allPosts = [
     "slug": "savvy-in-five-with-aravind-diwakar-diying-your-own-flute",
     "category": "residents-spotlight",
     "date": "2025-02-24",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2025/02/32-Saavy-in-Five-scaled.jpg",
+    "image": "assets/images/32-Saavy-in-Five-scaled_1.webp",
     "description": "Exploring the sustainability and design aspects of savvy in five with aravind diwakar diying your own flute and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/savvy-in-five-with-aravind-diwakar-diying-your-own-flute/"
   },
@@ -148,7 +148,7 @@ window.allPosts = [
     "slug": "beyond-the-fence-with-rohini-rajagopal",
     "category": "residents-spotlight",
     "date": "2025-02-07",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2025/02/Thumbnail.key-3000-x-2000-px.webp",
+    "image": "assets/images/Thumbnail_key-3000-x-2000-px_1.webp",
     "description": "Exploring the sustainability and design aspects of beyond the fence with rohini rajagopal and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/beyond-the-fence-with-rohini-rajagopal/"
   },
@@ -157,7 +157,7 @@ window.allPosts = [
     "slug": "2024-a-look-back",
     "category": "digest",
     "date": "2025-01-11",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2025/01/GoodEarth-Malhar-medley.webp",
+    "image": "assets/images/GoodEarth-Malhar-medley.webp",
     "description": "Exploring the sustainability and design aspects of 2024 a look back and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/digest/2024-a-look-back/"
   },
@@ -166,7 +166,7 @@ window.allPosts = [
     "slug": "in-pursuit-of-good-living",
     "category": "residents-spotlight",
     "date": "2025-01-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2025/01/32-scaled.jpg",
+    "image": "assets/images/32-scaled_1.webp",
     "description": "Exploring the sustainability and design aspects of in pursuit of good living and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/in-pursuit-of-good-living/"
   },
@@ -175,7 +175,7 @@ window.allPosts = [
     "slug": "the-spiritofmalhar",
     "category": "events",
     "date": "2024-12-18",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/12/SpiritOfMalhar.jpg",
+    "image": "assets/images/SpiritOfMalhar_2.webp",
     "description": "Exploring the sustainability and design aspects of the spiritofmalhar and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/events/the-spiritofmalhar/"
   },
@@ -184,7 +184,7 @@ window.allPosts = [
     "slug": "two-act-sand-brik",
     "category": "residents-spotlight",
     "date": "2024-11-12",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/11/Sand-And-Brick.webp",
+    "image": "assets/images/Sand-And-Brick_1.webp",
     "description": "Exploring the sustainability and design aspects of two act sand brik and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/two-act-sand-brik/"
   },
@@ -193,7 +193,7 @@ window.allPosts = [
     "slug": "back-to-bharat-angel-investor-naga-prakasams-clarion-call",
     "category": "residents-spotlight",
     "date": "2024-10-18",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/10/Nagaraja-Prakasam.jpg",
+    "image": "assets/images/Nagaraja-Prakasam_1.webp",
     "description": "Exploring the sustainability and design aspects of back to bharat angel investor naga prakasams clarion call and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/back-to-bharat-angel-investor-naga-prakasams-clarion-call/"
   },
@@ -202,7 +202,7 @@ window.allPosts = [
     "slug": "my-journey-to-100-years-centenarian-t-m-narasimha-speaks",
     "category": "residents-spotlight",
     "date": "2024-10-03",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/10/T-M-Narasimha-Speaks-scaled.jpg",
+    "image": "assets/images/T-M-Narasimha-Speaks-scaled_1.webp",
     "description": "Exploring the sustainability and design aspects of my journey to 100 years centenarian t m narasimha speaks and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/my-journey-to-100-years-centenarian-t-m-narasimha-speaks/"
   },
@@ -211,7 +211,7 @@ window.allPosts = [
     "slug": "unassuming-beauty-artistry-in-the-ceiling-a-symbolic-reflection-of-community-growth",
     "category": "design",
     "date": "2024-09-09",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/09/Medley-Portico-Ceiling-Imprint.webp",
+    "image": "assets/images/Medley-Portico-Ceiling-Imprint_1.webp",
     "description": "Exploring the sustainability and design aspects of unassuming beauty artistry in the ceiling a symbolic reflection of community growth and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/design/unassuming-beauty-artistry-in-the-ceiling-a-symbolic-reflection-of-community-growth/"
   },
@@ -220,7 +220,7 @@ window.allPosts = [
     "slug": "an-ode-to-rustic-elegance",
     "category": "design",
     "date": "2024-07-19",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/07/Bedroom-at-GoodEarth-Malhar.jpg",
+    "image": "assets/images/Bedroom-at-GoodEarth-Malhar_2.webp",
     "description": "Exploring the sustainability and design aspects of an ode to rustic elegance and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/design/an-ode-to-rustic-elegance/"
   },
@@ -229,7 +229,7 @@ window.allPosts = [
     "slug": "dorothy-bagon-a-gritty-tale-of-survival-passion",
     "category": "residents-spotlight",
     "date": "2024-07-13",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/07/From-Antwerp-to-India.png",
+    "image": "assets/images/From-Antwerp-to-India_1.webp",
     "description": "Exploring the sustainability and design aspects of dorothy bagon a gritty tale of survival passion and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/dorothy-bagon-a-gritty-tale-of-survival-passion/"
   },
@@ -238,7 +238,7 @@ window.allPosts = [
     "slug": "weaving-nature-into-the-fabric-of-urban-living",
     "category": "ecoscaping",
     "date": "2024-07-05",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/07/Diverse-Open-Spaces.webp",
+    "image": "assets/images/Diverse-Open-Spaces_2.webp",
     "description": "Exploring the sustainability and design aspects of weaving nature into the fabric of urban living and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/ecoscaping/weaving-nature-into-the-fabric-of-urban-living/"
   },
@@ -247,7 +247,7 @@ window.allPosts = [
     "slug": "goodearth-look-back-then-now",
     "category": "community",
     "date": "2024-06-14",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/06/thumbnail-1.webp",
+    "image": "assets/images/thumbnail-1_1.webp",
     "description": "Exploring the sustainability and design aspects of goodearth look back then now and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/community/goodearth-look-back-then-now/"
   },
@@ -256,7 +256,7 @@ window.allPosts = [
     "slug": "annapoorna-a-story-of-resilience-creative-action",
     "category": "residents-spotlight",
     "date": "2024-06-06",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/06/Annapoorna-Ram-Youtube-Thumbnail-scaled.jpg",
+    "image": "assets/images/Annapoorna-Ram-Youtube-Thumbnail-scaled_1.webp",
     "description": "Exploring the sustainability and design aspects of annapoorna a story of resilience creative action and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/annapoorna-a-story-of-resilience-creative-action/"
   },
@@ -265,7 +265,7 @@ window.allPosts = [
     "slug": "its-all-about-soil-a-goodearth-story",
     "category": "regenerative-agriculture",
     "date": "2024-05-17",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/05/Untitled-21.jpg",
+    "image": "assets/images/Untitled-21_1.webp",
     "description": "Exploring the sustainability and design aspects of its all about soil a goodearth story and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/regenerative-agriculture/its-all-about-soil-a-goodearth-story/"
   },
@@ -274,7 +274,7 @@ window.allPosts = [
     "slug": "playground-is-the-greatest-level-playing-field",
     "category": "goodearth-social-initiatives",
     "date": "2024-05-10",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/05/32.jpg",
+    "image": "assets/images/32_1.webp",
     "description": "Exploring the sustainability and design aspects of playground is the greatest level playing field and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/goodearth-social-initiatives/playground-is-the-greatest-level-playing-field/"
   },
@@ -283,7 +283,7 @@ window.allPosts = [
     "slug": "discovering-the-birds-of-malhar-series-3",
     "category": "ecology",
     "date": "2024-05-02",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/05/Birds-of-Malhar-Series-3.webp",
+    "image": "assets/images/Birds-of-Malhar-Series-3_3.webp",
     "description": "Exploring the sustainability and design aspects of discovering the birds of malhar series 3 and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/ecology/discovering-the-birds-of-malhar-series-3/"
   },
@@ -292,7 +292,7 @@ window.allPosts = [
     "slug": "foundations-and-superstructures-for-sustainable-living",
     "category": "design",
     "date": "2024-04-26",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/04/Goodearth-Resonance-34-1.webp",
+    "image": "assets/images/Goodearth-Resonance-34-1_5.webp",
     "description": "Exploring the sustainability and design aspects of foundations and superstructures for sustainable living and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/design/foundations-and-superstructures-for-sustainable-living/"
   },
@@ -301,7 +301,7 @@ window.allPosts = [
     "slug": "bees-waggle-dance-changes-the-course-of-a-mans-journey",
     "category": "residents-spotlight",
     "date": "2024-04-05",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/04/RESIDENT-SPOTLIGHT.jpg",
+    "image": "assets/images/RESIDENT-SPOTLIGHT_1.webp",
     "description": "Exploring the sustainability and design aspects of bees waggle dance changes the course of a mans journey and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/bees-waggle-dance-changes-the-course-of-a-mans-journey/"
   },
@@ -310,7 +310,7 @@ window.allPosts = [
     "slug": "discovering-landscaping-elements-chappadi-stone",
     "category": "design",
     "date": "2024-03-30",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/03/IMG_00070.webp",
+    "image": "assets/images/IMG_00070_3.webp",
     "description": "Exploring the sustainability and design aspects of discovering landscaping elements chappadi stone and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/design/discovering-landscaping-elements-chappadi-stone/"
   },
@@ -319,7 +319,7 @@ window.allPosts = [
     "slug": "the-artful-integration-of-boulders-in-landscape-design",
     "category": "sustainability",
     "date": "2024-03-22",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/03/GoodEarth-boulders10.webp",
+    "image": "assets/images/GoodEarth-boulders10_2.webp",
     "description": "Exploring the sustainability and design aspects of the artful integration of boulders in landscape design and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/sustainability/the-artful-integration-of-boulders-in-landscape-design/"
   },
@@ -328,7 +328,7 @@ window.allPosts = [
     "slug": "malhar-medley-wins-geevees-award-2024",
     "category": "awards",
     "date": "2024-03-15",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/03/Geevee-awards-Jayakumar-associates-1.webp",
+    "image": "assets/images/Geevee-awards-Jayakumar-associates-1_1.webp",
     "description": "Exploring the sustainability and design aspects of malhar medley wins geevees award 2024 and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/awards/malhar-medley-wins-geevees-award-2024/"
   },
@@ -337,7 +337,7 @@ window.allPosts = [
     "slug": "a-pet-lover-speaks-of-nature-inspired-living",
     "category": "residents-spotlight",
     "date": "2024-03-09",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/03/Resident-Spotlight-1.webp",
+    "image": "assets/images/Resident-Spotlight-1_1.webp",
     "description": "Exploring the sustainability and design aspects of a pet lover speaks of nature inspired living and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/a-pet-lover-speaks-of-nature-inspired-living/"
   },
@@ -346,7 +346,7 @@ window.allPosts = [
     "slug": "malhar-medley-wins-the-economic-times-real-estate-awards-2024-national-edition",
     "category": "awards",
     "date": "2024-02-29",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/02/ET-Awards-2024.webp",
+    "image": "assets/images/ET-Awards-2024_1.webp",
     "description": "Exploring the sustainability and design aspects of malhar medley wins the economic times real estate awards 2024 national edition and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/awards/malhar-medley-wins-the-economic-times-real-estate-awards-2024-national-edition/"
   },
@@ -355,7 +355,7 @@ window.allPosts = [
     "slug": "malhar-mela-2024-a-feast-to-the-senses",
     "category": "community",
     "date": "2024-02-28",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/02/Mela2024.webp",
+    "image": "assets/images/Mela2024_1.webp",
     "description": "Exploring the sustainability and design aspects of malhar mela 2024 a feast to the senses and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/community/malhar-mela-2024-a-feast-to-the-senses/"
   },
@@ -364,7 +364,7 @@ window.allPosts = [
     "slug": "goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village",
     "category": "sustainability",
     "date": "2024-02-22",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/02/Saarang-Brochure_V4_Corrections_Print-page-71.jpg",
+    "image": "assets/images/Saarang-Brochure_V4_Corrections_Print-page-71_2.webp",
     "description": "Exploring the sustainability and design aspects of goodearth saarang live work celebrate life at a holistic eco village and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/sustainability/goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village/"
   },
@@ -373,7 +373,7 @@ window.allPosts = [
     "slug": "ripple-effect-mastering-urban-runoff-with-ease",
     "category": "sustainability",
     "date": "2024-02-16",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/02/Goodearth-Mosaic-39.jpg",
+    "image": "assets/images/Goodearth-Mosaic-39_2.webp",
     "description": "Exploring the sustainability and design aspects of ripple effect mastering urban runoff with ease and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/sustainability/ripple-effect-mastering-urban-runoff-with-ease/"
   },
@@ -382,7 +382,7 @@ window.allPosts = [
     "slug": "enhanced-metro-feeder-service-now-available-at-goodearth-malhar",
     "category": "knowledge",
     "date": "2024-02-09",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/02/feederbus.jpg",
+    "image": "assets/images/feederbus_1.webp",
     "description": "Exploring the sustainability and design aspects of enhanced metro feeder service now available at goodearth malhar and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/knowledge/enhanced-metro-feeder-service-now-available-at-goodearth-malhar/"
   },
@@ -391,7 +391,7 @@ window.allPosts = [
     "slug": "rediscovering-rammed-earth-construction-in-modern-architecture",
     "category": "sustainability",
     "date": "2024-01-12",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2024/01/1.jpg",
+    "image": "assets/images/1_5.webp",
     "description": "Exploring the sustainability and design aspects of rediscovering rammed earth construction in modern architecture and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/sustainability/rediscovering-rammed-earth-construction-in-modern-architecture/"
   },
@@ -400,7 +400,7 @@ window.allPosts = [
     "slug": "versatile-integration-of-coloured-glass-bottles",
     "category": "design",
     "date": "2023-12-28",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/12/Blog-28-Dec.jpg",
+    "image": "assets/images/Blog-28-Dec_1.webp",
     "description": "Exploring the sustainability and design aspects of versatile integration of coloured glass bottles and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/design/versatile-integration-of-coloured-glass-bottles/"
   },
@@ -409,7 +409,7 @@ window.allPosts = [
     "slug": "goodearth-malhar-pioneering-sustainable-living-for-cleaner-air-in-bangalore-india",
     "category": "sustainability",
     "date": "2023-12-21",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/12/Medley-Featured-image-scaled.webp",
+    "image": "assets/images/Medley-Featured-image-scaled_2.webp",
     "description": "Exploring the sustainability and design aspects of goodearth malhar pioneering sustainable living for cleaner air in bangalore india and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/sustainability/goodearth-malhar-pioneering-sustainable-living-for-cleaner-air-in-bangalore-india/"
   },
@@ -418,7 +418,7 @@ window.allPosts = [
     "slug": "courtyards-echoes-of-tradition-in-contemporary-living",
     "category": "climate-responsive-design",
     "date": "2023-12-08",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/12/2-1.jpg",
+    "image": "assets/images/2-1_2.webp",
     "description": "Exploring the sustainability and design aspects of courtyards echoes of tradition in contemporary living and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/climate-responsive-design/courtyards-echoes-of-tradition-in-contemporary-living/"
   },
@@ -427,7 +427,7 @@ window.allPosts = [
     "slug": "goodearth-malhar-your-gateway-to-convenience-and-connectivity-bliss",
     "category": "knowledge",
     "date": "2023-11-24",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/11/Goodearth-Medley_15-1.webp",
+    "image": "assets/images/Goodearth-Medley_15-1.webp",
     "description": "Exploring the sustainability and design aspects of goodearth malhar your gateway to convenience and connectivity bliss and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/knowledge/goodearth-malhar-your-gateway-to-convenience-and-connectivity-bliss/"
   },
@@ -436,7 +436,7 @@ window.allPosts = [
     "slug": "discovering-the-birds-of-malhar-series-2",
     "category": "ecology",
     "date": "2023-11-17",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/11/80450407_2960177517346800_8162926838897704960_o.webp",
+    "image": "assets/images/80450407_2960177517346800_8162926838897704960_o_3.webp",
     "description": "Exploring the sustainability and design aspects of discovering the birds of malhar series 2 and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/ecology/discovering-the-birds-of-malhar-series-2/"
   },
@@ -445,7 +445,7 @@ window.allPosts = [
     "slug": "timeless-elegance-sustainability-of-mangalore-tiles",
     "category": "materials",
     "date": "2023-11-09",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/11/3-1.webp",
+    "image": "assets/images/3-1_2.webp",
     "description": "Exploring the sustainability and design aspects of timeless elegance sustainability of mangalore tiles and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/materials/timeless-elegance-sustainability-of-mangalore-tiles/"
   },
@@ -454,7 +454,7 @@ window.allPosts = [
     "slug": "architectural-tapestry-rooted-in-tradition-modernity",
     "category": "materials",
     "date": "2023-11-02",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/11/Goodearth-Resonance-34-1.webp",
+    "image": "assets/images/Goodearth-Resonance-34-1_4.webp",
     "description": "Exploring the sustainability and design aspects of architectural tapestry rooted in tradition modernity and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/materials/architectural-tapestry-rooted-in-tradition-modernity/"
   },
@@ -463,7 +463,7 @@ window.allPosts = [
     "slug": "medley-a-true-melange-of-homes-crafted-spaces",
     "category": "community",
     "date": "2023-10-27",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/10/Goodearth-Medley_-futured-image.webp",
+    "image": "assets/images/Goodearth-Medley_-futured-image_1.webp",
     "description": "Exploring the sustainability and design aspects of medley a true melange of homes crafted spaces and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/community/medley-a-true-melange-of-homes-crafted-spaces/"
   },
@@ -472,7 +472,7 @@ window.allPosts = [
     "slug": "empowering-the-young-with-sustainable-foundations",
     "category": "knowledge",
     "date": "2023-10-05",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/10/HYD_9341-2-scaled.jpg",
+    "image": "assets/images/HYD_9341-2-scaled_1.webp",
     "description": "Exploring the sustainability and design aspects of empowering the young with sustainable foundations and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/knowledge/empowering-the-young-with-sustainable-foundations/"
   },
@@ -481,7 +481,7 @@ window.allPosts = [
     "slug": "the-allure-of-bay-window-seats",
     "category": "design",
     "date": "2023-09-28",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/09/MG_3831-rs-1.jpg",
+    "image": "assets/images/MG_3831-rs-1_1.webp",
     "description": "Exploring the sustainability and design aspects of the allure of bay window seats and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/design/the-allure-of-bay-window-seats/"
   },
@@ -490,7 +490,7 @@ window.allPosts = [
     "slug": "spaces-that-heal",
     "category": "residents-spotlight",
     "date": "2023-09-23",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/09/Featured-image-Dr.Vidya-1-rs-scaled.jpg",
+    "image": "assets/images/Featured-image-Dr_Vidya-1-rs-scaled_1.webp",
     "description": "Exploring the sustainability and design aspects of spaces that heal and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/spaces-that-heal/"
   },
@@ -499,7 +499,7 @@ window.allPosts = [
     "slug": "role-of-compressed-stabilized-earth-blocks-in-sustainable-construction",
     "category": "materials",
     "date": "2023-09-14",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/09/Blog-spt14-1-rs.jpg",
+    "image": "assets/images/Blog-spt14-1-rs_3.webp",
     "description": "Exploring the sustainability and design aspects of role of compressed stabilized earth blocks in sustainable construction and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/materials/role-of-compressed-stabilized-earth-blocks-in-sustainable-construction/"
   },
@@ -508,7 +508,7 @@ window.allPosts = [
     "slug": "discovering-the-birds-of-malhar",
     "category": "ecology",
     "date": "2023-08-31",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/08/IMG_9193-3-1.jpg",
+    "image": "assets/images/IMG_9193-3-1_2.webp",
     "description": "Exploring the sustainability and design aspects of discovering the birds of malhar and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/ecology/discovering-the-birds-of-malhar/"
   },
@@ -517,7 +517,7 @@ window.allPosts = [
     "slug": "reviving-hope-for-cleaner-rivers",
     "category": "residents-spotlight",
     "date": "2023-08-23",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/08/Youtube-thumbnail_YT.jpg",
+    "image": "assets/images/Youtube-thumbnail_YT_1.webp",
     "description": "Exploring the sustainability and design aspects of reviving hope for cleaner rivers and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/reviving-hope-for-cleaner-rivers/"
   },
@@ -526,7 +526,7 @@ window.allPosts = [
     "slug": "regenerative-agriculture-our-own-rice-bowl-at-wayanad",
     "category": "regenerative-agriculture",
     "date": "2023-08-18",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/08/Rice-Bowl.webp",
+    "image": "assets/images/Rice-Bowl_1.webp",
     "description": "Exploring the sustainability and design aspects of regenerative agriculture our own rice bowl at wayanad and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/regenerative-agriculture/regenerative-agriculture-our-own-rice-bowl-at-wayanad/"
   },
@@ -535,7 +535,7 @@ window.allPosts = [
     "slug": "brick-pavers-designing-alluring-pathways",
     "category": "materials",
     "date": "2023-08-10",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/07/14-rs.jpg",
+    "image": "assets/images/14-rs_1.webp",
     "description": "Exploring the sustainability and design aspects of brick pavers designing alluring pathways and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/materials/brick-pavers-designing-alluring-pathways/"
   },
@@ -544,7 +544,7 @@ window.allPosts = [
     "slug": "half-year-rewind-2023",
     "category": "digest",
     "date": "2023-08-04",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/08/Motif.jpg",
+    "image": "assets/images/Motif.webp",
     "description": "Exploring the sustainability and design aspects of half year rewind 2023 and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/digest/half-year-rewind-2023/"
   },
@@ -553,7 +553,7 @@ window.allPosts = [
     "slug": "mindful-choices-for-a-healthier-home-enhancing-indoor-air-quality",
     "category": "materials",
     "date": "2023-07-27",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/07/HYD_9310.jpg",
+    "image": "assets/images/HYD_9310_2.webp",
     "description": "Exploring the sustainability and design aspects of mindful choices for a healthier home enhancing indoor air quality and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/materials/mindful-choices-for-a-healthier-home-enhancing-indoor-air-quality/"
   },
@@ -562,7 +562,7 @@ window.allPosts = [
     "slug": "a-waldorf-kindergarten-at-goodearth-malhar",
     "category": "residents-spotlight",
     "date": "2023-07-20",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/07/vlcsnap-2023-07-20-17h03m26s021.webp",
+    "image": "assets/images/vlcsnap-2023-07-20-17h03m26s021_1.webp",
     "description": "Exploring the sustainability and design aspects of a waldorf kindergarten at goodearth malhar and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/a-waldorf-kindergarten-at-goodearth-malhar/"
   },
@@ -571,7 +571,7 @@ window.allPosts = [
     "slug": "reviving-communal-living-goodearths-sustainable-approach-to-group-housing-in-india",
     "category": "housing",
     "date": "2023-07-10",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/07/10-07-camp-1.webp",
+    "image": "assets/images/10-07-camp-1_1.webp",
     "description": "Exploring the sustainability and design aspects of reviving communal living goodearths sustainable approach to group housing in india and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/housing/reviving-communal-living-goodearths-sustainable-approach-to-group-housing-in-india/"
   },
@@ -580,7 +580,7 @@ window.allPosts = [
     "slug": "a-goodearth-initiative-traditional-martial-art-kalari-comes-alive",
     "category": "goodearth-initiatives",
     "date": "2023-07-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/06/campain-photo1.webp",
+    "image": "assets/images/campain-photo1_1.webp",
     "description": "Exploring the sustainability and design aspects of a goodearth initiative traditional martial art kalari comes alive and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/goodearth-initiatives/a-goodearth-initiative-traditional-martial-art-kalari-comes-alive/"
   },
@@ -589,7 +589,7 @@ window.allPosts = [
     "slug": "the-olympic-dream-absf-shaili-singh",
     "category": "uncategorized",
     "date": "2023-06-15",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/07/Anju-Bobby.webp",
+    "image": "assets/images/Anju-Bobby_1.webp",
     "description": "Exploring the sustainability and design aspects of the olympic dream absf shaili singh and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/uncategorized/the-olympic-dream-absf-shaili-singh/"
   },
@@ -598,7 +598,7 @@ window.allPosts = [
     "slug": "hidden-crisis-beneath-our-feet-preserving-groundwater-for-future-generations",
     "category": "water",
     "date": "2023-06-02",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/06/6-1-1-1200x801-1.jpg",
+    "image": "assets/images/6-1-1-1200x801-1_1.webp",
     "description": "Exploring the sustainability and design aspects of hidden crisis beneath our feet preserving groundwater for future generations and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/water/hidden-crisis-beneath-our-feet-preserving-groundwater-for-future-generations/"
   },
@@ -607,7 +607,7 @@ window.allPosts = [
     "slug": "quiet-around-unleashes-my-creativity",
     "category": "residents-spotlight",
     "date": "2023-05-19",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/04/image-11.jpg",
+    "image": "assets/images/image-11_2.webp",
     "description": "Exploring the sustainability and design aspects of quiet around unleashes my creativity and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/quiet-around-unleashes-my-creativity/"
   },
@@ -616,7 +616,7 @@ window.allPosts = [
     "slug": "design-is-like-problem-solving",
     "category": "ecoscaping",
     "date": "2023-04-28",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/04/Image41.jpg",
+    "image": "assets/images/Image41_2.webp",
     "description": "Exploring the sustainability and design aspects of design is like problem solving and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/ecoscaping/design-is-like-problem-solving/"
   },
@@ -625,7 +625,7 @@ window.allPosts = [
     "slug": "relive-peravoor-marathon-2022",
     "category": "community",
     "date": "2023-04-18",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/04/Peravoor-marathon.webp",
+    "image": "assets/images/Peravoor-marathon_1.webp",
     "description": "Exploring the sustainability and design aspects of relive peravoor marathon 2022 and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/community/relive-peravoor-marathon-2022/"
   },
@@ -634,7 +634,7 @@ window.allPosts = [
     "slug": "oxide-finish-creative-reinvention-of-traditional-techniques-at-malhar-eco-village",
     "category": "traditional-techniques",
     "date": "2023-03-31",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/03/4565.jpg",
+    "image": "assets/images/4565_1.webp",
     "description": "Exploring the sustainability and design aspects of oxide finish creative reinvention of traditional techniques at malhar eco village and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/traditional-techniques/oxide-finish-creative-reinvention-of-traditional-techniques-at-malhar-eco-village/"
   },
@@ -643,7 +643,7 @@ window.allPosts = [
     "slug": "we-arent-mere-consumers-of-real-estate",
     "category": "creators-spotlight",
     "date": "2023-03-18",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/07/Jeet-sir.jpg",
+    "image": "assets/images/Jeet-sir_1.webp",
     "description": "Exploring the sustainability and design aspects of we arent mere consumers of real estate and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/creators-spotlight/we-arent-mere-consumers-of-real-estate/"
   },
@@ -652,7 +652,7 @@ window.allPosts = [
     "slug": "medley-a-new-buoyant-addition-to-goodearth-malhar",
     "category": "community",
     "date": "2023-03-10",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/03/Goodearth-Medley_19.webp",
+    "image": "assets/images/Goodearth-Medley_19_2.webp",
     "description": "Exploring the sustainability and design aspects of medley a new buoyant addition to goodearth malhar and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/community/medley-a-new-buoyant-addition-to-goodearth-malhar/"
   },
@@ -661,7 +661,7 @@ window.allPosts = [
     "slug": "eco-restoration-of-anchepalya-lake",
     "category": "ecological-restoration",
     "date": "2023-03-03",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/03/8771.jpg",
+    "image": "assets/images/8771_1.webp",
     "description": "Exploring the sustainability and design aspects of eco restoration of anchepalya lake and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/ecological-restoration/eco-restoration-of-anchepalya-lake/"
   },
@@ -670,7 +670,7 @@ window.allPosts = [
     "slug": "goodearth-wins-platinum-award-at-spaciux-design-awards-2022",
     "category": "awards",
     "date": "2023-02-17",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/02/2.jpg",
+    "image": "assets/images/2_2.webp",
     "description": "Exploring the sustainability and design aspects of goodearth wins platinum award at spaciux design awards 2022 and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/awards/goodearth-wins-platinum-award-at-spaciux-design-awards-2022/"
   },
@@ -679,7 +679,7 @@ window.allPosts = [
     "slug": "interiors-that-turn-house-into-home",
     "category": "goodearth-interiors",
     "date": "2023-02-13",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/02/IMG_0420.jpg",
+    "image": "assets/images/IMG_0420_1.webp",
     "description": "Exploring the sustainability and design aspects of interiors that turn house into home and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/goodearth-interiors/interiors-that-turn-house-into-home/"
   },
@@ -688,7 +688,7 @@ window.allPosts = [
     "slug": "malhar-mela-2023-a-power-packed-start-to-new-year",
     "category": "community",
     "date": "2023-01-27",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/01/DSC00102.jpg",
+    "image": "assets/images/DSC00102.webp",
     "description": "Exploring the sustainability and design aspects of malhar mela 2023 a power packed start to new year and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/community/malhar-mela-2023-a-power-packed-start-to-new-year/"
   },
@@ -697,7 +697,7 @@ window.allPosts = [
     "slug": "peravoor-marathon-binds-people-together-celebrates-sportsmanship",
     "category": "sports",
     "date": "2023-01-13",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/01/MG_9467.jpg",
+    "image": "assets/images/MG_9467_1.webp",
     "description": "Exploring the sustainability and design aspects of peravoor marathon binds people together celebrates sportsmanship and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/sports/peravoor-marathon-binds-people-together-celebrates-sportsmanship/"
   },
@@ -706,7 +706,7 @@ window.allPosts = [
     "slug": "eco-friendly-creative-expression-of-waste",
     "category": "materials",
     "date": "2022-12-30",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/12/cladding-image-2.jpg",
+    "image": "assets/images/cladding-image-2.webp",
     "description": "Exploring the sustainability and design aspects of eco friendly creative expression of waste and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/materials/eco-friendly-creative-expression-of-waste/"
   },
@@ -715,7 +715,7 @@ window.allPosts = [
     "slug": "of-assorted-use-colours-of-timber",
     "category": "materials",
     "date": "2022-12-23",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/12/Goodearth-Mosaic-32.jpg",
+    "image": "assets/images/Goodearth-Mosaic-32_1.webp",
     "description": "Exploring the sustainability and design aspects of of assorted use colours of timber and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/materials/of-assorted-use-colours-of-timber/"
   },
@@ -724,7 +724,7 @@ window.allPosts = [
     "slug": "the-day-when-the-messiah-fulfilled-the-prophecy",
     "category": "community",
     "date": "2022-12-19",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/12/IMG_20221218_205201-2.jpg",
+    "image": "assets/images/IMG_20221218_205201-2_1.webp",
     "description": "Exploring the sustainability and design aspects of the day when the messiah fulfilled the prophecy and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/community/the-day-when-the-messiah-fulfilled-the-prophecy/"
   },
@@ -733,7 +733,7 @@ window.allPosts = [
     "slug": "sabera-award",
     "category": "awards",
     "date": "2022-12-16",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/12/FullSizeRender1.jpg",
+    "image": "assets/images/FullSizeRender1_1.webp",
     "description": "Exploring the sustainability and design aspects of sabera award and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/awards/sabera-award/"
   },
@@ -742,7 +742,7 @@ window.allPosts = [
     "slug": "malhar-winter-run",
     "category": "community",
     "date": "2022-12-09",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/12/Winter-Run-2022-15.jpg",
+    "image": "assets/images/Winter-Run-2022-15_1.webp",
     "description": "Exploring the sustainability and design aspects of malhar winter run and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/community/malhar-winter-run/"
   },
@@ -751,7 +751,7 @@ window.allPosts = [
     "slug": "exploring-holistic-farming-in-wayanad",
     "category": "holistic-farming",
     "date": "2022-12-05",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/12/Muthunga-07-2.jpg",
+    "image": "assets/images/Muthunga-07-2_1.webp",
     "description": "Exploring the sustainability and design aspects of exploring holistic farming in wayanad and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/holistic-farming/exploring-holistic-farming-in-wayanad/"
   },
@@ -760,7 +760,7 @@ window.allPosts = [
     "slug": "goodearth-farms-planting-a-seed-of-interest-in-children",
     "category": "community",
     "date": "2022-12-02",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/12/DSC09451.jpg",
+    "image": "assets/images/DSC09451_1.webp",
     "description": "Exploring the sustainability and design aspects of goodearth farms planting a seed of interest in children and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/community/goodearth-farms-planting-a-seed-of-interest-in-children/"
   },
@@ -769,7 +769,7 @@ window.allPosts = [
     "slug": "climate-responsive-design",
     "category": "climate-responsive-design",
     "date": "2022-11-19",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/11/8759.jpg",
+    "image": "assets/images/8759_1.webp",
     "description": "Exploring the sustainability and design aspects of climate responsive design and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/climate-responsive-design/climate-responsive-design/"
   },
@@ -778,7 +778,7 @@ window.allPosts = [
     "slug": "boundless-expressions-series-1-carpentry-chapter-2-doors-and-windows",
     "category": "materials",
     "date": "2022-11-11",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/09/IMG_4745.jpg",
+    "image": "assets/images/IMG_4745.webp",
     "description": "Exploring the sustainability and design aspects of boundless expressions series 1 carpentry chapter 2 doors and windows and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/materials/boundless-expressions-series-1-carpentry-chapter-2-doors-and-windows/"
   },
@@ -787,7 +787,7 @@ window.allPosts = [
     "slug": "hourdi-bricks-an-excellent-building-material",
     "category": "materials",
     "date": "2022-10-21",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/10/IMG_8328.jpg",
+    "image": "assets/images/IMG_8328_1.webp",
     "description": "Exploring the sustainability and design aspects of hourdi bricks an excellent building material and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/materials/hourdi-bricks-an-excellent-building-material/"
   },
@@ -796,7 +796,7 @@ window.allPosts = [
     "slug": "nature-the-best-teacher",
     "category": "community",
     "date": "2022-10-14",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/10/MG_7336.jpg",
+    "image": "assets/images/MG_7336_1.webp",
     "description": "Exploring the sustainability and design aspects of nature the best teacher and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/community/nature-the-best-teacher/"
   },
@@ -805,7 +805,7 @@ window.allPosts = [
     "slug": "benefits-of-clay-roof-tiles",
     "category": "materials",
     "date": "2022-10-07",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/09/IMG_4743.jpg",
+    "image": "assets/images/IMG_4743_3.webp",
     "description": "Exploring the sustainability and design aspects of benefits of clay roof tiles and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/materials/benefits-of-clay-roof-tiles/"
   },
@@ -814,7 +814,7 @@ window.allPosts = [
     "slug": "the-tastes-of-malhar-group",
     "category": "community",
     "date": "2022-08-19",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/08/featureimage.jpg",
+    "image": "assets/images/featureimage_1.webp",
     "description": "Exploring the sustainability and design aspects of the tastes of malhar group and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/community/the-tastes-of-malhar-group/"
   },
@@ -823,7 +823,7 @@ window.allPosts = [
     "slug": "how-open-spaces-and-nature-are-good-for-your-inner-wellness",
     "category": "housing",
     "date": "2022-08-12",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/08/Goodearth-Resonance-68.jpg",
+    "image": "assets/images/Goodearth-Resonance-68_1.webp",
     "description": "Exploring the sustainability and design aspects of how open spaces and nature are good for your inner wellness and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/housing/how-open-spaces-and-nature-are-good-for-your-inner-wellness/"
   },
@@ -832,7 +832,7 @@ window.allPosts = [
     "slug": "top-5-construction-industry-trends-to-watch-for-in-2022",
     "category": "opinions",
     "date": "2022-07-21",
-    "image": "http://goodearth.org.in/wp-content/uploads/2022/07/linked-in-logo-1.svg",
+    "image": "assets/images/linked-in-logo-1.svg",
     "description": "Exploring the sustainability and design aspects of top 5 construction industry trends to watch for in 2022 and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/opinions/top-5-construction-industry-trends-to-watch-for-in-2022/"
   },
@@ -841,7 +841,7 @@ window.allPosts = [
     "slug": "medley-planting-program",
     "category": "events",
     "date": "2022-07-15",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/07/Medley-planting-banner-low-res.jpeg",
+    "image": "assets/images/Medley-planting-banner-low-res_2.webp",
     "description": "Exploring the sustainability and design aspects of medley planting program and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/events/medley-planting-program/"
   },
@@ -850,7 +850,7 @@ window.allPosts = [
     "slug": "boundless-expressions-series-1-carpentry-chapter-1-the-pillars-of-good-earth",
     "category": "materials",
     "date": "2022-07-12",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/07/3842.jpg",
+    "image": "assets/images/3842_1.webp",
     "description": "Exploring the sustainability and design aspects of boundless expressions series 1 carpentry chapter 1 the pillars of good earth and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/materials/boundless-expressions-series-1-carpentry-chapter-1-the-pillars-of-good-earth/"
   },
@@ -859,7 +859,7 @@ window.allPosts = [
     "slug": "how-the-bangalore-suburban-rail-project-will-benefit-commuters",
     "category": "opinions",
     "date": "2022-07-01",
-    "image": "http://goodearth.org.in/wp-content/uploads/2022/07/linked-in-logo-1.svg",
+    "image": "assets/images/linked-in-logo-1.svg",
     "description": "Exploring the sustainability and design aspects of how the bangalore suburban rail project will benefit commuters and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/opinions/how-the-bangalore-suburban-rail-project-will-benefit-commuters/"
   },
@@ -868,7 +868,7 @@ window.allPosts = [
     "slug": "bengaluru-develops-a-taste-for-luxurious-villas",
     "category": "opinions",
     "date": "2022-06-02",
-    "image": "http://goodearth.org.in/blogs/wp-content/themes/Avada/assets/images/logo.png",
+    "image": "assets/images/logo.webp",
     "description": "Exploring the sustainability and design aspects of bengaluru develops a taste for luxurious villas and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/opinions/bengaluru-develops-a-taste-for-luxurious-villas/"
   },
@@ -877,7 +877,7 @@ window.allPosts = [
     "slug": "the-benefits-of-rooftop-rainwater-harvesting",
     "category": "water",
     "date": "2022-05-19",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2023/06/6-1-1-1200x801-1.jpg",
+    "image": "assets/images/6-1-1-1200x801-1_1.webp",
     "description": "Exploring the sustainability and design aspects of the benefits of rooftop rainwater harvesting and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/water/the-benefits-of-rooftop-rainwater-harvesting/"
   },
@@ -886,7 +886,7 @@ window.allPosts = [
     "slug": "designing-a-residential-project-for-wellness-sustainability-and-harmony",
     "category": "housing",
     "date": "2022-05-13",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/05/3699.jpg",
+    "image": "assets/images/3699_1.webp",
     "description": "Exploring the sustainability and design aspects of designing a residential project for wellness sustainability and harmony and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/housing/designing-a-residential-project-for-wellness-sustainability-and-harmony/"
   },
@@ -895,7 +895,7 @@ window.allPosts = [
     "slug": "why-a-double-roofing-system-is-good-for-your-home-and-the-planet",
     "category": "materials",
     "date": "2022-04-29",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/04/IMG_5091.jpg",
+    "image": "assets/images/IMG_5091_1.webp",
     "description": "Exploring the sustainability and design aspects of why a double roofing system is good for your home and the planet and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/materials/why-a-double-roofing-system-is-good-for-your-home-and-the-planet/"
   },
@@ -904,7 +904,7 @@ window.allPosts = [
     "slug": "the-lap-of-nature-is-where-we-are-truly-nurtured",
     "category": "housing",
     "date": "2022-04-22",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/04/IMG_00017.jpg",
+    "image": "assets/images/IMG_00017.webp",
     "description": "Exploring the sustainability and design aspects of the lap of nature is where we are truly nurtured and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/housing/the-lap-of-nature-is-where-we-are-truly-nurtured/"
   },
@@ -913,7 +913,7 @@ window.allPosts = [
     "slug": "what-lies-in-store-for-indian-real-estate-in-2022",
     "category": "opinions",
     "date": "2022-04-09",
-    "image": "http://goodearth.org.in/blogs/wp-content/themes/Avada/assets/images/logo.png",
+    "image": "assets/images/logo.webp",
     "description": "Exploring the sustainability and design aspects of what lies in store for indian real estate in 2022 and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/opinions/what-lies-in-store-for-indian-real-estate-in-2022/"
   },
@@ -922,7 +922,7 @@ window.allPosts = [
     "slug": "athreyas-musings",
     "category": "residents-spotlight",
     "date": "2022-04-08",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/04/Athreya-feature-image.jpg",
+    "image": "assets/images/Athreya-feature-image_1.webp",
     "description": "Exploring the sustainability and design aspects of athreyas musings and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/athreyas-musings/"
   },
@@ -931,7 +931,7 @@ window.allPosts = [
     "slug": "biophilia",
     "category": "housing",
     "date": "2022-03-14",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/03/DSCF8134.jpg",
+    "image": "assets/images/DSCF8134_1.webp",
     "description": "Exploring the sustainability and design aspects of biophilia and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/housing/biophilia/"
   },
@@ -940,7 +940,7 @@ window.allPosts = [
     "slug": "the-malhar-library-koota",
     "category": "community",
     "date": "2022-03-04",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/03/Screenshot-159-1.jpg",
+    "image": "assets/images/Screenshot-159-1_1.webp",
     "description": "Exploring the sustainability and design aspects of the malhar library koota and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/community/the-malhar-library-koota/"
   },
@@ -949,7 +949,7 @@ window.allPosts = [
     "slug": "mysore-road-in-the-fast-lane",
     "category": "housing",
     "date": "2022-03-04",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/03/9548FA8E-7829-4C7B-980E-BABBC130E193-1024x768-1.jpg",
+    "image": "assets/images/9548FA8E-7829-4C7B-980E-BABBC130E193-1024x768-1_1.webp",
     "description": "Exploring the sustainability and design aspects of mysore road in the fast lane and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/housing/mysore-road-in-the-fast-lane/"
   },
@@ -958,7 +958,7 @@ window.allPosts = [
     "slug": "facilities-around-malhar",
     "category": "housing",
     "date": "2022-01-29",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/01/IMG_0047.jpg",
+    "image": "assets/images/IMG_0047_1.webp",
     "description": "Exploring the sustainability and design aspects of facilities around malhar and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/housing/facilities-around-malhar/"
   },
@@ -967,7 +967,7 @@ window.allPosts = [
     "slug": "adhwaya",
     "category": "residents-spotlight",
     "date": "2022-01-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/02/bird-25-new-1.jpg",
+    "image": "assets/images/bird-25-new-1_1.webp",
     "description": "Exploring the sustainability and design aspects of adhwaya and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/residents-spotlight/adhwaya/"
   },
@@ -976,7 +976,7 @@ window.allPosts = [
     "slug": "nool-koota",
     "category": "community",
     "date": "2021-11-30",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2021/11/IMG_8242-mobile.jpg",
+    "image": "assets/images/IMG_8242-mobile_1.webp",
     "description": "Exploring the sustainability and design aspects of nool koota and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/community/nool-koota/"
   },
@@ -985,7 +985,7 @@ window.allPosts = [
     "slug": "terrace-garden",
     "category": "knowledge",
     "date": "2021-10-28",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2021/10/3C0D41B8-097C-4D77-842D-ADFFE04C1030-2.jpg",
+    "image": "assets/images/3C0D41B8-097C-4D77-842D-ADFFE04C1030-2.webp",
     "description": "Exploring the sustainability and design aspects of terrace garden and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/knowledge/terrace-garden/"
   },
@@ -994,7 +994,7 @@ window.allPosts = [
     "slug": "kids-at-malhar",
     "category": "community",
     "date": "2021-06-15",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2021/06/HYD_9659-1.jpg",
+    "image": "assets/images/HYD_9659-1_1.webp",
     "description": "Exploring the sustainability and design aspects of kids at malhar and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/community/kids-at-malhar/"
   },
@@ -1003,7 +1003,7 @@ window.allPosts = [
     "slug": "mysore-road",
     "category": "housing",
     "date": "2021-05-24",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2021/05/Kengeri-Bridge.jpg",
+    "image": "assets/images/Kengeri-Bridge_1.webp",
     "description": "Exploring the sustainability and design aspects of mysore road and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/housing/mysore-road/"
   },
@@ -1012,7 +1012,7 @@ window.allPosts = [
     "slug": "slice-of-life",
     "category": "housing",
     "date": "2020-10-18",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/09/20111201-IMG_9616-2.jpg",
+    "image": "assets/images/20111201-IMG_9616-2_1.webp",
     "description": "Exploring the sustainability and design aspects of slice of life and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/housing/slice-of-life/"
   },
@@ -1021,7 +1021,7 @@ window.allPosts = [
     "slug": "flora-and-fauna-2",
     "category": "community",
     "date": "2020-09-28",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/09/IMG_9050.jpg",
+    "image": "assets/images/IMG_9050_1.webp",
     "description": "Exploring the sustainability and design aspects of flora and fauna 2 and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/community/flora-and-fauna-2/"
   },
@@ -1030,7 +1030,7 @@ window.allPosts = [
     "slug": "wood",
     "category": "materials",
     "date": "2020-09-15",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/09/MG_3814.CR2_.jpg",
+    "image": "assets/images/MG_3814_CR2__2.webp",
     "description": "Exploring the sustainability and design aspects of wood and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/materials/wood/"
   },
@@ -1039,7 +1039,7 @@ window.allPosts = [
     "slug": "designing-mud-concrete-pathways",
     "category": "materials",
     "date": "2020-09-14",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/09/IMG_1026.jpg",
+    "image": "assets/images/IMG_1026.webp",
     "description": "Exploring the sustainability and design aspects of designing mud concrete pathways and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/materials/designing-mud-concrete-pathways/"
   },
@@ -1048,7 +1048,7 @@ window.allPosts = [
     "slug": "water-harvesting",
     "category": "water",
     "date": "2020-07-21",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2022/05/IMG_00022.jpg",
+    "image": "assets/images/IMG_00022_1.webp",
     "description": "Exploring the sustainability and design aspects of water harvesting and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/water/water-harvesting/"
   },
@@ -1057,7 +1057,7 @@ window.allPosts = [
     "slug": "drought-floods",
     "category": "sustainability",
     "date": "2018-09-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/09/flood-feature-image.jpg",
+    "image": "assets/images/flood-feature-image.webp",
     "description": "Exploring the sustainability and design aspects of drought floods and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/sustainability/drought-floods/"
   },
@@ -1066,7 +1066,7 @@ window.allPosts = [
     "slug": "foundation-of-eco-system",
     "category": "sustainability",
     "date": "2018-06-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/09/20121213-RAA_0979-1.jpg",
+    "image": "assets/images/20121213-RAA_0979-1.webp",
     "description": "Exploring the sustainability and design aspects of foundation of eco system and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/sustainability/foundation-of-eco-system/"
   },
@@ -1075,7 +1075,7 @@ window.allPosts = [
     "slug": "green-architecture-propagates-sustainable-living",
     "category": "housing",
     "date": "2015-12-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/10/IMG_4704.jpg",
+    "image": "assets/images/IMG_4704_1.webp",
     "description": "Exploring the sustainability and design aspects of green architecture propagates sustainable living and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/housing/green-architecture-propagates-sustainable-living/"
   },
@@ -1084,7 +1084,7 @@ window.allPosts = [
     "slug": "let-the-birds-fly-in-and-out",
     "category": "sustainability",
     "date": "2015-09-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/10/no9-ge-enclave-1.jpg",
+    "image": "assets/images/no9-ge-enclave-1.webp",
     "description": "Exploring the sustainability and design aspects of let the birds fly in and out and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/sustainability/let-the-birds-fly-in-and-out/"
   },
@@ -1093,7 +1093,7 @@ window.allPosts = [
     "slug": "innovators-building-a-greener-world",
     "category": "housing",
     "date": "2015-06-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/10/IMG_4732-1.jpg",
+    "image": "assets/images/IMG_4732-1_1.webp",
     "description": "Exploring the sustainability and design aspects of innovators building a greener world and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/housing/innovators-building-a-greener-world/"
   },
@@ -1102,7 +1102,7 @@ window.allPosts = [
     "slug": "not-just-another-brick-in-the-wall",
     "category": "housing",
     "date": "2015-03-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2015/03/Goodearth-Mosaic-29-new-1.jpg",
+    "image": "assets/images/Goodearth-Mosaic-29-new-1_1.webp",
     "description": "Exploring the sustainability and design aspects of not just another brick in the wall and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/housing/not-just-another-brick-in-the-wall/"
   },
@@ -1111,7 +1111,7 @@ window.allPosts = [
     "slug": "bangalores-greenest-homes",
     "category": "housing",
     "date": "2015-01-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/10/Capture-28-1.jpg",
+    "image": "assets/images/Capture-28-1.webp",
     "description": "Exploring the sustainability and design aspects of bangalores greenest homes and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/housing/bangalores-greenest-homes/"
   },
@@ -1120,7 +1120,7 @@ window.allPosts = [
     "slug": "green-house-effect",
     "category": "housing",
     "date": "2014-10-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/10/Capture-27-1.jpg",
+    "image": "assets/images/Capture-27-1.webp",
     "description": "Exploring the sustainability and design aspects of green house effect and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/housing/green-house-effect/"
   },
@@ -1129,7 +1129,7 @@ window.allPosts = [
     "slug": "sustainable-living",
     "category": "sustainability",
     "date": "2014-07-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/10/meadow-1-1.jpg",
+    "image": "assets/images/meadow-1-1.webp",
     "description": "Exploring the sustainability and design aspects of sustainable living and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/sustainability/sustainable-living/"
   },
@@ -1138,7 +1138,7 @@ window.allPosts = [
     "slug": "putting-life-back-into-the-earth",
     "category": "sustainability",
     "date": "2014-04-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/10/orchard-verandah-1.jpg",
+    "image": "assets/images/orchard-verandah-1.webp",
     "description": "Exploring the sustainability and design aspects of putting life back into the earth and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/sustainability/putting-life-back-into-the-earth/"
   },
@@ -1147,7 +1147,7 @@ window.allPosts = [
     "slug": "a-way-of-living-with-nature-and-friends",
     "category": "sustainability",
     "date": "2014-01-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/10/no9-enclave-3.jpg",
+    "image": "assets/images/no9-enclave-3.webp",
     "description": "Exploring the sustainability and design aspects of a way of living with nature and friends and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/sustainability/a-way-of-living-with-nature-and-friends/"
   },
@@ -1156,7 +1156,7 @@ window.allPosts = [
     "slug": "lost-in-nature",
     "category": "sustainability",
     "date": "2013-10-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/10/hammock-1.jpg",
+    "image": "assets/images/hammock-1.webp",
     "description": "Exploring the sustainability and design aspects of lost in nature and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/sustainability/lost-in-nature/"
   },
@@ -1165,7 +1165,7 @@ window.allPosts = [
     "slug": "controlling-the-process-of-sustainability",
     "category": "sustainability",
     "date": "2013-07-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/10/sambhavna1-1-1.jpg",
+    "image": "assets/images/sambhavna1-1-1.webp",
     "description": "Exploring the sustainability and design aspects of controlling the process of sustainability and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/sustainability/controlling-the-process-of-sustainability/"
   },
@@ -1174,7 +1174,7 @@ window.allPosts = [
     "slug": "very-nature-driven-homes",
     "category": "housing",
     "date": "2011-07-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/10/Hymns-1-1.jpg",
+    "image": "assets/images/Hymns-1-1_1.webp",
     "description": "Exploring the sustainability and design aspects of very nature driven homes and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/housing/very-nature-driven-homes/"
   },
@@ -1183,7 +1183,7 @@ window.allPosts = [
     "slug": "towards-a-sustainable-future",
     "category": "sustainability",
     "date": "2011-04-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/10/esdc-1-1.jpg",
+    "image": "assets/images/esdc-1-1.webp",
     "description": "Exploring the sustainability and design aspects of towards a sustainable future and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/sustainability/towards-a-sustainable-future/"
   },
@@ -1192,7 +1192,7 @@ window.allPosts = [
     "slug": "goodearth-hamlet",
     "category": "housing",
     "date": "2011-01-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/10/hamlet-courtyard-1.jpg",
+    "image": "assets/images/hamlet-courtyard-1.webp",
     "description": "Exploring the sustainability and design aspects of goodearth hamlet and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/housing/goodearth-hamlet/"
   },
@@ -1201,7 +1201,7 @@ window.allPosts = [
     "slug": "namma-bhoomi",
     "category": "housing",
     "date": "2010-10-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/10/admin-back-1.jpg",
+    "image": "assets/images/admin-back-1_1.webp",
     "description": "Exploring the sustainability and design aspects of namma bhoomi and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/housing/namma-bhoomi/"
   },
@@ -1210,7 +1210,7 @@ window.allPosts = [
     "slug": "pure-energy",
     "category": "sustainability",
     "date": "2010-07-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/10/Capture-2-12-1.jpg",
+    "image": "assets/images/Capture-2-12-1.webp",
     "description": "Exploring the sustainability and design aspects of pure energy and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/sustainability/pure-energy/"
   },
@@ -1219,7 +1219,7 @@ window.allPosts = [
     "slug": "down-to-earth",
     "category": "sustainability",
     "date": "2010-04-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/10/Capture-23-1.jpg",
+    "image": "assets/images/Capture-23-1.webp",
     "description": "Exploring the sustainability and design aspects of down to earth and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/sustainability/down-to-earth/"
   },
@@ -1228,7 +1228,7 @@ window.allPosts = [
     "slug": "atree",
     "category": "housing",
     "date": "2010-01-01",
-    "image": "https://goodearth.org.in/connect/wp-content/uploads/2020/10/atree-front-1.jpg",
+    "image": "assets/images/atree-front-1_1.webp",
     "description": "Exploring the sustainability and design aspects of atree and its integration within community architectures.",
     "original_url": "https://goodearth.org.in/connect/housing/atree/"
   }

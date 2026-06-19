@@ -13,6 +13,232 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;1,300&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS for Premium Redesign -->
+  <style>
+    /* Article Header */
+    .article-header {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 1.5rem;
+    }
+    .article-category-badge {
+      display: inline-block;
+      background-color: var(--color-bg-secondary);
+      color: var(--color-primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.75rem;
+    }
+    .article-title-heading {
+      font-size: 2.75rem;
+      line-height: 1.15;
+      color: var(--color-primary-dark);
+      margin-top: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .article-meta-info {
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+      font-family: var(--font-body);
+      font-weight: 500;
+    }
+    .article-meta-info a {
+      color: var(--color-primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .article-meta-info a:hover {
+      color: var(--color-accent);
+      text-decoration: underline;
+    }
+
+    /* Hero Image Container */
+    .article-hero-wrapper {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      aspect-ratio: 16/9;
+      position: relative;
+    }
+    .article-hero-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .article-hero-wrapper:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Source Notice */
+    .original-source-notice {
+      background-color: var(--color-bg-primary);
+      border-left: 3px solid var(--color-accent);
+      padding: 1.25rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 2.5rem;
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      font-family: var(--font-body);
+      line-height: 1.5;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.01);
+    }
+    .original-source-notice a {
+      color: var(--color-primary-dark);
+      font-weight: 600;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    .original-source-notice a:hover {
+      color: var(--color-accent);
+    }
+
+    /* Main Article Content & Typography */
+    .premium-article-content {
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+    }
+    .premium-article-content p {
+      margin-bottom: 1.6rem;
+    }
+    .premium-article-content h2 {
+      font-family: var(--font-heading);
+      font-size: 1.85rem;
+      color: var(--color-primary-dark);
+      margin-top: 2.5rem;
+      margin-bottom: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    /* Images & Galleries */
+    .premium-img-wrapper {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+      border: 1px solid var(--color-border);
+      background-color: var(--color-bg-secondary);
+      margin-bottom: 1rem;
+    }
+    .premium-img-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .premium-img-wrapper:hover img {
+      transform: scale(1.02);
+    }
+    .caption-under-img {
+      font-size: 0.82rem;
+      color: var(--color-text-secondary);
+      text-align: center;
+      line-height: 1.4;
+      margin-top: 0.5rem;
+      margin-bottom: 1.8rem;
+      font-family: var(--font-body);
+      font-style: italic;
+    }
+    .gallery-two-col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin: 2rem 0;
+    }
+    @media (max-width: 600px) {
+      .gallery-two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+    .gallery-three-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin: 2rem 0;
+    }
+    @media (max-width: 768px) {
+      .gallery-three-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Article Meta Footer */
+    .article-footer-meta {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      border-top: 1px solid var(--color-border);
+      padding-top: 1.5rem;
+      font-family: var(--font-body);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Redesigned Share Buttons */
+    .share-story-box {
+      margin-top: 2rem;
+      background: var(--color-bg-primary);
+      padding: 1.5rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border);
+    }
+    .share-story-box .share-title {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .share-grid-redesign {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+    @media (max-width: 500px) {
+      .share-grid-redesign {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .share-btn-redesign {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 0.75rem;
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .share-btn-redesign:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+  </style>
 </head>
 <body>
 
@@ -29,57 +255,73 @@
         <!-- Main Article Panel -->
         <div class="blog-article-panel">
           <!-- Meta Data Header -->
-        <div class="blog-meta-header" style="margin-bottom: 2rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1.5rem;">
-          <span style="display:inline-block; background-color:var(--color-bg-secondary); color:var(--color-primary); padding:4px 12px; border-radius:20px; font-size:0.75rem; font-family:var(--font-heading); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom: 0.5rem;">
-            Housing
-          </span>
-          <h1 style="font-size: 2.5rem; line-height: 1.15; color: var(--color-primary-dark); margin-top: 0.5rem; margin-bottom: 0.5rem; font-family: var(--font-heading); font-weight: 700;">
-            How open spaces and nature are good for your inner wellness
-          </h1>
-          <p style="font-size:0.85rem; color:var(--color-text-secondary); font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">
-            By GoodEarth | Published On: August 12, 2022
-          </p>
-        </div>
-
-        <!-- Article Hero Image -->
-        <div style="border-radius: var(--radius-md); overflow: hidden; margin-bottom: 2rem; border: 1px solid var(--color-border); aspect-ratio: 16/9;">
-          <img src="https://goodearth.org.in/connect/wp-content/uploads/2022/08/Goodearth-Resonance-68.jpg" alt="How open spaces and nature are good for your inner wellness" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
-        </div>
-
-        <!-- Original source alert -->
-        <div style="background-color: var(--color-bg-secondary); border-left: 4px solid var(--color-accent); padding: 1rem; border-radius: var(--radius-sm); margin-bottom: 2rem; font-size: 0.9rem; color: var(--color-text-secondary); font-family: var(--font-body);">
-          This article is a clone from the original GoodEarth Connect catalog. View the original post at: 
-          <a href="https://goodearth.org.in/connect/housing/how-open-spaces-and-nature-are-good-for-your-inner-wellness/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary-dark); font-weight: 600; text-decoration: underline;">
-            How open spaces and nature are good for your inner wellness &nearr;
-          </a>
-        </div>
-
-        <!-- Body Text Content -->
-        <div class="blog-body-content" style="font-size: 1.15rem; line-height: 1.7; color: var(--color-text-primary); font-family: var(--font-body);">
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">Exploring the sustainability and design aspects of how open spaces and nature are good for your inner wellness and its integration within community architectures.</p>
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">
-            This page represents a pre-rendered static structure matching the original blog configuration of the GoodEarth website. You can edit this file directly to add text paragraphs, galleries, quotes, or tables.
-          </p>
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">
-            Place your custom blog assets (such as local images, diagrams, or PDF downloads) inside the local <code>assets/</code> folder in this directory, and reference them relatively (e.g. <code>&lt;img src="assets/my-image.jpg"&gt;</code>).
-          </p>
-        </div>
-
-        <!-- Meta Data Footer -->
-        <div class="blog-meta-footer" style="margin-top: 3rem; font-size: 0.85rem; color: var(--color-text-muted); border-top: 1px solid var(--color-border); padding-top: 1.5rem; font-family: var(--font-body);">
-          By GoodEarth | August 12, 2022 | Housing | 0 Comments
-        </div>
-
-        <!-- Share Story Container -->
-        <div class="share-story-container">
-          <div class="share-title">Share This Story, Choose Your Platform!</div>
-          <div class="share-buttons-grid">
-            <button class="share-btn" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">Facebook</button>
-            <button class="share-btn" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(window.location.href), '_blank')">WhatsApp</button>
-            <button class="share-btn" onclick="window.open('https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(window.location.href), '_blank')">Pinterest</button>
-            <button class="share-btn" onclick="window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href)">Email</button>
+          <div class="article-header">
+            <span class="article-category-badge">Housing</span>
+            <h1 class="article-title-heading">How open spaces and nature are good for your inner wellness</h1>
+            <div class="article-meta-info">
+              By <a href="https://goodearth.org.in/connect/author/goodearth/" style="color:var(--color-primary); font-weight:600;">GoodEarth Team</a> &nbsp;|&nbsp; August 12, 2022
+            </div>
           </div>
-        </div>
+
+          <!-- Article Hero Image -->
+          <div class="article-hero-wrapper">
+            <img src="../../assets/images/Goodearth-Resonance-68.webp" alt="How open spaces and nature are good for your inner wellness" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+          </div>
+
+          <!-- Body Text Content -->
+          <div class="premium-article-content">
+            <p>If you’re feeling a little stressed out or anxious, it might be time for a quick walk in the park. Research shows that being in nature reduces your heart rate, lowers blood pressure and even slows down your breathing. It’s also been shown to boost creativity and help with problem-solving – though you don’t have to be Einstein to benefit from this kind of “thinking outside the box.” In fact, simply looking at photos of trees can have a calming effect on our minds. Research shows that people who live near parks and green spaces have lower rates of depression and anxiety than those who don’t. It’s also been shown that spending time in natural settings can improve your mood and even boost your productivity at work.</p>
+
+
+            <h2>There are plenty of ways to get more nature in your life</h2>
+
+            <p>Go for a walk outside—even if it’s just around the block or through your neighborhood. Don’t feel like leaving home? You can always download some guided meditations online and listen while walking around inside (or if you’re stuck sitting down at work). The key is simply getting outside for a few minutes every day—it doesn’t have to be an hour hike! And remember: try not to spend too much time staring at screens before or after enjoying the great outdoors; they emit blue light that suppresses melatonin production, which keeps us awake at night (and we all know what comes next).</p>
+
+
+
+            <h2>The natural world slows down our hearts and minds</h2>
+
+            <p>Nature can help you to relax, sleep better and feel more connected with the world. Studies have shown that being in nature has a calming effect on our minds, which means we need less sleep when we are surrounded by it. A study conducted at Stanford University showed that 10-minute breaks spent in nature improved concentration and performance on cognitive tasks by 15 percent compared to those who took a break indoors.</p>
+
+            <h2>Time outside can boost creativity</h2>
+
+            <p>Creativity allows us to express ourselves and our inner thoughts. It is a way for us to solve problems, see things in new ways, and come up with unique solutions. When we are creative, we tap into our inner self and express it outwardly.</p>
+
+            <p>Getting out into the open and going for a walk in the park can help us center ourselves and find peace of mind. Studies have shown that being outside is good for your mental health, especially if you’re spending time near nature. In fact, there’s even scientific evidence that spending time in natural environments can be beneficial to your physical health as well!</p>
+
+
+
+            <h2>Nature makes us kinder, happier people</h2>
+
+            <p>When you’re in nature, your body releases chemicals called endorphins that make you feel happy. It also decreases stress hormones and increases serotonin, which is the chemical that helps to regulate your moods and sleep patterns. You’re more likely to feel relaxed while in an open space than when surrounded by tall buildings or other structures that can make you feel like you might be trapped or closed in.</p>
+
+            <p>There are many reasons why getting outside and enjoying nature is good for you. Not only does it help us slow down and relax, but it also gives us an opportunity to connect with our surroundings in a way that can benefit our physical, mental and emotional wellbeing. If you have been feeling stressed or anxious lately, try taking some time out in order to restore yourself by taking a walk in your local park or going on holiday somewhere near the sea!</p>
+          </div>
+
+          <!-- Redesigned Article Meta Footer -->
+          <div class="article-footer-meta">
+            <span>By <a href="https://goodearth.org.in/connect/author/goodearth/" target="_blank" style="color:var(--color-primary); font-weight:600;">GoodEarth Team</a> &nbsp;|&nbsp; August 12, 2022</span>
+            <span>Category: <strong style="color:var(--color-primary);">Housing</strong></span>
+          </div>
+
+          <!-- Redesigned Share Story Box -->
+          <div class="share-story-box">
+            <div class="share-title">Share This Story</div>
+            <div class="share-grid-redesign">
+              <button class="share-btn-redesign" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">
+                <span>Facebook</span>
+              </button>
+              <button class="share-btn-redesign" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(window.location.href), '_blank')">
+                <span>WhatsApp</span>
+              </button>
+              <button class="share-btn-redesign" onclick="window.open('https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(window.location.href), '_blank')">
+                <span>Pinterest</span>
+              </button>
+              <button class="share-btn-redesign" onclick="window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href)">
+                <span>Email</span>
+              </button>
+            </div>
+          </div>
         </div>
         
         <!-- Related Posts Panel -->
@@ -89,72 +331,72 @@
             <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--color-primary-dark); margin-bottom: 2rem;">Related Posts</h3>
             <div class="articles-grid-original" style="grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
                       <article class="original-card">
-                    <a href="../../housing/reviving-communal-living-goodearths-sustainable-approach-to-group-housing-in-india/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/07/10-07-camp-1.webp" alt="Reviving communal living: GoodEarth's sustainable approach to group housing in India" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                    <a href="../../housing/reviving-communal-living-goodearths-sustainable-approach-to-group-housing-in-india/" class="original-card-image-link">
+            <img src="../../assets/images/10-07-camp-1_1.webp" alt="Reviving communal living: GoodEarth's sustainable approach to group housing in India" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
             <span class="card-badge">Housing</span>
           </a>
           <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../housing/reviving-communal-living-goodearths-sustainable-approach-to-group-housing-in-india/index.html">Reviving communal living: GoodEarth's sustainable approach to group housing in India</a>
+            <a href="../../housing/reviving-communal-living-goodearths-sustainable-approach-to-group-housing-in-india/">Reviving communal living: GoodEarth's sustainable approach to group housing in India</a>
           </h4>
           <div class="original-card-meta" style="font-size: 0.68rem;">
             By GoodEarth Team | July 10, 2023
           </div>
                     <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../housing/reviving-communal-living-goodearths-sustainable-approach-to-group-housing-in-india/index.html" class="card-link" style="font-size: 0.72rem;">
+            <a href="../../housing/reviving-communal-living-goodearths-sustainable-approach-to-group-housing-in-india/" class="card-link" style="font-size: 0.72rem;">
               Read Article
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
         </article>
         <article class="original-card">
-                    <a href="../../housing/designing-a-residential-project-for-wellness-sustainability-and-harmony/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2022/05/3699.jpg" alt="Designing a residential project for wellness, sustainability and harmony" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                    <a href="../../housing/designing-a-residential-project-for-wellness-sustainability-and-harmony/" class="original-card-image-link">
+            <img src="../../assets/images/3699_1.webp" alt="Designing a residential project for wellness, sustainability and harmony" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
             <span class="card-badge">Housing</span>
           </a>
           <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../housing/designing-a-residential-project-for-wellness-sustainability-and-harmony/index.html">Designing a residential project for wellness, sustainability and harmony</a>
+            <a href="../../housing/designing-a-residential-project-for-wellness-sustainability-and-harmony/">Designing a residential project for wellness, sustainability and harmony</a>
           </h4>
           <div class="original-card-meta" style="font-size: 0.68rem;">
             By GoodEarth Team | May 13, 2022
           </div>
                     <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../housing/designing-a-residential-project-for-wellness-sustainability-and-harmony/index.html" class="card-link" style="font-size: 0.72rem;">
+            <a href="../../housing/designing-a-residential-project-for-wellness-sustainability-and-harmony/" class="card-link" style="font-size: 0.72rem;">
               Read Article
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
         </article>
         <article class="original-card">
-                    <a href="../../housing/the-lap-of-nature-is-where-we-are-truly-nurtured/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2022/04/IMG_00017.jpg" alt="The lap of nature is where we are truly nurtured" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                    <a href="../../housing/the-lap-of-nature-is-where-we-are-truly-nurtured/" class="original-card-image-link">
+            <img src="../../assets/images/IMG_00017.webp" alt="The lap of nature is where we are truly nurtured" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
             <span class="card-badge">Housing</span>
           </a>
           <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../housing/the-lap-of-nature-is-where-we-are-truly-nurtured/index.html">The lap of nature is where we are truly nurtured</a>
+            <a href="../../housing/the-lap-of-nature-is-where-we-are-truly-nurtured/">The lap of nature is where we are truly nurtured</a>
           </h4>
           <div class="original-card-meta" style="font-size: 0.68rem;">
             By GoodEarth Team | April 22, 2022
           </div>
                     <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../housing/the-lap-of-nature-is-where-we-are-truly-nurtured/index.html" class="card-link" style="font-size: 0.72rem;">
+            <a href="../../housing/the-lap-of-nature-is-where-we-are-truly-nurtured/" class="card-link" style="font-size: 0.72rem;">
               Read Article
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
         </article>
         <article class="original-card">
-                    <a href="../../housing/biophilia/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2022/03/DSCF8134.jpg" alt="Biophilia" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
+                    <a href="../../housing/biophilia/" class="original-card-image-link">
+            <img src="../../assets/images/DSCF8134_1.webp" alt="Biophilia" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
             <span class="card-badge">Housing</span>
           </a>
           <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../housing/biophilia/index.html">Biophilia</a>
+            <a href="../../housing/biophilia/">Biophilia</a>
           </h4>
           <div class="original-card-meta" style="font-size: 0.68rem;">
             By GoodEarth Team | March 14, 2022
           </div>
                     <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../housing/biophilia/index.html" class="card-link" style="font-size: 0.72rem;">
+            <a href="../../housing/biophilia/" class="card-link" style="font-size: 0.72rem;">
               Read Article
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
@@ -213,7 +455,7 @@
 
         <!-- About GoodEarth Widget -->
         <div class="widget-about">
-          <img src="../../assets/images/goodeath-image.jpg" alt="goodeath-image" />
+          <img src="../../assets/images/goodeath-image.webp" alt="goodeath-image" />
           <h3>About GoodEarth</h3>
           <p>At Good Earth, we are engaged in bringing together like-minded people with a common vision of building a sustainable future.</p>
           
@@ -236,37 +478,37 @@
           <div class="tab-content active" id="tab-popular">
             <ul class="tab-post-list">
                         <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/09/Blog-spt14-1-rs.jpg" alt="Role of Compressed Stabilized Earth Blocks in sustainable construction" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Blog-spt14-1-rs_3.webp" alt="Role of Compressed Stabilized Earth Blocks in sustainable construction" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../materials/role-of-compressed-stabilized-earth-blocks-in-sustainable-construction/index.html">Role of Compressed Stabilized Earth Blocks in sustainable construction</a></h4>
+              <h4 class="tab-post-title"><a href="../../materials/role-of-compressed-stabilized-earth-blocks-in-sustainable-construction/">Role of Compressed Stabilized Earth Blocks in sustainable construction</a></h4>
               <div class="tab-post-date">September 14, 2023</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/02/Saarang-Brochure_V4_Corrections_Print-page-71.jpg" alt="GoodEarth Saarang - Live, work & celebrate life at a holistic eco village" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Saarang-Brochure_V4_Corrections_Print-page-71_2.webp" alt="GoodEarth Saarang - Live, work & celebrate life at a holistic eco village" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../sustainability/goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village/index.html">GoodEarth Saarang - Live, work & celebrate life at a holistic eco village</a></h4>
+              <h4 class="tab-post-title"><a href="../../sustainability/goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village/">GoodEarth Saarang - Live, work & celebrate life at a holistic eco village</a></h4>
               <div class="tab-post-date">February 22, 2024</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/03/IMG_00070.webp" alt="Discovering Landscaping Elements - Chappadi Stone" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/IMG_00070_3.webp" alt="Discovering Landscaping Elements - Chappadi Stone" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../design/discovering-landscaping-elements-chappadi-stone/index.html">Discovering Landscaping Elements - Chappadi Stone</a></h4>
+              <h4 class="tab-post-title"><a href="../../design/discovering-landscaping-elements-chappadi-stone/">Discovering Landscaping Elements - Chappadi Stone</a></h4>
               <div class="tab-post-date">March 30, 2024</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Come-Over-Featured-Image_2.webp" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/index.html">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
               <div class="tab-post-date">April 15, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/01/1.jpg" alt="Rediscovering rammed earth construction in modern architecture" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/1_5.webp" alt="Rediscovering rammed earth construction in modern architecture" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../sustainability/rediscovering-rammed-earth-construction-in-modern-architecture/index.html">Rediscovering rammed earth construction in modern architecture</a></h4>
+              <h4 class="tab-post-title"><a href="../../sustainability/rediscovering-rammed-earth-construction-in-modern-architecture/">Rediscovering rammed earth construction in modern architecture</a></h4>
               <div class="tab-post-date">January 12, 2024</div>
             </div>
           </li>
@@ -276,37 +518,37 @@
           <div class="tab-content" id="tab-recent">
             <ul class="tab-post-list">
                         <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Come-Over-Featured-Image_2.webp" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/index.html">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
               <div class="tab-post-date">April 15, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/03/GoodEarth-Resident-Girin-Web-Banner.jpeg" alt="Savvy in Five with Girin | Get closer to the birds around you" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/GoodEarth-Resident-Girin-Web-Banner_2.webp" alt="Savvy in Five with Girin | Get closer to the birds around you" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/savvy-in-five-with-girin-get-closer-to-the-birds-around-you/index.html">Savvy in Five with Girin | Get closer to the birds around you</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/savvy-in-five-with-girin-get-closer-to-the-birds-around-you/">Savvy in Five with Girin | Get closer to the birds around you</a></h4>
               <div class="tab-post-date">March 11, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/01/GE-Ajith.jpg" alt="Come On Over | Ajith, Bindu, and Indulekha's Dream Home." class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/GE-Ajith_2.webp" alt="Come On Over | Ajith, Bindu, and Indulekha's Dream Home." class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-on-over-ajith-bindu-and-indulekhas-dream-home/index.html">Come On Over | Ajith, Bindu, and Indulekha's Dream Home.</a></h4>
+              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-on-over-ajith-bindu-and-indulekhas-dream-home/">Come On Over | Ajith, Bindu, and Indulekha's Dream Home.</a></h4>
               <div class="tab-post-date">January 17, 2026</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2025/12/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori.jpg" alt="Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori_2.webp" alt="Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../beyond-the-fence/beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori/index.html">Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori</a></h4>
+              <h4 class="tab-post-title"><a href="../../beyond-the-fence/beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori/">Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori</a></h4>
               <div class="tab-post-date">December 31, 2025</div>
             </div>
           </li>
           <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2025/12/Hero.webp" alt="GoodEarth Modern Times wins CREDAI Awards 2025" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
+            <img src="../../assets/images/Hero_2.webp" alt="GoodEarth Modern Times wins CREDAI Awards 2025" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
             <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../awards/goodearth-modern-times-wins-credai-awards-2025/index.html">GoodEarth Modern Times wins CREDAI Awards 2025</a></h4>
+              <h4 class="tab-post-title"><a href="../../awards/goodearth-modern-times-wins-credai-awards-2025/">GoodEarth Modern Times wins CREDAI Awards 2025</a></h4>
               <div class="tab-post-date">December 22, 2025</div>
             </div>
           </li>

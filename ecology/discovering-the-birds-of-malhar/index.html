@@ -1,299 +1,879 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Discovering the birds of Malhar - GoodEarth Connect</title>
-  
-  <!-- Relative path to global style sheet -->
-  <link rel="stylesheet" href="../../assets/css/style.css">
-  
-  
-  <!-- Manrope & Karla Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;1,300&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Discovering the birds of Malhar - GoodEarth Connect</title>
+<!-- Relative path to global style sheet -->
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<!-- Manrope & Karla Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;1,300&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+
+<!-- Custom CSS for Premium Redesign -->
+<style>
+    /* Article Header Styles */
+    .article-header {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 1.5rem;
+    }
+    
+    .article-pretitle {
+      display: inline-block;
+      background-color: var(--color-bg-secondary);
+      color: var(--color-primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.75rem;
+    }
+    
+    .article-title-heading {
+      font-size: 2.75rem;
+      line-height: 1.15;
+      color: var(--color-primary-dark);
+      margin-top: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    
+    .article-meta-info {
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+      font-family: var(--font-body);
+      font-weight: 500;
+    }
+
+    /* Hero Image */
+    .article-hero-wrapper {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-bottom: 3rem;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    }
+    
+    .article-hero-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    
+    .article-hero-wrapper:hover img {
+      transform: scale(1.01);
+    }
+
+    /* Source Notice */
+    .original-source-notice {
+      background-color: var(--color-bg-primary);
+      border-left: 3px solid var(--color-accent);
+      padding: 1.25rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 3rem;
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      font-family: var(--font-body);
+      line-height: 1.5;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.01);
+    }
+    
+    .original-source-notice a {
+      color: var(--color-primary-dark);
+      font-weight: 600;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    
+    .original-source-notice a:hover {
+      color: var(--color-accent);
+    }
+
+    /* Premium Article Content & Typography */
+    .premium-article-content {
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+    }
+    
+    .premium-article-content p {
+      margin-bottom: 1.75rem;
+    }
+
+    /* Section Headings */
+    .premium-article-content h2 {
+      font-family: var(--font-heading);
+      font-size: 2.15rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+      margin-top: 3.5rem;
+      margin-bottom: 0.35rem;
+      line-height: 1.2;
+    }
+
+    .premium-article-content h3 {
+      font-family: var(--font-heading);
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+      margin-top: 3.5rem;
+      margin-bottom: 1.25rem;
+      border-left: 4px solid var(--color-primary);
+      padding-left: 0.88rem;
+      line-height: 1.3;
+    }
+
+    .premium-article-content h4 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-top: -0.5rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+
+    /* First Paragraph Dropcap */
+    .intro-paragraph::first-letter {
+      float: left;
+      font-size: 3.5rem;
+      line-height: 1;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin-right: 0.75rem;
+      margin-top: 0.25rem;
+      font-family: var(--font-heading);
+    }
+
+    /* Image Block */
+    .article-img-block {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.02);
+      margin: 2.5rem 0;
+      background-color: var(--color-bg-secondary);
+    }
+    
+    .article-img-block img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .article-img-block:hover img {
+      transform: scale(1.01);
+    }
+
+    .img-caption {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      text-align: center;
+      margin-top: -1.75rem;
+      margin-bottom: 2.5rem;
+      display: block;
+    }
+
+    /* Dual images row */
+    .dual-images-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+    
+    @media (max-width: 600px) {
+      .dual-images-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .grid-img-wrapper {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.015);
+      transition: all 0.3s ease;
+    }
+    
+    .grid-img-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    
+    .grid-img-wrapper:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.035);
+    }
+    
+    .grid-img-wrapper:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Walkway/Series Cards */
+    .explore-series-container {
+      background-color: #faf8f5;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      margin: 4rem 0 3rem;
+    }
+
+    .explore-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-primary-dark);
+      margin-bottom: 2rem;
+      border-left: 3px solid var(--color-accent);
+      padding-left: 0.75rem;
+    }
+
+    .explore-grid-two {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .explore-grid-two {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    .series-card {
+      background-color: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: 1.25rem;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+    }
+
+    .series-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.035);
+      border-color: rgba(166, 190, 75, 0.2);
+    }
+
+    .series-img-wrapper {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 3/2;
+      border: 1px solid var(--color-border);
+      margin-bottom: 1rem;
+    }
+
+    .series-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .series-card:hover .series-img-wrapper img {
+      transform: scale(1.03);
+    }
+
+    .series-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .series-btn {
+      margin-top: auto;
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--color-accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding-top: 0.75rem;
+    }
+
+    .series-btn::after {
+      content: '→';
+      transition: transform 0.2s ease;
+    }
+
+    .series-card:hover .series-btn::after {
+      transform: translateX(4px);
+    }
+
+    /* Meta Footer */
+    .article-footer-meta {
+      margin-top: 3.5rem;
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      border-top: 1px solid var(--color-border);
+      padding-top: 1.5rem;
+      font-family: var(--font-body);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Redesigned Share Buttons */
+    .share-story-box {
+      margin-top: 2rem;
+      background: var(--color-bg-primary);
+      padding: 1.5rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border);
+    }
+    
+    .share-story-box .share-title {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .share-grid-redesign {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+    
+    @media (max-width: 500px) {
+      .share-grid-redesign {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    .share-btn-redesign {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 10px 16px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      border: 1px solid var(--color-border);
+      background-color: #ffffff;
+      color: var(--color-text-secondary);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .share-btn-redesign:hover {
+      background-color: var(--color-primary-dark);
+      color: #ffffff;
+      border-color: var(--color-primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .ecological-list {
+      list-style: none;
+      padding: 0;
+      margin: 2.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .ecological-list li {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    
+    .ecological-list li:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+    }
+    
+    .ecological-list .list-icon {
+      background: var(--color-bg-secondary);
+      color: var(--color-primary);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .ecological-list .list-text h4 {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+      margin-bottom: 0.5rem;
+    }
+    
+    .ecological-list .list-text p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+      margin: 0;
+    }
+
+    /* Responsive Video Players */
+    .bird-video-wrapper {
+      margin: 3rem 0;
+      background: #1d1b17;
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+    }
+
+    .bird-video-wrapper .section-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .bird-video-wrapper h4 {
+      color: #fff;
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .bird-video-wrapper p {
+      color: #b5b0a7;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    .bird-video-wrapper video {
+      width: 100%;
+      border-radius: var(--radius-md);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      background-color: #000;
+    }
+
+    .desktop-only-video {
+      display: block;
+      max-width: 720px;
+    }
+
+    .mobile-only-video {
+      display: none;
+      max-width: 320px;
+    }
+
+    @media (max-width: 640px) {
+      .desktop-only-video {
+        display: none;
+      }
+      .mobile-only-video {
+        display: block;
+      }
+    }
+  </style>
 </head>
 <body>
+<!-- Injected Shared Header -->
+<header class="site-header" id="header-container"></header>
+<!-- Main Article Body in 2-Column Sidebar Layout -->
+<main class="main-container" style="max-width: 1200px; margin: 0 auto; padding: 4rem 1.5rem;">
+<div class="blog-layout-container">
+<!-- Left Main Content Column -->
+<div class="blog-main-content">
+<!-- Main Article Panel -->
 
-  <!-- Injected Shared Header -->
-  <header id="header-container" class="site-header"></header>
-
-  <!-- Main Article Body in 2-Column Sidebar Layout -->
-  <main class="main-container" style="max-width: 1200px; margin: 0 auto; padding: 4rem 1.5rem;">
-    <div class="blog-layout-container">
-      
-      <!-- Left Main Content Column -->
-      <div class="blog-main-content">
-        
-        <!-- Main Article Panel -->
-        <div class="blog-article-panel">
-          <!-- Meta Data Header -->
-        <div class="blog-meta-header" style="margin-bottom: 2rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1.5rem;">
-          <span style="display:inline-block; background-color:var(--color-bg-secondary); color:var(--color-primary); padding:4px 12px; border-radius:20px; font-size:0.75rem; font-family:var(--font-heading); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom: 0.5rem;">
-            Ecology
-          </span>
-          <h1 style="font-size: 2.5rem; line-height: 1.15; color: var(--color-primary-dark); margin-top: 0.5rem; margin-bottom: 0.5rem; font-family: var(--font-heading); font-weight: 700;">
-            Discovering the birds of Malhar
-          </h1>
-          <p style="font-size:0.85rem; color:var(--color-text-secondary); font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">
-            By GoodEarth | Published On: August 31, 2023
-          </p>
-        </div>
-
-        <!-- Article Hero Image -->
-        <div style="border-radius: var(--radius-md); overflow: hidden; margin-bottom: 2rem; border: 1px solid var(--color-border); aspect-ratio: 16/9;">
-          <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/08/IMG_9193-3-1.jpg" alt="Discovering the birds of Malhar" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
-        </div>
-
-        <!-- Original source alert -->
-        <div style="background-color: var(--color-bg-secondary); border-left: 4px solid var(--color-accent); padding: 1rem; border-radius: var(--radius-sm); margin-bottom: 2rem; font-size: 0.9rem; color: var(--color-text-secondary); font-family: var(--font-body);">
-          This article is a clone from the original GoodEarth Connect catalog. View the original post at: 
-          <a href="https://goodearth.org.in/connect/ecology/discovering-the-birds-of-malhar/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary-dark); font-weight: 600; text-decoration: underline;">
-            Discovering the birds of Malhar &nearr;
-          </a>
-        </div>
-
-        <!-- Body Text Content -->
-        <div class="blog-body-content" style="font-size: 1.15rem; line-height: 1.7; color: var(--color-text-primary); font-family: var(--font-body);">
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">Exploring the sustainability and design aspects of discovering the birds of malhar and its integration within community architectures.</p>
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">
-            This page represents a pre-rendered static structure matching the original blog configuration of the GoodEarth website. You can edit this file directly to add text paragraphs, galleries, quotes, or tables.
-          </p>
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">
-            Place your custom blog assets (such as local images, diagrams, or PDF downloads) inside the local <code>assets/</code> folder in this directory, and reference them relatively (e.g. <code>&lt;img src="assets/my-image.jpg"&gt;</code>).
-          </p>
-        </div>
-
-        <!-- Meta Data Footer -->
-        <div class="blog-meta-footer" style="margin-top: 3rem; font-size: 0.85rem; color: var(--color-text-muted); border-top: 1px solid var(--color-border); padding-top: 1.5rem; font-family: var(--font-body);">
-          By GoodEarth | August 31, 2023 | Ecology | 0 Comments
-        </div>
-
-        <!-- Share Story Container -->
-        <div class="share-story-container">
-          <div class="share-title">Share This Story, Choose Your Platform!</div>
-          <div class="share-buttons-grid">
-            <button class="share-btn" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">Facebook</button>
-            <button class="share-btn" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(window.location.href), '_blank')">WhatsApp</button>
-            <button class="share-btn" onclick="window.open('https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(window.location.href), '_blank')">Pinterest</button>
-            <button class="share-btn" onclick="window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href)">Email</button>
-          </div>
-        </div>
-        </div>
-        
-        <!-- Related Posts Panel -->
-        <div class="blog-related-panel">
-          <!-- Related Posts Section -->
-          <div class="related-posts-section" style="margin-top: 0;">
-            <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--color-primary-dark); margin-bottom: 2rem;">Related Posts</h3>
-            <div class="articles-grid-original" style="grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
-                      <article class="original-card">
-                    <a href="../../ecology/discovering-the-birds-of-malhar-series-3/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/05/Birds-of-Malhar-Series-3.webp" alt="Discovering the birds of Malhar" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
-            <span class="card-badge">Ecology</span>
-          </a>
-          <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../ecology/discovering-the-birds-of-malhar-series-3/index.html">Discovering the birds of Malhar</a>
-          </h4>
-          <div class="original-card-meta" style="font-size: 0.68rem;">
-            By GoodEarth Team | May 2, 2024
-          </div>
-                    <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../ecology/discovering-the-birds-of-malhar-series-3/index.html" class="card-link" style="font-size: 0.72rem;">
-              Read Article
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
-        </article>
-        <article class="original-card">
-                    <a href="../../ecology/discovering-the-birds-of-malhar-series-2/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/11/80450407_2960177517346800_8162926838897704960_o.webp" alt="Discovering the birds of Malhar" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
-            <span class="card-badge">Ecology</span>
-          </a>
-          <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../ecology/discovering-the-birds-of-malhar-series-2/index.html">Discovering the birds of Malhar</a>
-          </h4>
-          <div class="original-card-meta" style="font-size: 0.68rem;">
-            By GoodEarth Team | November 17, 2023
-          </div>
-                    <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../ecology/discovering-the-birds-of-malhar-series-2/index.html" class="card-link" style="font-size: 0.72rem;">
-              Read Article
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
-        </article>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Leave a Comment Panel -->
-        <div class="blog-comment-panel">
-          
-          <!-- Leave a Comment Form -->
-          <div class="comment-form-container">
-            <h3 class="comment-form-title">Leave A Comment</h3>
-            <form class="comment-form">
-              <div class="comment-input-group">
-                <label for="comment-text">Comment</label>
-                <textarea id="comment-text" required placeholder="Comment..."></textarea>
-              </div>
-              <div class="comment-form-row">
-                <div class="comment-input-group">
-                  <label for="comment-name">Name (required)</label>
-                  <input type="text" id="comment-name" required />
-                </div>
-                <div class="comment-input-group">
-                  <label for="comment-email">Email (required)</label>
-                  <input type="email" id="comment-email" required />
-                </div>
-                <div class="comment-input-group">
-                  <label for="comment-website">Website</label>
-                  <input type="url" id="comment-website" />
-                </div>
-              </div>
-              <div class="comment-checkbox-group">
-                <input type="checkbox" id="save-info" />
-                <label for="save-info">Save my name, email, and website in this browser for the next time I comment.</label>
-              </div>
-              <button type="submit" class="comment-submit-btn">Post Comment</button>
-            </form>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Right Sidebar Column -->
-      <aside class="blog-sidebar">
-        
-                <!-- Search Widget -->
-        <div class="widget-search" style="position: relative;">
-          <form onsubmit="event.preventDefault(); alert('Search functionality is not active in this static demo.');">
-            <input type="text" placeholder="Search..." required />
-            <button type="submit" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 1rem;">🔍</button>
-          </form>
-        </div>
-
-        <!-- About GoodEarth Widget -->
-        <div class="widget-about">
-          <img src="../../assets/images/goodeath-image.jpg" alt="goodeath-image" />
-          <h3>About GoodEarth</h3>
-          <p>At Good Earth, we are engaged in bringing together like-minded people with a common vision of building a sustainable future.</p>
-          
-          <!-- Widget Social Links -->
-          <div class="widget-social">
-            <a href="https://facebook.com/goodearthonline" target="_blank" rel="noopener noreferrer">f</a>
-            <a href="https://instagram.com/goodearthonline" target="_blank" rel="noopener noreferrer">i</a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">y</a>
-          </div>
-        </div>
-
-        <!-- Tabs Widget: Popular / Recent / Comments -->
-        <div class="widget-tabs">
-          <div class="tabs-nav">
-            <button class="tab-btn active" onclick="switchSidebarTab(event, 'tab-popular')">Popular</button>
-            <button class="tab-btn" onclick="switchSidebarTab(event, 'tab-recent')">Recent</button>
-            <button class="tab-btn" onclick="switchSidebarTab(event, 'tab-comments')">Comments</button>
-          </div>
-          
-          <div class="tab-content active" id="tab-popular">
-            <ul class="tab-post-list">
-                        <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/09/Blog-spt14-1-rs.jpg" alt="Role of Compressed Stabilized Earth Blocks in sustainable construction" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../materials/role-of-compressed-stabilized-earth-blocks-in-sustainable-construction/index.html">Role of Compressed Stabilized Earth Blocks in sustainable construction</a></h4>
-              <div class="tab-post-date">September 14, 2023</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/02/Saarang-Brochure_V4_Corrections_Print-page-71.jpg" alt="GoodEarth Saarang - Live, work & celebrate life at a holistic eco village" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../sustainability/goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village/index.html">GoodEarth Saarang - Live, work & celebrate life at a holistic eco village</a></h4>
-              <div class="tab-post-date">February 22, 2024</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/03/IMG_00070.webp" alt="Discovering Landscaping Elements - Chappadi Stone" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../design/discovering-landscaping-elements-chappadi-stone/index.html">Discovering Landscaping Elements - Chappadi Stone</a></h4>
-              <div class="tab-post-date">March 30, 2024</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/index.html">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
-              <div class="tab-post-date">April 15, 2026</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/01/1.jpg" alt="Rediscovering rammed earth construction in modern architecture" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../sustainability/rediscovering-rammed-earth-construction-in-modern-architecture/index.html">Rediscovering rammed earth construction in modern architecture</a></h4>
-              <div class="tab-post-date">January 12, 2024</div>
-            </div>
-          </li>
-            </ul>
-          </div>
-          
-          <div class="tab-content" id="tab-recent">
-            <ul class="tab-post-list">
-                        <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/index.html">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
-              <div class="tab-post-date">April 15, 2026</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/03/GoodEarth-Resident-Girin-Web-Banner.jpeg" alt="Savvy in Five with Girin | Get closer to the birds around you" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/savvy-in-five-with-girin-get-closer-to-the-birds-around-you/index.html">Savvy in Five with Girin | Get closer to the birds around you</a></h4>
-              <div class="tab-post-date">March 11, 2026</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/01/GE-Ajith.jpg" alt="Come On Over | Ajith, Bindu, and Indulekha's Dream Home." class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-on-over-ajith-bindu-and-indulekhas-dream-home/index.html">Come On Over | Ajith, Bindu, and Indulekha's Dream Home.</a></h4>
-              <div class="tab-post-date">January 17, 2026</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2025/12/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori.jpg" alt="Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../beyond-the-fence/beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori/index.html">Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori</a></h4>
-              <div class="tab-post-date">December 31, 2025</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2025/12/Hero.webp" alt="GoodEarth Modern Times wins CREDAI Awards 2025" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../awards/goodearth-modern-times-wins-credai-awards-2025/index.html">GoodEarth Modern Times wins CREDAI Awards 2025</a></h4>
-              <div class="tab-post-date">December 22, 2025</div>
-            </div>
-          </li>
-            </ul>
-          </div>
-          
-          <div class="tab-content" id="tab-comments">
-            <p style="padding: 1rem 0; font-size: 0.85rem; color: var(--color-text-muted); text-align: center;">No comments yet.</p>
-          </div>
-        </div>
-
-      </aside>
-
+<div class="blog-article-panel">
+<!-- Redesigned Article Header -->
+<div class="article-header">
+<span class="article-pretitle">Winged Wonders</span>
+<h1 class="article-title-heading">Discovering the birds of Malhar</h1>
+<div class="article-meta-info">
+      By Kavya Bhat  |  Published On: August 31, 2023
     </div>
-  </main>
+</div>
+<!-- Redesigned Article Hero (Optimized WebP) -->
+<div class="article-hero-wrapper">
+<img alt="Discovering the birds of Malhar Baya Weaver banner" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2023/08/IMG_9193-5.jpg'" src="../../assets/images/IMG_9193-5.webp"/>
+</div>
+<!-- Premium Article Content -->
+<div class="premium-article-content">
+<!-- Intro Paragraph with Dropcap -->
+<p class="intro-paragraph">In our fast-paced lives, how often do we appreciate the gentle harmonies of nature that surrounds us? Melodious chirping of birds greeting the dawn, their dazzling displays of colour, and the myriad variety of these avian wonders often become fleeting moments of beauty, quickly replaced by the next pressing thought or task on the to-do list.</p>
+<p>Nature, in all its diverse glory – from birds in the sky, trees anchoring the earth, to tiny insects that work tirelessly – bestows upon us countless gifts. Yet, more often than not, these treasures are relegated to the background amidst the din of our routine lives.</p>
+<p>Envisioned with deep reverence for nature, the Malhar Eco-village stands as a beacon of harmonious living. It has been meticulously designed and developed to ensure that we coexist seamlessly with the wonders of nature. As Malhar’s rich tapestry of flora and fauna thrives, it becomes imperative for us to not only appreciate these invaluable inhabitants but also understand their roles in our ecosystem. By doing so, we can impart invaluable lessons to our children: the importance of respecting, caring for, and nurturing every aspect of nature.</p>
+<h3>Birds of Malhar</h3>
+<p>Birds, often heralded as indicators of a healthy ecosystem, play a pivotal role in the ecology. They assist in pollination, seed dispersal, insect control, and maintaining a balance within the food chain. In this carefully designed ecosystem, the presence of birds is not just a pleasing sight but a fundamental building block of a thriving environment.</p>
+<p>The significance of having birds within the neighbourhood cannot be overstated. As symbols of biodiversity, their presence signifies the health of an environment and its ability to support various life forms. They serve as ambassadors of nature’s delicate balance, bridging the gap between the built environment and the wilderness that surrounds it.</p>
+<p>Amidst the lush landscapes of Malhar, every tree, shrub, and waterbody hold stories of interdependence and harmony, serving as gentle reminders for us to look closer, listen, and understand. Thus, through this series, we introduce you to some of the remarkable avian residents that have found their home within the eco-village.</p>
+<p>Let’s embark on this exploration together, recognising and celebrating the many ways in which these birds enrich our lives.</p>
+<h2>The Baya Weaver</h2>
+<p style="font-size: 1.25rem; font-family: var(--font-heading); font-weight: 500; color: var(--color-primary); margin-top: 0.25rem; margin-bottom: 2rem;">Nature’s most ingenious architects</p>
+<!-- Nesting Image Grid / Stack -->
+<div class="dual-images-row">
+<div class="grid-img-wrapper">
+<img alt="Baya Weaver on branch" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2023/08/IMG_9193-5.jpg'" src="../../assets/images/IMG_9193-5.webp"/>
+</div>
+<div class="grid-img-wrapper">
+<img alt="Baya Weaver nest hanging from tree" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2023/08/Bird-blog-image-1.jpg'" src="../../assets/images/Bird-blog-image-1.webp"/>
+</div>
+</div>
+<span class="img-caption">Photographs: Manmath Acharjya &amp; Bidisha Ganguly, Residents of Malhar.</span>
+<p>The Baya Weaver, native to South and Southeast Asia, is a petite bird roughly the size of a sparrow. During the non-breeding season, male Baya Weavers closely resemble their female counterparts, exhibiting subtle, muted colours. However, between April and August, the males undergo a striking transformation, adopting a vibrant yellow plumage that becomes their defining feature. Distinguished by these vibrant yellow crowns, male Baya Weavers emerge not only as vivid visual delights but also as renowned architects of the avian world.</p>
+<!-- Nest details image -->
+<div class="article-img-block" style="max-width: 650px; margin: 2.5rem auto;">
+<img alt="Baya Weavers building nest" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2023/08/116429359_10158667208709712_6529963043268599223_n-3.jpg'" src="../../assets/images/116429359_10158667208709712_6529963043268599223_n-3.webp"/>
+</div>
+<p>Their intricate nests, masterfully woven from long grass and leaves, often hang over water, offering protection from predators. Interestingly, it’s the male that embarks on the initial phase of nest construction. Once a portion is complete, he invites potential mates for an inspection. Should the female approve, she collaborates in finishing the nest. However, if she’s unimpressed, he starts anew. This intriguing ritual often results in multiple nests – some unfinished – adorning trees around Malhar. These unfinished nests represent not just the artistry of the male weavers but also the stages of skill development and strategic decoys against threats.</p>
+<h3>Ecological Importance</h3>
+<!-- Ecological detail photo -->
+<div class="article-img-block" style="max-width: 600px; margin: 2rem auto;">
+<img alt="Baya Weaver nest entry detail" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2023/08/IMG_9202-1-3-1.jpg'" src="../../assets/images/IMG_9202-1-3-1.webp"/>
+</div>
+<!-- Premium Ecological List -->
+<ul class="ecological-list">
+<li>
+<div class="list-icon">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M12 22a10 10 0 0 1 10-10c0-5.523-4.477-10-10-10S2 6.477 2 12a10 10 0 0 1 10 10z"></path><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path></svg>
+</div>
+<div class="list-text">
+<h4>Pest Control</h4>
+<p>While their diet predominantly consists of seeds and grains, these avian residents of Malhar also consume various insects, acting as natural pest controllers.</p>
+</div>
+</li>
+<li>
+<div class="list-icon">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+</div>
+<div class="list-text">
+<h4>Seed Dispersal</h4>
+<p>The grain-heavy diet of Baya Weavers contributes to subtle seed dispersal. Undigested seeds find new ground, nurturing a diverse array of plant species throughout your community.</p>
+</div>
+</li>
+<li>
+<div class="list-icon">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+</div>
+<div class="list-text">
+<h4>Ecosystem Health</h4>
+<p>The presence of Baya Weavers can be viewed as an indicator of a thriving ecosystem. Their breeding preferences signal a well-balanced natural environment.</p>
+</div>
+</li>
+<li>
+<div class="list-icon">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+</div>
+<div class="list-text">
+<h4>Food Chain Support</h4>
+<p>As part of the food chain, Baya Weavers, their eggs, and fledglings serve as essential prey for various predators such as raptors, snakes, and mammals, contributing to the vitality of the local food web.</p>
+</div>
+</li>
+<li>
+<div class="list-icon">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5 1 9.8a7 7 0 0 1-9 8.2z"></path><path d="M9 22v-4h4"></path></svg>
+</div>
+<div class="list-text">
+<h4>Plant Growth Enhancement</h4>
+<p>Nesting in trees and shrubs, Baya Weaver nests enrich the soil below. As organic materials from the nests decompose, they nourish the plants enhancing their growth.</p>
+</div>
+</li>
+</ul>
+<h3>Conservation</h3>
+<p>While the Baya Weaver continues to grace Malhar with its presence, it is essential to be mindful of the challenges they face. Rapid urbanisation and habitat loss in certain areas can potentially impact their populations. In fact, all Indian weaver bird species are protected and listed in Schedule IV of the Wildlife (Protection) Act, 1972. Thus, simple initiatives, such as supporting the preservation of local wetlands, refraining from disturbing their nests, and spreading awareness about their significance, can have a profound impact.</p>
+<p>So, as you embark on your leisurely walks through Malhar, keep an eye out for the Baya Weaver and its intricately woven nests. These small yet significant residents of your neighbourhood offer a glimpse into the wonders of nature’s design and the delicate harmony that surrounds you.</p>
+<!-- Posters & Video Section -->
+<h3 style="margin-top: 3.5rem;">Listen to the Baya Weavers</h3>
+<p>Click on the posters below and listen to the lively chirping and community calls of the Baya Weavers nesting in the eco-village.</p>
+<div class="dual-images-row" style="margin-top: 2rem; margin-bottom: 2rem;">
+<div class="grid-img-wrapper">
+<img alt="Baya Weaver infographic poster 1" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2023/08/Poster-1-2.png'" src="../../assets/images/Poster-1-2.webp"/>
+</div>
+<div class="grid-img-wrapper">
+<img alt="Baya Weaver infographic poster 2" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2023/08/Poster-2-2.png'" src="../../assets/images/Poster-2-2.webp"/>
+</div>
+</div>
+<div class="bird-video-wrapper">
+<div class="section-icon">🔊</div>
+<h4>Baya Weaver Calls &amp; Infographics Audio</h4>
+<p>Play the audio-video track below to hear the natural calls of Baya Weavers recorded at Malhar.</p>
+<!-- Desktop Video (Wide screen) -->
+<video class="desktop-only-video" controls="controls" preload="metadata">
+<source src="assets/videos/mp4.mp4" type="video/mp4"/>
+        Your browser does not support the video tag.
+      </video>
+<!-- Mobile Video (Narrow screen) -->
+<video class="mobile-only-video" controls="controls" preload="metadata">
+<source src="assets/videos/Baya-Weavers-mp4-2.mp4" type="video/mp4"/>
+        Your browser does not support the video tag.
+      </video>
+</div>
+<!-- iNaturalist Observations Block -->
+<h3>Reference of Baya Weaver on iNaturalist</h3>
+<p style="margin-top: -0.5rem; font-size: 1.1rem; color: var(--color-primary); font-weight: 600;">Spotted at GoodEarth Malhar!</p>
+<div class="article-img-block" style="margin-top: 1.5rem;">
+<a href="https://www.inaturalist.org/observations?nelat=12.887171870996715&amp;nelng=77.46760141232276&amp;place_id=any&amp;subview=map&amp;swlat=12.878847102644079&amp;swlng=77.46106252843042&amp;taxon_id=13794" rel="noopener noreferrer" target="_blank">
+<img alt="Baya Weaver iNaturalist mapping spotted at Malhar" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2023/08/Inaturalist-goodearth-malhar-baya-weaver-reference-2.jpeg'" src="../../assets/images/Inaturalist-goodearth-malhar-baya-weaver-reference-2.webp"/>
+</a>
+</div>
+<p style="font-size: 0.95rem; color: var(--color-text-secondary); line-height: 1.6; margin-top: -1.75rem; margin-bottom: 2.5rem; text-align: center; font-family: var(--font-body);">
+      iNaturalist is an American 501(c)(3) nonprofit social network of naturalists, citizen scientists, and biologists built on the concept of mapping and sharing observations of biodiversity across the globe.
+    </p>
+<!-- Explore previous/next series container -->
+<div class="explore-series-container">
+<h4 class="explore-title">Explore the Series</h4>
+<p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-secondary); margin-bottom: 1.5rem;">If the ingenious nests of the Baya Weaver have captured your imagination, you’ll surely delight in exploring the other winged wonders featured in this series:</p>
+<div class="explore-grid-two">
+<!-- Series 2 Card -->
+<a class="series-card" href="../../ecology/discovering-the-birds-of-malhar-series-2/">
+<div class="series-img-wrapper">
+<img alt="Birds of Malhar Series 2" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2024/05/Birds-of-malhar-series-2-300x200.webp'" src="../../assets/images/Birds-of-malhar-series-2-300x200_1.webp"/>
+</div>
+<span class="series-title">Discovering the birds of Malhar Series-2</span>
+<span class="series-btn">Read Series 2</span>
+</a>
+<!-- Series 3 Card -->
+<a class="series-card" href="../../ecology/discovering-the-birds-of-malhar-series-3/">
+<div class="series-img-wrapper">
+<img alt="Birds of Malhar Series 3" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2024/05/Birds-of-Malhar-Series-3.webp'" src="../../assets/images/Birds-of-Malhar-Series-3_2.webp"/>
+</div>
+<span class="series-title">Discovering the birds of Malhar Series-3</span>
+<span class="series-btn">Read Series 3</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Redesigned Article Meta Footer -->
+<div class="article-footer-meta">
+<span>By Kavya Bhat  |  Published On: August 31, 2023</span>
+<span>Category: <strong style="color:var(--color-primary);">Ecology</strong></span>
+</div>
+<!-- Redesigned Share Story Box -->
+<div class="share-story-box">
+<div class="share-title">Share This Story, Choose Your Platform!</div>
+<div class="share-grid-redesign">
+<button class="share-btn-redesign" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">
+<span style="font-size: 1.1rem; line-height: 1;">f</span>   Facebook
+      </button>
+<button class="share-btn-redesign" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(window.location.href), '_blank')">
+<span style="font-size: 1.1rem; line-height: 1;">w</span>   WhatsApp
+      </button>
+<button class="share-btn-redesign" onclick="window.open('https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(window.location.href), '_blank')">
+<span style="font-size: 1.1rem; line-height: 1;">p</span>   Pinterest
+      </button>
+<button class="share-btn-redesign" onclick="window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&amp;body=' + encodeURIComponent(window.location.href)">
+<span style="font-size: 1.1rem; line-height: 1;">✉</span>   Email
+      </button>
+</div>
+</div>
+</div>
 
-  <!-- Injected Shared Footer -->
-  <footer id="footer-container" class="site-footer-original"></footer>
+<!-- Related Posts Panel -->
 
-  <!-- Dynamic Database scripts first, then injection -->
-  <script src="../../assets/js/posts-data.js"></script>
-  <script src="../../assets/js/videos-data.js"></script>
-  <script src="../../assets/js/common.js"></script>
-  <script src="../../assets/js/comments.js"></script>
+<div class="blog-related-panel">
+<div class="related-posts-section" style="margin-top: 0;">
+<h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--color-primary-dark); margin-bottom: 2rem;">Related Posts</h3>
+<div class="articles-grid-original" style="grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+<article class="original-card">
+<a class="original-card-image-link" href="../../ecology/discovering-the-birds-of-malhar-series-2/">
+<img alt="Discovering the birds of Malhar Series 2" class="original-card-image" loading="lazy" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2023/11/80450407_2960177517346800_8162926838897704960_o.webp'" src="../../assets/images/80450407_2960177517346800_8162926838897704960_o_2.webp"/>
+<span class="card-badge">Ecology</span>
+</a>
+<h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
+<a href="../../ecology/discovering-the-birds-of-malhar-series-2/">Discovering the birds of Malhar</a>
+</h4>
+<div class="original-card-meta" style="font-size: 0.68rem;">
+          By GoodEarth Team | November 17, 2023
+        </div>
+<div class="card-link-wrapper" style="margin-top: 0;">
+<a class="card-link" href="../../ecology/discovering-the-birds-of-malhar-series-2/" style="font-size: 0.72rem;">
+            Read Article
+            <svg fill="none" height="10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="10"><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+</a>
+</div>
+</article>
+<article class="original-card">
+<a class="original-card-image-link" href="../../ecology/discovering-the-birds-of-malhar-series-3/">
+<img alt="Discovering the birds of Malhar Series 3" class="original-card-image" loading="lazy" onerror="this.src='https://goodearth.org.in/connect/wp-content/uploads/2024/05/Birds-of-Malhar-Series-3.webp'" src="../../assets/images/Birds-of-Malhar-Series-3_2.webp"/>
+<span class="card-badge">Ecology</span>
+</a>
+<h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
+<a href="../../ecology/discovering-the-birds-of-malhar-series-3/">Discovering the birds of Malhar</a>
+</h4>
+<div class="original-card-meta" style="font-size: 0.68rem;">
+          By GoodEarth Team | May 2, 2024
+        </div>
+<div class="card-link-wrapper" style="margin-top: 0;">
+<a class="card-link" href="../../ecology/discovering-the-birds-of-malhar-series-3/" style="font-size: 0.72rem;">
+            Read Article
+            <svg fill="none" height="10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="10"><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+</a>
+</div>
+</article>
+</div>
+</div>
+</div>
+
+<!-- Leave a Comment Panel -->
+
+</div>
+<!-- Right Sidebar Column -->
+<aside class="blog-sidebar">
+<!-- Search Widget -->
+<div class="widget-search" style="position: relative;">
+<form onsubmit="event.preventDefault(); alert('Search functionality is not active in this static demo.');">
+<input placeholder="Search..." required="" type="text"/>
+<button style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 1rem;" type="submit">🔍</button>
+</form>
+</div>
+<!-- About GoodEarth Widget -->
+<div class="widget-about">
+<img alt="goodeath-image" src="../../assets/images/goodeath-image.webp">
+<h3>About GoodEarth</h3>
+<p>At Good Earth, we are engaged in bringing together like-minded people with a common vision of building a sustainable future.</p>
+<!-- Widget Social Links -->
+<div class="widget-social">
+<a href="https://facebook.com/goodearthonline" rel="noopener noreferrer" target="_blank">f</a>
+<a href="https://instagram.com/goodearthonline" rel="noopener noreferrer" target="_blank">i</a>
+<a href="https://youtube.com" rel="noopener noreferrer" target="_blank">y</a>
+</div>
+</img></div>
+<!-- Tabs Widget: Popular / Recent / Comments -->
+<div class="widget-tabs">
+<div class="tabs-nav">
+<button class="tab-btn active" onclick="switchSidebarTab(event, 'tab-popular')">Popular</button>
+<button class="tab-btn" onclick="switchSidebarTab(event, 'tab-recent')">Recent</button>
+<button class="tab-btn" onclick="switchSidebarTab(event, 'tab-comments')">Comments</button>
+</div>
+<div class="tab-content active" id="tab-popular">
+<ul class="tab-post-list">
+<li class="tab-post-item">
+<img alt="Role of Compressed Stabilized Earth Blocks in sustainable construction" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Blog-spt14-1-rs_3.webp">
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../materials/role-of-compressed-stabilized-earth-blocks-in-sustainable-construction/">Role of Compressed Stabilized Earth Blocks in sustainable construction</a></h4>
+<div class="tab-post-date">September 14, 2023</div>
+</div>
+</img></li>
+<li class="tab-post-item">
+<img alt="GoodEarth Saarang - Live, work &amp; celebrate life at a holistic eco village" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Saarang-Brochure_V4_Corrections_Print-page-71_2.webp">
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../sustainability/goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village/">GoodEarth Saarang - Live, work &amp; celebrate life at a holistic eco village</a></h4>
+<div class="tab-post-date">February 22, 2024</div>
+</div>
+</img></li>
+<li class="tab-post-item">
+<img alt="Discovering Landscaping Elements - Chappadi Stone" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/IMG_00070_3.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../design/discovering-landscaping-elements-chappadi-stone/">Discovering Landscaping Elements - Chappadi Stone</a></h4>
+<div class="tab-post-date">March 30, 2024</div>
+</div>
+</li>
+<li class="tab-post-item">
+<img alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Come-Over-Featured-Image_2.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
+<div class="tab-post-date">April 15, 2026</div>
+</div>
+</li>
+<li class="tab-post-item">
+<img alt="Rediscovering rammed earth construction in modern architecture" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/1_5.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../sustainability/rediscovering-rammed-earth-construction-in-modern-architecture/">Rediscovering rammed earth construction in modern architecture</a></h4>
+<div class="tab-post-date">January 12, 2024</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="tab-content" id="tab-recent">
+<ul class="tab-post-list">
+<li class="tab-post-item">
+<img alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Come-Over-Featured-Image_2.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
+<div class="tab-post-date">April 15, 2026</div>
+</div>
+</li>
+<li class="tab-post-item">
+<img alt="Savvy in Five with Girin | Get closer to the birds around you" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/GoodEarth-Resident-Girin-Web-Banner_2.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../residents-spotlight/savvy-in-five-with-girin-get-closer-to-the-birds-around-you/">Savvy in Five with Girin | Get closer to the birds around you</a></h4>
+<div class="tab-post-date">March 11, 2026</div>
+</div>
+</li>
+<li class="tab-post-item">
+<img alt="Come On Over | Ajith, Bindu, and Indulekha's Dream Home." class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/GE-Ajith_2.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../residents-spotlight/come-on-over-ajith-bindu-and-indulekhas-dream-home/">Come On Over | Ajith, Bindu, and Indulekha's Dream Home.</a></h4>
+<div class="tab-post-date">January 17, 2026</div>
+</div>
+</li>
+<li class="tab-post-item">
+<img alt="Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori_2.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../beyond-the-fence/beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori/">Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori</a></h4>
+<div class="tab-post-date">December 31, 2025</div>
+</div>
+</li>
+<li class="tab-post-item">
+<img alt="GoodEarth Modern Times wins CREDAI Awards 2025" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Hero_2.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../awards/goodearth-modern-times-wins-credai-awards-2025/">GoodEarth Modern Times wins CREDAI Awards 2025</a></h4>
+<div class="tab-post-date">December 22, 2025</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="tab-content" id="tab-comments">
+<p style="padding: 1rem 0; font-size: 0.85rem; color: var(--color-text-muted); text-align: center;">No comments yet.</p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Injected Shared Footer -->
+<footer class="site-footer-original" id="footer-container"></footer>
+<!-- Dynamic Database scripts first, then injection -->
+<script src="../../assets/js/posts-data.js"></script>
+<script src="../../assets/js/videos-data.js"></script>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/js/comments.js"></script>
 </body>
 </html>

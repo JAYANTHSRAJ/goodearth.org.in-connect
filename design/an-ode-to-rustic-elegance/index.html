@@ -1,335 +1,1572 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>An ode to rustic elegance - GoodEarth Connect</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>An ode to rustic elegance - GoodEarth Connect</title>
+<!-- Relative path to global style sheet -->
+<link href="../../assets/css/style.css" rel="stylesheet"/>
+<!-- Manrope & Karla Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;1,300&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Cormorant Garamond & Playfair Display for Luxury Editorial Redesign -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
+    /* Redesigned Article Variables & Overrides */
+    .blog-article-panel {
+      background: #ffffff !important;
+      border: 1px solid #e8e3da !important;
+      box-shadow: 0 10px 40px rgba(44, 42, 39, 0.04) !important;
+      border-radius: var(--radius-xl) !important;
+      padding: 3.5rem !important;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .blog-article-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    }
+
+    .blog-meta-header {
+      border-bottom: 1px solid #ece8e0 !important;
+      padding-bottom: 2rem !important;
+      margin-bottom: 2.5rem !important;
+    }
+
+    .editorial-tag {
+      display: inline-block;
+      border: 1px solid var(--color-primary);
+      color: var(--color-primary);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .editorial-tag:hover {
+      background: var(--color-primary);
+      color: #ffffff;
+    }
+
+    .editorial-section {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      font-weight: 500;
+      color: var(--color-accent);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    .editorial-title {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-size: 3.25rem !important;
+      font-weight: 600 !important;
+      line-height: 1.15 !important;
+      color: #2c2a27 !important;
+      margin-top: 0.25rem !important;
+      margin-bottom: 1rem !important;
+      letter-spacing: -0.5px !important;
+    }
+
+    .editorial-meta {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .editorial-meta a {
+      color: var(--color-primary);
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .editorial-meta a:hover {
+      border-bottom: 1px solid var(--color-primary);
+    }
+
+    .editorial-meta-bullet {
+      color: var(--color-accent);
+    }
+
+    /* Hero Image Redesign */
+    .hero-image-wrapper {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+      border: 1px solid #e9e4dc;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+      aspect-ratio: 16/9;
+    }
+
+    .hero-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .hero-image-wrapper:hover img {
+      transform: scale(1.04);
+    }
+
+    .hero-image-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 100px rgba(0,0,0,0.05);
+      pointer-events: none;
+    }
+
+    .hero-caption {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--color-text-secondary);
+      text-align: center;
+      margin-top: -1.5rem;
+      margin-bottom: 2.5rem;
+      display: block;
+    }
+
+    /* Article Body Typography */
+    .editorial-body {
+      font-family: 'Karla', sans-serif !important;
+      font-size: 1.15rem !important;
+      line-height: 1.85 !important;
+      color: #4a4743 !important;
+    }
+
+    .editorial-body p {
+      margin-bottom: 2rem !important;
+    }
+
+    .editorial-body p.lead-paragraph {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-size: 1.6rem !important;
+      line-height: 1.75 !important;
+      color: #2c2a27 !important;
+      font-style: italic;
+      margin-bottom: 2.5rem !important;
+      position: relative;
+      padding-left: 1.5rem;
+      border-left: 3px solid var(--color-primary);
+    }
+
+    /* Elegant Divider */
+    .editorial-divider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 3rem 0;
+      gap: 1.5rem;
+    }
+
+    .editorial-divider .line {
+      height: 1px;
+      width: 80px;
+      background: linear-gradient(90deg, transparent, #d3c9b7, transparent);
+    }
+
+    .editorial-divider .leaf-icon {
+      font-size: 1.2rem;
+      color: var(--color-accent);
+    }
+
+    /* Author Box Redesign */
+    .author-card {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      background: #fbf9f6;
+      border: 1px solid #ece8e0;
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      margin-top: 3.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .author-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.02);
+      border-color: #dcd7ce;
+    }
+
+    .author-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .author-info {
+      flex: 1;
+    }
+
+    .author-info h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #2c2a27;
+      margin-bottom: 0.4rem;
+    }
+
+    .author-info .role {
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-primary);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .author-info p {
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+      margin: 0;
+    }
+
+    /* Share buttons redesigned */
+    .share-story-container {
+      margin: 3.5rem 0 0 0 !important;
+      padding: 2rem 0 0 0 !important;
+      border-top: 1px solid #ece8e0 !important;
+      border-bottom: none !important;
+    }
+
+    .share-title {
+      font-family: var(--font-heading);
+      font-size: 0.78rem !important;
+      font-weight: 700 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 1.2px !important;
+      color: var(--color-text-secondary) !important;
+      margin-bottom: 1.25rem !important;
+      text-align: center;
+    }
+
+    .share-buttons-flex {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .share-btn-round {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: 1px solid #ece8e0;
+      background: #ffffff;
+      color: var(--color-text-primary);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .share-btn-round svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .share-btn-round:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .share-btn-round.fb-btn:hover {
+      background-color: #1877f2;
+      border-color: #1877f2;
+      color: #ffffff;
+    }
+
+    .share-btn-round.wa-btn:hover {
+      background-color: #25d366;
+      border-color: #25d366;
+      color: #ffffff;
+    }
+
+    .share-btn-round.pin-btn:hover {
+      background-color: #bd081c;
+      border-color: #bd081c;
+      color: #ffffff;
+    }
+
+    .share-btn-round.email-btn:hover {
+      background-color: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #ffffff;
+    }
+
+    /* Source alert */
+    .source-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #f7f5f0;
+      border-left: 3px solid var(--color-accent);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 2.5rem;
+      font-size: 0.88rem;
+      color: var(--color-text-secondary);
+      font-family: var(--font-body);
+      gap: 1rem;
+    }
+
+    .source-banner a {
+      color: var(--color-primary-dark);
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    .source-banner a:hover {
+      color: var(--color-accent);
+      text-decoration: underline;
+    }
+
+    /* Related Posts Cards Redesign */
+    .related-posts-section h3 {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-size: 2rem !important;
+      font-weight: 600 !important;
+      color: #2c2a27 !important;
+      position: relative;
+      padding-bottom: 0.75rem;
+      margin-bottom: 2rem !important;
+    }
+
+    .related-posts-section h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--color-accent);
+    }
+
+    .grid-redesign {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem !important;
+    }
+
+    @media (max-width: 600px) {
+      .grid-redesign {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card-redesign {
+      background: #ffffff;
+      border: 1px solid #ece8e0;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card-redesign:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(44, 42, 39, 0.06);
+      border-color: #dcd7ce;
+    }
+
+    .card-image-box {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    .card-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .card-redesign:hover .card-image-box img {
+      transform: scale(1.05);
+    }
+
+    .card-badge-redesign {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(4px);
+      color: var(--color-primary);
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .card-content-box {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .card-title-redesign {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-size: 1.15rem !important;
+      font-weight: 700 !important;
+      line-height: 1.35 !important;
+      color: #2c2a27 !important;
+      margin-bottom: 0.5rem !important;
+      margin-top: 0 !important;
+    }
+
+    .card-title-redesign a:hover {
+      color: var(--color-primary);
+    }
+
+    .card-meta-redesign {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+    }
+
+    .card-link-redesign {
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.3s ease;
+    }
+
+    .card-link-redesign:hover {
+      color: var(--color-accent);
+    }
+
+    /* Comments Form Redesign */
+    .comment-form-container .comment-form-title {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-size: 2rem !important;
+      font-weight: 600 !important;
+      color: #2c2a27 !important;
+      margin-bottom: 2rem !important;
+      position: relative;
+      padding-bottom: 0.75rem;
+    }
+
+    .comment-form-container .comment-form-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--color-accent);
+    }
+
+    .comment-input-group label {
+      font-family: var(--font-heading) !important;
+      font-size: 0.78rem !important;
+      font-weight: 700 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.8px !important;
+      color: var(--color-text-secondary) !important;
+      margin-bottom: 0.5rem !important;
+    }
+
+    .comment-input-group textarea,
+    .comment-input-group input {
+      background: #fbf9f6 !important;
+      border: 1px solid #ece8e0 !important;
+      border-radius: var(--radius-sm) !important;
+      padding: 0.85rem 1rem !important;
+      color: var(--color-text-primary) !important;
+      font-family: var(--font-body) !important;
+      font-size: 0.95rem !important;
+      transition: all 0.3s ease !important;
+    }
+
+    .comment-input-group textarea:focus,
+    .comment-input-group input:focus {
+      background: #ffffff !important;
+      border-color: var(--color-primary) !important;
+      outline: none !important;
+      box-shadow: 0 4px 12px rgba(102, 107, 74, 0.05) !important;
+    }
+
+    .comment-checkbox-group input[type="checkbox"] {
+      accent-color: var(--color-primary);
+    }
+
+    .comment-checkbox-group label {
+      font-size: 0.82rem !important;
+      color: var(--color-text-secondary) !important;
+      line-height: 1.4 !important;
+    }
+
+    .comment-submit-btn {
+      border-radius: 30px !important;
+      padding: 12px 28px !important;
+      font-family: var(--font-heading) !important;
+      font-size: 0.78rem !important;
+      font-weight: 700 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 1px !important;
+      background-color: var(--color-primary-dark) !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+      transition: all 0.3s ease !important;
+    }
+
+    .comment-submit-btn:hover {
+      background-color: var(--color-primary) !important;
+      box-shadow: 0 6px 20px rgba(102, 107, 74, 0.2) !important;
+      transform: translateY(-1px) !important;
+    }
   
-  <!-- Relative path to global style sheet -->
-  <link rel="stylesheet" href="../../assets/css/style.css">
-  
-  
-  <!-- Manrope & Karla Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;1,300&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
+    /* Premium PDF Viewer Card */
+    .rustic-pdf-card {
+      background-color: var(--color-bg-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin: 2.5rem 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+      transition: all 0.4s ease;
+    }
+    .rustic-pdf-card:hover {
+      box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+      border-color: var(--color-accent);
+    }
+    .rustic-pdf-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .rustic-pdf-title-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .rustic-pdf-icon {
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--color-primary);
+    }
+    .rustic-pdf-meta {
+      display: flex;
+      flex-direction: column;
+    }
+    .rustic-pdf-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+    }
+    .rustic-pdf-pages {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--color-text-secondary);
+      margin-top: 2px;
+    }
+    .rustic-pdf-view-btn {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+      color: #ffffff !important;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      text-decoration: none !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .rustic-pdf-view-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+    .rustic-pdf-frame-wrapper {
+      position: relative;
+      width: 100%;
+      height: 550px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      background-color: var(--color-bg-card);
+    }
+    .rustic-pdf-frame-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .rustic-pdf-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--color-border);
+    }
+    .rustic-pdf-action-btn {
+      background-color: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      text-decoration: none !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .rustic-pdf-action-btn:hover {
+      background-color: var(--color-primary);
+      color: #ffffff !important;
+      border-color: var(--color-primary);
+      transform: translateY(-1px);
+    }
+</style>
+<!-- 3D FlipBook Stylesheets on Parent Page -->
+<link href="assets/3d-flip-book/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="assets/3d-flip-book/css/client.css" rel="stylesheet"/>
+<!-- Manrope & Karla Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;1,300&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- jQuery (needed for 3D FlipBook) -->
+<script src="assets/3d-flip-book/js/jquery.min.js"></script>
+<!-- 3D FlipBook Scripts -->
+<script src="assets/3d-flip-book/js/pdf.worker-data.js"></script>
+<script>
+    window.PDFJS_LOCALE = {
+      pdfJsWorker: "assets/3d-flip-book/js/pdf.worker.js",
+      pdfJsCMapUrl: "assets/3d-flip-book/cmaps/"
+    };
 
-  <!-- Injected Shared Header -->
-  <header id="header-container" class="site-header"></header>
+    // Intercept Worker creation to run local Worker from Blob URL safely on file:// protocol
+    (function() {
+      const OriginalWorker = window.Worker;
+      window.Worker = function(url) {
+        if (window.location.protocol === 'file:' && url && (url.indexOf('pdf.worker.js') !== -1 || url.indexOf('pdf.worker.min.js') !== -1)) {
+          console.log("Worker creation intercepted for URL:", url);
+          if (window.pdfWorkerBase64) {
+            console.log("Loading worker from window.pdfWorkerBase64...");
+            try {
+              const binaryString = atob(window.pdfWorkerBase64);
+              const len = binaryString.length;
+              const bytes = new Uint8Array(len);
+              for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+              }
+              const blob = new Blob([bytes.buffer], { type: 'application/javascript' });
+              const blobUrl = URL.createObjectURL(blob);
+              const worker = new OriginalWorker(blobUrl);
+              worker.onerror = function(e) {
+                console.error("Worker error encountered:", e.message, "at", e.filename, ":", e.lineno);
+              };
+              return worker;
+            } catch (e) {
+              console.error("Failed to decode pdfWorkerBase64:", e.message);
+            }
+          } else {
+            console.warn("window.pdfWorkerBase64 is not defined!");
+          }
+        }
+        return new OriginalWorker(url);
+      };
+    })();
+  </script>
+<script src="assets/3d-flip-book/js/three.min.js"></script>
+<script src="assets/3d-flip-book/js/pdf.min.js"></script>
+<script>
+    if (window.pdfjsLib) {
+      const originalPdfjsLib = window.pdfjsLib;
+      window.pdfjsLib = Object.create(originalPdfjsLib);
+      window.PDFJS = window.pdfjsLib;
 
-  <!-- Main Article Body in 2-Column Sidebar Layout -->
-  <main class="main-container" style="max-width: 1200px; margin: 0 auto; padding: 4rem 1.5rem;">
-    <div class="blog-layout-container">
-      
-      <!-- Left Main Content Column -->
-      <div class="blog-main-content">
-        
-        <!-- Main Article Panel -->
-        <div class="blog-article-panel">
-          <!-- Meta Data Header -->
-        <div class="blog-meta-header" style="margin-bottom: 2rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1.5rem;">
-          <span style="display:inline-block; background-color:var(--color-bg-secondary); color:var(--color-primary); padding:4px 12px; border-radius:20px; font-size:0.75rem; font-family:var(--font-heading); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom: 0.5rem;">
-            Design
-          </span>
-          <h1 style="font-size: 2.5rem; line-height: 1.15; color: var(--color-primary-dark); margin-top: 0.5rem; margin-bottom: 0.5rem; font-family: var(--font-heading); font-weight: 700;">
-            An ode to rustic elegance
-          </h1>
-          <p style="font-size:0.85rem; color:var(--color-text-secondary); font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">
-            By GoodEarth | Published On: July 19, 2024
-          </p>
-        </div>
+      // Set the workerSrc to the absolute native worker path on the server
+      let folderPath = window.location.pathname;
+      if (folderPath.endsWith('index.html')) {
+        folderPath = folderPath.substring(0, folderPath.length - 10);
+      }
+      if (!folderPath.endsWith('/')) {
+        folderPath += '/';
+      }
+      const absoluteWorkerPath = window.location.origin + folderPath + "assets/3d-flip-book/js/pdf.worker.js";
 
-        <!-- Article Hero Image -->
-        <div style="border-radius: var(--radius-md); overflow: hidden; margin-bottom: 2rem; border: 1px solid var(--color-border); aspect-ratio: 16/9;">
-          <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/07/Bedroom-at-GoodEarth-Malhar.jpg" alt="An ode to rustic elegance" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
-        </div>
+      Object.defineProperty(window.pdfjsLib.GlobalWorkerOptions, 'workerSrc', {
+        get: function() {
+          return absoluteWorkerPath;
+        },
+        set: function(val) {
+          console.log("System tried to set workerSrc to: " + val + ", keeping: " + absoluteWorkerPath);
+        },
+        configurable: true,
+        enumerable: true
+      });
+      console.log("Successfully set pdfjsLib workerSrc to absolute path: " + absoluteWorkerPath);
 
-        <!-- Original source alert -->
-        <div style="background-color: var(--color-bg-secondary); border-left: 4px solid var(--color-accent); padding: 1rem; border-radius: var(--radius-sm); margin-bottom: 2rem; font-size: 0.9rem; color: var(--color-text-secondary); font-family: var(--font-body);">
-          This article is a clone from the original GoodEarth Connect catalog. View the original post at: 
-          <a href="https://goodearth.org.in/connect/design/an-ode-to-rustic-elegance/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary-dark); font-weight: 600; text-decoration: underline;">
-            An ode to rustic elegance &nearr;
-          </a>
-        </div>
+      // Shadow getDocument to load local base64 PDF directly (works everywhere)
+      try {
+        const originalGetDocument = originalPdfjsLib.getDocument;
+        Object.defineProperty(window.pdfjsLib, 'getDocument', {
+          value: function(src) {
+            console.log("pdfjsLib.getDocument called with src:", src);
+            let targetSrc = src;
+            
+            if (window.location.protocol === 'file:') {
+              function base64ToArrayBuffer(base64) {
+                var binaryString = atob(base64);
+                var len = binaryString.length;
+                var bytes = new Uint8Array(len);
+                for (var i = 0; i < len; i++) {
+                  bytes[i] = binaryString.charCodeAt(i);
+                }
+                return bytes.buffer;
+              }
 
-        <!-- Body Text Content -->
-        <div class="blog-body-content" style="font-size: 1.15rem; line-height: 1.7; color: var(--color-text-primary); font-family: var(--font-body);">
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">Exploring the sustainability and design aspects of an ode to rustic elegance and its integration within community architectures.</p>
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">
-            This page represents a pre-rendered static structure matching the original blog configuration of the GoodEarth website. You can edit this file directly to add text paragraphs, galleries, quotes, or tables.
-          </p>
-          <p style="margin-bottom: 1.5rem; line-height: 1.8;">
-            Place your custom blog assets (such as local images, diagrams, or PDF downloads) inside the local <code>assets/</code> folder in this directory, and reference them relatively (e.g. <code>&lt;img src="assets/my-image.jpg"&gt;</code>).
-          </p>
-        </div>
+              if (typeof src === 'string' && src.indexOf('An-ode-to-rustic-elegance.pdf') !== -1) {
+                console.log("Intercepted getDocument URL string, loading from rusticPdfBase64.");
+                targetSrc = { data: base64ToArrayBuffer(window.rusticPdfBase64) };
+              } else if (src && typeof src === 'object' && src.url && src.url.indexOf('An-ode-to-rustic-elegance.pdf') !== -1) {
+                console.log("Intercepted getDocument source object, loading from rusticPdfBase64.");
+                targetSrc = Object.assign({}, src, { data: base64ToArrayBuffer(window.rusticPdfBase64) });
+                delete targetSrc.url;
+              }
+            }
+            
+            return originalGetDocument.call(originalPdfjsLib, targetSrc);
+          },
+          writable: true,
+          enumerable: true,
+          configurable: true
+        });
+        console.log("Successfully overrode pdfjsLib.getDocument via shadowing.");
+      } catch (e) {
+        console.error("Failed to override pdfjsLib.getDocument: " + e.message);
+      }
+    }
+  </script>
+<script src="assets/3d-flip-book/js/3d-flip-book.min.js"></script>
+<!-- 3D FlipBook PDF Data (Base64) -->
+<script src="../../assets/js/pdf-data.js?v=2"></script>
+<!-- Request Interceptor for Offline Mode (file:// protocol) -->
+<script>
+    (function() {
+      // Define templates globally so both interceptor and initializer can use them
+      const templateHtml = `<style type="text/css">
+  html, body {
+    height: 100% !important;
+    margin: 0 !important;
+  }
+</style>
+<div class="main">
 
-        <!-- Meta Data Footer -->
-        <div class="blog-meta-footer" style="margin-top: 3rem; font-size: 0.85rem; color: var(--color-text-muted); border-top: 1px solid var(--color-border); padding-top: 1.5rem; font-family: var(--font-body);">
-          By GoodEarth | July 19, 2024 | Design | 0 Comments
-        </div>
 
-        <!-- Share Story Container -->
-        <div class="share-story-container">
-          <div class="share-title">Share This Story, Choose Your Platform!</div>
-          <div class="share-buttons-grid">
-            <button class="share-btn" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">Facebook</button>
-            <button class="share-btn" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(window.location.href), '_blank')">WhatsApp</button>
-            <button class="share-btn" onclick="window.open('https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(window.location.href), '_blank')">Pinterest</button>
-            <button class="share-btn" onclick="window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href)">Email</button>
-          </div>
-        </div>
-        </div>
-        
-        <!-- Related Posts Panel -->
-        <div class="blog-related-panel">
-          <!-- Related Posts Section -->
-          <div class="related-posts-section" style="margin-top: 0;">
-            <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--color-primary-dark); margin-bottom: 2rem;">Related Posts</h3>
-            <div class="articles-grid-original" style="grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
-                      <article class="original-card">
-                    <a href="../../design/unassuming-beauty-artistry-in-the-ceiling-a-symbolic-reflection-of-community-growth/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/09/Medley-Portico-Ceiling-Imprint.webp" alt="Unassuming Beauty & Artistry in the Ceiling: A Symbolic Reflection of Community Growth" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
-            <span class="card-badge">Design</span>
-          </a>
-          <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../design/unassuming-beauty-artistry-in-the-ceiling-a-symbolic-reflection-of-community-growth/index.html">Unassuming Beauty & Artistry in the Ceiling: A Symbolic Reflection of Community Growth</a>
-          </h4>
-          <div class="original-card-meta" style="font-size: 0.68rem;">
-            By GoodEarth Team | September 9, 2024
-          </div>
-                    <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../design/unassuming-beauty-artistry-in-the-ceiling-a-symbolic-reflection-of-community-growth/index.html" class="card-link" style="font-size: 0.72rem;">
-              Read Article
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
-        </article>
-        <article class="original-card">
-                    <a href="../../design/foundations-and-superstructures-for-sustainable-living/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/04/Goodearth-Resonance-34-1.webp" alt="Foundations and superstructures for sustainable living" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
-            <span class="card-badge">Design</span>
-          </a>
-          <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../design/foundations-and-superstructures-for-sustainable-living/index.html">Foundations and superstructures for sustainable living</a>
-          </h4>
-          <div class="original-card-meta" style="font-size: 0.68rem;">
-            By GoodEarth Team | April 26, 2024
-          </div>
-                    <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../design/foundations-and-superstructures-for-sustainable-living/index.html" class="card-link" style="font-size: 0.72rem;">
-              Read Article
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
-        </article>
-        <article class="original-card">
-                    <a href="../../design/discovering-landscaping-elements-chappadi-stone/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/03/IMG_00070.webp" alt="Discovering Landscaping Elements - Chappadi Stone" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
-            <span class="card-badge">Design</span>
-          </a>
-          <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../design/discovering-landscaping-elements-chappadi-stone/index.html">Discovering Landscaping Elements - Chappadi Stone</a>
-          </h4>
-          <div class="original-card-meta" style="font-size: 0.68rem;">
-            By GoodEarth Team | March 30, 2024
-          </div>
-                    <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../design/discovering-landscaping-elements-chappadi-stone/index.html" class="card-link" style="font-size: 0.72rem;">
-              Read Article
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
-        </article>
-        <article class="original-card">
-                    <a href="../../design/versatile-integration-of-coloured-glass-bottles/index.html" class="original-card-image-link">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/12/Blog-28-Dec.jpg" alt="Versatile integration of coloured glass bottles" class="original-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'">
-            <span class="card-badge">Design</span>
-          </a>
-          <h4 class="original-card-title" style="font-size: 0.95rem; margin-top: 0.5rem; margin-bottom: 4px;">
-            <a href="../../design/versatile-integration-of-coloured-glass-bottles/index.html">Versatile integration of coloured glass bottles</a>
-          </h4>
-          <div class="original-card-meta" style="font-size: 0.68rem;">
-            By GoodEarth Team | December 28, 2023
-          </div>
-                    <div class="card-link-wrapper" style="margin-top: 0;">
-            <a href="../../design/versatile-integration-of-coloured-glass-bottles/index.html" class="card-link" style="font-size: 0.72rem;">
-              Read Article
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
-        </article>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Leave a Comment Panel -->
-        <div class="blog-comment-panel">
-          
-          <!-- Leave a Comment Form -->
-          <div class="comment-form-container">
-            <h3 class="comment-form-title">Leave A Comment</h3>
-            <form class="comment-form">
-              <div class="comment-input-group">
-                <label for="comment-text">Comment</label>
-                <textarea id="comment-text" required placeholder="Comment..."></textarea>
-              </div>
-              <div class="comment-form-row">
-                <div class="comment-input-group">
-                  <label for="comment-name">Name (required)</label>
-                  <input type="text" id="comment-name" required />
-                </div>
-                <div class="comment-input-group">
-                  <label for="comment-email">Email (required)</label>
-                  <input type="email" id="comment-email" required />
-                </div>
-                <div class="comment-input-group">
-                  <label for="comment-website">Website</label>
-                  <input type="url" id="comment-website" />
-                </div>
-              </div>
-              <div class="comment-checkbox-group">
-                <input type="checkbox" id="save-info" />
-                <label for="save-info">Save my name, email, and website in this browser for the next time I comment.</label>
-              </div>
-              <button type="submit" class="comment-submit-btn">Post Comment</button>
-            </form>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Right Sidebar Column -->
-      <aside class="blog-sidebar">
-        
-                <!-- Search Widget -->
-        <div class="widget-search" style="position: relative;">
-          <form onsubmit="event.preventDefault(); alert('Search functionality is not active in this static demo.');">
-            <input type="text" placeholder="Search..." required />
-            <button type="submit" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 1rem;">🔍</button>
-          </form>
-        </div>
-
-        <!-- About GoodEarth Widget -->
-        <div class="widget-about">
-          <img src="../../assets/images/goodeath-image.jpg" alt="goodeath-image" />
-          <h3>About GoodEarth</h3>
-          <p>At Good Earth, we are engaged in bringing together like-minded people with a common vision of building a sustainable future.</p>
-          
-          <!-- Widget Social Links -->
-          <div class="widget-social">
-            <a href="https://facebook.com/goodearthonline" target="_blank" rel="noopener noreferrer">f</a>
-            <a href="https://instagram.com/goodearthonline" target="_blank" rel="noopener noreferrer">i</a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">y</a>
-          </div>
-        </div>
-
-        <!-- Tabs Widget: Popular / Recent / Comments -->
-        <div class="widget-tabs">
-          <div class="tabs-nav">
-            <button class="tab-btn active" onclick="switchSidebarTab(event, 'tab-popular')">Popular</button>
-            <button class="tab-btn" onclick="switchSidebarTab(event, 'tab-recent')">Recent</button>
-            <button class="tab-btn" onclick="switchSidebarTab(event, 'tab-comments')">Comments</button>
-          </div>
-          
-          <div class="tab-content active" id="tab-popular">
-            <ul class="tab-post-list">
-                        <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2023/09/Blog-spt14-1-rs.jpg" alt="Role of Compressed Stabilized Earth Blocks in sustainable construction" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../materials/role-of-compressed-stabilized-earth-blocks-in-sustainable-construction/index.html">Role of Compressed Stabilized Earth Blocks in sustainable construction</a></h4>
-              <div class="tab-post-date">September 14, 2023</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/02/Saarang-Brochure_V4_Corrections_Print-page-71.jpg" alt="GoodEarth Saarang - Live, work & celebrate life at a holistic eco village" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../sustainability/goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village/index.html">GoodEarth Saarang - Live, work & celebrate life at a holistic eco village</a></h4>
-              <div class="tab-post-date">February 22, 2024</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/03/IMG_00070.webp" alt="Discovering Landscaping Elements - Chappadi Stone" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../design/discovering-landscaping-elements-chappadi-stone/index.html">Discovering Landscaping Elements - Chappadi Stone</a></h4>
-              <div class="tab-post-date">March 30, 2024</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/index.html">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
-              <div class="tab-post-date">April 15, 2026</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2024/01/1.jpg" alt="Rediscovering rammed earth construction in modern architecture" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../sustainability/rediscovering-rammed-earth-construction-in-modern-architecture/index.html">Rediscovering rammed earth construction in modern architecture</a></h4>
-              <div class="tab-post-date">January 12, 2024</div>
-            </div>
-          </li>
-            </ul>
-          </div>
-          
-          <div class="tab-content" id="tab-recent">
-            <ul class="tab-post-list">
-                        <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg" alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/index.html">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
-              <div class="tab-post-date">April 15, 2026</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/03/GoodEarth-Resident-Girin-Web-Banner.jpeg" alt="Savvy in Five with Girin | Get closer to the birds around you" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/savvy-in-five-with-girin-get-closer-to-the-birds-around-you/index.html">Savvy in Five with Girin | Get closer to the birds around you</a></h4>
-              <div class="tab-post-date">March 11, 2026</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2026/01/GE-Ajith.jpg" alt="Come On Over | Ajith, Bindu, and Indulekha's Dream Home." class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../residents-spotlight/come-on-over-ajith-bindu-and-indulekhas-dream-home/index.html">Come On Over | Ajith, Bindu, and Indulekha's Dream Home.</a></h4>
-              <div class="tab-post-date">January 17, 2026</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2025/12/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori.jpg" alt="Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../beyond-the-fence/beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori/index.html">Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori</a></h4>
-              <div class="tab-post-date">December 31, 2025</div>
-            </div>
-          </li>
-          <li class="tab-post-item">
-            <img src="https://goodearth.org.in/connect/wp-content/uploads/2025/12/Hero.webp" alt="GoodEarth Modern Times wins CREDAI Awards 2025" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=600'" />
-            <div class="tab-post-info">
-              <h4 class="tab-post-title"><a href="../../awards/goodearth-modern-times-wins-credai-awards-2025/index.html">GoodEarth Modern Times wins CREDAI Awards 2025</a></h4>
-              <div class="tab-post-date">December 22, 2025</div>
-            </div>
-          </li>
-            </ul>
-          </div>
-          
-          <div class="tab-content" id="tab-comments">
-            <p style="padding: 1rem 0; font-size: 0.85rem; color: var(--color-text-muted); text-align: center;">No comments yet.</p>
-          </div>
-        </div>
-
-      </aside>
+  <div class="view">
+    <div class="render">
 
     </div>
-  </main>
+  </div>
 
-  <!-- Injected Shared Footer -->
-  <footer id="footer-container" class="site-footer-original"></footer>
+  <div class="toc widFloatWnd float-wnd hidden fade">
+    <div class="head">
+      <$tr>Table of contents</$tr>
+      <a class="cmd close cmdCloseToc" title="<$tr>Close</$tr>">
+        <i class="fa fa-times"></i>
+      </a>
+    </div>
+    <div class="body">
+      <ul class="h-menu widTocMenu">
+        <li><a class="cmd cmdBookmarks"><$tr>Bookmarks</$tr></a></li>
+        <li><a class="cmd cmdThumbnails"><$tr>Thumbnails</$tr></a></li>
+        <li><a class="cmd cmdSearch"><$tr>Search</$tr></a></li>
+      </ul>
+      <div class="widBookmarks tocview">
 
-  <!-- Dynamic Database scripts first, then injection -->
-  <script src="../../assets/js/posts-data.js"></script>
-  <script src="../../assets/js/videos-data.js"></script>
-  <script src="../../assets/js/common.js"></script>
-  <script src="../../assets/js/comments.js"></script>
+      </div>
+      <div class="widThumbnails tocview">
+
+      </div>
+      <div class="widSearch tocview">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="share widShare float-wnd hidden fade">
+    <div class="head">
+      <$tr>Share</$tr>
+      <a class="cmd close cmdCloseShare" title="<$tr>Close</$tr>">
+        <i class="fa fa-times"></i>
+      </a>
+    </div>
+    <div class="body">
+      <div class="shareview">
+        <div class="txtShareLink link"></div>
+        <div class="btns">
+          <a class="cmd cmdFacebook btn"><i class="fa fa-facebook-f" title="<$tr>Facebook</$tr>"></i></a>
+          <a class="cmd cmdTwitter btn"><i class="fa fa-twitter" title="<$tr>Twitter</$tr>"></i></a>
+          <a class="cmd cmdEmail btn"><i class="fa fa-at" title="<$tr>Email</$tr>"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="widLoadingProgress loading-progress hidden fade">
+    <div class="progress">
+      <div class="loader-box">
+        <div class="loader">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <div class="txtLoadingProgress caption">
+    </div>
+  </div>
+
+  <div class="widLoading page-loading hidden fade">
+    <div class="loader-box">
+      <div class="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="widUserMessage txtUserMessage user-message hidden fade">
+  </div>
+
+  <div class="widPendingPlay pending-play hidden hbtn fade">
+    <a class="cmd cmdPendingPlay"><i class="fa fa-play" title="<$tr>Play</$tr>"></i></a>
+  </div>
+
+  <div class="widControls ctrls hidden fade">
+    <div class="prev hbtn">
+      <a class="cmd cmdBigBackward"><i class="fa fa-angle-left" title="<$tr>Previous page</$tr>"></i></a>
+    </div>
+
+    <div class="next hbtn">
+      <a class="cmd cmdBigForward"><i class="fa fa-angle-right" title="<$tr>Next page</$tr>"></i></a>
+    </div>
+
+    <div class="tbox">
+      <div class="toolbar widToolbar">
+        <ul class="buttons">
+          <li><a class="cmd cmdZoomIn"><i class="fa fa-search-plus" title="<$tr>Zoom in</$tr>"></i></a></li>
+          <li><a class="cmd cmdZoomOut"><i class="fa fa-search-minus" title="<$tr>Zoom out</$tr>"></i></a></li>
+          <li><a class="cmd cmdDefaultZoom"><i class="fa fa-compress" title="<$tr>Fit view</$tr>"></i></a></li>
+          <li><a class="cmd cmdAutoPlay" title="<$tr>Auto play</$tr>"><i class="fa fa-play active-hidden"></i><i class="fa fa-pause active-visible"></i></a></li>
+          <li><a class="cmd cmdToc"><i class="fa fa-bookmark" title="<$tr>Table of contents</$tr>"></i></a></li>
+          <li><a class="cmd cmdBackward"><i class="fa fa-backward" title="<$tr>Previous page</$tr>"></i></a></li>
+          <li>
+            <div class="pages">
+              <input type="text" class="number inpPage" maxlength="4" placeholder="1">
+              <input type="text" class="amount inpPages" readOnly maxlength="4" placeholder="1">
+            </div>
+          </li>
+          <li><a class="cmd cmdForward"><i class="fa fa-forward" title="<$tr>Next page</$tr>"></i></a></li>
+          <li><a class="cmd cmdShare"><i class="fa fa-share-alt" title="<$tr>Share</$tr>"></i></a></li>
+          <li><a class="cmd cmdSearchBtn"><i class="fa fa-search" title="<$tr>Search</$tr>"></i></a></li>
+          <li><a class="cmd cmdFullScreen"><i class="fa fa-arrows-alt" title="<$tr>Full screen</$tr>"></i></a></li>
+          <li class="dropup widSettings">
+            <a class="cmd menu-toggle"><i class="fa fa-ellipsis-h" title="<$tr>More</$tr>"></i></a>
+            <ul class="v-menu hidden fade">
+              <li><a class="cmd cmdSmartPan"><i class="fa fa-eye"></i> <$tr>Smart pan</$tr></a></li>
+              <li><a class="cmd cmdSinglePage"><i class="fa fa-file-o"></i> <$tr>Single page</$tr></a></li>
+              <li><a class="cmd cmdSounds"><i class="fa fa-volume-up"></i> <$tr>Sounds</$tr></a></li>
+              <li><a class="cmd cmdStats"><i class="fa fa-line-chart"></i> <$tr>Stats</$tr></a></li>
+              <li><a class="cmd cmdPrint"><i class="fa fa-print"></i> <$tr>Print</$tr></a></li>
+              <li><a class="cmd cmdSave"><i class="fa fa-download"></i> <$tr>Download</$tr></a></li>
+              <li class="divider"></li>
+              <li><a class="cmd cmdGotoFirstPage"><i class="fa fa-fast-backward"></i> <$tr>Goto first page</$tr></a></li>
+              <li><a class="cmd cmdGotoLastPage"><i class="fa fa-fast-forward"></i> <$tr>Goto last page</$tr></a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>`;
+
+      const templateJs = `function init(container) {
+  var instance;
+  if(window.jQuery) {
+    var $ = window.jQuery, jDoc = $(container[0].ownerDocument), view = container.find('.view'), canvas = view.find('canvas');
+
+    function toggleMenu(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var el = $(e.target);
+      while(!el.hasClass('menu-toggle')) {
+        el = $(el[0].parentNode);
+      }
+      var menu = $(el[0].parentNode).find('.v-menu');
+      if(menu.hasClass('hidden')) {
+        menu.removeClass('hidden');
+        el.addClass('active');
+      }
+      else {
+        menu.addClass('hidden');
+        el.removeClass('active');
+      }
+    }
+    function hideDropMenu() {
+      container.find('.v-menu').addClass('hidden');
+      container.find('.menu-toggle').removeClass('active');
+    }
+
+    function pickFloatWnd(e) {
+      if(instance.pos) {
+        dropFloatWnd();
+      }
+      else {
+        instance.floatWnd = $(e.target);
+        while(!instance.floatWnd.hasClass('float-wnd')) {
+          instance.floatWnd = $(instance.floatWnd[0].parentNode);
+        }
+        instance.pos = {
+          x: e.pageX,
+          y: e.pageY
+        };
+      }
+    }
+    function moveFloatWnd(e) {
+      if(instance.pos) {
+        e.preventDefault();
+        var dv = {
+          x: e.pageX-instance.pos.x,
+          y: e.pageY-instance.pos.y
+        }, old = {
+          x: parseInt(instance.floatWnd.css('left')),
+          y: parseInt(instance.floatWnd.css('top'))
+        };
+        instance.floatWnd.css('left', old.x+dv.x+'px').css('top', old.y+dv.y+'px');
+        instance.pos = {
+          x: e.pageX,
+          y: e.pageY
+        };
+      }
+    }
+    function dropFloatWnd() {
+      delete instance.pos;
+      delete instance.floatWnd;
+    }
+
+    instance = {
+      dispose: function() {
+        container.find('.menu-toggle').off('click', toggleMenu);
+        jDoc.off('click', hideDropMenu);
+
+        jDoc.off('mousemove', moveFloatWnd);
+        jDoc.off('mouseup', dropFloatWnd);
+        container.find('.float-wnd .head').off('mousedown', pickFloatWnd);
+      },
+      appLoaded: function(scene) {
+        console.log("appLoaded called!");
+        window.scene = scene;
+        if (scene.ctrl) {
+          scene.ctrl.isSinglePageAvailable = function() { return true; };
+          setTimeout(function() {
+            console.log("Dispatching resize events...");
+            window.dispatchEvent(new Event('resize'));
+            var iframes = document.getElementsByTagName('iframe');
+            for (var i = 0; i < iframes.length; i++) {
+              try {
+                iframes[i].contentWindow.dispatchEvent(new Event('resize'));
+              } catch(e) {
+                console.error("Failed to dispatch resize to iframe:", e.message);
+              }
+            }
+          }, 300);
+        }
+      },
+      linkLoaded: function(link) {
+      }
+    };
+
+    container.find('.menu-toggle').on('click', toggleMenu);
+    jDoc.on('click', hideDropMenu);
+
+    jDoc.on('mousemove', moveFloatWnd);
+    jDoc.on('mouseup', dropFloatWnd);
+    container.find('.float-wnd .head').on('mousedown', pickFloatWnd);
+  }
+  else {
+    instance = {
+      dispose: function() {
+      }
+    };
+    console.error('jQuery is not found');
+  }
+  return instance;
+} init`;
+
+      window.FB3D_TEMPLATES = {
+        html: templateHtml,
+        js: templateJs
+      };
+
+      if (true) {
+        // Base64 helper
+        function base64ToArrayBuffer(base64) {
+          var binaryString = atob(base64);
+          var len = binaryString.length;
+          var bytes = new Uint8Array(len);
+          for (var i = 0; i < len; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+          }
+          return bytes.buffer;
+        }
+
+        // Intercept XMLHttpRequest
+        const originalOpen = XMLHttpRequest.prototype.open;
+        const originalSend = XMLHttpRequest.prototype.send;
+        const originalSetRequestHeader = XMLHttpRequest.prototype.setRequestHeader;
+        const originalGetResponseHeader = XMLHttpRequest.prototype.getResponseHeader;
+        const originalGetAllResponseHeaders = XMLHttpRequest.prototype.getAllResponseHeaders;
+
+        XMLHttpRequest.prototype.open = function(method, url) {
+          const urlStr = url ? url.toString() : '';
+          console.log("XHR open requested for URL: " + urlStr);
+          this._url = urlStr;
+          this._isIntercepted = urlStr.indexOf('short-white-book-view.html') !== -1 || 
+                               urlStr.indexOf('default-book-view.js') !== -1 ||
+                               urlStr.indexOf('An-ode-to-rustic-elegance.pdf') !== -1;
+          return originalOpen.apply(this, arguments);
+        };
+
+        XMLHttpRequest.prototype.send = function(body) {
+          if (this._isIntercepted) {
+            const self = this;
+            setTimeout(() => {
+              Object.defineProperty(self, 'readyState', { value: 4, writable: true, configurable: true });
+              Object.defineProperty(self, 'status', { value: 200, writable: true, configurable: true });
+              Object.defineProperty(self, 'statusText', { value: 'OK', writable: true, configurable: true });
+
+              if (self._url.indexOf('short-white-book-view.html') !== -1) {
+                Object.defineProperty(self, 'responseText', { value: window.FB3D_TEMPLATES.html, writable: true, configurable: true });
+                Object.defineProperty(self, 'response', { value: window.FB3D_TEMPLATES.html, writable: true, configurable: true });
+              } else if (self._url.indexOf('default-book-view.js') !== -1) {
+                Object.defineProperty(self, 'responseText', { value: window.FB3D_TEMPLATES.js, writable: true, configurable: true });
+                Object.defineProperty(self, 'response', { value: window.FB3D_TEMPLATES.js, writable: true, configurable: true });
+              } else if (self._url.indexOf('An-ode-to-rustic-elegance.pdf') !== -1) {
+                const buffer = base64ToArrayBuffer(window.rusticPdfBase64);
+                Object.defineProperty(self, 'response', { value: buffer, writable: true, configurable: true });
+                Object.defineProperty(self, 'responseText', { value: '', writable: true, configurable: true });
+              }
+
+              if (self.onreadystatechange) {
+                self.onreadystatechange();
+              }
+              self.dispatchEvent(new Event('readystatechange'));
+              self.dispatchEvent(new Event('load'));
+              if (self.onload) {
+                self.onload();
+              }
+            }, 1);
+            return;
+          }
+          return originalSend.apply(this, arguments);
+        };
+
+        XMLHttpRequest.prototype.setRequestHeader = function(header, value) {
+          if (this._isIntercepted) return;
+          return originalSetRequestHeader.apply(this, arguments);
+        };
+
+        XMLHttpRequest.prototype.getResponseHeader = function(header) {
+          if (this._isIntercepted) {
+            if (header.toLowerCase() === 'content-type') {
+              if (this._url.indexOf('short-white-book-view.html') !== -1) {
+                return 'text/html';
+              } else if (this._url.indexOf('default-book-view.js') !== -1) {
+                return 'application/javascript';
+              }
+              return 'application/pdf';
+            }
+            return null;
+          }
+          return originalGetResponseHeader.apply(this, arguments);
+        };
+
+        XMLHttpRequest.prototype.getAllResponseHeaders = function() {
+          if (this._isIntercepted) {
+            if (this._url.indexOf('short-white-book-view.html') !== -1) {
+              return 'Content-Type: text/html\r\n';
+            } else if (this._url.indexOf('default-book-view.js') !== -1) {
+              return 'Content-Type: application/javascript\r\n';
+            }
+            return 'Content-Type: application/pdf\r\n';
+          }
+          return originalGetAllResponseHeaders.apply(this, arguments);
+        };
+
+        // Intercept Fetch
+        if (window.fetch) {
+          const originalFetch = window.fetch;
+          window.fetch = function(input, init) {
+            let url = '';
+            if (typeof input === 'string') {
+              url = input;
+            } else if (input instanceof Request) {
+              url = input.url;
+            } else if (input) {
+              url = input.toString();
+            }
+            console.log("Fetch requested for URL: " + url);
+            
+            if (url.indexOf('short-white-book-view.html') !== -1) {
+              return Promise.resolve(new Response(window.FB3D_TEMPLATES.html, {
+                status: 200,
+                statusText: 'OK',
+                headers: { 'Content-Type': 'text/html' }
+              }));
+            }
+            
+            if (url.indexOf('default-book-view.js') !== -1) {
+              return Promise.resolve(new Response(window.FB3D_TEMPLATES.js, {
+                status: 200,
+                statusText: 'OK',
+                headers: { 'Content-Type': 'application/javascript' }
+              }));
+            }
+
+            if (url.indexOf('An-ode-to-rustic-elegance.pdf') !== -1) {
+              const buffer = base64ToArrayBuffer(window.rusticPdfBase64);
+              return Promise.resolve(new Response(buffer, {
+                status: 200,
+                statusText: 'OK',
+                headers: { 'Content-Type': 'application/pdf' }
+              }));
+            }
+            
+            return originalFetch.apply(this, arguments);
+          };
+        }
+      }
+    })();
+  </script>
+</head>
+<body>
+<!-- Injected Shared Header -->
+<header class="site-header" id="header-container"></header>
+<!-- Main Article Body in 2-Column Sidebar Layout -->
+<main class="main-container" style="max-width: 1200px; margin: 0 auto; padding: 4rem 1.5rem;">
+<div class="blog-layout-container">
+<!-- Left Main Content Column -->
+<div class="blog-main-content">
+<!-- Main Article Panel -->
+<div class="blog-article-panel">
+<!-- Meta Data Header -->
+<div class="blog-meta-header">
+<span class="editorial-tag">Design</span>
+<div class="editorial-section">Elements of Style</div>
+<h1 class="editorial-title">An ode to rustic elegance</h1>
+<div class="editorial-meta">
+<span>By <a href="https://goodearth.org.in/connect/author/kavya-bhat/">Kavya Bhat</a></span>
+<span class="editorial-meta-bullet">•</span>
+<span>Published On: July 19, 2024</span>
+</div>
+</div>
+<!-- Article Hero Image -->
+<div class="hero-image-wrapper">
+<img alt="An ode to rustic elegance" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Bedroom-at-GoodEarth-Malhar.webp"/>
+</div>
+<span class="hero-caption">Bedroom showcase at GoodEarth Malhar — blending warmth, natural materials, and sophisticated design.</span>
+<!-- Source banner -->
+<div class="source-banner">
+<span>This article is a replica of the original GoodEarth Connect catalog.</span>
+<a href="https://goodearth.org.in/connect/design/an-ode-to-rustic-elegance/" rel="noopener noreferrer" target="_blank">
+              View original post
+              <svg fill="none" height="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="12"><line x1="7" x2="17" y1="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+</a>
+</div>
+<!-- Body Text Content (Redesigned with exact 1-to-1 content) -->
+<div class="blog-body-content editorial-body">
+<p class="lead-paragraph">
+              We believe your bedroom should be more than just a place to sleep—it should be your personal sanctuary, a reflection of your unique style, and a retreat from the outside world.
+            </p>
+<div class="editorial-divider">
+<span class="line"></span>
+<span class="leaf-icon">✿</span>
+<span class="line"></span>
+</div>
+<p style="text-align: justify;">
+              We’re excited to invite you on a journey through our latest bedroom design showcase. Discover how we blend warmth and luxury to create a space that’s both inviting and sophisticated.
+            </p>
+<!-- 3D FlipBook Container -->
+<div class="rustic-pdf-card" style="padding: 1.5rem;">
+<div class="rustic-pdf-header" style="margin-bottom: 1.5rem;">
+<div class="rustic-pdf-title-block">
+<span class="rustic-pdf-icon">📖</span>
+<div class="rustic-pdf-meta">
+<span class="rustic-pdf-title">Deconstructing the Master Bedroom</span>
+<span class="rustic-pdf-pages">Interactive 3D Book Catalog • 12 Pages</span>
+</div>
+</div>
+<a class="rustic-pdf-view-btn" download="An-ode-to-rustic-elegance" href="assets/An-ode-to-rustic-elegance.pdf">
+<span>⬇</span> Download PDF
+                </a>
+</div>
+<!-- Interactive 3D FlipBook Container -->
+<div class="rustic-pdf-frame-wrapper" id="rustic-3d-book"></div>
+</div>
+</div>
+<!-- Author Bio Card (New Premium Element) -->
+<div class="author-card">
+<img alt="Kavya Bhat" class="author-avatar" src="https://secure.gravatar.com/avatar/5d8c4fae35c443ca8b2e336f88316b16?s=96&amp;d=mm&amp;r=g"/>
+<div class="author-info">
+<h4>Kavya Bhat</h4>
+<span class="role">Architect &amp; Curator</span>
+<p>In addition to being an architect by training, Kavya is also an enthusiastic writer &amp; curator by choice, passionate about exploring new techniques, projects, their implementation, and the impact of design on society.</p>
+</div>
+</div>
+<!-- Share Story Container (Redesigned) -->
+<div class="share-story-container">
+<div class="share-title">Share This Story</div>
+<div class="share-buttons-flex">
+<button class="share-btn-round fb-btn" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank')">
+<svg viewbox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                Facebook
+              </button>
+<button class="share-btn-round wa-btn" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(window.location.href), '_blank')">
+<svg viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.705 1.459h.008c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+                WhatsApp
+              </button>
+<button class="share-btn-round pin-btn" onclick="window.open('https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(window.location.href) + '&amp;media=' + encodeURIComponent('https://goodearth.org.in/connect/wp-content/uploads/2024/07/Bedroom-at-GoodEarth-Malhar.jpg'), '_blank')">
+<svg viewbox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.909 2.17-2.909 1.023 0 1.517.769 1.517 1.686 0 1.03-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.104.127.118.239.088.369-.096.4-.31 1.264-.352 1.439-.056.223-.186.27-.428.158-1.597-.741-2.593-3.076-2.593-4.947 0-4.029 2.929-7.728 8.444-7.728 4.433 0 7.878 3.159 7.878 7.379 0 4.407-2.777 7.954-6.626 7.954-1.295 0-2.515-.672-2.932-1.464 0 0-.641 2.441-.798 3.037-.289 1.111-1.077 2.493-1.604 3.351 1.127.348 2.321.536 3.56.536 6.62 0 11.987-5.367 11.987-11.987C24.004 5.367 18.638 0 12.017 0z"></path></svg>
+                Pinterest
+              </button>
+<button class="share-btn-round email-btn" onclick="window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&amp;body=' + encodeURIComponent(window.location.href)">
+<svg viewbox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><path d="M22 6l-10 7L2 6"></path></svg>
+                Email
+              </button>
+</div>
+</div>
+</div>
+<!-- Related Posts Panel -->
+<div class="blog-related-panel">
+<div class="related-posts-section">
+<h3>Related Posts</h3>
+<div class="grid-redesign">
+<!-- Card 1 -->
+<article class="card-redesign">
+<a class="card-image-box" href="../../design/unassuming-beauty-artistry-in-the-ceiling-a-symbolic-reflection-of-community-growth/">
+<img alt="Unassuming Beauty &amp; Artistry in the Ceiling: A Symbolic Reflection of Community Growth" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Medley-Portico-Ceiling-Imprint_1.webp"/>
+<span class="card-badge-redesign">Design</span>
+</a>
+<div class="card-content-box">
+<div>
+<h4 class="card-title-redesign">
+<a href="../../design/unassuming-beauty-artistry-in-the-ceiling-a-symbolic-reflection-of-community-growth/">Unassuming Beauty &amp; Artistry in the Ceiling: A Symbolic Reflection of Community Growth</a>
+</h4>
+<div class="card-meta-redesign">By GoodEarth Team | September 9, 2024</div>
+</div>
+<a class="card-link-redesign" href="../../design/unassuming-beauty-artistry-in-the-ceiling-a-symbolic-reflection-of-community-growth/">
+                    Read Article
+                    <svg fill="none" height="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="12"><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+</a>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="card-redesign">
+<a class="card-image-box" href="../../design/foundations-and-superstructures-for-sustainable-living/">
+<img alt="Foundations and superstructures for sustainable living" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Goodearth-Resonance-34-1_5.webp"/>
+<span class="card-badge-redesign">Design</span>
+</a>
+<div class="card-content-box">
+<div>
+<h4 class="card-title-redesign">
+<a href="../../design/foundations-and-superstructures-for-sustainable-living/">Foundations and superstructures for sustainable living</a>
+</h4>
+<div class="card-meta-redesign">By GoodEarth Team | April 26, 2024</div>
+</div>
+<a class="card-link-redesign" href="../../design/foundations-and-superstructures-for-sustainable-living/">
+                    Read Article
+                    <svg fill="none" height="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="12"><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+</a>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="card-redesign">
+<a class="card-image-box" href="../../design/discovering-landscaping-elements-chappadi-stone/">
+<img alt="Discovering Landscaping Elements - Chappadi Stone" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/IMG_00070_3.webp"/>
+<span class="card-badge-redesign">Design</span>
+</a>
+<div class="card-content-box">
+<div>
+<h4 class="card-title-redesign">
+<a href="../../design/discovering-landscaping-elements-chappadi-stone/">Discovering Landscaping Elements - Chappadi Stone</a>
+</h4>
+<div class="card-meta-redesign">By GoodEarth Team | March 30, 2024</div>
+</div>
+<a class="card-link-redesign" href="../../design/discovering-landscaping-elements-chappadi-stone/">
+                    Read Article
+                    <svg fill="none" height="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="12"><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+</a>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="card-redesign">
+<a class="card-image-box" href="../../design/versatile-integration-of-coloured-glass-bottles/">
+<img alt="Versatile integration of coloured glass bottles" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Blog-28-Dec_1.webp"/>
+<span class="card-badge-redesign">Design</span>
+</a>
+<div class="card-content-box">
+<div>
+<h4 class="card-title-redesign">
+<a href="../../design/versatile-integration-of-coloured-glass-bottles/">Versatile integration of coloured glass bottles</a>
+</h4>
+<div class="card-meta-redesign">By GoodEarth Team | December 28, 2023</div>
+</div>
+<a class="card-link-redesign" href="../../design/versatile-integration-of-coloured-glass-bottles/">
+                    Read Article
+                    <svg fill="none" height="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="12"><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+</a>
+</div>
+</article>
+</div>
+</div>
+</div>
+<!-- Leave a Comment Panel -->
+
+</div>
+<!-- Right Sidebar Column -->
+<aside class="blog-sidebar">
+<!-- Search Widget -->
+<div class="widget-search" style="position: relative;">
+<form onsubmit="event.preventDefault(); alert('Search functionality is not active in this static demo.');">
+<input placeholder="Search..." required="" type="text"/>
+<button style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 1rem;" type="submit">🔍</button>
+</form>
+</div>
+<!-- About GoodEarth Widget -->
+<div class="widget-about">
+<img alt="goodeath-image" src="../../assets/images/goodeath-image_1.webp">
+<h3>About GoodEarth</h3>
+<p>At Good Earth, we are engaged in bringing together like-minded people with a common vision of building a sustainable future.</p>
+<!-- Widget Social Links -->
+<div class="widget-social">
+<a href="https://facebook.com/goodearthonline" rel="noopener noreferrer" target="_blank">f</a>
+<a href="https://instagram.com/goodearthonline" rel="noopener noreferrer" target="_blank">i</a>
+<a href="https://youtube.com" rel="noopener noreferrer" target="_blank">y</a>
+</div>
+</img></div>
+<!-- Tabs Widget: Popular / Recent / Comments -->
+<div class="widget-tabs">
+<div class="tabs-nav">
+<button class="tab-btn active" onclick="switchSidebarTab(event, 'tab-popular')">Popular</button>
+<button class="tab-btn" onclick="switchSidebarTab(event, 'tab-recent')">Recent</button>
+<button class="tab-btn" onclick="switchSidebarTab(event, 'tab-comments')">Comments</button>
+</div>
+<div class="tab-content active" id="tab-popular">
+<ul class="tab-post-list">
+<li class="tab-post-item">
+<img alt="Role of Compressed Stabilized Earth Blocks in sustainable construction" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Blog-spt14-1-rs_3.webp">
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../materials/role-of-compressed-stabilized-earth-blocks-in-sustainable-construction/">Role of Compressed Stabilized Earth Blocks in sustainable construction</a></h4>
+<div class="tab-post-date">September 14, 2023</div>
+</div>
+</img></li>
+<li class="tab-post-item">
+<img alt="GoodEarth Saarang - Live, work &amp; celebrate life at a holistic eco village" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Saarang-Brochure_V4_Corrections_Print-page-71_2.webp">
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../sustainability/goodearth-saarang-live-work-celebrate-life-at-a-holistic-eco-village/">GoodEarth Saarang - Live, work &amp; celebrate life at a holistic eco village</a></h4>
+<div class="tab-post-date">February 22, 2024</div>
+</div>
+</img></li>
+<li class="tab-post-item">
+<img alt="Discovering Landscaping Elements - Chappadi Stone" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/IMG_00070_3.webp">
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../design/discovering-landscaping-elements-chappadi-stone/">Discovering Landscaping Elements - Chappadi Stone</a></h4>
+<div class="tab-post-date">March 30, 2024</div>
+</div>
+</img></li>
+<li class="tab-post-item">
+<img alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Come-Over-Featured-Image_2.webp">
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
+<div class="tab-post-date">April 15, 2026</div>
+</div>
+</img></li>
+<li class="tab-post-item">
+<img alt="Rediscovering rammed earth construction in modern architecture" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/1_5.webp">
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../sustainability/rediscovering-rammed-earth-construction-in-modern-architecture/">Rediscovering rammed earth construction in modern architecture</a></h4>
+<div class="tab-post-date">January 12, 2024</div>
+</div>
+</img></li>
+</ul>
+</div>
+<div class="tab-content" id="tab-recent">
+<ul class="tab-post-list">
+<li class="tab-post-item">
+<img alt="Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Come-Over-Featured-Image_2.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../residents-spotlight/come-over-casa-de-sushi-where-minimalism-meets-a-life-well-travelled/">Come Over | Casa De Sushi: Where Minimalism Meets a Life Well-Travelled</a></h4>
+<div class="tab-post-date">April 15, 2026</div>
+</div>
+</li>
+<li class="tab-post-item">
+<img alt="Savvy in Five with Girin | Get closer to the birds around you" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/GoodEarth-Resident-Girin-Web-Banner_2.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../residents-spotlight/savvy-in-five-with-girin-get-closer-to-the-birds-around-you/">Savvy in Five with Girin | Get closer to the birds around you</a></h4>
+<div class="tab-post-date">March 11, 2026</div>
+</div>
+</li>
+<li class="tab-post-item">
+<img alt="Come On Over | Ajith, Bindu, and Indulekha's Dream Home." class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/GE-Ajith_2.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../residents-spotlight/come-on-over-ajith-bindu-and-indulekhas-dream-home/">Come On Over | Ajith, Bindu, and Indulekha's Dream Home.</a></h4>
+<div class="tab-post-date">January 17, 2026</div>
+</div>
+</li>
+<li class="tab-post-item">
+<img alt="Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Beyond-the-Fence-with-Sarah-Thomas-Umoya-A-creatives-journey-into-Shibori_2.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../beyond-the-fence/beyond-the-fence-with-sarah-thomas-umoya-a-creatives-journey-into-shibori/">Beyond the Fence with Sarah Thomas | Umoya | A creative’s journey into Shibori</a></h4>
+<div class="tab-post-date">December 31, 2025</div>
+</div>
+</li>
+<li class="tab-post-item">
+<img alt="GoodEarth Modern Times wins CREDAI Awards 2025" class="tab-post-img" onerror="this.src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&amp;w=600'" src="../../assets/images/Hero_2.webp"/>
+<div class="tab-post-info">
+<h4 class="tab-post-title"><a href="../../awards/goodearth-modern-times-wins-credai-awards-2025/">GoodEarth Modern Times wins CREDAI Awards 2025</a></h4>
+<div class="tab-post-date">December 22, 2025</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="tab-content" id="tab-comments">
+<p style="padding: 1rem 0; font-size: 0.85rem; color: var(--color-text-muted); text-align: center;">No comments yet.</p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Injected Shared Footer -->
+<footer class="site-footer-original" id="footer-container"></footer>
+<!-- Dynamic Database scripts first, then injection -->
+<script src="../../assets/js/posts-data.js"></script>
+<script src="../../assets/js/videos-data.js"></script>
+<script src="../../assets/js/common.js"></script>
+
+<script>
+    // Initialize 3D FlipBook
+    jQuery(document).ready(function($) {
+      if ($('#rustic-3d-book').length) {
+        $('#rustic-3d-book').FlipBook({
+          pdf: 'assets/An-ode-to-rustic-elegance.pdf',
+          bookStyle: 'flat',
+          singlePage: true,
+          controlsProps: {
+            scale: {
+              default: 1.6,
+              min: 0.9,
+              max: 4
+            },
+            actions: {
+              cmdSinglePage: {
+                active: true
+              }
+            }
+          },
+          properties: {
+            autoPlay: false
+          },
+          template: {
+            html: 'assets/3d-flip-book/templates/short-white-book-view.html',
+            links: [
+              { rel: 'stylesheet', href: 'assets/3d-flip-book/css/font-awesome.min.css' },
+              { rel: 'stylesheet', href: 'assets/3d-flip-book/css/client.css' },
+              { rel: 'stylesheet', href: 'assets/3d-flip-book/css/short-white-book-view.css' }
+            ],
+            styles: [], // Clear styles to prevent AJAX requests
+            script: 'assets/3d-flip-book/js/default-book-view.js'
+          },
+          jsData: {
+            urls: {
+              "assets/3d-flip-book/templates/short-white-book-view.html": window.FB3D_TEMPLATES ? window.FB3D_TEMPLATES.html : '',
+              "assets/3d-flip-book/js/default-book-view.js": window.FB3D_TEMPLATES ? window.FB3D_TEMPLATES.js : ''
+            }
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
