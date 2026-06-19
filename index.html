@@ -68,6 +68,13 @@
         grid-template-columns: 1fr;
         padding-bottom: 2rem;
       }
+      .featured-hero-card,
+      .highlights-panel {
+        height: 440px;
+      }
+      .featured-title {
+        font-size: 1.85rem;
+      }
     }
     
     /* Featured Card (Left Side of Hero) */
@@ -119,6 +126,15 @@
     @media (max-width: 576px) {
       .featured-hero-content {
         padding: 2rem 1.5rem;
+      }
+      .featured-hero-card {
+        height: 350px;
+      }
+      .featured-title {
+        font-size: 1.4rem;
+      }
+      .highlights-panel {
+        height: 380px;
       }
     }
     .featured-badge {
@@ -663,7 +679,7 @@
       justify-content: space-between;
       gap: 4rem;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
       .newsletter-card-premium {
         flex-direction: column;
         padding: 3rem 2rem;
@@ -712,7 +728,7 @@
       height: 140px;
       flex-shrink: 0;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
       .newsletter-graphic {
         display: none;
       }
@@ -759,6 +775,24 @@
       padding: 4rem 0;
       font-size: 1rem;
       font-family: var(--font-body);
+    }
+    
+    /* Global Typography scaling overrides for responsive header/section */
+    @media (max-width: 768px) {
+      .section-main-title {
+        font-size: 2rem;
+      }
+      .section-header-centered {
+        margin: 3rem auto 1.5rem;
+      }
+    }
+    @media (max-width: 576px) {
+      .section-main-title {
+        font-size: 1.7rem;
+      }
+      .newsletter-content h2 {
+        font-size: 1.75rem;
+      }
     }
   </style>
 </head>
@@ -826,7 +860,7 @@
     </div>
     
     <div class="explore-more-btn-wrapper" id="explore-more-btn-container">
-      <a href="category/all/index.html" class="explore-category-btn" id="explore-more-link">View all articles &rarr;</a>
+      <a href="category/all/" class="explore-category-btn" id="explore-more-link">View all articles &rarr;</a>
     </div>
   </section>
 
@@ -842,8 +876,7 @@
       <!-- Creators Playlist -->
       <div class="playlist-block-redesign" id="creators-spotlight-section">
         <div class="playlist-header">
-          <h3>👷 Creators Spotlight</h3>
-          <span class="playlist-subtitle">"Hands Behind GoodEarth"</span>
+          <h3>Creators Spotlight</h3>
         </div>
         <div class="playlist-grid-redesign" id="creators-playlist-container-redesign">
           <!-- Loaded dynamically from videos-data.js -->
@@ -856,8 +889,7 @@
       <!-- Residents Playlist -->
       <div class="playlist-block-redesign" id="residents-spotlight-section" style="margin-bottom: 0;">
         <div class="playlist-header">
-          <h3>🏡 Residents Spotlight</h3>
-          <span class="playlist-subtitle">"Savvy in Five"</span>
+          <h3>Residents Spotlight</h3>
         </div>
         <div class="playlist-grid-redesign" id="residents-playlist-container-redesign">
           <!-- Loaded dynamically from videos-data.js -->
@@ -948,7 +980,7 @@
       } else if (post.category === "residents-spotlight-tresh-takes") {
         catPath = "residents-spotlight/tresh-takes";
       }
-      return `${catPath}/${post.slug}/index.html`;
+      return `${catPath}/${post.slug}/`;
     }
 
     // Format category string nicely for badges
@@ -1100,11 +1132,11 @@
       // Update View More link destination dynamically
       if (category === "all") {
         moreLinkContainer.style.display = "block";
-        document.getElementById("explore-more-link").href = "category/all/index.html"; // Link to the consolidated all category page
+        document.getElementById("explore-more-link").href = "category/all/"; // Link to the consolidated all category page
         document.getElementById("explore-more-link").innerHTML = "View all articles &rarr;";
       } else {
         moreLinkContainer.style.display = "block";
-        document.getElementById("explore-more-link").href = `category/${category}/index.html`;
+        document.getElementById("explore-more-link").href = `category/${category}/`;
         document.getElementById("explore-more-link").innerHTML = `View all ${getCategoryLabel(category)} articles &rarr;`;
       }
     }
@@ -1124,16 +1156,16 @@
       
       // High-quality custom fallback images for Creators Spotlight videos
       const creatorsImages = [
-        "https://goodearth.org.in/connect/wp-content/uploads/2023/11/Goodearth-Resonance-34-1.webp",
-        "https://goodearth.org.in/connect/wp-content/uploads/2024/02/Saarang-Brochure_V4_Corrections_Print-page-71.jpg",
-        "https://goodearth.org.in/connect/wp-content/uploads/2023/07/14-rs.jpg"
+        "assets/images/Goodearth-Resonance-34-1_4.webp",
+        "assets/images/Saarang-Brochure_V4_Corrections_Print-page-71_2.webp",
+        "assets/images/14-rs_1.webp"
       ];
       
       // High-quality post images for Residents Spotlight videos
       const residentsImages = [
-        "https://goodearth.org.in/connect/wp-content/uploads/2026/04/Come-Over-Featured-Image.jpg",
-        "https://goodearth.org.in/connect/wp-content/uploads/2026/03/GoodEarth-Resident-Girin-Web-Banner.jpeg",
-        "https://goodearth.org.in/connect/wp-content/uploads/2026/01/GE-Ajith.jpg"
+        "assets/images/Come-Over-Featured-Image_2.webp",
+        "assets/images/GoodEarth-Resident-Girin-Web-Banner_2.webp",
+        "assets/images/GE-Ajith_2.webp"
       ];
       
       if (creatorsGrid && data.creators) {
@@ -1143,15 +1175,11 @@
           const indexMatch = vid.url.match(/index=(\d+)/);
           const index = indexMatch ? indexMatch[1] : "1";
           const embedSrc = `https://www.youtube.com/embed/?wmode=transparent&autoplay=0&list=${playlistId}&index=${index}`;
-          const coverImg = creatorsImages[idx] || creatorsImages[0];
           
           return `
-            <div class="video-card-redesign" onclick="playVideoInline(this.querySelector('.video-thumbnail-wrapper-redesign'), '${embedSrc}')">
-              <div class="video-thumbnail-wrapper-redesign" style="background-image: url('${coverImg}');">
-                <div class="video-thumbnail-overlay"></div>
-                <div class="video-play-btn" aria-label="Play video">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
+            <div class="video-card-redesign">
+              <div class="video-thumbnail-wrapper-redesign">
+                <iframe src="${embedSrc}" class="video-iframe-active" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
               </div>
               <div class="video-card-title-redesign">${vid.title}</div>
             </div>
@@ -1166,15 +1194,11 @@
           const indexMatch = vid.url.match(/index=(\d+)/);
           const index = indexMatch ? indexMatch[1] : "1";
           const embedSrc = `https://www.youtube.com/embed/?wmode=transparent&autoplay=0&list=${playlistId}&index=${index}`;
-          const coverImg = residentsImages[idx] || residentsImages[0];
           
           return `
-            <div class="video-card-redesign" onclick="playVideoInline(this.querySelector('.video-thumbnail-wrapper-redesign'), '${embedSrc}')">
-              <div class="video-thumbnail-wrapper-redesign" style="background-image: url('${coverImg}');">
-                <div class="video-thumbnail-overlay"></div>
-                <div class="video-play-btn" aria-label="Play video">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
+            <div class="video-card-redesign">
+              <div class="video-thumbnail-wrapper-redesign">
+                <iframe src="${embedSrc}" class="video-iframe-active" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
               </div>
               <div class="video-card-title-redesign">${vid.title}</div>
             </div>
