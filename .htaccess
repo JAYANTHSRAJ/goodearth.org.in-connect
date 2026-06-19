@@ -1,0 +1,15 @@
+# ==========================================================================
+# GoodEarth Connect - Clean URLs Configuration for Apache/GoDaddy
+# ==========================================================================
+
+# Turn on URL rewriting
+RewriteEngine On
+
+# 1. Redirect direct requests for index.html to the parent directory (Clean URL redirect)
+# For example: http://example.com/index.html -> http://example.com/
+# And: http://example.com/category/water/index.html -> http://example.com/category/water/
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^/]+/)*index\.html\ HTTP/
+RewriteRule ^(([^/]+/)*)index\.html$ /$1 [R=301,L]
+
+# 2. Ensure index.html is served automatically when a directory is requested
+DirectoryIndex index.html
